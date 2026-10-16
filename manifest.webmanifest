@@ -1,0 +1,23 @@
+{
+  "name": "Świat pamięci",
+  "short_name": "Świat pamięci",
+  "description": "Mini-gry, w których uczysz się technik pamięciowych.",
+  "lang": "pl",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0e0f1f",
+  "theme_color": "#0e0f1f",
+  "categories": ["education", "games"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ],
+  "shortcuts": [
+    { "name": "Cyfry – szkolenie", "url": "./#/digits/train", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Cyfry – gra swobodna", "url": "./#/digits", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] }
+  ]
+}

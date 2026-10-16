@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Świat pamięci – gry, które trenują Twoją pamięć</title>
+  <meta name="description" content="Interaktywne mini-gry, w których uczysz się najpopularniejszych technik pamięciowych. Zacznij od gry „Cyfry” z uroczym kotem Mruczkiem.">
+  <meta name="theme-color" content="#0e0f1f">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Świat pamięci">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="bg" aria-hidden="true"><i></i><i></i><i></i></div>
+
+  <header class="topbar">
+    <a class="brand" href="#/" aria-label="Świat pamięci – strona główna">
+      <svg viewBox="0 0 48 48" width="34" height="34" aria-hidden="true">
+        <defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7c5cff"/><stop offset="1" stop-color="#ff6bd6"/></linearGradient></defs>
+        <rect width="48" height="48" rx="14" fill="url(#lg)"/>
+        <path d="M12 20 14 9l8 6h4l8-6 2 11c1 9-5 17-12 17S11 29 12 20z" fill="#ffb35c"/>
+        <circle cx="19" cy="24" r="2.2" fill="#2b2140"/><circle cx="29" cy="24" r="2.2" fill="#2b2140"/>
+        <path d="M22 29q2 2.5 4 0" stroke="#2b2140" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+      </svg>
+      <span>Świat pamięci</span>
+    </a>
+    <div class="top-actions">
+      <button id="guideBtn" class="icon-btn" type="button" aria-label="Techniki pamięciowe" title="Ściągawka technik pamięciowych">💡</button>
+      <button id="soundBtn" class="icon-btn" type="button" aria-pressed="true" aria-label="Dźwięk">🔊</button>
+      <button id="installBtn" class="pill" type="button">⬇ <span>Pobierz</span></button>
+      <button id="authorBtn" class="avatar-btn" type="button" aria-label="Poznaj autora – Dorian Kalinowski" title="Dorian Kalinowski – Twórca"><img src="assets/dorian.png" alt="Dorian Kalinowski" width="40" height="40"></button>
+    </div>
+  </header>
+
+  <main id="app" tabindex="-1"></main>
+
+  <footer class="footer">
+    <button type="button" class="link" id="authorLink">Stworzył Dorian Kalinowski</button>
+    <span>· uczysz się, grając 🧠</span>
+  </footer>
+
+  <!-- Modal: O autorze -->
+  <dialog id="about" aria-labelledby="aboutTitle">
+    <form method="dialog"><button class="dialog-x" aria-label="Zamknij">✕</button></form>
+    <div class="about-hero">
+      <img src="assets/dorian.png" alt="Dorian Kalinowski" class="about-photo" width="130" height="130">
+      <h2 id="aboutTitle">Dorian Kalinowski</h2>
+      <p class="about-role">Twórca aplikacji «Świat pamięci»</p>
+    </div>
+    <div class="mission-box">
+      <div class="mission-icon">🎯</div>
+      <p class="mission-quote">„Moim celem jest umożliwić wszystkim naukę najbardziej popularnych technik pamięciowych w wciągających grach.”</p>
+    </div>
+    <p class="about-desc">
+      Cześć! Wierzę, że nikt nie ma „słabej pamięci” – po prostu w szkole nie uczą nas, jak działa nasz mózg.
+      Wszystkie techniki, którymi popisują się mistrzowie pamięci (zapamiętywanie numeru telefonu w 3 sekundy, talii kart czy setek słówek),
+      opierają się na prostych, dających mnóstwo frajdy zasadach.
+    </p>
+    <div class="roadmap-preview">
+      <b>8 systemów pamięciowych i ich nauczyciele:</b>
+      <ul>
+        <li>🔢 <strong>Cyfry</strong> – Kotek Mruczek 🐱 (Kształty cyfr i grupowanie)</li>
+        <li>🏰 <strong>Pałac pamięci</strong> – Tygrysek Leon 🐯 (Metoda Loci i komnaty wyobraźni)</li>
+        <li>🦊 <strong>Imiona i twarze</strong> – Lisek Bystrzak 🦊 (Kotwice cech i mosty fonetyczne)</li>
+        <li>🦉 <strong>System Major</strong> – Sówka Profesor 🦉 (Spółgłoski 0-9 i kody PIN)</li>
+        <li>🦜 <strong>Słówka i języki</strong> – Papużka Pola 🦜 (Metoda słów-kluczy)</li>
+        <li>🦝 <strong>Karty do gry</strong> – Szop Magik 🦝 (Metoda PAO: Postać - Akcja - Obiekt)</li>
+        <li>🐿️ <strong>Łańcuch skojarzeń</strong> – Wiewiórka Basia 🐿️ (Efekt domina i listy zakupów)</li>
+        <li>🐢 <strong>Kalendarz w głowie</strong> – Żółwik Zegarowy 🐢 (Algorytm Doomsday i modulo 7)</li>
+      </ul>
+    </div>
+    <p class="muted">Graj codziennie chociaż kilka minut. Twoje urocze zwierzątka będą Ci kibicować! 🐾</p>
+    <form method="dialog"><button class="btn btn-primary">Do gry! 🚀</button></form>
+  </dialog>
+
+  <!-- Modal: Ściągawka technik pamięciowych -->
+  <dialog id="guide" aria-labelledby="guideTitle">
+    <form method="dialog"><button class="dialog-x" aria-label="Zamknij">✕</button></form>
+    <h2 id="guideTitle">💡 8 Technik Pamięciowych w Pigułce</h2>
+    <div class="guide-scroll">
+      <div class="guide-card">
+        <h3>1. Cyfry – Kształty Cyfr (Kotek Mruczek 🐱)</h3>
+        <p>Mózg myśli obrazami, a nie suchymi cyframi. Zamień każdą cyfrę 0-9 w przedmiot:</p>
+        <div class="peg-grid">
+          <div><b>0</b> <span>🥚 Jajko</span></div>
+          <div><b>1</b> <span>🕯️ Świeca</span></div>
+          <div><b>2</b> <span>🦢 Łabędź</span></div>
+          <div><b>3</b> <span>❤️ Serce</span></div>
+          <div><b>4</b> <span>⛵ Żaglówka</span></div>
+          <div><b>5</b> <span>🪝 Hak</span></div>
+          <div><b>6</b> <span>🐌 Ślimak</span></div>
+          <div><b>7</b> <span>🪓 Kosa</span></div>
+          <div><b>8</b> <span>☃️ Bałwan</span></div>
+          <div><b>9</b> <span>🎈 Balon</span></div>
+        </div>
+        <p class="tip">Chcesz zapamiętać <strong>28</strong>? Wyobraź sobie <strong>Łabędzia</strong> (2) owijającego szalikiem <strong>Bałwana</strong> (8)!</p>
+      </div>
+
+      <div class="guide-card">
+        <h3>2. Pałac Pamięci – Metoda Loci (Tygrysek Leon 🐯)</h3>
+        <p>Najpotężniejsza technika starożytności: spacerujesz po wyobrażonym pałacu i kładziesz przedmioty w komnatach!</p>
+        <div class="peg-grid" style="grid-template-columns:repeat(4,1fr)">
+          <div><b>1. Brama</b> <span>🍌 Banan</span></div>
+          <div><b>2. Hol</b> <span>🎩 Kapelusz</span></div>
+          <div><b>3. Kominek</b> <span>🐘 Słoń</span></div>
+          <div><b>4. Kuchnia</b> <span>🍕 Pizza</span></div>
+        </div>
+        <p class="tip"><strong>Zasada absurdu:</strong> Im bardziej komiczny i dynamiczny obraz (np. słoń w kapeluszu tańczący na kominku), tym mocniejsza pamięć!</p>
+      </div>
+
+      <div class="guide-card">
+        <h3>3. Imiona i Twarze (Lisek Bystrzak 🦊)</h3>
+        <p>Trzy proste kroki: Kotwica twarzy → Most fonetyczny → Wybuchowa akcja!</p>
+        <p class="panel-note">Widzisz Marka z wielkimi okularami? Zobacz, jak wyciąga żółty MARKER i zamalowuje nim swoje okulary!</p>
+      </div>
+
+      <div class="guide-card">
+        <h3>4. System Major (Sówka Profesor 🦉)</h3>
+        <p>Podstawa mistrzostw pamięci: zamiana cyfr na spółgłoski, z których budujesz słowa.</p>
+        <div class="major-grid">
+          <div><b>0</b><span>S, Z</span></div><div><b>1</b><span>T, D</span></div><div><b>2</b><span>N</span></div>
+          <div><b>3</b><span>M</span></div><div><b>4</b><span>R</span></div><div><b>5</b><span>L</span></div>
+          <div><b>6</b><span>J, SZ</span></div><div><b>7</b><span>K, G</span></div><div><b>8</b><span>F, W</span></div>
+          <div><b>9</b><span>P, B</span></div>
+        </div>
+        <p class="panel-note">Samogłoski (A, E, I, O, U, Y) to klej: <strong>71</strong> = K-T = <strong>KOT</strong> 🐱, <strong>14</strong> = T-R = <strong>TOR</strong> 🛤️.</p>
+      </div>
+
+      <div class="guide-card">
+        <h3>5. Słówka i Języki Obce (Papużka Pola 🦜)</h3>
+        <p>Metoda słów-kluczy (Keyword Method): znajdź polski dźwiękowy odpowiednik i połącz ze znaczeniem.</p>
+        <p class="panel-note">Np. angielskie <em>mushroom</em> (grzyb) brzmi jak „MASZ RUM?!” → piracki borowik żąda butelki rumu!</p>
+      </div>
+
+      <div class="guide-card">
+        <h3>6. Karty do Gry – System PAO (Szop Magik 🦝)</h3>
+        <p>Każda karta to Postać (Person), Akcja (Action) i Obiekt (Object). 3 karty tworzą 1 żywą scenkę filmu!</p>
+        <p class="panel-note">As Pik to Szop Magik, Król Kier to Król Artur, Dama Karo to Kleopatra.</p>
+      </div>
+
+      <div class="guide-card">
+        <h3>7. Łańcuch Skojarzeń – Efekt Domina (Wiewiórka Basia 🐿️)</h3>
+        <p>Łącz elementy parami za pomocą gwałtownego ruchu, dźwięku i przesady. Jedno ogniwo pociąga kolejne!</p>
+        <p class="panel-note">Idealne do list zakupów, przemówień publicznych i skomplikowanych procedur.</p>
+      </div>
+
+      <div class="guide-card">
+        <h3>8. Kalendarz w Głowie – Algorytm Doomsday (Żółwik Zegarowy 🐢)</h3>
+        <p>Parzyste bliźniaki zawsze wypadają w ten sam dzień tygodnia: <strong>4.04, 6.06, 8.08, 10.10, 12.12</strong>!</p>
+        <p class="panel-note">Dla nieparzystych: „Pracuję 9 do 5 (9.05 i 5.09) na stacji 7/11 (11.07 i 7.11)”. Licz resztę modulo 7 i znasz każdy dzień!</p>
+      </div>
+    </div>
+    <form method="dialog"><button class="btn btn-primary">Wszystko jasne! 🚀</button></form>
+  </dialog>
+
+  <!-- Modal: Instalacja PWA -->
+  <dialog id="installModal" aria-labelledby="installTitle">
+    <form method="dialog"><button class="dialog-x" aria-label="Zamknij">✕</button></form>
+    <h2 id="installTitle">📲 Zainstaluj Świat pamięci</h2>
+    <p>Aplikacja działa w 100% offline jako Progressive Web App (PWA) – bez reklam i bez pobierania ze sklepu!</p>
+    <div class="install-options">
+      <div class="install-item">
+        <b>🤖 Na Androidzie (Chrome / Edge / Samsung):</b>
+        <ol class="steps">
+          <li>Kliknij przycisk poniżej lub menu przeglądarki (trzy kropki ⋮).</li>
+          <li>Wybierz <strong>„Zainstaluj aplikację”</strong> lub „Dodaj do ekranu głównego”.</li>
+        </ol>
+      </div>
+      <div class="install-item">
+        <b>🍏 Na iPhone / iPad (Safari):</b>
+        <ol class="steps">
+          <li>Kliknij przycisk <strong>Udostępnij</strong> na dole ekranu (kwadrat ze strzałką w górę 📤).</li>
+          <li>Wybierz <strong>„Do ekranu początkowego”</strong> (Add to Home Screen).</li>
+          <li>Kliknij „Dodaj” – gotowe! 🚀</li>
+        </ol>
+      </div>
+    </div>
+    <div class="dialog-actions">
+      <button id="directInstallBtn" class="btn btn-primary" type="button">Zainstaluj teraz ⬇</button>
+      <form method="dialog"><button class="btn btn-ghost">Zamknij</button></form>
+    </div>
+  </dialog>
+
+  <noscript><p style="padding:2rem;color:#fff">Do działania gry potrzebny jest JavaScript.</p></noscript>
+  <script src="js/bundle.js"></script>
+</body>
+</html>
