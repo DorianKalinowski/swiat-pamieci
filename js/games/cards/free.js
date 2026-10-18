@@ -34,6 +34,15 @@ export function mountFree(root, { modeId, nav }) {
 
   root.append(view);
 
+  const CHEERS = ['Abrakadabra! 🦝✨', 'Karta w garści! ♠️', 'Czysta magia PAO! 🎩', 'As w rękawie! 🃏', 'Bez pudła! 🎯'];
+  function cheerRaccoon(c) {
+    if (c % 3 === 0 && c > 0) {
+      raccoon.say(`Combo x${c}! Cała talia drży przed Twoją pamięcią! 🦝🪄`, 'cheer', { revert: 1400 });
+    } else {
+      raccoon.say(rand(CHEERS), 'cheer', { revert: 1000 });
+    }
+  }
+
   function saveBest() {
     const prev = store.get(`cards.best.${modeId}`, 0);
     if (score > prev) store.set(`cards.best.${modeId}`, score);
@@ -109,7 +118,7 @@ export function mountFree(root, { modeId, nav }) {
               round++;
               scoreEl.textContent = `${score}`;
               roundEl.textContent = `${round}`;
-              raccoon.setMood('cheer', 1200);
+              cheerRaccoon(combo);
               nextRound();
             } else {
               pickState.querySelector('span.grad').textContent = `${pickedIndex + 1}`;
@@ -146,7 +155,7 @@ export function mountFree(root, { modeId, nav }) {
             round++;
             scoreEl.textContent = `${score}`;
             roundEl.textContent = `${round}`;
-            raccoon.setMood('cheer', 1000);
+            cheerRaccoon(combo);
             nextRound();
           } else {
             sfx.wrong();
@@ -202,7 +211,7 @@ export function mountFree(root, { modeId, nav }) {
             round++;
             scoreEl.textContent = `${score}`;
             roundEl.textContent = `${round}`;
-            raccoon.setMood('cheer', 1000);
+            cheerRaccoon(combo);
             nextRound();
           } else {
             sfx.wrong();

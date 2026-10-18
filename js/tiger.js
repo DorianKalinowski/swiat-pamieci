@@ -49,11 +49,11 @@ const TIGER_SVG = `
       <path d="M48 84 l14 4 M46 94 l16 2" stroke="#281a17" stroke-width="4" stroke-linecap="round"/>
       <path d="M152 84 l-14 4 M154 94 l-16 2" stroke="#281a17" stroke-width="4" stroke-linecap="round"/>
       <ellipse cx="100" cy="112" rx="34" ry="22" fill="#fff5ea"/>
-      <circle cx="66" cy="108" r="9" fill="#ff8fa3" opacity=".55"/>
-      <circle cx="134" cy="108" r="9" fill="#ff8fa3" opacity=".55"/>
+      <circle cx="66" cy="108" r="9" fill="#ff708f" opacity=".6"/>
+      <circle cx="134" cy="108" r="9" fill="#ff708f" opacity=".6"/>
       <g class="eyes">
-        <g class="eye-slot" transform="translate(76 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#281a17"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2" fill="#fff" opacity=".8"/></g></g></g>
-        <g class="eye-slot" transform="translate(124 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#281a17"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2" fill="#fff" opacity=".8"/></g></g></g>
+        <g class="eye-slot" transform="translate(76 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#281a17"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2.2" fill="#fff" opacity=".85"/><circle cx="0" cy="1" r="1.3" fill="#fff" opacity=".9"/></g></g></g>
+        <g class="eye-slot" transform="translate(124 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#281a17"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2.2" fill="#fff" opacity=".85"/><circle cx="0" cy="1" r="1.3" fill="#fff" opacity=".9"/></g></g></g>
       </g>
       <g class="eyes-closed" fill="none" stroke="#281a17" stroke-width="5" stroke-linecap="round">
         <path d="M64 94 Q76 78 88 94"/>
@@ -81,7 +81,8 @@ const POKE = [
   'Wiesz, że starożytni mówcy pamiętali wielogodzinne mowy dzięki loci?',
   'Im bardziej absurdalny i żywy obraz stworzysz, tym trwalej go zapamiętasz! ⚡',
   'Grr! Zobacz, jak macham ogonem – zwiedźmy kolejną komnatę! 🏰',
-  'Twój mózg to zamek z nieograniczoną liczbą pokoi. Wykorzystaj go! ✨'
+  'Twój mózg to zamek z nieograniczoną liczbą pokoi. Wykorzystaj go! ✨',
+  'Tygrysia pamięć nigdy nie zawodzi! Leon trzyma za Ciebie kciuki! 🐾'
 ];
 
 export function createTiger({ size = 'md', pokeLines = POKE } = {}) {

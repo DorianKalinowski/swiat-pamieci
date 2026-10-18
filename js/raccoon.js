@@ -51,12 +51,12 @@ const RACCOON_SVG = `
       <!-- Biały pyszczek -->
       <ellipse cx="100" cy="112" rx="26" ry="18" fill="#edf2f4"/>
       <!-- Rumieńce -->
-      <circle cx="60" cy="108" r="7" fill="#ff8fa3" opacity=".5"/>
-      <circle cx="140" cy="108" r="7" fill="#ff8fa3" opacity=".5"/>
+      <circle cx="60" cy="108" r="8" fill="#ff708f" opacity=".6"/>
+      <circle cx="140" cy="108" r="8" fill="#ff708f" opacity=".6"/>
       <!-- Oczy w bezpiecznych slotach -->
       <g class="eyes">
-        <g class="eye-slot" transform="translate(76 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#1e2022"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2" fill="#fff" opacity=".8"/></g></g></g>
-        <g class="eye-slot" transform="translate(124 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#1e2022"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2" fill="#fff" opacity=".8"/></g></g></g>
+        <g class="eye-slot" transform="translate(76 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#1e2022"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2.2" fill="#fff" opacity=".85"/><circle cx="0" cy="1" r="1.3" fill="#fff" opacity=".9"/></g></g></g>
+        <g class="eye-slot" transform="translate(124 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#1e2022"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2.2" fill="#fff" opacity=".85"/><circle cx="0" cy="1" r="1.3" fill="#fff" opacity=".9"/></g></g></g>
       </g>
       <g class="eyes-closed" fill="none" stroke="#edf2f4" stroke-width="5" stroke-linecap="round">
         <path d="M66 94 Q76 82 86 94"/>
@@ -75,9 +75,10 @@ const RACCOON_SVG = `
 const POKE = [
   'Szast-prast! Jestem Szop Magik 🦝 Talia 52 kart nie ma przede mną tajemnic!',
   'System PAO: Osoba, Akcja, Obiekt. Trzy karty to jedna niezapomniana scena! 🃏',
-  'Mój pręgowany ogon faluje z ekscytacji! Gotowy na karcianą sztuczkę?',
+  'Mój pręgowany ogon faluje z ekscytacji! Gotowy na karcianą sztuczkę? ✨',
   'Nie musisz być magikiem – wystarczy, że dasz kartom twarze swoich bohaterów! 🎩',
-  'Wybierz kartę, dowolną kartę... a ja powiem Ci, która to była! ✨'
+  'Wybierz kartę, dowolną kartę... a ja powiem Ci, która to była! 🪄',
+  'Abrakadabra! Twój mózg tasuje obrazy szybciej niż krupier w Vegas! ♠️'
 ];
 
 export function createRaccoon({ size = 'md', pokeLines = POKE } = {}) {

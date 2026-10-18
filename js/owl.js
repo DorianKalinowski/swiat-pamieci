@@ -42,12 +42,12 @@ const OWL_SVG = `
       <circle cx="124" cy="90" r="22" stroke="#f59e0b" stroke-width="4.5" fill="none"/>
       <path d="M98 90 h4" stroke="#f59e0b" stroke-width="4.5"/>
       <!-- Rumieńce -->
-      <circle cx="58" cy="106" r="7" fill="#ff8fa3" opacity=".5"/>
-      <circle cx="142" cy="106" r="7" fill="#ff8fa3" opacity=".5"/>
+      <circle cx="58" cy="106" r="8" fill="#ff708f" opacity=".6"/>
+      <circle cx="142" cy="106" r="8" fill="#ff708f" opacity=".6"/>
       <!-- Oczy w bezpiecznych slotach -->
       <g class="eyes">
-        <g class="eye-slot" transform="translate(76 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#2b1b17"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2" fill="#fff" opacity=".8"/></g></g></g>
-        <g class="eye-slot" transform="translate(124 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#2b1b17"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2" fill="#fff" opacity=".8"/></g></g></g>
+        <g class="eye-slot" transform="translate(76 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#2b1b17"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2.2" fill="#fff" opacity=".85"/><circle cx="0" cy="1" r="1.3" fill="#fff" opacity=".9"/></g></g></g>
+        <g class="eye-slot" transform="translate(124 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#2b1b17"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2.2" fill="#fff" opacity=".85"/><circle cx="0" cy="1" r="1.3" fill="#fff" opacity=".9"/></g></g></g>
       </g>
       <g class="eyes-closed" fill="none" stroke="#2b1b17" stroke-width="5" stroke-linecap="round">
         <path d="M66 94 Q76 82 86 94"/>
@@ -66,9 +66,10 @@ const OWL_SVG = `
 const POKE = [
   'Huu-huu! Jestem Sówka Profesor 🦉 Zamienię każdą liczbę w słowo!',
   'Litery to klucze do pamięci. Dźwięk rodzi obraz, a obraz zostaje na zawsze! 📜',
-  'Mój dziób klaszcze z podziwu! Gotowy na kolejną zagadkę Majora?',
-  'Starożytni uczeni nie mieli smartfonów – mieli System Major! ✨',
-  'Mądrość to po prostu dobra technika skojarzeń! 🎓'
+  'Mój dziób klaszcze z podziwu! Gotowy na kolejną zagadkę Majora? ✨',
+  'Starożytni uczeni nie mieli smartfonów – mieli genialny System Major! 💡',
+  'Mądrość to po prostu dobra technika skojarzeń! 🎓',
+  'Huu! Pamięć to najpotężniejszy mięsień Twojego umysłu! 🌟'
 ];
 
 export function createOwl({ size = 'md', pokeLines = POKE } = {}) {

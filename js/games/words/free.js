@@ -34,6 +34,15 @@ export function mountFree(root, { modeId, nav }) {
 
   root.append(view);
 
+  const CHEERS = ['Ćwir! Genialnie! 🦜', 'Słówko w kieszeni! 🌴', 'Skojarzenie w punkt! 🌈', 'Poliglotyczny talent! ✨', 'Pola bije skrzydłami! 💬'];
+  function cheerParrot(c) {
+    if (c % 3 === 0 && c > 0) {
+      parrot.say(`Combo x${c}! Mówisz już jak rodowity mówca! 🦜🌍`, 'cheer', { revert: 1400 });
+    } else {
+      parrot.say(rand(CHEERS), 'cheer', { revert: 1000 });
+    }
+  }
+
   function saveBest() {
     const prev = store.get(`words.best.${modeId}`, 0);
     if (score > prev) store.set(`words.best.${modeId}`, score);
@@ -94,7 +103,7 @@ export function mountFree(root, { modeId, nav }) {
             round++;
             scoreEl.textContent = `${score}`;
             roundEl.textContent = `${round}`;
-            parrot.setMood('cheer', 1000);
+            cheerParrot(combo);
             nextRound();
           } else {
             sfx.wrong();
@@ -119,7 +128,7 @@ export function mountFree(root, { modeId, nav }) {
         h('span', { class: 'vocab-emoji' }, target.emoji),
         h('h2', { class: 'vocab-word' }, target.foreign),
         h('p', {}, `Znaczenie: `, h('b', {}, target.meaning)),
-        h('p', { class: 'text-muted' }, 'Jaki jest polski most fonetyczny (brzmieniowy) dla tego słowa?')
+        h('p', { class: 'muted' }, 'Jaki jest polski most fonetyczny (brzmieniowy) dla tego słowa?')
       );
 
       const opts = h('div', { class: 'opt-grid' });
@@ -133,7 +142,7 @@ export function mountFree(root, { modeId, nav }) {
             round++;
             scoreEl.textContent = `${score}`;
             roundEl.textContent = `${round}`;
-            parrot.setMood('cheer', 1000);
+            cheerParrot(combo);
             nextRound();
           } else {
             sfx.wrong();

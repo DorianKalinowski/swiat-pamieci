@@ -38,6 +38,15 @@ export function mountFree(root, { modeId, nav }) {
 
   root.append(view);
 
+  const CHEERS = ['Lisi spryt! 🦊', 'Kotwica zadziałała! ⚓', 'Zauważone bezbłędnie! 🔍', 'Hau! Celnie! ✨', 'Oko sokoła! 🎯'];
+  function cheerFox(c) {
+    if (c % 3 === 0 && c > 0) {
+      fox.say(`Combo x${c}! Twoje oko wyłapie każdy detal! 🦊✨`, 'cheer', { revert: 1400 });
+    } else {
+      fox.say(rand(CHEERS), 'cheer', { revert: 1000 });
+    }
+  }
+
   function saveBest() {
     const prev = store.get(`names.best.${modeId}`, 0);
     if (score > prev) {
@@ -99,13 +108,13 @@ export function mountFree(root, { modeId, nav }) {
             round++;
             scoreEl.textContent = `${score}`;
             roundEl.textContent = `${round}`;
-            fox.setMood('cheer', 1200);
+            cheerFox(combo);
             nextRound();
           } else {
             sfx.wrong();
             combo = 0;
             fox.setMood('sad', 1200);
-            fox.say(`To ${currentTarget.name}! Pamiętasz kotwicę: ${currentTarget.feature}?`, 'think', { revert: 2500 });
+            fox.say(`To ${currentTarget.name}! Kotwica: ${currentTarget.feature} ⚓ Następnym razem się uda! 🦊`, 'think', { revert: 2600 });
             btn.classList.add('wrong');
             setTimeout(nextRound, 1200);
           }
@@ -138,12 +147,13 @@ export function mountFree(root, { modeId, nav }) {
             round++;
             scoreEl.textContent = `${score}`;
             roundEl.textContent = `${round}`;
-            fox.setMood('cheer', 1000);
+            cheerFox(combo);
             nextRound();
           } else {
             sfx.wrong();
             combo = 0;
             fox.setMood('sad', 1000);
+            fox.say(`To nie ta osoba! Przypomnij sobie jej cechę szczególną 🔍`, 'think', { revert: 2000 });
             btn.classList.add('wrong');
           }
         });

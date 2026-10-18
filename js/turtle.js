@@ -45,8 +45,8 @@ const TURTLE_SVG = `
       <ellipse cx="100" cy="92" rx="54" ry="46" fill="#2ecc71"/>
       <ellipse cx="100" cy="106" rx="36" ry="24" fill="#a9dfbf" opacity=".6"/>
       <!-- Różowe policzki -->
-      <circle cx="66" cy="104" r="8" fill="#f1948a" opacity=".5"/>
-      <circle cx="134" cy="104" r="8" fill="#f1948a" opacity=".5"/>
+      <circle cx="66" cy="104" r="9" fill="#ff708f" opacity=".6"/>
+      <circle cx="134" cy="104" r="9" fill="#ff708f" opacity=".6"/>
       <!-- Mały kapelusik lub czapeczka studencka z cyferblatem -->
       <ellipse cx="100" cy="50" rx="18" ry="4" fill="#d4ac0d"/>
       <path d="M92 49 L94 38 L106 38 L108 49 Z" fill="#b7950b"/>
@@ -54,8 +54,8 @@ const TURTLE_SVG = `
 
       <!-- Oczy w bezpiecznych slotach -->
       <g class="eyes">
-        <g class="eye-slot" transform="translate(76 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#145a32"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2" fill="#fff" opacity=".8"/></g></g></g>
-        <g class="eye-slot" transform="translate(124 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#145a32"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2" fill="#fff" opacity=".8"/></g></g></g>
+        <g class="eye-slot" transform="translate(76 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#145a32"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2.2" fill="#fff" opacity=".85"/><circle cx="0" cy="1" r="1.3" fill="#fff" opacity=".9"/></g></g></g>
+        <g class="eye-slot" transform="translate(124 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#145a32"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2.2" fill="#fff" opacity=".85"/><circle cx="0" cy="1" r="1.3" fill="#fff" opacity=".9"/></g></g></g>
       </g>
       <g class="eyes-closed" fill="none" stroke="#145a32" stroke-width="5" stroke-linecap="round">
         <path d="M64 94 Q76 78 88 94"/>
@@ -75,9 +75,10 @@ const TURTLE_SVG = `
 const POKE = [
   'Tik-tak! Jestem Żółwik Zegarowy 🐢 Znam dzień tygodnia każdej daty w historii!',
   'Nie spiesz się! Kalendarz to tylko prosty rytm: 4.04, 6.06, 8.08, 10.10, 12.12! ⏱️',
-  'Nawet żółw potrafi obliczyć dzień tygodnia w 3 sekundy. Nauczę Cię tego krok po kroku!',
+  'Nawet żółw potrafi obliczyć dzień tygodnia w 3 sekundy. Nauczę Cię tego krok po kroku! ⏳',
   'Dzień Sądu (Doomsday) brzmi groźnie, ale to po prostu nasza niezawodna kotwica w czasie! ⚓',
-  'Pamięć i czas to najlepsi przyjaciele! Sprawdźmy dowolny rok i dzień! 📅'
+  'Pamięć i czas to najlepsi przyjaciele! Sprawdźmy dowolny rok i dzień! 📅',
+  'Spokojnie, precyzyjnie i bez stresu – Twój mózg to najdokładniejszy zegar! 🕰️'
 ];
 
 export function createTurtle({ size = 'md', pokeLines = POKE } = {}) {

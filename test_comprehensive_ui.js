@@ -87,7 +87,7 @@ async function runAllTests() {
     assert(gameCards.length >= 6, `Znaleziono ${gameCards.length} kart gier w rejestrze`);
 
     const readyCards = doc.querySelectorAll('.game-card:not(.soon)');
-    assert(readyCards.length === 2, `Dokładnie 2 gry są gotowe do gry (status: ready)`);
+    assert(readyCards.length === 8, `Wszystkie 8 gier jest gotowych do gry (status: ready)`);
 
     const digitsCard = doc.querySelector('.game-card[href="#/digits"]');
     const palaceCard = doc.querySelector('.game-card[href="#/palace"]');

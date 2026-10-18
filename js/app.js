@@ -66,6 +66,7 @@ async function route() {
 
   const parts = location.hash.replace(/^#\/?/, '').split('/').filter(Boolean).map(decodeURIComponent);
   const game = GAMES.find(g => g.id === parts[0] && g.load);
+  if (document.body) document.body.dataset.game = game ? game.id : 'hub';
 
   if (!game) { cleanup = renderHub(); return; }
   try {

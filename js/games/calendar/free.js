@@ -34,6 +34,15 @@ export function mountFree(root, { modeId, nav }) {
 
   root.append(view);
 
+  const CHEERS = ['W punkt! Czas zatrzymany! 🐢', 'Zegar bije dla Ciebie! ⏳', 'Mistrz modulo 7! ⏱️', 'Spokojnie i celnie! 🕰️', 'Genialna data! 📅'];
+  function cheerTurtle(c) {
+    if (c % 3 === 0 && c > 0) {
+      turtle.say(`Combo x${c}! Algorytm Doomsday w małym palcu! 🐢🌟`, 'cheer', { revert: 1400 });
+    } else {
+      turtle.say(rand(CHEERS), 'cheer', { revert: 1000 });
+    }
+  }
+
   function saveBest() {
     const prev = store.get(`calendar.best.${modeId}`, 0);
     if (score > prev) store.set(`calendar.best.${modeId}`, score);
@@ -83,7 +92,7 @@ export function mountFree(root, { modeId, nav }) {
       const card = h('div', { class: 'calendar-card' },
         h('div', { class: 'cal-date-badge' }, `${day} ${mInfo.name.toLowerCase()} ${year}`),
         h('h2', {}, 'Jaki to dzień tygodnia?'),
-        h('p', { class: 'text-muted' }, `Wskazówka: kotwica miesiąca to ${mInfo.anchorDay}.${mInfo.month < 10 ? '0' + mInfo.month : mInfo.month}`)
+        h('p', { class: 'muted' }, `Wskazówka: kotwica miesiąca to ${mInfo.anchorDay}.${mInfo.month < 10 ? '0' + mInfo.month : mInfo.month}`)
       );
 
       const opts = h('div', { class: 'opt-grid' });
@@ -97,7 +106,7 @@ export function mountFree(root, { modeId, nav }) {
             round++;
             scoreEl.textContent = `${score}`;
             roundEl.textContent = `${round}`;
-            turtle.setMood('cheer', 1000);
+            cheerTurtle(combo);
             nextRound();
           } else {
             sfx.wrong();
@@ -120,7 +129,7 @@ export function mountFree(root, { modeId, nav }) {
       const target = MONTH_ANCHORS[rand(0, MONTH_ANCHORS.length - 1)];
       const card = h('div', { class: 'calendar-card' },
         h('h2', {}, `Miesiąc: `, h('span', { class: 'grad' }, target.name)),
-        h('p', { class: 'text-muted' }, 'Który dzień tego miesiąca jest kotwicą Doomsday?')
+        h('p', { class: 'muted' }, 'Który dzień tego miesiąca jest kotwicą Doomsday?')
       );
 
       const others = MONTH_ANCHORS.filter(m => m.anchorDay !== target.anchorDay);
@@ -138,7 +147,7 @@ export function mountFree(root, { modeId, nav }) {
             round++;
             scoreEl.textContent = `${score}`;
             roundEl.textContent = `${round}`;
-            turtle.setMood('cheer', 1000);
+            cheerTurtle(combo);
             nextRound();
           } else {
             sfx.wrong();

@@ -30,6 +30,15 @@ export function mountFree(root, { modeId, nav }) {
 
   root.append(view);
 
+  const CHEERS = ['Huu-huu! Wyśmienicie! 🦉', 'Kod złamany! 📜', 'Znakomita spółgłoska! 🎓', 'Matematyczna precyzja! ⚡', 'Perfekcyjny Major! 🌟'];
+  function cheerOwl(c) {
+    if (c % 3 === 0 && c > 0) {
+      owl.say(`Combo x${c}! Twój umysł przetwarza kody z prędkością światła! 🦉⚡`, 'cheer', { revert: 1400 });
+    } else {
+      owl.say(rand(CHEERS), 'cheer', { revert: 1000 });
+    }
+  }
+
   function saveBest() {
     const prev = store.get(`major.best.${modeId}`, 0);
     if (score > prev) store.set(`major.best.${modeId}`, score);
@@ -88,7 +97,7 @@ export function mountFree(root, { modeId, nav }) {
             round++;
             scoreEl.textContent = `${score}`;
             roundEl.textContent = `${round}`;
-            owl.setMood('cheer', 1000);
+            cheerOwl(combo);
             nextRound();
           } else {
             sfx.wrong();
@@ -125,7 +134,7 @@ export function mountFree(root, { modeId, nav }) {
             round++;
             scoreEl.textContent = `${score}`;
             roundEl.textContent = `${round}`;
-            owl.setMood('cheer', 1000);
+            cheerOwl(combo);
             nextRound();
           } else {
             sfx.wrong();
@@ -162,7 +171,7 @@ export function mountFree(root, { modeId, nav }) {
             round++;
             scoreEl.textContent = `${score}`;
             roundEl.textContent = `${round}`;
-            owl.setMood('cheer', 1000);
+            cheerOwl(combo);
             nextRound();
           } else {
             sfx.wrong();
@@ -189,7 +198,7 @@ export function mountFree(root, { modeId, nav }) {
         h('div', { class: 'pin-story' },
           h('p', {}, `Obraz 1: `, h('b', {}, p1.word), ` (${p1.img})`),
           h('p', {}, `Obraz 2: `, h('b', {}, p2.word), ` (${p2.img})`),
-          h('p', { class: 'text-muted' }, `Wyobraź sobie akcję łączącą oba przedmioty!`)
+          h('p', { class: 'muted' }, `Wyobraź sobie akcję łączącą oba przedmioty!`)
         )
       );
 

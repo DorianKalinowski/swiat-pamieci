@@ -36,12 +36,12 @@ const PARROT_SVG = `
       <!-- Białe obwódki wokół oczu -->
       <ellipse cx="76" cy="90" rx="20" ry="22" fill="#fffef5"/>
       <ellipse cx="124" cy="90" rx="20" ry="22" fill="#fffef5"/>
-      <circle cx="56" cy="106" r="7" fill="#ff5964" opacity=".4"/>
-      <circle cx="144" cy="106" r="7" fill="#ff5964" opacity=".4"/>
+      <circle cx="56" cy="106" r="8" fill="#ff5964" opacity=".55"/>
+      <circle cx="144" cy="106" r="8" fill="#ff5964" opacity=".55"/>
       <!-- Oczy w bezpiecznych slotach -->
       <g class="eyes">
-        <g class="eye-slot" transform="translate(76 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#2b1b17"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2" fill="#fff" opacity=".8"/></g></g></g>
-        <g class="eye-slot" transform="translate(124 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#2b1b17"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2" fill="#fff" opacity=".8"/></g></g></g>
+        <g class="eye-slot" transform="translate(76 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#2b1b17"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2.2" fill="#fff" opacity=".85"/><circle cx="0" cy="1" r="1.3" fill="#fff" opacity=".9"/></g></g></g>
+        <g class="eye-slot" transform="translate(124 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#2b1b17"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2.2" fill="#fff" opacity=".85"/><circle cx="0" cy="1" r="1.3" fill="#fff" opacity=".9"/></g></g></g>
       </g>
       <g class="eyes-closed" fill="none" stroke="#2b1b17" stroke-width="5" stroke-linecap="round">
         <path d="M66 94 Q76 82 86 94"/>
@@ -60,9 +60,10 @@ const PARROT_SVG = `
 const POKE = [
   'Kraa! Jestem Papużka Pola 🦜 Znam słówka ze wszystkich zakątków świata!',
   'Most fonetyczny to magia: nietoperz z baseballowym batem i już pamiętasz bat! ⚾',
-  'Moje piórka mienią się jak tęcza! Gotowy na kolejną porcję słówek?',
+  'Moje piórka mienią się jak tęcza! Gotowy na kolejną porcję słówek? 🌈',
   'Mów do mnie w dowolnym języku – zamienię go w zabawny obrazek! 🌴',
-  'Kra-kra! Twój mózg to najszybszy tłumacz na świecie! ✨'
+  'Kra-kra! Twój mózg to najszybszy tłumacz na świecie! ✨',
+  'Każde nowe słówko to jak kolorowe piórko w Twojej koronie wiedzy! 👑'
 ];
 
 export function createParrot({ size = 'md', pokeLines = POKE } = {}) {

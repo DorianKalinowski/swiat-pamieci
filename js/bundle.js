@@ -58,21 +58,56 @@
     update(k, fn, d) { this.set(k, fn(this.get(k, d))); }
   };
 
-  const day = (offset = 0) => new Date(Date.now() - offset * 864e5).toLocaleDateString('sv');
+  function getDateString(date = new Date()) {
+    const y = date.getFullYear();
+    const m = String(date.getMonth() + 1).padStart(2, '0');
+    const d = String(date.getDate()).padStart(2, '0');
+    return `${y}-${m}-${d}`;
+  }
+
+  function getDayDifference(dateStrA, dateStrB) {
+    if (!dateStrA || !dateStrB) return Infinity;
+    const partsA = dateStrA.split('-').map(Number);
+    const partsB = dateStrB.split('-').map(Number);
+    if (partsA.length !== 3 || partsB.length !== 3) return Infinity;
+    const utc1 = Date.UTC(partsA[0], partsA[1] - 1, partsA[2]);
+    const utc2 = Date.UTC(partsB[0], partsB[1] - 1, partsB[2]);
+    return Math.round((utc2 - utc1) / (1000 * 60 * 60 * 24));
+  }
 
   function touchStreak() {
-    const today = day();
+    const today = getDateString();
     const last = store.get('lastDay', null);
-    if (last === today) return store.get('streak', 1);
-    const streak = last === day(1) ? store.get('streak', 0) + 1 : 1;
-    store.set('streak', streak);
+    if (last === today) {
+      return Math.max(1, store.get('streak', 1));
+    }
+    const diff = last ? getDayDifference(last, today) : Infinity;
+    let newStreak = 1;
+    if (diff === 1) {
+      newStreak = Math.max(0, store.get('streak', 0)) + 1;
+    } else {
+      newStreak = 1;
+    }
+    store.set('streak', newStreak);
     store.set('lastDay', today);
-    return streak;
+    return newStreak;
   }
 
   function currentStreak() {
+    const today = getDateString();
     const last = store.get('lastDay', null);
-    return last === day() || last === day(1) ? store.get('streak', 0) : 0;
+    if (!last) return 0;
+    const diff = getDayDifference(last, today);
+    if (diff === 0) {
+      return store.get('streak', 1);
+    } else if (diff === 1) {
+      return store.get('streak', 0);
+    } else {
+      if (store.get('streak', 0) !== 0) {
+        store.set('streak', 0);
+      }
+      return 0;
+    }
   }
 
   /* ==========================================================================
@@ -204,10 +239,11 @@
         <g class="ear ear-r"><path d="M152 76 L148 22 L104 54 Z" fill="#ffb35c"/><path d="M142 64 L140 38 L118 54 Z" fill="#ff9db0"/></g>
         <ellipse cx="100" cy="92" rx="60" ry="52" fill="#ffb35c"/>
         <path d="M100 42 v14 M86 45 l3 12 M114 45 l-3 12" stroke="#f08a2c" stroke-width="5" stroke-linecap="round"/>
-        <circle cx="64" cy="106" r="9" fill="#ff8fa3" opacity=".55"/><circle cx="136" cy="106" r="9" fill="#ff8fa3" opacity=".55"/>
+        <circle cx="64" cy="106" r="9" fill="#ff708f" opacity=".6"/><circle cx="136" cy="106" r="9" fill="#ff708f" opacity=".6"/>
+        <ellipse cx="94" cy="110" rx="8" ry="5" fill="#fff8ef" opacity=".7"/><ellipse cx="106" cy="110" rx="8" ry="5" fill="#fff8ef" opacity=".7"/>
         <g class="eyes">
-          <g class="eye-slot" transform="translate(76 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#2b2140"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2" fill="#fff" opacity=".8"/></g></g></g>
-          <g class="eye-slot" transform="translate(124 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#2b2140"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2" fill="#fff" opacity=".8"/></g></g></g>
+          <g class="eye-slot" transform="translate(76 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#2b2140"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2.2" fill="#fff" opacity=".85"/><circle cx="0" cy="1" r="1.3" fill="#fff" opacity=".9"/></g></g></g>
+          <g class="eye-slot" transform="translate(124 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#2b2140"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2.2" fill="#fff" opacity=".85"/><circle cx="0" cy="1" r="1.3" fill="#fff" opacity=".9"/></g></g></g>
         </g>
         <g class="eyes-closed" fill="none" stroke="#2b2140" stroke-width="5" stroke-linecap="round"><path d="M64 94 Q76 78 88 94"/><path d="M112 94 Q124 78 136 94"/></g>
         <path d="M94 104 h12 l-6 7 z" fill="#ff6f8c"/>
@@ -221,8 +257,12 @@
   </svg>`;
 
   const POKE = [
-    'Miau! Łaskoczesz mnie! 😸', 'Mrrrau! Kręcę się z radości!', 'Hej! Wracamy do ćwiczeń? 🐾',
-    'Wiesz, że koty śpią 16 godzin? Ty ćwicz pamięć!', 'Mruuu… ale fajnie! ✨'
+    'Miau! Łaskoczesz mnie! 😸',
+    'Mrrrau! Kręcę się z radości! 🐾',
+    'Hej! Wracamy do ćwiczeń? Razem pobijemy rekord! ✨',
+    'Wiesz, że koty śpią 16 godzin? Ty ćwicz pamięć!',
+    'Mruuu… ale fajnie! Twój mózg jest niesamowity! 🧠',
+    'Głaszcz, głaszcz! Każde głaskanie to +10 do koncentracji! 🐱'
   ];
 
   function createCat({ size = 'md', pokeLines = POKE } = {}) {
@@ -354,11 +394,11 @@
         <path d="M48 84 l14 4 M46 94 l16 2" stroke="#281a17" stroke-width="4" stroke-linecap="round"/>
         <path d="M152 84 l-14 4 M154 94 l-16 2" stroke="#281a17" stroke-width="4" stroke-linecap="round"/>
         <ellipse cx="100" cy="112" rx="34" ry="22" fill="#fff5ea"/>
-        <circle cx="66" cy="108" r="9" fill="#ff8fa3" opacity=".55"/>
-        <circle cx="134" cy="108" r="9" fill="#ff8fa3" opacity=".55"/>
+        <circle cx="66" cy="108" r="9" fill="#ff708f" opacity=".6"/>
+        <circle cx="134" cy="108" r="9" fill="#ff708f" opacity=".6"/>
         <g class="eyes">
-          <g class="eye-slot" transform="translate(76 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#281a17"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2" fill="#fff" opacity=".8"/></g></g></g>
-          <g class="eye-slot" transform="translate(124 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#281a17"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2" fill="#fff" opacity=".8"/></g></g></g>
+          <g class="eye-slot" transform="translate(76 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#281a17"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2.2" fill="#fff" opacity=".85"/><circle cx="0" cy="1" r="1.3" fill="#fff" opacity=".9"/></g></g></g>
+          <g class="eye-slot" transform="translate(124 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#281a17"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2.2" fill="#fff" opacity=".85"/><circle cx="0" cy="1" r="1.3" fill="#fff" opacity=".9"/></g></g></g>
         </g>
         <g class="eyes-closed" fill="none" stroke="#281a17" stroke-width="5" stroke-linecap="round">
           <path d="M64 94 Q76 78 88 94"/>
@@ -386,7 +426,8 @@
     'Wiesz, że starożytni mówcy pamiętali wielogodzinne mowy dzięki loci?',
     'Im bardziej absurdalny i żywy obraz stworzysz, tym trwalej go zapamiętasz! ⚡',
     'Grr! Zobacz, jak macham ogonem – zwiedźmy kolejną komnatę! 🏰',
-    'Twój mózg to zamek z nieograniczoną liczbą pokoi. Wykorzystaj go! ✨'
+    'Twój mózg to zamek z nieograniczoną liczbą pokoi. Wykorzystaj go! ✨',
+    'Tygrysia pamięć nigdy nie zawodzi! Leon trzyma za Ciebie kciuki! 🐾'
   ];
 
   function createTiger({ size = 'md', pokeLines = TIGER_POKE } = {}) {
@@ -1091,7 +1132,7 @@
     12: 'Dwanaście cyfr?! Jesteś mistrzem! 🏆',
     15: 'Piętnaście! To poziom zawodów pamięciowych 🤯'
   };
-  const CHEERS = ['Tak! 😸', 'Mrrr, dobrze!', 'Świetnie!', 'Jedziemy dalej!', 'Bez pudła! 🎯'];
+  const CHEERS = ['Tak! 😸', 'Mrrr, bezbłędnie! ✨', 'Kocia precyzja! 🐾', 'Pazurki w górę! 😻', 'Jedziemy dalej!', 'Bez pudła! 🎯', 'Czysty geniusz! ⚡'];
 
   function mountFree(root, { modeId, nav }) {
     const mode = getMode(modeId);
@@ -2172,9 +2213,13 @@
         level++;
         startRound();
       };
-      controls.append(nextBtn);
-
-      tiger.say(`Poziom ${level} w kieszeni! Gotowy na trudniejszą trasę? 🐯`, 'cheer');
+      const TIGER_CHEERS = [
+        `Poziom ${level} w kieszeni! Gotowy na trudniejszą trasę? 🐯`,
+        `Potężny skok! Komnaty pałacu stoją przed Tobą otworem! 🏰✨`,
+        `Rrr! Niezrównana pamięć! Leon jest z Ciebie dumny! 🔥`,
+        `Genialna wędrówka! Twój pałac pamięci lśni złotem! 🏛️`
+      ];
+      tiger.say(rand(TIGER_CHEERS), 'cheer');
     }
 
     function handleGameOver(pair, expected, picked) {
@@ -2354,12 +2399,12 @@ const FOX_SVG = `
       <path d="M158 90 l14 12 l-14 4 l10 12 l-18 -4" fill="#ff6b35"/>
       <!-- Białe policzki i pyszczek -->
       <path d="M48 94 Q 100 70 152 94 Q 100 134 48 94 Z" fill="#fff6ed"/>
-      <circle cx="64" cy="106" r="8" fill="#ff8fa3" opacity=".5"/>
-      <circle cx="136" cy="106" r="8" fill="#ff8fa3" opacity=".5"/>
+      <circle cx="64" cy="106" r="9" fill="#ff708f" opacity=".6"/>
+      <circle cx="136" cy="106" r="9" fill="#ff708f" opacity=".6"/>
       <!-- Oczy w bezpiecznych slotach -->
       <g class="eyes">
-        <g class="eye-slot" transform="translate(76 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#2b1b17"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2" fill="#fff" opacity=".8"/></g></g></g>
-        <g class="eye-slot" transform="translate(124 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#2b1b17"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2" fill="#fff" opacity=".8"/></g></g></g>
+        <g class="eye-slot" transform="translate(76 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#2b1b17"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2.2" fill="#fff" opacity=".85"/><circle cx="0" cy="1" r="1.3" fill="#fff" opacity=".9"/></g></g></g>
+        <g class="eye-slot" transform="translate(124 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#2b1b17"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2.2" fill="#fff" opacity=".85"/><circle cx="0" cy="1" r="1.3" fill="#fff" opacity=".9"/></g></g></g>
       </g>
       <g class="eyes-closed" fill="none" stroke="#2b1b17" stroke-width="5" stroke-linecap="round">
         <path d="M64 94 Q76 78 88 94"/>
@@ -2378,9 +2423,10 @@ const FOX_SVG = `
 const FOX_POKE = [
   'Hau! Jestem Lisek Bystrzak 🦊 Każda twarz ma w sobie sekret!',
   'Zauważ ten mały pieprzyk albo okulary – to Twój pamięciowy haczyk! 🔍',
-  'Mój puszysty ogon kręci się z zachwytu! Gotowy poznać nowych ludzi?',
-  'Nigdy więcej nie powiesz: „Znam tę twarz, ale jak on miał na imię?”.',
-  'Twój wzrok jest bystrzejszy niż myślisz! ✨'
+  'Mój puszysty ogon kręci się z zachwytu! Gotowy poznać nowych ludzi? 🐾',
+  'Nigdy więcej nie powiesz: „Znam tę twarz, ale jak on miał na imię?”. ✨',
+  'Twój wzrok jest bystrzejszy niż myślisz! Złapiesz każdą twarz w sekundę! 🎯',
+  'Lisi spryt to potężna broń – łącz imię z charakterystyczną cechą! ⚓'
 ];
 
 function createFox({ size = 'md', pokeLines = FOX_POKE } = {}) {
@@ -2517,12 +2563,12 @@ const OWL_SVG = `
       <circle cx="124" cy="90" r="22" stroke="#f59e0b" stroke-width="4.5" fill="none"/>
       <path d="M98 90 h4" stroke="#f59e0b" stroke-width="4.5"/>
       <!-- Rumieńce -->
-      <circle cx="58" cy="106" r="7" fill="#ff8fa3" opacity=".5"/>
-      <circle cx="142" cy="106" r="7" fill="#ff8fa3" opacity=".5"/>
+      <circle cx="58" cy="106" r="8" fill="#ff708f" opacity=".6"/>
+      <circle cx="142" cy="106" r="8" fill="#ff708f" opacity=".6"/>
       <!-- Oczy w bezpiecznych slotach -->
       <g class="eyes">
-        <g class="eye-slot" transform="translate(76 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#2b1b17"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2" fill="#fff" opacity=".8"/></g></g></g>
-        <g class="eye-slot" transform="translate(124 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#2b1b17"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2" fill="#fff" opacity=".8"/></g></g></g>
+        <g class="eye-slot" transform="translate(76 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#2b1b17"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2.2" fill="#fff" opacity=".85"/><circle cx="0" cy="1" r="1.3" fill="#fff" opacity=".9"/></g></g></g>
+        <g class="eye-slot" transform="translate(124 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#2b1b17"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2.2" fill="#fff" opacity=".85"/><circle cx="0" cy="1" r="1.3" fill="#fff" opacity=".9"/></g></g></g>
       </g>
       <g class="eyes-closed" fill="none" stroke="#2b1b17" stroke-width="5" stroke-linecap="round">
         <path d="M66 94 Q76 82 86 94"/>
@@ -2541,9 +2587,10 @@ const OWL_SVG = `
 const OWL_POKE = [
   'Huu-huu! Jestem Sówka Profesor 🦉 Zamienię każdą liczbę w słowo!',
   'Litery to klucze do pamięci. Dźwięk rodzi obraz, a obraz zostaje na zawsze! 📜',
-  'Mój dziób klaszcze z podziwu! Gotowy na kolejną zagadkę Majora?',
-  'Starożytni uczeni nie mieli smartfonów – mieli System Major! ✨',
-  'Mądrość to po prostu dobra technika skojarzeń! 🎓'
+  'Mój dziób klaszcze z podziwu! Gotowy na kolejną zagadkę Majora? ✨',
+  'Starożytni uczeni nie mieli smartfonów – mieli genialny System Major! 💡',
+  'Mądrość to po prostu dobra technika skojarzeń! 🎓',
+  'Huu! Pamięć to najpotężniejszy mięsień Twojego umysłu! 🌟'
 ];
 
 function createOwl({ size = 'md', pokeLines = OWL_POKE } = {}) {
@@ -2674,12 +2721,12 @@ const PARROT_SVG = `
       <!-- Białe obwódki wokół oczu -->
       <ellipse cx="76" cy="90" rx="20" ry="22" fill="#fffef5"/>
       <ellipse cx="124" cy="90" rx="20" ry="22" fill="#fffef5"/>
-      <circle cx="56" cy="106" r="7" fill="#ff5964" opacity=".4"/>
-      <circle cx="144" cy="106" r="7" fill="#ff5964" opacity=".4"/>
+      <circle cx="56" cy="106" r="8" fill="#ff5964" opacity=".55"/>
+      <circle cx="144" cy="106" r="8" fill="#ff5964" opacity=".55"/>
       <!-- Oczy w bezpiecznych slotach -->
       <g class="eyes">
-        <g class="eye-slot" transform="translate(76 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#2b1b17"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2" fill="#fff" opacity=".8"/></g></g></g>
-        <g class="eye-slot" transform="translate(124 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#2b1b17"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2" fill="#fff" opacity=".8"/></g></g></g>
+        <g class="eye-slot" transform="translate(76 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#2b1b17"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2.2" fill="#fff" opacity=".85"/><circle cx="0" cy="1" r="1.3" fill="#fff" opacity=".9"/></g></g></g>
+        <g class="eye-slot" transform="translate(124 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#2b1b17"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2.2" fill="#fff" opacity=".85"/><circle cx="0" cy="1" r="1.3" fill="#fff" opacity=".9"/></g></g></g>
       </g>
       <g class="eyes-closed" fill="none" stroke="#2b1b17" stroke-width="5" stroke-linecap="round">
         <path d="M66 94 Q76 82 86 94"/>
@@ -2698,9 +2745,10 @@ const PARROT_SVG = `
 const PARROT_POKE = [
   'Kraa! Jestem Papużka Pola 🦜 Znam słówka ze wszystkich zakątków świata!',
   'Most fonetyczny to magia: nietoperz z baseballowym batem i już pamiętasz bat! ⚾',
-  'Moje piórka mienią się jak tęcza! Gotowy na kolejną porcję słówek?',
+  'Moje piórka mienią się jak tęcza! Gotowy na kolejną porcję słówek? 🌈',
   'Mów do mnie w dowolnym języku – zamienię go w zabawny obrazek! 🌴',
-  'Kra-kra! Twój mózg to najszybszy tłumacz na świecie! ✨'
+  'Kra-kra! Twój mózg to najszybszy tłumacz na świecie! ✨',
+  'Każde nowe słówko to jak kolorowe piórko w Twojej koronie wiedzy! 👑'
 ];
 
 function createParrot({ size = 'md', pokeLines = PARROT_POKE } = {}) {
@@ -2846,12 +2894,12 @@ const RACCOON_SVG = `
       <!-- Biały pyszczek -->
       <ellipse cx="100" cy="112" rx="26" ry="18" fill="#edf2f4"/>
       <!-- Rumieńce -->
-      <circle cx="60" cy="108" r="7" fill="#ff8fa3" opacity=".5"/>
-      <circle cx="140" cy="108" r="7" fill="#ff8fa3" opacity=".5"/>
+      <circle cx="60" cy="108" r="8" fill="#ff708f" opacity=".6"/>
+      <circle cx="140" cy="108" r="8" fill="#ff708f" opacity=".6"/>
       <!-- Oczy w bezpiecznych slotach -->
       <g class="eyes">
-        <g class="eye-slot" transform="translate(76 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#1e2022"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2" fill="#fff" opacity=".8"/></g></g></g>
-        <g class="eye-slot" transform="translate(124 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#1e2022"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2" fill="#fff" opacity=".8"/></g></g></g>
+        <g class="eye-slot" transform="translate(76 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#1e2022"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2.2" fill="#fff" opacity=".85"/><circle cx="0" cy="1" r="1.3" fill="#fff" opacity=".9"/></g></g></g>
+        <g class="eye-slot" transform="translate(124 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#1e2022"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2.2" fill="#fff" opacity=".85"/><circle cx="0" cy="1" r="1.3" fill="#fff" opacity=".9"/></g></g></g>
       </g>
       <g class="eyes-closed" fill="none" stroke="#edf2f4" stroke-width="5" stroke-linecap="round">
         <path d="M66 94 Q76 82 86 94"/>
@@ -2870,9 +2918,10 @@ const RACCOON_SVG = `
 const RACCOON_POKE = [
   'Szast-prast! Jestem Szop Magik 🦝 Talia 52 kart nie ma przede mną tajemnic!',
   'System PAO: Osoba, Akcja, Obiekt. Trzy karty to jedna niezapomniana scena! 🃏',
-  'Mój pręgowany ogon faluje z ekscytacji! Gotowy na karcianą sztuczkę?',
+  'Mój pręgowany ogon faluje z ekscytacji! Gotowy na karcianą sztuczkę? ✨',
   'Nie musisz być magikiem – wystarczy, że dasz kartom twarze swoich bohaterów! 🎩',
-  'Wybierz kartę, dowolną kartę... a ja powiem Ci, która to była! ✨'
+  'Wybierz kartę, dowolną kartę... a ja powiem Ci, która to była! 🪄',
+  'Abrakadabra! Twój mózg tasuje obrazy szybciej niż krupier w Vegas! ♠️'
 ];
 
 function createRaccoon({ size = 'md', pokeLines = RACCOON_POKE } = {}) {
@@ -3013,12 +3062,12 @@ const SQUIRREL_SVG = `
       <circle cx="68" cy="106" r="24" fill="#fdf2e9"/>
       <circle cx="132" cy="106" r="24" fill="#fdf2e9"/>
       <ellipse cx="100" cy="112" rx="18" ry="14" fill="#fdf2e9"/>
-      <circle cx="60" cy="108" r="8" fill="#f1948a" opacity=".6"/>
-      <circle cx="140" cy="108" r="8" fill="#f1948a" opacity=".6"/>
+      <circle cx="60" cy="108" r="9" fill="#ff708f" opacity=".65"/>
+      <circle cx="140" cy="108" r="9" fill="#ff708f" opacity=".65"/>
       <!-- Oczy w bezpiecznych slotach -->
       <g class="eyes">
-        <g class="eye-slot" transform="translate(76 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#2b1b17"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2" fill="#fff" opacity=".8"/></g></g></g>
-        <g class="eye-slot" transform="translate(124 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#2b1b17"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2" fill="#fff" opacity=".8"/></g></g></g>
+        <g class="eye-slot" transform="translate(76 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#2b1b17"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2.2" fill="#fff" opacity=".85"/><circle cx="0" cy="1" r="1.3" fill="#fff" opacity=".9"/></g></g></g>
+        <g class="eye-slot" transform="translate(124 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#2b1b17"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2.2" fill="#fff" opacity=".85"/><circle cx="0" cy="1" r="1.3" fill="#fff" opacity=".9"/></g></g></g>
       </g>
       <g class="eyes-closed" fill="none" stroke="#2b1b17" stroke-width="5" stroke-linecap="round">
         <path d="M64 94 Q76 78 88 94"/>
@@ -3038,10 +3087,11 @@ const SQUIRREL_SVG = `
 
 const SQUIRREL_POKE = [
   'Cześć! Jestem Wiewiórka Basia 🐿️ Łączę myśli jak żołędzie w łańcuch!',
-  'Im bardziej szalona akcja między dwoma rzeczami, tym trwalej zapamiętasz!',
+  'Im bardziej szalona akcja między dwoma rzeczami, tym trwalej zapamiętasz! 💥',
   'Wyobraź sobie, że parasol wystrzeliwuje w niebo jak rakieta! Widzisz to? 🚀',
-  'Jeden element pociąga za sobą kolejny – efekt domina w Twojej pamięci!',
-  'Chrup, chrup! Każde żywe skojarzenie to kolejny orzeszek na zimę! 🌰'
+  'Jeden element pociąga za sobą kolejny – efekt domina w Twojej pamięci! 🔗',
+  'Chrup, chrup! Każde żywe skojarzenie to kolejny orzeszek na zimę! 🌰',
+  'Skaczę po gałęziach wyobraźni! Lista 20 zakupów to dla nas pestka! ✨'
 ];
 
 function createSquirrel({ size = 'md', pokeLines = SQUIRREL_POKE } = {}) {
@@ -3192,8 +3242,8 @@ const TURTLE_SVG = `
       <ellipse cx="100" cy="92" rx="54" ry="46" fill="#2ecc71"/>
       <ellipse cx="100" cy="106" rx="36" ry="24" fill="#a9dfbf" opacity=".6"/>
       <!-- Różowe policzki -->
-      <circle cx="66" cy="104" r="8" fill="#f1948a" opacity=".5"/>
-      <circle cx="134" cy="104" r="8" fill="#f1948a" opacity=".5"/>
+      <circle cx="66" cy="104" r="9" fill="#ff708f" opacity=".6"/>
+      <circle cx="134" cy="104" r="9" fill="#ff708f" opacity=".6"/>
       <!-- Mały kapelusik lub czapeczka studencka z cyferblatem -->
       <ellipse cx="100" cy="50" rx="18" ry="4" fill="#d4ac0d"/>
       <path d="M92 49 L94 38 L106 38 L108 49 Z" fill="#b7950b"/>
@@ -3201,8 +3251,8 @@ const TURTLE_SVG = `
 
       <!-- Oczy w bezpiecznych slotach -->
       <g class="eyes">
-        <g class="eye-slot" transform="translate(76 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#145a32"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2" fill="#fff" opacity=".8"/></g></g></g>
-        <g class="eye-slot" transform="translate(124 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#145a32"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2" fill="#fff" opacity=".8"/></g></g></g>
+        <g class="eye-slot" transform="translate(76 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#145a32"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2.2" fill="#fff" opacity=".85"/><circle cx="0" cy="1" r="1.3" fill="#fff" opacity=".9"/></g></g></g>
+        <g class="eye-slot" transform="translate(124 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#145a32"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2.2" fill="#fff" opacity=".85"/><circle cx="0" cy="1" r="1.3" fill="#fff" opacity=".9"/></g></g></g>
       </g>
       <g class="eyes-closed" fill="none" stroke="#145a32" stroke-width="5" stroke-linecap="round">
         <path d="M64 94 Q76 78 88 94"/>
@@ -3222,9 +3272,10 @@ const TURTLE_SVG = `
 const TURTLE_POKE = [
   'Tik-tak! Jestem Żółwik Zegarowy 🐢 Znam dzień tygodnia każdej daty w historii!',
   'Nie spiesz się! Kalendarz to tylko prosty rytm: 4.04, 6.06, 8.08, 10.10, 12.12! ⏱️',
-  'Nawet żółw potrafi obliczyć dzień tygodnia w 3 sekundy. Nauczę Cię tego krok po kroku!',
+  'Nawet żółw potrafi obliczyć dzień tygodnia w 3 sekundy. Nauczę Cię tego krok po kroku! ⏳',
   'Dzień Sądu (Doomsday) brzmi groźnie, ale to po prostu nasza niezawodna kotwica w czasie! ⚓',
-  'Pamięć i czas to najlepsi przyjaciele! Sprawdźmy dowolny rok i dzień! 📅'
+  'Pamięć i czas to najlepsi przyjaciele! Sprawdźmy dowolny rok i dzień! 📅',
+  'Spokojnie, precyzyjnie i bez stresu – Twój mózg to najdokładniejszy zegar! 🕰️'
 ];
 
 function createTurtle({ size = 'md', pokeLines = TURTLE_POKE } = {}) {
@@ -3829,6 +3880,15 @@ function mountFree(root, { modeId, nav }) {
 
   root.append(view);
 
+  const CHEERS = ['Lisi spryt! 🦊', 'Kotwica zadziałała! ⚓', 'Zauważone bezbłędnie! 🔍', 'Hau! Celnie! ✨', 'Oko sokoła! 🎯'];
+  function cheerFox(c) {
+    if (c % 3 === 0 && c > 0) {
+      fox.say(`Combo x${c}! Twoje oko wyłapie każdy detal! 🦊✨`, 'cheer', { revert: 1400 });
+    } else {
+      fox.say(rand(CHEERS), 'cheer', { revert: 1000 });
+    }
+  }
+
   function saveBest() {
     const prev = store.get(`names.best.${modeId}`, 0);
     if (score > prev) {
@@ -3890,13 +3950,13 @@ function mountFree(root, { modeId, nav }) {
             round++;
             scoreEl.textContent = `${score}`;
             roundEl.textContent = `${round}`;
-            fox.setMood('cheer', 1200);
+            cheerFox(combo);
             nextRound();
           } else {
             sfx.wrong();
             combo = 0;
             fox.setMood('sad', 1200);
-            fox.say(`To ${currentTarget.name}! Pamiętasz kotwicę: ${currentTarget.feature}?`, 'think', { revert: 2500 });
+            fox.say(`To ${currentTarget.name}! Kotwica: ${currentTarget.feature} ⚓ Następnym razem się uda! 🦊`, 'think', { revert: 2600 });
             btn.classList.add('wrong');
             setTimeout(nextRound, 1200);
           }
@@ -3929,12 +3989,13 @@ function mountFree(root, { modeId, nav }) {
             round++;
             scoreEl.textContent = `${score}`;
             roundEl.textContent = `${round}`;
-            fox.setMood('cheer', 1000);
+            cheerFox(combo);
             nextRound();
           } else {
             sfx.wrong();
             combo = 0;
             fox.setMood('sad', 1000);
+            fox.say(`To nie ta osoba! Przypomnij sobie jej cechę szczególną 🔍`, 'think', { revert: 2000 });
             btn.classList.add('wrong');
           }
         });
@@ -4510,6 +4571,15 @@ function mountFree(root, { modeId, nav }) {
 
   root.append(view);
 
+  const CHEERS = ['Huu-huu! Wyśmienicie! 🦉', 'Kod złamany! 📜', 'Znakomita spółgłoska! 🎓', 'Matematyczna precyzja! ⚡', 'Perfekcyjny Major! 🌟'];
+  function cheerOwl(c) {
+    if (c % 3 === 0 && c > 0) {
+      owl.say(`Combo x${c}! Twój umysł przetwarza kody z prędkością światła! 🦉⚡`, 'cheer', { revert: 1400 });
+    } else {
+      owl.say(rand(CHEERS), 'cheer', { revert: 1000 });
+    }
+  }
+
   function saveBest() {
     const prev = store.get(`major.best.${modeId}`, 0);
     if (score > prev) store.set(`major.best.${modeId}`, score);
@@ -4568,7 +4638,7 @@ function mountFree(root, { modeId, nav }) {
             round++;
             scoreEl.textContent = `${score}`;
             roundEl.textContent = `${round}`;
-            owl.setMood('cheer', 1000);
+            cheerOwl(combo);
             nextRound();
           } else {
             sfx.wrong();
@@ -4605,7 +4675,7 @@ function mountFree(root, { modeId, nav }) {
             round++;
             scoreEl.textContent = `${score}`;
             roundEl.textContent = `${round}`;
-            owl.setMood('cheer', 1000);
+            cheerOwl(combo);
             nextRound();
           } else {
             sfx.wrong();
@@ -4642,7 +4712,7 @@ function mountFree(root, { modeId, nav }) {
             round++;
             scoreEl.textContent = `${score}`;
             roundEl.textContent = `${round}`;
-            owl.setMood('cheer', 1000);
+            cheerOwl(combo);
             nextRound();
           } else {
             sfx.wrong();
@@ -4669,7 +4739,7 @@ function mountFree(root, { modeId, nav }) {
         h('div', { class: 'pin-story' },
           h('p', {}, `Obraz 1: `, h('b', {}, p1.word), ` (${p1.img})`),
           h('p', {}, `Obraz 2: `, h('b', {}, p2.word), ` (${p2.img})`),
-          h('p', { class: 'text-muted' }, `Wyobraź sobie akcję łączącą oba przedmioty!`)
+          h('p', { class: 'muted' }, `Wyobraź sobie akcję łączącą oba przedmioty!`)
         )
       );
 
@@ -5219,6 +5289,15 @@ function mountFree(root, { modeId, nav }) {
 
   root.append(view);
 
+  const CHEERS = ['Ćwir! Genialnie! 🦜', 'Słówko w kieszeni! 🌴', 'Skojarzenie w punkt! 🌈', 'Poliglotyczny talent! ✨', 'Pola bije skrzydłami! 💬'];
+  function cheerParrot(c) {
+    if (c % 3 === 0 && c > 0) {
+      parrot.say(`Combo x${c}! Mówisz już jak rodowity mówca! 🦜🌍`, 'cheer', { revert: 1400 });
+    } else {
+      parrot.say(rand(CHEERS), 'cheer', { revert: 1000 });
+    }
+  }
+
   function saveBest() {
     const prev = store.get(`words.best.${modeId}`, 0);
     if (score > prev) store.set(`words.best.${modeId}`, score);
@@ -5279,7 +5358,7 @@ function mountFree(root, { modeId, nav }) {
             round++;
             scoreEl.textContent = `${score}`;
             roundEl.textContent = `${round}`;
-            parrot.setMood('cheer', 1000);
+            cheerParrot(combo);
             nextRound();
           } else {
             sfx.wrong();
@@ -5304,7 +5383,7 @@ function mountFree(root, { modeId, nav }) {
         h('span', { class: 'vocab-emoji' }, target.emoji),
         h('h2', { class: 'vocab-word' }, target.foreign),
         h('p', {}, `Znaczenie: `, h('b', {}, target.meaning)),
-        h('p', { class: 'text-muted' }, 'Jaki jest polski most fonetyczny (brzmieniowy) dla tego słowa?')
+        h('p', { class: 'muted' }, 'Jaki jest polski most fonetyczny (brzmieniowy) dla tego słowa?')
       );
 
       const opts = h('div', { class: 'opt-grid' });
@@ -5318,7 +5397,7 @@ function mountFree(root, { modeId, nav }) {
             round++;
             scoreEl.textContent = `${score}`;
             roundEl.textContent = `${round}`;
-            parrot.setMood('cheer', 1000);
+            cheerParrot(combo);
             nextRound();
           } else {
             sfx.wrong();
@@ -5887,6 +5966,15 @@ function mountFree(root, { modeId, nav }) {
 
   root.append(view);
 
+  const CHEERS = ['Abrakadabra! 🦝✨', 'Karta w garści! ♠️', 'Czysta magia PAO! 🎩', 'As w rękawie! 🃏', 'Bez pudła! 🎯'];
+  function cheerRaccoon(c) {
+    if (c % 3 === 0 && c > 0) {
+      raccoon.say(`Combo x${c}! Cała talia drży przed Twoją pamięcią! 🦝🪄`, 'cheer', { revert: 1400 });
+    } else {
+      raccoon.say(rand(CHEERS), 'cheer', { revert: 1000 });
+    }
+  }
+
   function saveBest() {
     const prev = store.get(`cards.best.${modeId}`, 0);
     if (score > prev) store.set(`cards.best.${modeId}`, score);
@@ -5962,7 +6050,7 @@ function mountFree(root, { modeId, nav }) {
               round++;
               scoreEl.textContent = `${score}`;
               roundEl.textContent = `${round}`;
-              raccoon.setMood('cheer', 1200);
+              cheerRaccoon(combo);
               nextRound();
             } else {
               pickState.querySelector('span.grad').textContent = `${pickedIndex + 1}`;
@@ -5999,7 +6087,7 @@ function mountFree(root, { modeId, nav }) {
             round++;
             scoreEl.textContent = `${score}`;
             roundEl.textContent = `${round}`;
-            raccoon.setMood('cheer', 1000);
+            cheerRaccoon(combo);
             nextRound();
           } else {
             sfx.wrong();
@@ -6055,7 +6143,7 @@ function mountFree(root, { modeId, nav }) {
             round++;
             scoreEl.textContent = `${score}`;
             roundEl.textContent = `${round}`;
-            raccoon.setMood('cheer', 1000);
+            cheerRaccoon(combo);
             nextRound();
           } else {
             sfx.wrong();
@@ -6568,6 +6656,15 @@ function mountFree(root, { modeId, nav }) {
 
   root.append(view);
 
+  const CHEERS = ['Hop! Piękne ogniwo! 🐿️', 'Łańcuch trzyma mocno! 🔗', 'Skojarzenie błyskawica! ⚡', 'Kolejny orzeszek w dziupli! 🌰', 'Super akcja! 🎯'];
+  function cheerSquirrel(c) {
+    if (c % 3 === 0 && c > 0) {
+      squirrel.say(`Combo x${c}! Pamięciowy efekt domina działa cuda! 🐿️🔥`, 'cheer', { revert: 1400 });
+    } else {
+      squirrel.say(rand(CHEERS), 'cheer', { revert: 1000 });
+    }
+  }
+
   function saveBest() {
     const prev = store.get(`link.best.${modeId}`, 0);
     if (score > prev) store.set(`link.best.${modeId}`, score);
@@ -6613,7 +6710,7 @@ function mountFree(root, { modeId, nav }) {
         h('span', { class: 'link-emoji' }, curr.emoji),
         h('h2', {}, curr.name),
         h('p', { class: 'link-action-hint' }, `Akcja: ${curr.storyAction}`),
-        h('p', { class: 'text-muted' }, 'Co jest kolejnym ogniwem w tym łańcuchu?')
+        h('p', { class: 'muted' }, 'Co jest kolejnym ogniwem w tym łańcuchu?')
       );
 
       const others = LINK_ITEMS.filter(it => it.id !== nextItem.id);
@@ -6631,7 +6728,7 @@ function mountFree(root, { modeId, nav }) {
             round++;
             scoreEl.textContent = `${score}`;
             roundEl.textContent = `${round}`;
-            squirrel.setMood('cheer', 1000);
+            cheerSquirrel(combo);
             nextRound();
           } else {
             sfx.wrong();
@@ -6654,7 +6751,7 @@ function mountFree(root, { modeId, nav }) {
       const card = h('div', { class: 'link-card' },
         h('span', { class: 'link-emoji' }, curr.emoji),
         h('h2', {}, curr.name),
-        h('p', { class: 'text-muted' }, 'Cofamy taśmę! Jaki przedmiot znajdował się bezpośrednio przed nim?')
+        h('p', { class: 'muted' }, 'Cofamy taśmę! Jaki przedmiot znajdował się bezpośrednio przed nim?')
       );
 
       const others = LINK_ITEMS.filter(it => it.id !== prevItem.id);
@@ -6672,7 +6769,7 @@ function mountFree(root, { modeId, nav }) {
             round++;
             scoreEl.textContent = `${score}`;
             roundEl.textContent = `${round}`;
-            squirrel.setMood('cheer', 1000);
+            cheerSquirrel(combo);
             nextRound();
           } else {
             sfx.wrong();
@@ -6701,7 +6798,7 @@ function mountFree(root, { modeId, nav }) {
           h('span', { class: 'mc-arrow' }, '➡️'),
           h('span', { class: 'mc-item' }, `${last.emoji} ${last.name}`)
         ),
-        h('p', { class: 'text-muted' }, 'Jakie ogniwo łączy te dwa przedmioty w historii?')
+        h('p', { class: 'muted' }, 'Jakie ogniwo łączy te dwa przedmioty w historii?')
       );
 
       const others = LINK_ITEMS.filter(it => it.id !== middle.id);
@@ -6718,7 +6815,7 @@ function mountFree(root, { modeId, nav }) {
             round++;
             scoreEl.textContent = `${score}`;
             roundEl.textContent = `${round}`;
-            squirrel.setMood('cheer', 1000);
+            cheerSquirrel(combo);
             nextRound();
           } else {
             sfx.wrong();
@@ -7236,6 +7333,15 @@ function mountFree(root, { modeId, nav }) {
 
   root.append(view);
 
+  const CHEERS = ['W punkt! Czas zatrzymany! 🐢', 'Zegar bije dla Ciebie! ⏳', 'Mistrz modulo 7! ⏱️', 'Spokojnie i celnie! 🕰️', 'Genialna data! 📅'];
+  function cheerTurtle(c) {
+    if (c % 3 === 0 && c > 0) {
+      turtle.say(`Combo x${c}! Algorytm Doomsday w małym palcu! 🐢🌟`, 'cheer', { revert: 1400 });
+    } else {
+      turtle.say(rand(CHEERS), 'cheer', { revert: 1000 });
+    }
+  }
+
   function saveBest() {
     const prev = store.get(`calendar.best.${modeId}`, 0);
     if (score > prev) store.set(`calendar.best.${modeId}`, score);
@@ -7285,7 +7391,7 @@ function mountFree(root, { modeId, nav }) {
       const card = h('div', { class: 'calendar-card' },
         h('div', { class: 'cal-date-badge' }, `${day} ${mInfo.name.toLowerCase()} ${year}`),
         h('h2', {}, 'Jaki to dzień tygodnia?'),
-        h('p', { class: 'text-muted' }, `Wskazówka: kotwica miesiąca to ${mInfo.anchorDay}.${mInfo.month < 10 ? '0' + mInfo.month : mInfo.month}`)
+        h('p', { class: 'muted' }, `Wskazówka: kotwica miesiąca to ${mInfo.anchorDay}.${mInfo.month < 10 ? '0' + mInfo.month : mInfo.month}`)
       );
 
       const opts = h('div', { class: 'opt-grid' });
@@ -7299,7 +7405,7 @@ function mountFree(root, { modeId, nav }) {
             round++;
             scoreEl.textContent = `${score}`;
             roundEl.textContent = `${round}`;
-            turtle.setMood('cheer', 1000);
+            cheerTurtle(combo);
             nextRound();
           } else {
             sfx.wrong();
@@ -7322,7 +7428,7 @@ function mountFree(root, { modeId, nav }) {
       const target = MONTH_ANCHORS[rand(0, MONTH_ANCHORS.length - 1)];
       const card = h('div', { class: 'calendar-card' },
         h('h2', {}, `Miesiąc: `, h('span', { class: 'grad' }, target.name)),
-        h('p', { class: 'text-muted' }, 'Który dzień tego miesiąca jest kotwicą Doomsday?')
+        h('p', { class: 'muted' }, 'Który dzień tego miesiąca jest kotwicą Doomsday?')
       );
 
       const others = MONTH_ANCHORS.filter(m => m.anchorDay !== target.anchorDay);
@@ -7340,7 +7446,7 @@ function mountFree(root, { modeId, nav }) {
             round++;
             scoreEl.textContent = `${score}`;
             roundEl.textContent = `${round}`;
-            turtle.setMood('cheer', 1000);
+            cheerTurtle(combo);
             nextRound();
           } else {
             sfx.wrong();
@@ -7535,6 +7641,12 @@ return {
 
 
 
+
+
+
+
+
+
   const app = $('#app');
   let cleanup = null;
   let routeId = 0;
@@ -7604,6 +7716,7 @@ return {
 
     const parts = location.hash.replace(/^#\/?/, '').split('/').filter(Boolean).map(decodeURIComponent);
     const game = GAMES.find(g => g.id === parts[0] && g.load);
+    if (document.body) document.body.dataset.game = game ? game.id : 'hub';
 
     if (!game) { cleanup = renderHub(); return; }
     try {

@@ -30,6 +30,15 @@ export function mountFree(root, { modeId, nav }) {
 
   root.append(view);
 
+  const CHEERS = ['Hop! Piękne ogniwo! 🐿️', 'Łańcuch trzyma mocno! 🔗', 'Skojarzenie błyskawica! ⚡', 'Kolejny orzeszek w dziupli! 🌰', 'Super akcja! 🎯'];
+  function cheerSquirrel(c) {
+    if (c % 3 === 0 && c > 0) {
+      squirrel.say(`Combo x${c}! Pamięciowy efekt domina działa cuda! 🐿️🔥`, 'cheer', { revert: 1400 });
+    } else {
+      squirrel.say(rand(CHEERS), 'cheer', { revert: 1000 });
+    }
+  }
+
   function saveBest() {
     const prev = store.get(`link.best.${modeId}`, 0);
     if (score > prev) store.set(`link.best.${modeId}`, score);
@@ -75,7 +84,7 @@ export function mountFree(root, { modeId, nav }) {
         h('span', { class: 'link-emoji' }, curr.emoji),
         h('h2', {}, curr.name),
         h('p', { class: 'link-action-hint' }, `Akcja: ${curr.storyAction}`),
-        h('p', { class: 'text-muted' }, 'Co jest kolejnym ogniwem w tym łańcuchu?')
+        h('p', { class: 'muted' }, 'Co jest kolejnym ogniwem w tym łańcuchu?')
       );
 
       const others = LINK_ITEMS.filter(it => it.id !== nextItem.id);
@@ -93,7 +102,7 @@ export function mountFree(root, { modeId, nav }) {
             round++;
             scoreEl.textContent = `${score}`;
             roundEl.textContent = `${round}`;
-            squirrel.setMood('cheer', 1000);
+            cheerSquirrel(combo);
             nextRound();
           } else {
             sfx.wrong();
@@ -116,7 +125,7 @@ export function mountFree(root, { modeId, nav }) {
       const card = h('div', { class: 'link-card' },
         h('span', { class: 'link-emoji' }, curr.emoji),
         h('h2', {}, curr.name),
-        h('p', { class: 'text-muted' }, 'Cofamy taśmę! Jaki przedmiot znajdował się bezpośrednio przed nim?')
+        h('p', { class: 'muted' }, 'Cofamy taśmę! Jaki przedmiot znajdował się bezpośrednio przed nim?')
       );
 
       const others = LINK_ITEMS.filter(it => it.id !== prevItem.id);
@@ -134,7 +143,7 @@ export function mountFree(root, { modeId, nav }) {
             round++;
             scoreEl.textContent = `${score}`;
             roundEl.textContent = `${round}`;
-            squirrel.setMood('cheer', 1000);
+            cheerSquirrel(combo);
             nextRound();
           } else {
             sfx.wrong();
@@ -163,7 +172,7 @@ export function mountFree(root, { modeId, nav }) {
           h('span', { class: 'mc-arrow' }, '➡️'),
           h('span', { class: 'mc-item' }, `${last.emoji} ${last.name}`)
         ),
-        h('p', { class: 'text-muted' }, 'Jakie ogniwo łączy te dwa przedmioty w historii?')
+        h('p', { class: 'muted' }, 'Jakie ogniwo łączy te dwa przedmioty w historii?')
       );
 
       const others = LINK_ITEMS.filter(it => it.id !== middle.id);
@@ -180,7 +189,7 @@ export function mountFree(root, { modeId, nav }) {
             round++;
             scoreEl.textContent = `${score}`;
             roundEl.textContent = `${round}`;
-            squirrel.setMood('cheer', 1000);
+            cheerSquirrel(combo);
             nextRound();
           } else {
             sfx.wrong();

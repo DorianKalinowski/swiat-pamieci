@@ -46,12 +46,12 @@ const SQUIRREL_SVG = `
       <circle cx="68" cy="106" r="24" fill="#fdf2e9"/>
       <circle cx="132" cy="106" r="24" fill="#fdf2e9"/>
       <ellipse cx="100" cy="112" rx="18" ry="14" fill="#fdf2e9"/>
-      <circle cx="60" cy="108" r="8" fill="#f1948a" opacity=".6"/>
-      <circle cx="140" cy="108" r="8" fill="#f1948a" opacity=".6"/>
+      <circle cx="60" cy="108" r="9" fill="#ff708f" opacity=".65"/>
+      <circle cx="140" cy="108" r="9" fill="#ff708f" opacity=".65"/>
       <!-- Oczy w bezpiecznych slotach -->
       <g class="eyes">
-        <g class="eye-slot" transform="translate(76 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#2b1b17"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2" fill="#fff" opacity=".8"/></g></g></g>
-        <g class="eye-slot" transform="translate(124 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#2b1b17"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2" fill="#fff" opacity=".8"/></g></g></g>
+        <g class="eye-slot" transform="translate(76 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#2b1b17"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2.2" fill="#fff" opacity=".85"/><circle cx="0" cy="1" r="1.3" fill="#fff" opacity=".9"/></g></g></g>
+        <g class="eye-slot" transform="translate(124 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#2b1b17"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2.2" fill="#fff" opacity=".85"/><circle cx="0" cy="1" r="1.3" fill="#fff" opacity=".9"/></g></g></g>
       </g>
       <g class="eyes-closed" fill="none" stroke="#2b1b17" stroke-width="5" stroke-linecap="round">
         <path d="M64 94 Q76 78 88 94"/>
@@ -71,10 +71,11 @@ const SQUIRREL_SVG = `
 
 const POKE = [
   'Cześć! Jestem Wiewiórka Basia 🐿️ Łączę myśli jak żołędzie w łańcuch!',
-  'Im bardziej szalona akcja między dwoma rzeczami, tym trwalej zapamiętasz!',
+  'Im bardziej szalona akcja między dwoma rzeczami, tym trwalej zapamiętasz! 💥',
   'Wyobraź sobie, że parasol wystrzeliwuje w niebo jak rakieta! Widzisz to? 🚀',
-  'Jeden element pociąga za sobą kolejny – efekt domina w Twojej pamięci!',
-  'Chrup, chrup! Każde żywe skojarzenie to kolejny orzeszek na zimę! 🌰'
+  'Jeden element pociąga za sobą kolejny – efekt domina w Twojej pamięci! 🔗',
+  'Chrup, chrup! Każde żywe skojarzenie to kolejny orzeszek na zimę! 🌰',
+  'Skaczę po gałęziach wyobraźni! Lista 20 zakupów to dla nas pestka! ✨'
 ];
 
 export function createSquirrel({ size = 'md', pokeLines = POKE } = {}) {

@@ -39,12 +39,12 @@ const FOX_SVG = `
       <path d="M158 90 l14 12 l-14 4 l10 12 l-18 -4" fill="#ff6b35"/>
       <!-- Białe policzki i pyszczek -->
       <path d="M48 94 Q 100 70 152 94 Q 100 134 48 94 Z" fill="#fff6ed"/>
-      <circle cx="64" cy="106" r="8" fill="#ff8fa3" opacity=".5"/>
-      <circle cx="136" cy="106" r="8" fill="#ff8fa3" opacity=".5"/>
+      <circle cx="64" cy="106" r="9" fill="#ff708f" opacity=".6"/>
+      <circle cx="136" cy="106" r="9" fill="#ff708f" opacity=".6"/>
       <!-- Oczy w bezpiecznych slotach -->
       <g class="eyes">
-        <g class="eye-slot" transform="translate(76 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#2b1b17"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2" fill="#fff" opacity=".8"/></g></g></g>
-        <g class="eye-slot" transform="translate(124 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#2b1b17"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2" fill="#fff" opacity=".8"/></g></g></g>
+        <g class="eye-slot" transform="translate(76 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#2b1b17"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2.2" fill="#fff" opacity=".85"/><circle cx="0" cy="1" r="1.3" fill="#fff" opacity=".9"/></g></g></g>
+        <g class="eye-slot" transform="translate(124 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#2b1b17"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2.2" fill="#fff" opacity=".85"/><circle cx="0" cy="1" r="1.3" fill="#fff" opacity=".9"/></g></g></g>
       </g>
       <g class="eyes-closed" fill="none" stroke="#2b1b17" stroke-width="5" stroke-linecap="round">
         <path d="M64 94 Q76 78 88 94"/>
@@ -63,9 +63,10 @@ const FOX_SVG = `
 const POKE = [
   'Hau! Jestem Lisek Bystrzak 🦊 Każda twarz ma w sobie sekret!',
   'Zauważ ten mały pieprzyk albo okulary – to Twój pamięciowy haczyk! 🔍',
-  'Mój puszysty ogon kręci się z zachwytu! Gotowy poznać nowych ludzi?',
-  'Nigdy więcej nie powiesz: „Znam tę twarz, ale jak on miał na imię?”.',
-  'Twój wzrok jest bystrzejszy niż myślisz! ✨'
+  'Mój puszysty ogon kręci się z zachwytu! Gotowy poznać nowych ludzi? 🐾',
+  'Nigdy więcej nie powiesz: „Znam tę twarz, ale jak on miał na imię?”. ✨',
+  'Twój wzrok jest bystrzejszy niż myślisz! Złapiesz każdą twarz w sekundę! 🎯',
+  'Lisi spryt to potężna broń – łącz imię z charakterystyczną cechą! ⚓'
 ];
 
 export function createFox({ size = 'md', pokeLines = POKE } = {}) {

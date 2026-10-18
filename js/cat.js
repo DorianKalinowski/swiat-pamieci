@@ -18,10 +18,11 @@ const SVG = `
       <g class="ear ear-r"><path d="M152 76 L148 22 L104 54 Z" fill="#ffb35c"/><path d="M142 64 L140 38 L118 54 Z" fill="#ff9db0"/></g>
       <ellipse cx="100" cy="92" rx="60" ry="52" fill="#ffb35c"/>
       <path d="M100 42 v14 M86 45 l3 12 M114 45 l-3 12" stroke="#f08a2c" stroke-width="5" stroke-linecap="round"/>
-      <circle cx="64" cy="106" r="9" fill="#ff8fa3" opacity=".55"/><circle cx="136" cy="106" r="9" fill="#ff8fa3" opacity=".55"/>
+      <circle cx="64" cy="106" r="9" fill="#ff708f" opacity=".6"/><circle cx="136" cy="106" r="9" fill="#ff708f" opacity=".6"/>
+      <ellipse cx="94" cy="110" rx="8" ry="5" fill="#fff8ef" opacity=".7"/><ellipse cx="106" cy="110" rx="8" ry="5" fill="#fff8ef" opacity=".7"/>
       <g class="eyes">
-        <g class="eye-slot" transform="translate(76 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#2b2140"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2" fill="#fff" opacity=".8"/></g></g></g>
-        <g class="eye-slot" transform="translate(124 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#2b2140"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2" fill="#fff" opacity=".8"/></g></g></g>
+        <g class="eye-slot" transform="translate(76 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#2b2140"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2.2" fill="#fff" opacity=".85"/><circle cx="0" cy="1" r="1.3" fill="#fff" opacity=".9"/></g></g></g>
+        <g class="eye-slot" transform="translate(124 90)"><g class="eye"><ellipse rx="11" ry="14" fill="#2b2140"/><g class="pupil"><circle cx="3" cy="-5" r="4.6" fill="#fff"/><circle cx="-3" cy="4" r="2.2" fill="#fff" opacity=".85"/><circle cx="0" cy="1" r="1.3" fill="#fff" opacity=".9"/></g></g></g>
       </g>
       <g class="eyes-closed" fill="none" stroke="#2b2140" stroke-width="5" stroke-linecap="round"><path d="M64 94 Q76 78 88 94"/><path d="M112 94 Q124 78 136 94"/></g>
       <path d="M94 104 h12 l-6 7 z" fill="#ff6f8c"/>
@@ -35,8 +36,12 @@ const SVG = `
 </svg>`;
 
 const POKE = [
-  'Miau! Łaskoczesz mnie! 😸', 'Mrrrau! Kręcę się z radości!', 'Hej! Wracamy do ćwiczeń? 🐾',
-  'Wiesz, że koty śpią 16 godzin? Ty ćwicz pamięć!', 'Mruuu… ale fajnie! ✨'
+  'Miau! Łaskoczesz mnie! 😸',
+  'Mrrrau! Kręcę się z radości! 🐾',
+  'Hej! Wracamy do ćwiczeń? Razem pobijemy rekord! ✨',
+  'Wiesz, że koty śpią 16 godzin? Ty ćwicz pamięć!',
+  'Mruuu… ale fajnie! Twój mózg jest niesamowity! 🧠',
+  'Głaszcz, głaszcz! Każde głaskanie to +10 do koncentracji! 🐱'
 ];
 
 export function createCat({ size = 'md', pokeLines = POKE } = {}) {
