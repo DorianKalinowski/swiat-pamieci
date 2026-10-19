@@ -1,4 +1,4 @@
-import { h, rand, shuffle } from '../../dom.js';
+import { h, rand, shuffle, sleep } from '../../dom.js';
 import { sfx } from '../../sound.js';
 import { store } from '../../store.js';
 import { createSquirrel } from '../../squirrel.js';
@@ -12,17 +12,20 @@ export function mountFree(root, { modeId, nav }) {
   let score = 0;
   let round = 1;
   let combo = 0;
+  let lives = 3;
   let isGameOver = false;
 
   const scoreEl = h('span', { class: 'hud-score' }, '0');
   const roundEl = h('span', { class: 'hud-round' }, '1');
+  const livesEl = (modeId === 'forward' || modeId === 'reverse') ? h('span', { class: 'hud-lives' }, '❤️❤️❤️') : null;
   const playArea = h('div', { class: 'free-play-area' });
 
   const view = h('section', { class: 'screen free-screen' },
     h('div', { class: 'crumbs' }, h('a', { href: '#/link', class: 'back' }, '← Wybór trybu')),
     h('div', { class: 'hud' },
       h('div', { class: 'hud-item' }, h('small', {}, 'Wynik'), scoreEl),
-      h('div', { class: 'hud-item' }, h('small', {}, 'Ogniwo'), roundEl)
+      h('div', { class: 'hud-item' }, h('small', {}, 'Runda'), roundEl),
+      livesEl ? h('div', { class: 'hud-item' }, h('small', {}, 'Szanse'), livesEl) : null
     ),
     squirrel.el,
     playArea
@@ -30,18 +33,39 @@ export function mountFree(root, { modeId, nav }) {
 
   root.append(view);
 
-  const CHEERS = ['Hop! Piękne ogniwo! 🐿️', 'Łańcuch trzyma mocno! 🔗', 'Skojarzenie błyskawica! ⚡', 'Kolejny orzeszek w dziupli! 🌰', 'Super akcja! 🎯'];
+  const CHEERS = ['Łańcuch trzyma mocno! 🐿️✨', 'Efekt domina w akcji! 💥', 'Kolejne ogniwo połączone! 🔗', 'Znakomita wyobraźnia! 🧠', 'Bez pudła! 🎯'];
   function cheerSquirrel(c) {
     if (c % 3 === 0 && c > 0) {
-      squirrel.say(`Combo x${c}! Pamięciowy efekt domina działa cuda! 🐿️🔥`, 'cheer', { revert: 1400 });
+      squirrel.say(`Combo x${c}! Twoja opowieść jest nierozerwalna! 🐿️🌰`, 'cheer', { revert: 1400 });
+      squirrel.hop?.();
     } else {
       squirrel.say(rand(CHEERS), 'cheer', { revert: 1000 });
+    }
+  }
+
+  function updateLives() {
+    if (livesEl) {
+      livesEl.textContent = '❤️'.repeat(Math.max(0, lives)) + '🖤'.repeat(Math.max(0, 3 - lives));
     }
   }
 
   function saveBest() {
     const prev = store.get(`link.best.${modeId}`, 0);
     if (score > prev) store.set(`link.best.${modeId}`, score);
+  }
+
+  function restartGame() {
+    isGameOver = false;
+    score = 0;
+    round = 1;
+    combo = 0;
+    lives = 3;
+    scoreEl.textContent = '0';
+    roundEl.textContent = '1';
+    updateLives();
+    squirrel.setMood('happy');
+    squirrel.say('Zaczynamy od nowa! Połączmy wszystkie ogniwa! 🐿️🌰', 'happy');
+    nextRound();
   }
 
   function gameOver() {
@@ -53,6 +77,11 @@ export function mountFree(root, { modeId, nav }) {
 
     const best = store.get(`link.best.${modeId}`, score);
     playArea.innerHTML = '';
+
+    const restartBtn = h('button', { class: 'btn btn-primary', type: 'button' }, 'Zagraj ponownie ↻');
+    restartBtn.addEventListener('click', restartGame);
+    const backBtn = h('a', { class: 'btn btn-ghost', href: '#/link' }, 'Inny tryb');
+
     playArea.append(
       h('div', { class: 'game-over-box' },
         h('h2', {}, '🎉 Świetny łańcuch myśli!'),
@@ -61,14 +90,27 @@ export function mountFree(root, { modeId, nav }) {
           h('span', {}, 'punktów')
         ),
         h('div', { class: 'go-best' }, `🏆 Rekord w tym trybie: ${best}`),
-        h('div', { class: 'go-actions' },
-          h('button', { class: 'btn btn-primary', type: 'button' }, 'Zagraj ponownie 🔄')
-        )
+        h('div', { class: 'go-actions' }, restartBtn, backBtn)
       )
     );
-    playArea.querySelector('.go-actions button').addEventListener('click', () => {
-      mountFree(root, { modeId, nav });
-    });
+  }
+
+  function handleWrong(solutionText) {
+    sfx.wrong();
+    combo = 0;
+    if (modeId === 'missing_link' || modeId === 'endless_chain') {
+      gameOver();
+      return;
+    }
+    lives--;
+    updateLives();
+    if (lives <= 0) {
+      gameOver();
+    } else {
+      squirrel.setMood('sad', 1200);
+      squirrel.say(`${solutionText} Masz jeszcze ${lives} szanse. 🐿️`, 'think', { revert: 2600 });
+      setTimeout(nextRound, 1200);
+    }
   }
 
   function nextRound() {
@@ -83,7 +125,7 @@ export function mountFree(root, { modeId, nav }) {
       const card = h('div', { class: 'link-card' },
         h('span', { class: 'link-emoji' }, curr.emoji),
         h('h2', {}, curr.name),
-        h('p', { class: 'link-action-hint' }, `Akcja: ${curr.storyAction}`),
+        round <= 3 ? h('p', { class: 'link-action-hint' }, `Akcja: ${curr.storyAction}`) : null,
         h('p', { class: 'muted' }, 'Co jest kolejnym ogniwem w tym łańcuchu?')
       );
 
@@ -105,12 +147,8 @@ export function mountFree(root, { modeId, nav }) {
             cheerSquirrel(combo);
             nextRound();
           } else {
-            sfx.wrong();
-            combo = 0;
-            squirrel.setMood('sad', 1200);
-            squirrel.say(`Po ${curr.name} następuje ${nextItem.name}!`, 'think', { revert: 2800 });
             btn.classList.add('wrong');
-            setTimeout(nextRound, 1200);
+            handleWrong(`Po ${curr.name} następuje ${nextItem.name}!`);
           }
         });
         opts.append(btn);
@@ -146,12 +184,8 @@ export function mountFree(root, { modeId, nav }) {
             cheerSquirrel(combo);
             nextRound();
           } else {
-            sfx.wrong();
-            combo = 0;
-            squirrel.setMood('sad', 1200);
-            squirrel.say(`Przed ${curr.name} był ${prevItem.name}!`, 'think', { revert: 2800 });
             btn.classList.add('wrong');
-            setTimeout(nextRound, 1200);
+            handleWrong(`Przed ${curr.name} znajdował się: ${prevItem.name}!`);
           }
         });
         opts.append(btn);
@@ -209,7 +243,7 @@ export function mountFree(root, { modeId, nav }) {
         h('span', { class: 'link-emoji' }, curr.emoji),
         h('h2', {}, curr.name),
         h('p', {}, `Ogniwo #${round} w łańcuchu domina.`),
-        h('p', { class: 'text-muted' }, 'Wskaż natychmiast kolejne powiązanie:')
+        h('p', { class: 'muted' }, 'Wskaż natychmiast kolejne powiązanie:')
       );
 
       const others = LINK_ITEMS.filter(it => it.id !== nextItem.id);

@@ -26,11 +26,20 @@ export function mountMap(root, { nav }) {
     );
   });
 
+  const whyCard = h('div', { class: 'why-card' },
+    h('span', { class: 'why-icon' }, '🎯'),
+    h('div', { class: 'why-content' },
+      h('b', {}, 'Po co Ci ta technika w codziennym życiu?'),
+      h('p', {}, 'Daty historyczne, rocznice, numery kont, statystyki i kody dostępowe. Zamiast męczących liczb pamiętasz żywe obrazy i filmy, które zostają w głowie na całe lata!')
+    )
+  );
+
   const view = h('section', { class: 'screen train-map' },
     h('div', { class: 'crumbs' }, h('a', { href: '#/major', class: 'back' }, '← Menu gry')),
     h('h1', {}, '🦉 ', h('span', { class: 'grad' }, 'Akademia Majora ze Sówką')),
     h('p', { class: 'lead' }, '8 fundamentalnych lekcji, od dźwięków 0-9 po swobodne zapamiętywanie kodów PIN i PESEL.'),
     owl.el,
+    whyCard,
     h('div', { class: 'map-list' }, items)
   );
 
@@ -53,7 +62,7 @@ export function mountStep(root, { nav, index }) {
   let answered = false;
 
   const theoryBox = h('div', { class: 'theory-card' },
-    h('h3', {}, '🎓 Wykład: ', les.title),
+    h('h3', {}, '🦉 Tajnik Sówki: ', les.title),
     h('div', { class: 'theory-text' }, les.theory.map(p => h('p', {}, p)))
   );
 
@@ -121,7 +130,7 @@ export function mountStep(root, { nav, index }) {
 
   root.append(view);
   setTimeout(() => {
-    owl.say(`Wykład ${index + 1}: ${les.subtitle}. Przeczytaj uważnie zasady fonetyczne.`, 'happy');
+    owl.say(les.speech || `Uhuhu! Lekcja ${index + 1}: ${les.subtitle}. Spójrz na podpowiedź poniżej!`, 'happy');
   }, 250);
 
   return () => owl.destroy();

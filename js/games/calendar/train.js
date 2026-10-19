@@ -25,11 +25,20 @@ export function mountMap(root, { nav }) {
     );
   });
 
+  const whyCard = h('div', { class: 'why-card' },
+    h('span', { class: 'why-icon' }, '🎯'),
+    h('div', { class: 'why-content' },
+      h('b', {}, 'Po co Ci ta technika w codziennym życiu?'),
+      h('p', {}, 'Błyskawiczne planowanie spotkań, terminów i wyjazdów bez sięgania po smartfon. Zrobisz też genialny popis na imprezie, podając dzień tygodnia urodzin każdego ze znajomych!')
+    )
+  );
+
   const view = h('section', { class: 'screen train-map' },
     h('div', { class: 'crumbs' }, h('a', { href: '#/calendar', class: 'back' }, '← Menu gry')),
     h('h1', {}, '🐢 ', h('span', { class: 'grad' }, 'Kalendarz w głowie z Żółwikiem')),
     h('p', { class: 'lead' }, 'Poznaj algorytm Doomsday i naucz się podawać dzień tygodnia każdej daty w kilka sekund.'),
     turtle.el,
+    whyCard,
     h('div', { class: 'map-list' }, items)
   );
 
@@ -52,7 +61,7 @@ export function mountStep(root, { nav, index }) {
   let answered = false;
 
   const theoryBox = h('div', { class: 'theory-card' },
-    h('h3', {}, '⏱️ Lekcja: ', les.title),
+    h('h3', {}, '🐢 Mądrość Żółwika: ', les.title),
     h('div', { class: 'theory-text' }, les.theory.map(p => h('p', {}, p)))
   );
 
@@ -120,7 +129,7 @@ export function mountStep(root, { nav, index }) {
 
   root.append(view);
   setTimeout(() => {
-    turtle.say(`Lekcja ${index + 1}: ${les.subtitle}. Sprawdź kotwice i modulo 7!`, 'happy');
+    turtle.say(les.speech || `Cześć! Lekcja ${index + 1}: ${les.subtitle}. Spokojnie zbadajmy daty!`, 'happy');
   }, 250);
 
   return () => turtle.destroy();

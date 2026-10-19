@@ -25,9 +25,10 @@ export const LESSONS = [
   {
     id: 'l1', ch: 0, title: 'Jedna cyfra i jej kształt',
     intro: [
-      'Miau! Jestem Mruczek 🐾 i będę Twoim osobistym trenerem pamięci.',
-      'Oto najważniejsza zasada mistrzów: MÓZG NIE LUBI CYFR, ALE UWIELBIA OBRAZY! 🖼️',
-      'Zobacz: cyfra 2 wygląda dokładnie jak łabędź płynący po stawie 🦢. Spójrz na ekran i zapamiętaj łabędzia!'
+      'Miau! Cześć! Jestem kotek Mruczek 🐾 i nauczę Cię niezwykłej supermocy!',
+      'Po co uczyć się cyfr? Wyobraź sobie, że w 3 sekundy zapamiętujesz kod BLIK, PIN do telefonu, kod do domofonu czy numer do rodziców w nagłej sytuacji – bez paniki i bez kartki!',
+      'Sekret jest prosty: nasz mózg gubi się w nudnych cyfrach, ale uwielbia bajki i kolorowe obrazy! 🖼️',
+      'Zobacz: cyfra 2 wygląda dokładnie jak dumny łabędź płynący po stawie 🦢. Spójrz na ekran i zapamiętaj łabędzia!'
     ],
     digits: '2', time: 4500, showShapes: true,
     hints: ['Cyfra 2 wygląda jak wygięta szyja łabędzia 🦢', 'Wpisz cyfrę 2!']

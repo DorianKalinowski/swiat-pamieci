@@ -11,9 +11,10 @@ export const LESSONS = [
     desc: 'Odkryj tajemnicę starożytnych oratorów. Twój mózg myśli przestrzenią, a nie suchymi słowami!',
     intro: [
       'Rawrr! Cześć! Jestem Tygrysek Leon 🐯 i zabiorę Cię do Twojego własnego Pałacu Pamięci.',
-      'Czy wiesz, że Twój mózg pamięta drogę do domu nawet po latach, ale zapomina listę 5 zakupów w 5 minut? Mamy w głowie genialny GPS!',
-      'Metoda Loci (z łaciny: „miejsca”) polega na tym, że zamiast wkuwać słowa, wchodzimy do pałacu i kładziemy w pokojach zabawne, niezwykłe przedmioty.',
-      'Zacznijmy powoli od zaledwie 2 komnat: Złotej Bramy i Marmurowego Holu. Zobacz, jakie to proste i naturalne!'
+      'Po co Ci ta technika? Dzięki niej wygłosisz prezentację w szkole lub w pracy bez żadnej ściągawki, zapamiętasz wierszyk, trudne fakty na klasówkę z historii albo całą listę zadań na dany dzień!',
+      'Czy wiesz, że Twój mózg pamięta drogę do domu nawet po latach, ale zapomina listę zakupów w 5 minut? Mamy w głowie genialny GPS!',
+      'Metoda Loci polega na tym, że zamiast nudnego wkuwania, wchodzimy do wyobrażonego pałacu i zostawiamy w pokojach śmieszne przedmioty.',
+      'Zacznijmy powoli od zaledwie 2 komnat: Złotej Bramy i Marmurowego Holu. Zobacz, jakie to proste i przyjemne!'
     ],
     loci: [
       {

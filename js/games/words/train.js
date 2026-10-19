@@ -25,11 +25,20 @@ export function mountMap(root, { nav }) {
     );
   });
 
+  const whyCard = h('div', { class: 'why-card' },
+    h('span', { class: 'why-icon' }, '🎯'),
+    h('div', { class: 'why-content' },
+      h('b', {}, 'Po co Ci ta technika w codziennym życiu?'),
+      h('p', {}, '3x szybsza nauka dowolnego języka obcego (angielski, hiszpański, niemiecki)! Zamiast wkuwać 50 razy, tworzysz jeden polski most dźwiękowy i pamiętasz znaczenie od razu!')
+    )
+  );
+
   const view = h('section', { class: 'screen train-map' },
     h('div', { class: 'crumbs' }, h('a', { href: '#/words', class: 'back' }, '← Menu gry')),
     h('h1', {}, '🦜 ', h('span', { class: 'grad' }, 'Szkoła Językowa Papużki Poli')),
     h('p', { class: 'lead' }, 'Poznaj metodę słów-kluczy i zapamiętuj obce słówka w locie bez zakuwania.'),
     parrot.el,
+    whyCard,
     h('div', { class: 'map-list' }, items)
   );
 
@@ -52,7 +61,7 @@ export function mountStep(root, { nav, index }) {
   let answered = false;
 
   const theoryBox = h('div', { class: 'theory-card' },
-    h('h3', {}, '🦜 Lekcja: ', les.title),
+    h('h3', {}, '🦜 Papuzie odkrycie: ', les.title),
     h('div', { class: 'theory-text' }, les.theory.map(p => h('p', {}, p)))
   );
 
@@ -120,7 +129,7 @@ export function mountStep(root, { nav, index }) {
 
   root.append(view);
   setTimeout(() => {
-    parrot.say(`Lekcja ${index + 1}: ${les.subtitle}. Zobacz, jak brzmi słowo-klucz!`, 'happy');
+    parrot.say(les.speech || `Lekcja ${index + 1}: ${les.subtitle}. Posłuchaj tego słówka!`, 'happy');
   }, 250);
 
   return () => parrot.destroy();

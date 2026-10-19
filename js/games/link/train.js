@@ -25,11 +25,20 @@ export function mountMap(root, { nav }) {
     );
   });
 
+  const whyCard = h('div', { class: 'why-card' },
+    h('span', { class: 'why-icon' }, '🎯'),
+    h('div', { class: 'why-content' },
+      h('b', {}, 'Po co Ci ta technika w codziennym życiu?'),
+      h('p', {}, 'Duże zakupy w markecie bez spoglądania w telefon, kolejność punktów wystąpienia czy procedury krok po kroku – dzięki efektowi domina jedno ogniwo samo pociąga kolejne!')
+    )
+  );
+
   const view = h('section', { class: 'screen train-map' },
     h('div', { class: 'crumbs' }, h('a', { href: '#/link', class: 'back' }, '← Menu gry')),
     h('h1', {}, '🐿️ ', h('span', { class: 'grad' }, 'Łańcuch Skojarzeń z Basią')),
     h('p', { class: 'lead' }, 'Poznaj metodę łączenia myśli jak domino i nigdy więcej nie zgub wątku.'),
     squirrel.el,
+    whyCard,
     h('div', { class: 'map-list' }, items)
   );
 
@@ -52,7 +61,7 @@ export function mountStep(root, { nav, index }) {
   let answered = false;
 
   const theoryBox = h('div', { class: 'theory-card' },
-    h('h3', {}, '🐿️ Lekcja: ', les.title),
+    h('h3', {}, '🐿️ Sprytny trik Basi: ', les.title),
     h('div', { class: 'theory-text' }, les.theory.map(p => h('p', {}, p)))
   );
 
@@ -120,7 +129,7 @@ export function mountStep(root, { nav, index }) {
 
   root.append(view);
   setTimeout(() => {
-    squirrel.say(`Lekcja ${index + 1}: ${les.subtitle}. Zobacz, jak działa żywa akcja!`, 'happy');
+    squirrel.say(les.speech || `Chrup, chrup! Lekcja ${index + 1}: ${les.subtitle}. Zobacz, jak połączymy te rzeczy!`, 'happy');
   }, 250);
 
   return () => squirrel.destroy();

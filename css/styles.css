@@ -426,6 +426,12 @@ dialog form{display:contents}
 .install-item li{margin:3px 0}
 .dialog-actions{display:flex;gap:10px;justify-content:center;margin-top:14px}
 
+/* ── Karta: Po co w codziennym życiu? ── */
+.why-card{display:flex;align-items:flex-start;gap:12px;background:linear-gradient(135deg,rgba(124,92,255,.14),rgba(255,200,87,.08));border:1px solid rgba(255,200,87,.32);border-radius:18px;padding:14px 16px;margin:12px 0 16px;text-align:left;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.why-icon{font-size:1.8rem;line-height:1;flex:none}
+.why-content b{display:block;font-size:.95rem;color:var(--amber);margin-bottom:4px}
+.why-content p{font-size:.88rem;line-height:1.45;color:#e2e0fc;margin:0}
+
 /* ── Pałac pamięci ── */
 .palace-screen{display:flex;flex-direction:column;gap:12px}
 .palace-stage{min-height:280px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;width:100%}

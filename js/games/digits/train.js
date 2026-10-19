@@ -33,10 +33,19 @@ export function mountMap(root) {
           starsEl(stars));
       })));
 
+  const whyCard = h('div', { class: 'why-card' },
+    h('span', { class: 'why-icon' }, '🎯'),
+    h('div', { class: 'why-content' },
+      h('b', {}, 'Po co Ci ta technika w codziennym życiu?'),
+      h('p', {}, 'Kody BLIK na zakupach (zanim znikną z ekranu!), PIN-y do kart, kody do domofonów i numery telefonów bliskich w nagłych wypadkach – zapamiętasz je w 3 sekundy bez panicznego szukania komórki!')
+    )
+  );
+
   root.append(h('section', { class: 'screen' },
     h('div', { class: 'crumbs' }, h('a', { href: '#/digits', class: 'back' }, '← Cyfry')),
     h('div', { class: 'game-head' }, h('h1', {}, 'Mapa ', h('span', { class: 'grad' }, 'szkolenia'))),
     cat.el,
+    whyCard,
     h('div', { class: 'bar-progress', style: `--p:${done / LESSONS.length * 100}%` }, h('i')),
     ...chapters));
   setTimeout(() => cat.say(done === LESSONS.length ? 'Wszystko zaliczone! Możesz wracać do dowolnej lekcji, żeby zdobyć brakujące gwiazdki ⭐' : done ? 'Wybierz lekcję. Świecąca czeka na Ciebie! ✨' : 'Zaczynamy od pierwszej lekcji. Kliknij ją! 🐾', 'happy'), 250);

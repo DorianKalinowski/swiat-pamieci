@@ -41,6 +41,14 @@ export function mountMap(root, { nav }) {
     );
   });
 
+  const whyCard = h('div', { class: 'why-card' },
+    h('span', { class: 'why-icon' }, '🎯'),
+    h('div', { class: 'why-content' },
+      h('b', {}, 'Po co Ci ta technika w codziennym życiu?'),
+      h('p', {}, 'Wygłaszanie przemówień i prezentacji bez ani jednej kartki, bezstresowe zdawanie egzaminów i lista 20 zadań w głowie – Twój mózg myśli przestrzenią, a pałac to Twój wewnętrzny segregator wiedzy!')
+    )
+  );
+
   const view = h('section', { class: 'screen' },
     h('div', { class: 'crumbs' },
       h('a', { href: '#/palace', class: 'back' }, '← Pałac pamięci')
@@ -52,6 +60,7 @@ export function mountMap(root, { nav }) {
       )
     ),
     tiger.el,
+    whyCard,
     h('div', { class: 'lesson-list' }, cards)
   );
 

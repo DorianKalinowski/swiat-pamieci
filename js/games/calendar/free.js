@@ -1,8 +1,8 @@
-import { h, rand, shuffle } from '../../dom.js';
+import { h, rand, shuffle, sleep } from '../../dom.js';
 import { sfx } from '../../sound.js';
 import { store } from '../../store.js';
 import { createTurtle } from '../../turtle.js';
-import { DAYS_OF_WEEK, MONTH_ANCHORS, calculateWeekday } from './logic.js';
+import { MONTH_ANCHORS, DAYS_OF_WEEK, calculateWeekday } from './logic.js';
 import { MODES } from './modes.js';
 
 export function mountFree(root, { modeId, nav }) {
@@ -12,12 +12,14 @@ export function mountFree(root, { modeId, nav }) {
   let score = 0;
   let round = 1;
   let combo = 0;
+  let lives = 3;
   let timeLeft = modeId === 'clock_beat' ? 30 : 0;
   let timerInterval = null;
   let isGameOver = false;
 
   const scoreEl = h('span', { class: 'hud-score' }, '0');
   const roundEl = h('span', { class: 'hud-round' }, '1');
+  const livesEl = (modeId === 'weekday' || modeId === 'anchors') ? h('span', { class: 'hud-lives' }, '❤️❤️❤️') : null;
   const timerEl = modeId === 'clock_beat' ? h('span', { class: 'hud-timer' }, '⏱ 30s') : null;
   const playArea = h('div', { class: 'free-play-area' });
 
@@ -26,6 +28,7 @@ export function mountFree(root, { modeId, nav }) {
     h('div', { class: 'hud' },
       h('div', { class: 'hud-item' }, h('small', {}, 'Wynik'), scoreEl),
       h('div', { class: 'hud-item' }, h('small', {}, 'Runda'), roundEl),
+      livesEl ? h('div', { class: 'hud-item' }, h('small', {}, 'Szanse'), livesEl) : null,
       timerEl ? h('div', { class: 'hud-item' }, h('small', {}, 'Czas'), timerEl) : null
     ),
     turtle.el,
@@ -34,12 +37,19 @@ export function mountFree(root, { modeId, nav }) {
 
   root.append(view);
 
-  const CHEERS = ['W punkt! Czas zatrzymany! 🐢', 'Zegar bije dla Ciebie! ⏳', 'Mistrz modulo 7! ⏱️', 'Spokojnie i celnie! 🕰️', 'Genialna data! 📅'];
+  const CHEERS = ['Dzień obliczony w sekundę! 🐢⚡', 'Mistrz kalendarza! 📅', 'Algorytm Conwaya działa! 🧠', 'Bez pudła! 🎯', 'Znakomita precyzja! ⏱️'];
   function cheerTurtle(c) {
     if (c % 3 === 0 && c > 0) {
-      turtle.say(`Combo x${c}! Algorytm Doomsday w małym palcu! 🐢🌟`, 'cheer', { revert: 1400 });
+      turtle.say(`Combo x${c}! Twój zegar biologiczny wyprzedza komputery! 🐢✨`, 'cheer', { revert: 1400 });
+      turtle.hop?.();
     } else {
       turtle.say(rand(CHEERS), 'cheer', { revert: 1000 });
+    }
+  }
+
+  function updateLives() {
+    if (livesEl) {
+      livesEl.textContent = '❤️'.repeat(Math.max(0, lives)) + '🖤'.repeat(Math.max(0, 3 - lives));
     }
   }
 
@@ -48,16 +58,51 @@ export function mountFree(root, { modeId, nav }) {
     if (score > prev) store.set(`calendar.best.${modeId}`, score);
   }
 
+  function startTimer() {
+    if (timerInterval) clearInterval(timerInterval);
+    timerInterval = setInterval(() => {
+      timeLeft--;
+      if (timerEl) timerEl.textContent = `⏱ ${timeLeft}s`;
+      if (timeLeft <= 0) {
+        clearInterval(timerInterval);
+        gameOver();
+      }
+    }, 1000);
+  }
+
+  function restartGame() {
+    isGameOver = false;
+    score = 0;
+    round = 1;
+    combo = 0;
+    lives = 3;
+    timeLeft = modeId === 'clock_beat' ? 30 : 0;
+    scoreEl.textContent = '0';
+    roundEl.textContent = '1';
+    updateLives();
+    if (timerEl) timerEl.textContent = `⏱ ${timeLeft}s`;
+    if (timerInterval) clearInterval(timerInterval);
+    if (modeId === 'clock_beat') startTimer();
+    turtle.setMood('happy');
+    turtle.say('Zaczynamy od nowa! Kalendarz w Twojej głowie! 🐢🗓️', 'happy');
+    nextRound();
+  }
+
   function gameOver() {
     isGameOver = true;
     if (timerInterval) clearInterval(timerInterval);
     saveBest();
     sfx.fanfare();
     turtle.setMood('cheer', 3000);
-    turtle.say(`Koniec czasu! Twój wynik: ${score} pkt! Prawdziwy władca kalendarza! 🐢`, 'cheer');
+    turtle.say(`Koniec gry! Twój wynik: ${score} pkt! Prawdziwy władca kalendarza! 🐢`, 'cheer');
 
     const best = store.get(`calendar.best.${modeId}`, score);
     playArea.innerHTML = '';
+
+    const restartBtn = h('button', { class: 'btn btn-primary', type: 'button' }, 'Zagraj ponownie ↻');
+    restartBtn.addEventListener('click', restartGame);
+    const backBtn = h('a', { class: 'btn btn-ghost', href: '#/calendar' }, 'Inny tryb');
+
     playArea.append(
       h('div', { class: 'game-over-box' },
         h('h2', {}, '🎉 Mistrzowski wynik!'),
@@ -66,14 +111,27 @@ export function mountFree(root, { modeId, nav }) {
           h('span', {}, 'punktów')
         ),
         h('div', { class: 'go-best' }, `🏆 Rekord w tym trybie: ${best}`),
-        h('div', { class: 'go-actions' },
-          h('button', { class: 'btn btn-primary', type: 'button' }, 'Zagraj ponownie 🔄')
-        )
+        h('div', { class: 'go-actions' }, restartBtn, backBtn)
       )
     );
-    playArea.querySelector('.go-actions button').addEventListener('click', () => {
-      mountFree(root, { modeId, nav });
-    });
+  }
+
+  function handleWrong(solutionText) {
+    sfx.wrong();
+    combo = 0;
+    if (modeId === 'time_travel') {
+      gameOver();
+      return;
+    }
+    lives--;
+    updateLives();
+    if (lives <= 0) {
+      gameOver();
+    } else {
+      turtle.setMood('sad', 1200);
+      turtle.say(`${solutionText} Pozostało szans: ${lives} 🐢`, 'think', { revert: 2600 });
+      setTimeout(nextRound, 1200);
+    }
   }
 
   function nextRound() {
@@ -89,10 +147,14 @@ export function mountFree(root, { modeId, nav }) {
       const correctDayIdx = calculateWeekday(year, mInfo.month, day);
       const correctDay = DAYS_OF_WEEK[correctDayIdx];
 
+      const hintText = round <= 3 && modeId === 'weekday'
+        ? `Wskazówka: kotwica miesiąca to ${mInfo.anchorDay}.${mInfo.month < 10 ? '0' + mInfo.month : mInfo.month}`
+        : null;
+
       const card = h('div', { class: 'calendar-card' },
         h('div', { class: 'cal-date-badge' }, `${day} ${mInfo.name.toLowerCase()} ${year}`),
         h('h2', {}, 'Jaki to dzień tygodnia?'),
-        h('p', { class: 'muted' }, `Wskazówka: kotwica miesiąca to ${mInfo.anchorDay}.${mInfo.month < 10 ? '0' + mInfo.month : mInfo.month}`)
+        hintText ? h('p', { class: 'muted' }, hintText) : null
       );
 
       const opts = h('div', { class: 'opt-grid' });
@@ -104,20 +166,23 @@ export function mountFree(root, { modeId, nav }) {
             score += 15 + combo * 3;
             combo++;
             round++;
+            if (modeId === 'clock_beat') {
+              timeLeft += 2; // bonus czasowy
+              if (timerEl) timerEl.textContent = `⏱ ${timeLeft}s`;
+            }
             scoreEl.textContent = `${score}`;
             roundEl.textContent = `${round}`;
             cheerTurtle(combo);
             nextRound();
           } else {
-            sfx.wrong();
-            if (modeId === 'time_travel') {
-              gameOver();
+            btn.classList.add('wrong');
+            if (modeId === 'clock_beat') {
+              sfx.wrong();
+              timeLeft = Math.max(1, timeLeft - 2);
+              if (timerEl) timerEl.textContent = `⏱ ${timeLeft}s`;
+              setTimeout(nextRound, 300);
             } else {
-              combo = 0;
-              turtle.setMood('sad', 1200);
-              turtle.say(`${day} ${mInfo.name} ${year} to ${correctDay.name}!`, 'think', { revert: 2800 });
-              btn.classList.add('wrong');
-              setTimeout(nextRound, 1200);
+              handleWrong(`${day} ${mInfo.name} ${year} to ${correctDay.name}!`);
             }
           }
         });
@@ -150,12 +215,8 @@ export function mountFree(root, { modeId, nav }) {
             cheerTurtle(combo);
             nextRound();
           } else {
-            sfx.wrong();
-            combo = 0;
-            turtle.setMood('sad', 1200);
-            turtle.say(`Dla ${target.name} kotwicą jest ${target.anchorDay}. dzień (${target.rule})!`, 'think', { revert: 2800 });
             btn.classList.add('wrong');
-            setTimeout(nextRound, 1200);
+            handleWrong(`Dla ${target.name} kotwicą jest ${target.anchorDay}. dzień (${target.rule})!`);
           }
         });
         opts.append(btn);
@@ -165,14 +226,7 @@ export function mountFree(root, { modeId, nav }) {
   }
 
   if (modeId === 'clock_beat') {
-    timerInterval = setInterval(() => {
-      timeLeft--;
-      if (timerEl) timerEl.textContent = `⏱ ${timeLeft}s`;
-      if (timeLeft <= 0) {
-        clearInterval(timerInterval);
-        gameOver();
-      }
-    }, 1000);
+    startTimer();
   }
 
   nextRound();

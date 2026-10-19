@@ -1,4 +1,4 @@
-import { h, rand, shuffle } from '../../dom.js';
+import { h, rand, shuffle, sleep } from '../../dom.js';
 import { sfx } from '../../sound.js';
 import { store } from '../../store.js';
 import { createParrot } from '../../parrot.js';
@@ -12,12 +12,14 @@ export function mountFree(root, { modeId, nav }) {
   let score = 0;
   let round = 1;
   let combo = 0;
+  let lives = 3;
   let timeLeft = modeId === 'sprint' ? 30 : 0;
   let timerInterval = null;
   let isGameOver = false;
 
   const scoreEl = h('span', { class: 'hud-score' }, '0');
   const roundEl = h('span', { class: 'hud-round' }, '1');
+  const livesEl = (modeId === 'translate' || modeId === 'bridge') ? h('span', { class: 'hud-lives' }, '❤️❤️❤️') : null;
   const timerEl = modeId === 'sprint' ? h('span', { class: 'hud-timer' }, '⏱ 30s') : null;
   const playArea = h('div', { class: 'free-play-area' });
 
@@ -26,6 +28,7 @@ export function mountFree(root, { modeId, nav }) {
     h('div', { class: 'hud' },
       h('div', { class: 'hud-item' }, h('small', {}, 'Wynik'), scoreEl),
       h('div', { class: 'hud-item' }, h('small', {}, 'Runda'), roundEl),
+      livesEl ? h('div', { class: 'hud-item' }, h('small', {}, 'Szanse'), livesEl) : null,
       timerEl ? h('div', { class: 'hud-item' }, h('small', {}, 'Czas'), timerEl) : null
     ),
     parrot.el,
@@ -34,18 +37,55 @@ export function mountFree(root, { modeId, nav }) {
 
   root.append(view);
 
-  const CHEERS = ['Ćwir! Genialnie! 🦜', 'Słówko w kieszeni! 🌴', 'Skojarzenie w punkt! 🌈', 'Poliglotyczny talent! ✨', 'Pola bije skrzydłami! 💬'];
+  const CHEERS = ['Poliglota! 🦜✨', 'Most fonetyczny działa! 🌉', 'Jak rodowity mówca! 🗣️', 'Słowo zapamiętane! 📖', 'Bez pudła! 🎯'];
   function cheerParrot(c) {
     if (c % 3 === 0 && c > 0) {
-      parrot.say(`Combo x${c}! Mówisz już jak rodowity mówca! 🦜🌍`, 'cheer', { revert: 1400 });
+      parrot.say(`Combo x${c}! Pola śpiewa z zachwytu! Twój słownik pęka w szwach! 🦜🎶`, 'cheer', { revert: 1400 });
+      parrot.hop?.();
     } else {
       parrot.say(rand(CHEERS), 'cheer', { revert: 1000 });
+    }
+  }
+
+  function updateLives() {
+    if (livesEl) {
+      livesEl.textContent = '❤️'.repeat(Math.max(0, lives)) + '🖤'.repeat(Math.max(0, 3 - lives));
     }
   }
 
   function saveBest() {
     const prev = store.get(`words.best.${modeId}`, 0);
     if (score > prev) store.set(`words.best.${modeId}`, score);
+  }
+
+  function startTimer() {
+    if (timerInterval) clearInterval(timerInterval);
+    timerInterval = setInterval(() => {
+      timeLeft--;
+      if (timerEl) timerEl.textContent = `⏱ ${timeLeft}s`;
+      if (timeLeft <= 0) {
+        clearInterval(timerInterval);
+        gameOver();
+      }
+    }, 1000);
+  }
+
+  function restartGame() {
+    isGameOver = false;
+    score = 0;
+    round = 1;
+    combo = 0;
+    lives = 3;
+    timeLeft = modeId === 'sprint' ? 30 : 0;
+    scoreEl.textContent = '0';
+    roundEl.textContent = '1';
+    updateLives();
+    if (timerEl) timerEl.textContent = `⏱ ${timeLeft}s`;
+    if (timerInterval) clearInterval(timerInterval);
+    if (modeId === 'sprint') startTimer();
+    parrot.setMood('happy');
+    parrot.say('Zaczynamy od nowa! Poliglotyczna przygoda trwa! 🦜✨', 'happy');
+    nextRound();
   }
 
   function gameOver() {
@@ -58,6 +98,11 @@ export function mountFree(root, { modeId, nav }) {
 
     const best = store.get(`words.best.${modeId}`, score);
     playArea.innerHTML = '';
+
+    const restartBtn = h('button', { class: 'btn btn-primary', type: 'button' }, 'Zagraj ponownie ↻');
+    restartBtn.addEventListener('click', restartGame);
+    const backBtn = h('a', { class: 'btn btn-ghost', href: '#/words' }, 'Inny tryb');
+
     playArea.append(
       h('div', { class: 'game-over-box' },
         h('h2', {}, '🎉 Rewelacyjny wynik!'),
@@ -66,14 +111,27 @@ export function mountFree(root, { modeId, nav }) {
           h('span', {}, 'punktów')
         ),
         h('div', { class: 'go-best' }, `🏆 Rekord w tym trybie: ${best}`),
-        h('div', { class: 'go-actions' },
-          h('button', { class: 'btn btn-primary', type: 'button' }, 'Zagraj ponownie 🔄')
-        )
+        h('div', { class: 'go-actions' }, restartBtn, backBtn)
       )
     );
-    playArea.querySelector('.go-actions button').addEventListener('click', () => {
-      mountFree(root, { modeId, nav });
-    });
+  }
+
+  function handleWrong(solutionText) {
+    sfx.wrong();
+    combo = 0;
+    if (modeId === 'polyglot') {
+      gameOver();
+      return;
+    }
+    lives--;
+    updateLives();
+    if (lives <= 0) {
+      gameOver();
+    } else {
+      parrot.setMood('sad', 1200);
+      parrot.say(`${solutionText} Pozostało szans: ${lives} 🦜`, 'think', { revert: 2600 });
+      setTimeout(nextRound, 1200);
+    }
   }
 
   function nextRound() {
@@ -89,7 +147,8 @@ export function mountFree(root, { modeId, nav }) {
       const card = h('div', { class: 'vocab-card' },
         h('span', { class: 'vocab-emoji' }, target.emoji),
         h('h2', { class: 'vocab-word' }, target.foreign),
-        h('span', { class: 'vocab-lang' }, `Język: ${target.lang}`)
+        h('span', { class: 'vocab-lang' }, `Język: ${target.lang}`),
+        round <= 2 && modeId === 'translate' ? h('p', { class: 'muted' }, `Wymowa zbliżona do: „${target.bridge}”`) : null
       );
 
       const opts = h('div', { class: 'opt-grid' });
@@ -101,20 +160,23 @@ export function mountFree(root, { modeId, nav }) {
             score += 10 + combo * 2;
             combo++;
             round++;
+            if (modeId === 'sprint') {
+              timeLeft += 2; // bonus czasowy
+              if (timerEl) timerEl.textContent = `⏱ ${timeLeft}s`;
+            }
             scoreEl.textContent = `${score}`;
             roundEl.textContent = `${round}`;
             cheerParrot(combo);
             nextRound();
           } else {
-            sfx.wrong();
-            if (modeId === 'polyglot') {
-              gameOver();
+            btn.classList.add('wrong');
+            if (modeId === 'sprint') {
+              sfx.wrong();
+              timeLeft = Math.max(1, timeLeft - 2);
+              if (timerEl) timerEl.textContent = `⏱ ${timeLeft}s`;
+              setTimeout(nextRound, 300);
             } else {
-              combo = 0;
-              parrot.setMood('sad', 1200);
-              parrot.say(`${target.foreign} to ${target.meaning}! Pamiętasz most: ${target.bridge}?`, 'think', { revert: 2800 });
-              btn.classList.add('wrong');
-              setTimeout(nextRound, 1200);
+              handleWrong(`${target.foreign} to ${target.meaning} (most: ${target.bridge})!`);
             }
           }
         });
@@ -145,12 +207,8 @@ export function mountFree(root, { modeId, nav }) {
             cheerParrot(combo);
             nextRound();
           } else {
-            sfx.wrong();
-            combo = 0;
-            parrot.setMood('sad', 1200);
-            parrot.say(`Mostem dla ${target.foreign} jest: ${target.bridge}!`, 'think', { revert: 2800 });
             btn.classList.add('wrong');
-            setTimeout(nextRound, 1200);
+            handleWrong(`Mostem dla ${target.foreign} jest: ${target.bridge}!`);
           }
         });
         opts.append(btn);
@@ -160,14 +218,7 @@ export function mountFree(root, { modeId, nav }) {
   }
 
   if (modeId === 'sprint') {
-    timerInterval = setInterval(() => {
-      timeLeft--;
-      if (timerEl) timerEl.textContent = `⏱ ${timeLeft}s`;
-      if (timeLeft <= 0) {
-        clearInterval(timerInterval);
-        gameOver();
-      }
-    }, 1000);
+    startTimer();
   }
 
   nextRound();

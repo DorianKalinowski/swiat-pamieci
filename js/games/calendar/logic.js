@@ -25,7 +25,7 @@ export const MONTH_ANCHORS = [
 
 export function getDoomsdayOfYear(year) {
   // Doomsday algorithm anchor for years
-  // 2024: 3 (Środa), 2025: 4 (Czwartek), 2026: 5 (Piątek)
+  // 2024: 4 (Czwartek), 2025: 5 (Piątek), 2026: 6 (Sobota)
   const d = new Date(year, 3, 4); // 4th April is always Doomsday
   return d.getDay();
 }

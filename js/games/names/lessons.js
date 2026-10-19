@@ -7,10 +7,13 @@ export const LESSONS = [
     subtitle: 'Zauważ to, co unikalne',
     desc: 'Dlaczego zapominamy imiona? Bo mózg traktuje twarz jako całość. Naucz się szukać jednego wyrazistego elementu!',
     faces: [FACES[0], FACES[2]], // Marek (okulary), Krzysztof (broda)
+    speech: 'Cześć, tu sprytny Lisek! 🦊 Czy zdarzyło Ci się poznać kogoś w klasie lub na urodzinach i od razu zapomnieć jego imię? Pokażę Ci detektywistyczny trik z kotwicą – zapamiętasz każdego kolegę i koleżankę od pierwszego wejrzenia!',
     theory: [
-      'Nasz mózg zapomina imiona w 5 sekund, jeśli nie przyczepimy ich do konkretnego punktu.',
-      'Krok 1 to ZNALEZIENIE KOTWICY – jednej rzeczy, która rzuca się w oczy jako pierwsza: okulary, bujna broda, fryzura, pieprzyk czy uśmiech.',
-      'Spójrz na Marka – widzisz te ogromne złote okulary? To nasza kotwica!'
+      'Po co nam ta umiejętność? Ile razy ktoś przedstawił Ci się w nowej klasie, na placu zabaw albo na uroczystości, a Ty po 5 sekundach miałeś pustkę w głowie? To przydarza się każdemu!',
+      'Sekret mistrzów pamięci: nasz mózg nie potrafi utrzymać samego dźwięku imienia. Musimy je „przyczepić” do twarzy jak kolorową naklejkę!',
+      'KROK 1 – ZNAJDŹ KOTWICĘ DETEKTYWA:',
+      'Gdy na kogoś patrzysz, poszukaj jednej charakterystycznej rzeczy: wielkie okulary, bujna broda, zabawna fryzura czy wielki uśmiech.',
+      'Spójrz na Marka poniżej: widzisz te wielkie okrągłe złote okulary? To nasza idealna kotwica!'
     ],
     task: {
       type: 'feature-pick',
@@ -27,13 +30,14 @@ export const LESSONS = [
     subtitle: 'Zamieniaj abstrakcyjne imiona w obrazy',
     desc: 'Imię to tylko dźwięk. Aby je pamiętać, zamień je w konkretny, dotykalny przedmiot.',
     faces: [FACES[1], FACES[3]], // Basia (kontrabas), Kasia (kakao)
+    speech: 'Krok drugi to most fonetyczny! Zamieniamy każde imię w zabawną rzecz, którą można dotknąć!',
     theory: [
-      'Imię samo w sobie jest abstrakcyjne. Trudno „zobaczyć” słowo Basia.',
-      'Dlatego tworzymy MOST FONETYCZNY – skojarzenie brzmieniowe z realnym przedmiotem:',
+      'Imię samo w sobie jest ulotnym dźwiękiem. Trudno „zobaczyć” słowo Basia czy Marek.',
+      'Dlatego budujemy MOST FONETYCZNY – szukamy przedmiotu, który brzmi prawie tak samo:',
       '• Basia → wielki KONTRA-BAS 🎻',
-      '• Kasia → kubek gorącego KAKAO ☕',
-      '• Marek → neonowy MARKER 🖊️',
-      'Gdy słyszysz imię, Twój umysł od razu widzi ten przedmiot!'
+      '• Kasia → kubek pachnącego KAKAO ☕',
+      '• Marek → gruby jaskrawy MARKER 🖊️',
+      'Gdy usłyszysz imię, Twój umysł od razu widzi ten przedmiot przed oczami!'
     ],
     task: {
       type: 'bridge-pick',
@@ -50,12 +54,13 @@ export const LESSONS = [
     subtitle: 'Połącz kotwicę twarzy z mostem fonetycznym',
     desc: 'Sekret mistrzów pamięci: spraw, by przedmiot wszedł w żywą interakcję z twarzą!',
     faces: [FACES[0], FACES[1]],
+    speech: 'A teraz najfajniejsza część: robimy wybuchowy film w głowie! Zobacz, jak to działa!',
     theory: [
-      'Masz już kotwicę (np. okulary Marka) i most fonetyczny (MARKER).',
-      'Teraz NAJWAŻNIEJSZY KROK: zrób z nich film w głowie!',
-      'Nie wyobrażaj sobie po prostu Markera obok Marka.',
-      'Zobacz, jak Marek wyciąga gruby, jaskrawy MARKER i zamalowuje nim swoje własne OKULARY, aż nic przez nie nie widzi!',
-      'Im bardziej absurdalna i dynamiczna akcja, tym trwalej zapada w pamięć!'
+      'Mamy już kotwicę (okulary Marka) i most fonetyczny (MARKER).',
+      'Teraz najważniejszy krok: połączmy je w śmieszną, dynamiczną akcję!',
+      'Nie wyobrażaj sobie po prostu markera leżącego obok Marka.',
+      'Zobacz, jak Marek wyciąga neonowy MARKER i z uśmiechem zamalowuje nim swoje własne OKULARY, aż nic przez nie nie widzi!',
+      'Im bardziej szalona i dynamiczna akcja, tym mocniej zostaje w pamięci!'
     ],
     task: {
       type: 'action-pick',
@@ -77,18 +82,18 @@ export const LESSONS = [
     subtitle: 'Zastosuj technikę dla 3 osób',
     desc: 'Czas na praktykę! Poznaj Marka, Basię i Krzysztofa, a potem bezbłędnie ich rozpoznaj.',
     faces: [FACES[0], FACES[1], FACES[2]],
+    speech: 'Pora na małe przyjęcie! Przedstawię Ci troje znajomych – połączmy ich kotwice w żywe scenki!',
     theory: [
       'Ćwiczymy całą pętlę pamięciową dla 3 gości:',
-      '1. Marek → złote okulary → MARKER maluje szkła!',
-      '2. Basia → rudy kok → BAS podskakuje w rytm!',
-      '3. Krzysztof → czarna broda drwala → KRZAK / KRZYŻACY gubią miecz w jego brodzie!'
+      '1. Marek → złote okulary → MARKER zamalowuje szkła!',
+      '2. Basia → rudy kok → BAS podskakuje w rytm muzyki!',
+      '3. Krzysztof → czarna broda drwala → KRZAK albo KRZYŻACY gubią miecz w jego brodzie!'
     ],
     task: {
       type: 'test-multiple',
       prompt: 'Kto ukrył krzyżacki miecz w swojej wielkiej czarnej brodzie?',
-      facesTest: [FACES[0], FACES[1], FACES[2]],
-      correctFaceId: 'f3',
-      correctName: 'Krzysztof',
+      options: ['Krzysztof (czarna broda)', 'Marek (złote okulary)', 'Basia (rudy kok)', 'Tomasz (muszka)'],
+      correct: 0,
       hint: 'Przypomnij sobie kotwicę brody i krzaczastego Krzysztofa!'
     }
   },
@@ -98,10 +103,11 @@ export const LESSONS = [
     subtitle: 'Dodajemy Kasię i Tomasza',
     desc: 'Podnosimy poprzeczkę: 5 osób z różnymi stylami, fryzurami i rekwizytami.',
     faces: [FACES[0], FACES[1], FACES[2], FACES[3], FACES[4]],
+    speech: 'Idzie Ci wyśmienicie! Powiększamy grono do 5 osób – Kasia i Tomasz dołączają do zabawy!',
     theory: [
-      'Wchodzimy do większego salonu! Poznaj kolejne dwie osoby:',
-      '• Kasia (UX designerka) → fioletowe włosy & kolczyk w nosie → pije KAKAO, a kolczyk brzęczy!',
-      '• Tomasz (prezenter) → lśniący uśmiech & muszka → czyta wielki TOM encyklopedii!'
+      'Wchodzimy do większego salonu! Poznaj kolejne dwie wspaniałe osoby:',
+      '• Kasia (projektantka) → fioletowe włosy & kolczyk w nosie → pije gorące KAKAO, a kolczyk brzęczy!',
+      '• Tomasz (prezenter) → lśniący uśmiech & muszka → czyta wielki, opasły TOM encyklopedii!'
     ],
     task: {
       type: 'identify-face',
@@ -118,12 +124,13 @@ export const LESSONS = [
     subtitle: '7 gości na bankiecie',
     desc: 'Ostateczny sprawdzian szkolenia! Przetestuj technikę na pełnej grupie gości z losowymi pytaniami.',
     faces: FACES.slice(0, 7),
+    speech: 'Wielki finał u Liska! Znasz już całą technikę mistrzów – żaden bankiet ani nowa klasa Cię nie zaskoczy!',
     theory: [
-      'Brawo! Znasz już całą metodologię:',
+      'Brawo! Znasz już kompletną metodę zapamiętywania każdego człowieka:',
       '1. Zauważ kotwicę (okulary, broda, monokl, opaska, muszka).',
-      '2. Zamień imię na most fonetyczny.',
-      '3. Wyobraź sobie interakcję kotwicy z mostem.',
-      'Jesteś w 100% gotowy na każdy bankiet, konferencję czy grę swobodną!'
+      '2. Zamień imię na most fonetyczny (Basia=Bas, Marek=Marker, Piotr=Pióro).',
+      '3. Zobacz szaloną interakcję kotwicy z mostem w swojej wyobraźni.',
+      'Jesteś w 100% gotowy na każdy bankiet, klasę i grę swobodną!'
     ],
     task: {
       type: 'final-exam',

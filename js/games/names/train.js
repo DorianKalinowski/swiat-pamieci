@@ -25,11 +25,20 @@ export function mountMap(root, { nav }) {
     );
   });
 
+  const whyCard = h('div', { class: 'why-card' },
+    h('span', { class: 'why-icon' }, '🎯'),
+    h('div', { class: 'why-content' },
+      h('b', {}, 'Po co Ci ta technika w codziennym życiu?'),
+      h('p', {}, 'Pewność siebie w nowej pracy, w szkole i na spotkaniach towarzyskich! Gdy zwrócisz się do nowo poznanej osoby po imieniu już po pierwszej rozmowie, zrobisz oszałamiające wrażenie i od razu zyskasz jej sympatię!')
+    )
+  );
+
   const view = h('section', { class: 'screen train-map' },
     h('div', { class: 'crumbs' }, h('a', { href: '#/names', class: 'back' }, '← Menu gry')),
     h('h1', {}, '🦊 ', h('span', { class: 'grad' }, 'Szkolenie: Imiona i twarze')),
     h('p', { class: 'lead' }, 'Krok po kroku naucz się zapamiętywać każdą twarz i imię na całe życie.'),
     fox.el,
+    whyCard,
     h('div', { class: 'map-list' }, items)
   );
 
@@ -62,7 +71,7 @@ export function mountStep(root, { nav, index }) {
   );
 
   const theoryBox = h('div', { class: 'theory-card' },
-    h('h3', {}, '📖 Lekcja: ', les.title),
+    h('h3', {}, '🦊 Wskazówka Liska: ', les.title),
     h('div', { class: 'theory-text' }, les.theory.map(p => h('p', {}, p)))
   );
 
@@ -131,7 +140,7 @@ export function mountStep(root, { nav, index }) {
 
   root.append(view);
   setTimeout(() => {
-    fox.say(`Lekcja ${index + 1}: ${les.subtitle}! Przeczytaj teorię i spróbuj odpowiedzieć.`, 'happy');
+    fox.say(les.speech || `Lekcja ${index + 1}: ${les.subtitle}! Sprawdź moją sprytną wskazówkę.`, 'happy');
   }, 250);
 
   return () => fox.destroy();

@@ -6,6 +6,7 @@
 [![Zero Runtime Dependencies](https://img.shields.io/badge/Dependencies-Zero%20(Pure%20JS)-blue.svg)](#-architektura-i-technologie)
 [![Tests Passing](https://img.shields.io/badge/Tests-96%2F96%20Passed-brightgreen.svg)](#-testy-automatyczne)
 [![Author](https://img.shields.io/badge/Autor-Dorian%20Kalinowski-orange.svg)](#-o-projekcie-i-autorze)
+[![Copyright](https://img.shields.io/badge/Copyright-%C2%A9%202026%20Wszelkie%20prawa%20zastrze%C5%BCone-blueviolet.svg)](#-licencja)
 
 ---
 

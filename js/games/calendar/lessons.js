@@ -4,19 +4,15 @@ export const LESSONS = [
   {
     id: 'cal-1',
     title: 'Sekret kalendarza w głowie',
-    subtitle: 'Dni tygodnia to liczby modulo 7',
-    desc: 'Odkryj matematyczną tajemnicę geniusza Johna Conwaya – algorytm Doomsday.',
+    subtitle: 'Dni tygodnia to liczby 0 do 6',
+    desc: 'Odkryj tajemnicę geniusza Johna Conwaya – kalendarz w pamięci.',
+    speech: 'Cześć! Jestem Żółwik Zenon 🐢. Nigdy się nie spieszę, bo znam sekret czasu! Czy wiesz, że możesz w 2 sekundy odgadnąć, w jaki dzień tygodnia wypadną Twoje urodziny, Boże Narodzenie czy początek wakacji? Pokażę Ci tę niezwykłą sztuczkę!',
     theory: [
-      'Każdy tydzień ma 7 dni. Zamiast zapamiętywać 365 dat, wystarczy liczyć reszty z dzielenia przez 7 (modulo 7).',
-      'Przypisujemy liczbom dni tygodnia:',
-      '• 0 = Niedziela (Non-day) ☀️',
-      '• 1 = Poniedziałek 🌙',
-      '• 2 = Wtorek 🔥',
-      '• 3 = Środa 💧',
-      '• 4 = Czwartek ⚡',
-      '• 5 = Piątek 🎉',
-      '• 6 = Sobota 🪐',
-      'W roku 2026 dzień kotwiczny (Doomsday) to PIĄTEK (5).'
+      'Po co nam ta technika? Wyobraź sobie miny znajomych w szkole lub w pracy, gdy ktoś rzuci datę, a Ty po 2 sekundach w pamięci odpowiesz: „To będzie sobota!”. Poczujesz się jak chodzący ludzki kalkulator!',
+      'Tydzień ma 7 dni i kręci się w kółko jak karuzela. Ponumerujmy dni tygodnia od 0 do 6:',
+      '• 1 = Poniedziałek 🌙 | 2 = Wtorek 🔥 | 3 = Środa 💧 | 4 = Czwartek ⚡ | 5 = Piątek 🎉 | 6 = Sobota 🪐',
+      '• 0 = Niedziela ☀️ (dzień relaksu i odpoczynku, okrągłe zero pracy!)',
+      'W roku 2026 dniem kotwicznym (magiczną bazą) jest SOBOTA (6). Zapamiętajmy tę liczbę!'
     ],
     task: {
       prompt: 'Jaki dzień tygodnia odpowiada liczbie 5 w systemie kalendarzowym?',
@@ -30,15 +26,16 @@ export const LESSONS = [
     title: 'Bliźniacze daty parzyste',
     subtitle: '4.04, 6.06, 8.08, 10.10, 12.12',
     desc: 'Wszystkie parzyste miesiące mają kotwicę w dniu równym numerowi miesiąca!',
+    speech: 'Oto najłatwiejsza reguła na świecie: daty parzyste to lustrzane bliźniaki!',
     theory: [
-      'To najbardziej elegancka reguła kalendarza na świecie:',
-      'W DOWOLNYM ROKU następujące daty wypadają w DOKŁADNIE TEN SAM DZIEŃ TYGODNIA:',
+      'Spójrz, jak genialnie zbudowany jest kalendarz:',
+      'W każdym parzystym miesiącu numer miesiąca to dokładnie ten sam dzień kotwiczny:',
       '• 4 kwietnia (4.04)',
       '• 6 czerwca (6.06)',
       '• 8 sierpnia (8.08)',
       '• 10 października (10.10)',
       '• 12 grudnia (12.12)',
-      'W roku 2026 każda z tych dat to PIĄTEK! Zapamiętaj tę piątkę parzystych dat!'
+      'W roku 2026 każda z tych 5 dat to dokładnie ten sam dzień: SOBOTA!'
     ],
     task: {
       prompt: 'Która data jest kotwicą Doomsday dla sierpnia (8. miesiąc)?',
@@ -52,12 +49,13 @@ export const LESSONS = [
     title: 'Miesiące nieparzyste',
     subtitle: 'Praca 9 do 5 na stacji 7/11',
     desc: 'Jak zapamiętać kotwice dla maja, lipca, września i listopada?',
+    speech: 'A co z miesiącami nieparzystymi? Mamy na nie wesołą rymowankę o stacji benzynowej!',
     theory: [
-      'Dla miesięcy nieparzystych mamy łatwe do zapamiętania powiedzonko:',
+      'Dla miesięcy nieparzystych mamy łatwe powiedzonko:',
       '„Pracuję od 9 do 5 na stacji 7/11”:',
-      '• 9 maja (9.05) oraz 5 września (5.09) → zamiana 9 i 5!',
-      '• 11 lipca (11.07) oraz 7 listopada (7.11) → zamiana 7 i 11!',
-      'Te 4 daty również wypadają w ten sam dzień tygodnia co parzyste bliźniaki!'
+      '• 9 maja (9.05) oraz 5 września (5.09) → zamieniamy 9 i 5!',
+      '• 11 lipca (11.07) oraz 7 listopada (7.11) → zamieniamy 7 i 11!',
+      'Te 4 daty to w 2026 roku również ta sama nasza kotwica: SOBOTA!'
     ],
     task: {
       prompt: 'Jaki dzień maja (5. miesiąc) jest kotwicą w regule „od 9 do 5”?',
@@ -71,18 +69,19 @@ export const LESSONS = [
     title: 'Obliczanie daty w 3 krokach',
     subtitle: 'Przykład: 15 sierpnia 2026',
     desc: 'Jak policzyć dzień tygodnia dla dowolnego dnia w miesiącu?',
+    speech: 'Teraz połączymy kropki! Zobacz, jak w 3 prostych krokach policzyć dowolną datę!',
     theory: [
-      'Chcesz wiedzieć, jaki dzień tygodnia to 15 sierpnia 2026:',
-      '1. Znasz kotwicę sierpnia: 8 sierpnia (8.08).',
-      '2. Wiesz, że w 2026 roku kotwica to PIĄTEK (5).',
-      '3. Różnica: 15 - 8 = 7 dni. Ponieważ 7 dni to pełny tydzień (7 mod 7 = 0), 15 sierpnia to DOKŁADNIE TEN SAM DZIEŃ: PIĄTEK!',
-      'Gdyby to był 16 sierpnia → piątek + 1 dzień = sobota!'
+      'Chcesz wiedzieć, jaki dzień tygodnia to np. 15 sierpnia 2026:',
+      '1. Znasz kotwicę sierpnia: to bliźniak 8 sierpnia (8.08).',
+      '2. Wiesz, że w 2026 roku kotwica to SOBOTA (6).',
+      '3. Liczymy różnicę dni: 15 - 8 = 7 dni. Pełne 7 dni to dokładnie tydzień, więc 15 sierpnia to również SOBOTA!',
+      'Gdyby to był 17 sierpnia? 8 sierpnia + 9 dni (czyli tydzień + 2 dni): sobota + 2 dni = poniedziałek!'
     ],
     task: {
-      prompt: 'Jeśli 8 sierpnia to Piątek, jaki dzień tygodnia to 10 sierpnia (8 + 2 dni)?',
-      options: ['Niedziela (Piątek + 2 dni)', 'Sobota', 'Poniedziałek', 'Czwartek'],
+      prompt: 'Jeśli 8 sierpnia to Sobota, jaki dzień tygodnia to 10 sierpnia (8 + 2 dni)?',
+      options: ['Poniedziałek (Sobota + 2 dni)', 'Niedziela', 'Wtorek', 'Czwartek'],
       correct: 0,
-      hint: 'Piątek + 1 dzień = Sobota; Piątek + 2 dni = Niedziela!'
+      hint: 'Sobota + 1 dzień = Niedziela; Sobota + 2 dni = Poniedziałek!'
     }
   },
   {
@@ -90,10 +89,12 @@ export const LESSONS = [
     title: 'Marzec i Dzień Liczby Pi',
     subtitle: '14 marca oraz luty',
     desc: 'Ostatnie elementy układanki.',
+    speech: 'Marzec i luty! Poznaj dzień liczby Pi oraz ostatni dzień zimy!',
     theory: [
-      '• Marzec (3. miesiąc): kotwicą jest 14 marca (3.14 to Dzień Liczby Pi!).',
+      'Dwa ostatnie miesiące do kompletu:',
+      '• Marzec (3. miesiąc): kotwicą jest 14 marca (3.14 to słynny Dzień Liczby Pi!).',
       '• Luty: kotwicą jest ZAWSZE OSTATNI DZIEŃ LUTEGO (28 lutego, a w przestępnym 29 lutego).',
-      'Teraz znasz kotwicę dla każdego miesiąca w całym roku kalendarzowym!'
+      'Teraz znasz magiczną kotwicę dla każdego miesiąca w całym roku kalendarzowym!'
     ],
     task: {
       prompt: 'Który dzień marca jest kotwicą Doomsday (związaną z liczbą Pi 3.14)?',
@@ -107,19 +108,20 @@ export const LESSONS = [
     title: 'Egzamin Żółwika Zegarowego',
     subtitle: 'Certyfikat mistrza kalendarza',
     desc: 'Żółwik zadaje finałowe pytanie! Wykorzystaj kotwice i modulo 7.',
+    speech: 'Wielki finał u Żółwika Zenona! Znasz już tajemnicę wiecznego kalendarza w głowie!',
     theory: [
-      'Brawo! Znasz już potężny algorytm Conwaya:',
+      'Brawo! Opanowałeś legendarny algorytm kalendarzowy Johna Conwaya:',
       '• Parzyste: 4.04, 6.06, 8.08, 10.10, 12.12.',
       '• Nieparzyste: 9.05, 5.09, 11.07, 7.11.',
-      '• Marzec: 14.03 (Pi).',
+      '• Marzec: 14.03 (Dzień Pi).',
       '• Luty: 28.02.',
-      'Nawet najszybszy komputer nie zrobi tego z takim wdziękiem jak Ty! 🐢'
+      'Nawet najszybszy komputer nie zrobi tego z takim wdziękiem i spokojem jak Ty! 🐢'
     ],
     task: {
-      prompt: 'Jaki dzień tygodnia to 12 grudnia 2026 roku (pamiętając, że kotwica 2026 to Piątek)?',
-      options: ['Piątek (bo 12.12 to bezpośrednia kotwica Doomsday!)', 'Sobota', 'Niedziela', 'Środa'],
+      prompt: 'Jaki dzień tygodnia to 12 grudnia 2026 roku (pamiętając, że kotwica 2026 to Sobota)?',
+      options: ['Sobota (bo 12.12 to bezpośrednia kotwica Doomsday!)', 'Niedziela', 'Piątek', 'Środa'],
       correct: 0,
-      hint: '12.12 to parzysty bliźniak – dokładnie dzień kotwicy (Piątek)!'
+      hint: '12.12 to parzysty bliźniak – dokładnie dzień kotwicy (Sobota)!'
     }
   }
 ];

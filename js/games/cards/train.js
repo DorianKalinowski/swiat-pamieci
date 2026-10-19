@@ -25,11 +25,20 @@ export function mountMap(root, { nav }) {
     );
   });
 
+  const whyCard = h('div', { class: 'why-card' },
+    h('span', { class: 'why-icon' }, '🎯'),
+    h('div', { class: 'why-content' },
+      h('b', {}, 'Po co Ci ta technika w codziennym życiu?'),
+      h('p', {}, 'Elitarny trening skupienia, uwagi i pamięci roboczej stosowany przez arcymistrzów. Zwiększa koncentrację przy nauce, pozwala dominować w grach karcianych i uczy kodowania złożonych procedur!')
+    )
+  );
+
   const view = h('section', { class: 'screen train-map' },
     h('div', { class: 'crumbs' }, h('a', { href: '#/cards', class: 'back' }, '← Menu gry')),
     h('h1', {}, '🦝 ', h('span', { class: 'grad' }, 'Szkoła Magii Kart')),
     h('p', { class: 'lead' }, 'Poznaj technikę PAO i zapamiętuj całe talie kart z Szopem Magikiem.'),
     raccoon.el,
+    whyCard,
     h('div', { class: 'map-list' }, items)
   );
 
@@ -52,7 +61,7 @@ export function mountStep(root, { nav, index }) {
   let answered = false;
 
   const theoryBox = h('div', { class: 'theory-card' },
-    h('h3', {}, '🎩 Lekcja: ', les.title),
+    h('h3', {}, '🦝 Magiczna sztuczka Szopa: ', les.title),
     h('div', { class: 'theory-text' }, les.theory.map(p => h('p', {}, p)))
   );
 
@@ -120,7 +129,7 @@ export function mountStep(root, { nav, index }) {
 
   root.append(view);
   setTimeout(() => {
-    raccoon.say(`Lekcja ${index + 1}: ${les.subtitle}. Spójrz na karty i zasady PAO!`, 'happy');
+    raccoon.say(les.speech || `Abrakadabra! Lekcja ${index + 1}: ${les.subtitle}. Spójrz na magiczną sztuczkę!`, 'happy');
   }, 250);
 
   return () => raccoon.destroy();

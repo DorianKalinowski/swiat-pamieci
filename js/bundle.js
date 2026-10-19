@@ -762,9 +762,10 @@
     {
       id: 'l1', ch: 0, title: 'Jedna cyfra i jej kształt',
       intro: [
-        'Miau! Jestem Mruczek 🐾 i będę Twoim osobistym trenerem pamięci.',
-        'Oto najważniejsza zasada mistrzów: MÓZG NIE LUBI CYFR, ALE UWIELBIA OBRAZY! 🖼️',
-        'Zobacz: cyfra 2 wygląda dokładnie jak łabędź płynący po stawie 🦢. Spójrz na ekran i zapamiętaj łabędzia!'
+        'Miau! Cześć! Jestem kotek Mruczek 🐾 i nauczę Cię niezwykłej supermocy!',
+        'Po co uczyć się cyfr? Wyobraź sobie, że w 3 sekundy zapamiętujesz kod BLIK, PIN do telefonu, kod do domofonu czy numer do rodziców w nagłej sytuacji – bez paniki i bez kartki!',
+        'Sekret jest prosty: nasz mózg gubi się w nudnych cyfrach, ale uwielbia bajki i kolorowe obrazy! 🖼️',
+        'Zobacz: cyfra 2 wygląda dokładnie jak dumny łabędź płynący po stawie 🦢. Spójrz na ekran i zapamiętaj łabędzia!'
       ],
       digits: '2', time: 4500, showShapes: true,
       hints: ['Cyfra 2 wygląda jak wygięta szyja łabędzia 🦢', 'Wpisz cyfrę 2!']
@@ -1004,10 +1005,19 @@
             starsEl(stars));
         })));
 
+    const whyCard = h('div', { class: 'why-card' },
+      h('span', { class: 'why-icon' }, '🎯'),
+      h('div', { class: 'why-content' },
+        h('b', {}, 'Po co Ci ta technika w codziennym życiu?'),
+        h('p', {}, 'Kody BLIK na zakupach (zanim znikną z ekranu!), PIN-y do kart, kody do domofonów i numery telefonów bliskich w nagłych wypadkach – zapamiętasz je w 3 sekundy bez panicznego szukania komórki!')
+      )
+    );
+
     root.append(h('section', { class: 'screen' },
       h('div', { class: 'crumbs' }, h('a', { href: '#/digits', class: 'back' }, '← Cyfry')),
       h('div', { class: 'game-head' }, h('h1', {}, 'Mapa ', h('span', { class: 'grad' }, 'szkolenia'))),
       cat.el,
+      whyCard,
       h('div', { class: 'bar-progress', style: `--p:${done / LESSONS.length * 100}%` }, h('i')),
       ...chapters));
     setTimeout(() => cat.say(done === LESSONS.length ? 'Wszystko zaliczone! Możesz wracać do dowolnej lekcji, żeby zdobyć brakujące gwiazdki ⭐' : done ? 'Wybierz lekcję. Świecąca czeka na Ciebie! ✨' : 'Zaczynamy od pierwszej lekcji. Kliknij ją! 🐾', 'happy'), 250);
@@ -1373,9 +1383,10 @@
       desc: 'Odkryj tajemnicę starożytnych oratorów. Twój mózg myśli przestrzenią, a nie suchymi słowami!',
       intro: [
         'Rawrr! Cześć! Jestem Tygrysek Leon 🐯 i zabiorę Cię do Twojego własnego Pałacu Pamięci.',
-        'Czy wiesz, że Twój mózg pamięta drogę do domu nawet po latach, ale zapomina listę 5 zakupów w 5 minut? Mamy w głowie genialny GPS!',
-        'Metoda Loci (z łaciny: „miejsca”) polega na tym, że zamiast wkuwać słowa, wchodzimy do pałacu i kładziemy w pokojach zabawne, niezwykłe przedmioty.',
-        'Zacznijmy powoli od zaledwie 2 komnat: Złotej Bramy i Marmurowego Holu. Zobacz, jakie to proste i naturalne!'
+        'Po co Ci ta technika? Dzięki niej wygłosisz prezentację w szkole lub w pracy bez żadnej ściągawki, zapamiętasz wierszyk, trudne fakty na klasówkę z historii albo całą listę zadań na dany dzień!',
+        'Czy wiesz, że Twój mózg pamięta drogę do domu nawet po latach, ale zapomina listę zakupów w 5 minut? Mamy w głowie genialny GPS!',
+        'Metoda Loci polega na tym, że zamiast nudnego wkuwania, wchodzimy do wyobrażonego pałacu i zostawiamy w pokojach śmieszne przedmioty.',
+        'Zacznijmy powoli od zaledwie 2 komnat: Złotej Bramy i Marmurowego Holu. Zobacz, jakie to proste i przyjemne!'
       ],
       loci: [
         { roomId: 'gate', itemId: 'banana', story: 'Na szczycie Złotej Bramy wisi olbrzymi Świecący Banan 🍌. Jest tak jasny, że oślepia strażników!', hint: 'Spójrz w górę bramy – co tam świeci żółtym blaskiem?' },
@@ -1573,6 +1584,14 @@
       );
     });
 
+    const whyCard = h('div', { class: 'why-card' },
+      h('span', { class: 'why-icon' }, '🎯'),
+      h('div', { class: 'why-content' },
+        h('b', {}, 'Po co Ci ta technika w codziennym życiu?'),
+        h('p', {}, 'Wygłaszanie przemówień i prezentacji bez ani jednej kartki, bezstresowe zdawanie egzaminów i lista 20 zadań w głowie – Twój mózg myśli przestrzenią, a pałac to Twój wewnętrzny segregator wiedzy!')
+      )
+    );
+
     const view = h('section', { class: 'screen' },
       h('div', { class: 'crumbs' },
         h('a', { href: '#/palace', class: 'back' }, '← Pałac pamięci')
@@ -1584,6 +1603,7 @@
         )
       ),
       tiger.el,
+      whyCard,
       h('div', { class: 'lesson-list' }, cards)
     );
 
@@ -3570,10 +3590,13 @@ const LESSONS = [
     subtitle: 'Zauważ to, co unikalne',
     desc: 'Dlaczego zapominamy imiona? Bo mózg traktuje twarz jako całość. Naucz się szukać jednego wyrazistego elementu!',
     faces: [FACES[0], FACES[2]], // Marek (okulary), Krzysztof (broda)
+    speech: 'Cześć, tu sprytny Lisek! 🦊 Czy zdarzyło Ci się poznać kogoś w klasie lub na urodzinach i od razu zapomnieć jego imię? Pokażę Ci detektywistyczny trik z kotwicą – zapamiętasz każdego kolegę i koleżankę od pierwszego wejrzenia!',
     theory: [
-      'Nasz mózg zapomina imiona w 5 sekund, jeśli nie przyczepimy ich do konkretnego punktu.',
-      'Krok 1 to ZNALEZIENIE KOTWICY – jednej rzeczy, która rzuca się w oczy jako pierwsza: okulary, bujna broda, fryzura, pieprzyk czy uśmiech.',
-      'Spójrz na Marka – widzisz te ogromne złote okulary? To nasza kotwica!'
+      'Po co nam ta umiejętność? Ile razy ktoś przedstawił Ci się w nowej klasie, na placu zabaw albo na uroczystości, a Ty po 5 sekundach miałeś pustkę w głowie? To przydarza się każdemu!',
+      'Sekret mistrzów pamięci: nasz mózg nie potrafi utrzymać samego dźwięku imienia. Musimy je „przyczepić” do twarzy jak kolorową naklejkę!',
+      'KROK 1 – ZNAJDŹ KOTWICĘ DETEKTYWA:',
+      'Gdy na kogoś patrzysz, poszukaj jednej charakterystycznej rzeczy: wielkie okulary, bujna broda, zabawna fryzura czy wielki uśmiech.',
+      'Spójrz na Marka poniżej: widzisz te wielkie okrągłe złote okulary? To nasza idealna kotwica!'
     ],
     task: {
       type: 'feature-pick',
@@ -3590,13 +3613,14 @@ const LESSONS = [
     subtitle: 'Zamieniaj abstrakcyjne imiona w obrazy',
     desc: 'Imię to tylko dźwięk. Aby je pamiętać, zamień je w konkretny, dotykalny przedmiot.',
     faces: [FACES[1], FACES[3]], // Basia (kontrabas), Kasia (kakao)
+    speech: 'Krok drugi to most fonetyczny! Zamieniamy każde imię w zabawną rzecz, którą można dotknąć!',
     theory: [
-      'Imię samo w sobie jest abstrakcyjne. Trudno „zobaczyć” słowo Basia.',
-      'Dlatego tworzymy MOST FONETYCZNY – skojarzenie brzmieniowe z realnym przedmiotem:',
+      'Imię samo w sobie jest ulotnym dźwiękiem. Trudno „zobaczyć” słowo Basia czy Marek.',
+      'Dlatego budujemy MOST FONETYCZNY – szukamy przedmiotu, który brzmi prawie tak samo:',
       '• Basia → wielki KONTRA-BAS 🎻',
-      '• Kasia → kubek gorącego KAKAO ☕',
-      '• Marek → neonowy MARKER 🖊️',
-      'Gdy słyszysz imię, Twój umysł od razu widzi ten przedmiot!'
+      '• Kasia → kubek pachnącego KAKAO ☕',
+      '• Marek → gruby jaskrawy MARKER 🖊️',
+      'Gdy usłyszysz imię, Twój umysł od razu widzi ten przedmiot przed oczami!'
     ],
     task: {
       type: 'bridge-pick',
@@ -3613,12 +3637,13 @@ const LESSONS = [
     subtitle: 'Połącz kotwicę twarzy z mostem fonetycznym',
     desc: 'Sekret mistrzów pamięci: spraw, by przedmiot wszedł w żywą interakcję z twarzą!',
     faces: [FACES[0], FACES[1]],
+    speech: 'A teraz najfajniejsza część: robimy wybuchowy film w głowie! Zobacz, jak to działa!',
     theory: [
-      'Masz już kotwicę (np. okulary Marka) i most fonetyczny (MARKER).',
-      'Teraz NAJWAŻNIEJSZY KROK: zrób z nich film w głowie!',
-      'Nie wyobrażaj sobie po prostu Markera obok Marka.',
-      'Zobacz, jak Marek wyciąga gruby, jaskrawy MARKER i zamalowuje nim swoje własne OKULARY, aż nic przez nie nie widzi!',
-      'Im bardziej absurdalna i dynamiczna akcja, tym trwalej zapada w pamięć!'
+      'Mamy już kotwicę (okulary Marka) i most fonetyczny (MARKER).',
+      'Teraz najważniejszy krok: połączmy je w śmieszną, dynamiczną akcję!',
+      'Nie wyobrażaj sobie po prostu markera leżącego obok Marka.',
+      'Zobacz, jak Marek wyciąga neonowy MARKER i z uśmiechem zamalowuje nim swoje własne OKULARY, aż nic przez nie nie widzi!',
+      'Im bardziej szalona i dynamiczna akcja, tym mocniej zostaje w pamięci!'
     ],
     task: {
       type: 'action-pick',
@@ -3640,18 +3665,18 @@ const LESSONS = [
     subtitle: 'Zastosuj technikę dla 3 osób',
     desc: 'Czas na praktykę! Poznaj Marka, Basię i Krzysztofa, a potem bezbłędnie ich rozpoznaj.',
     faces: [FACES[0], FACES[1], FACES[2]],
+    speech: 'Pora na małe przyjęcie! Przedstawię Ci troje znajomych – połączmy ich kotwice w żywe scenki!',
     theory: [
       'Ćwiczymy całą pętlę pamięciową dla 3 gości:',
-      '1. Marek → złote okulary → MARKER maluje szkła!',
-      '2. Basia → rudy kok → BAS podskakuje w rytm!',
-      '3. Krzysztof → czarna broda drwala → KRZAK / KRZYŻACY gubią miecz w jego brodzie!'
+      '1. Marek → złote okulary → MARKER zamalowuje szkła!',
+      '2. Basia → rudy kok → BAS podskakuje w rytm muzyki!',
+      '3. Krzysztof → czarna broda drwala → KRZAK albo KRZYŻACY gubią miecz w jego brodzie!'
     ],
     task: {
       type: 'test-multiple',
       prompt: 'Kto ukrył krzyżacki miecz w swojej wielkiej czarnej brodzie?',
-      facesTest: [FACES[0], FACES[1], FACES[2]],
-      correctFaceId: 'f3',
-      correctName: 'Krzysztof',
+      options: ['Krzysztof (czarna broda)', 'Marek (złote okulary)', 'Basia (rudy kok)', 'Tomasz (muszka)'],
+      correct: 0,
       hint: 'Przypomnij sobie kotwicę brody i krzaczastego Krzysztofa!'
     }
   },
@@ -3661,10 +3686,11 @@ const LESSONS = [
     subtitle: 'Dodajemy Kasię i Tomasza',
     desc: 'Podnosimy poprzeczkę: 5 osób z różnymi stylami, fryzurami i rekwizytami.',
     faces: [FACES[0], FACES[1], FACES[2], FACES[3], FACES[4]],
+    speech: 'Idzie Ci wyśmienicie! Powiększamy grono do 5 osób – Kasia i Tomasz dołączają do zabawy!',
     theory: [
-      'Wchodzimy do większego salonu! Poznaj kolejne dwie osoby:',
-      '• Kasia (UX designerka) → fioletowe włosy & kolczyk w nosie → pije KAKAO, a kolczyk brzęczy!',
-      '• Tomasz (prezenter) → lśniący uśmiech & muszka → czyta wielki TOM encyklopedii!'
+      'Wchodzimy do większego salonu! Poznaj kolejne dwie wspaniałe osoby:',
+      '• Kasia (projektantka) → fioletowe włosy & kolczyk w nosie → pije gorące KAKAO, a kolczyk brzęczy!',
+      '• Tomasz (prezenter) → lśniący uśmiech & muszka → czyta wielki, opasły TOM encyklopedii!'
     ],
     task: {
       type: 'identify-face',
@@ -3681,12 +3707,13 @@ const LESSONS = [
     subtitle: '7 gości na bankiecie',
     desc: 'Ostateczny sprawdzian szkolenia! Przetestuj technikę na pełnej grupie gości z losowymi pytaniami.',
     faces: FACES.slice(0, 7),
+    speech: 'Wielki finał u Liska! Znasz już całą technikę mistrzów – żaden bankiet ani nowa klasa Cię nie zaskoczy!',
     theory: [
-      'Brawo! Znasz już całą metodologię:',
+      'Brawo! Znasz już kompletną metodę zapamiętywania każdego człowieka:',
       '1. Zauważ kotwicę (okulary, broda, monokl, opaska, muszka).',
-      '2. Zamień imię na most fonetyczny.',
-      '3. Wyobraź sobie interakcję kotwicy z mostem.',
-      'Jesteś w 100% gotowy na każdy bankiet, konferencję czy grę swobodną!'
+      '2. Zamień imię na most fonetyczny (Basia=Bas, Marek=Marker, Piotr=Pióro).',
+      '3. Zobacz szaloną interakcję kotwicy z mostem w swojej wyobraźni.',
+      'Jesteś w 100% gotowy na każdy bankiet, klasę i grę swobodną!'
     ],
     task: {
       type: 'final-exam',
@@ -3727,11 +3754,20 @@ function mountMap(root, { nav }) {
     );
   });
 
+  const whyCard = h('div', { class: 'why-card' },
+    h('span', { class: 'why-icon' }, '🎯'),
+    h('div', { class: 'why-content' },
+      h('b', {}, 'Po co Ci ta technika w codziennym życiu?'),
+      h('p', {}, 'Pewność siebie w nowej pracy, w szkole i na spotkaniach towarzyskich! Gdy zwrócisz się do nowo poznanej osoby po imieniu już po pierwszej rozmowie, zrobisz oszałamiające wrażenie i od razu zyskasz jej sympatię!')
+    )
+  );
+
   const view = h('section', { class: 'screen train-map' },
     h('div', { class: 'crumbs' }, h('a', { href: '#/names', class: 'back' }, '← Menu gry')),
     h('h1', {}, '🦊 ', h('span', { class: 'grad' }, 'Szkolenie: Imiona i twarze')),
     h('p', { class: 'lead' }, 'Krok po kroku naucz się zapamiętywać każdą twarz i imię na całe życie.'),
     fox.el,
+    whyCard,
     h('div', { class: 'map-list' }, items)
   );
 
@@ -3764,7 +3800,7 @@ function mountStep(root, { nav, index }) {
   );
 
   const theoryBox = h('div', { class: 'theory-card' },
-    h('h3', {}, '📖 Lekcja: ', les.title),
+    h('h3', {}, '🦊 Wskazówka Liska: ', les.title),
     h('div', { class: 'theory-text' }, les.theory.map(p => h('p', {}, p)))
   );
 
@@ -3833,7 +3869,7 @@ function mountStep(root, { nav, index }) {
 
   root.append(view);
   setTimeout(() => {
-    fox.say(`Lekcja ${index + 1}: ${les.subtitle}! Przeczytaj teorię i spróbuj odpowiedzieć.`, 'happy');
+    fox.say(les.speech || `Lekcja ${index + 1}: ${les.subtitle}! Sprawdź moją sprytną wskazówkę.`, 'happy');
   }, 250);
 
   return () => fox.destroy();
@@ -3854,24 +3890,27 @@ function mountFree(root, { modeId, nav }) {
   let score = 0;
   let round = 1;
   let combo = 0;
+  let lives = 3;
   let timeLeft = modeId === 'speed' ? 30 : 0;
   let timerInterval = null;
-  let pool = [...FACES];
-  let cocktailPool = [FACES[0], FACES[1]];
-  let currentTarget = null;
   let isGameOver = false;
+
+  const pool = [...FACES];
+  let cocktailPool = [FACES[0], FACES[1], FACES[2]];
+  let currentTarget = null;
 
   const scoreEl = h('span', { class: 'hud-score' }, '0');
   const roundEl = h('span', { class: 'hud-round' }, '1');
+  const livesEl = (modeId === 'who' || modeId === 'find') ? h('span', { class: 'hud-lives' }, '❤️❤️❤️') : null;
   const timerEl = modeId === 'speed' ? h('span', { class: 'hud-timer' }, '⏱ 30s') : null;
-
   const playArea = h('div', { class: 'free-play-area' });
 
   const view = h('section', { class: 'screen free-screen' },
     h('div', { class: 'crumbs' }, h('a', { href: '#/names', class: 'back' }, '← Wybór trybu')),
     h('div', { class: 'hud' },
       h('div', { class: 'hud-item' }, h('small', {}, 'Wynik'), scoreEl),
-      h('div', { class: 'hud-item' }, h('small', {}, modeId === 'cocktail' ? 'Goście' : 'Runda'), roundEl),
+      h('div', { class: 'hud-item' }, h('small', {}, 'Runda'), roundEl),
+      livesEl ? h('div', { class: 'hud-item' }, h('small', {}, 'Szanse'), livesEl) : null,
       timerEl ? h('div', { class: 'hud-item' }, h('small', {}, 'Czas'), timerEl) : null
     ),
     fox.el,
@@ -3884,8 +3923,15 @@ function mountFree(root, { modeId, nav }) {
   function cheerFox(c) {
     if (c % 3 === 0 && c > 0) {
       fox.say(`Combo x${c}! Twoje oko wyłapie każdy detal! 🦊✨`, 'cheer', { revert: 1400 });
+      fox.hop?.();
     } else {
       fox.say(rand(CHEERS), 'cheer', { revert: 1000 });
+    }
+  }
+
+  function updateLives() {
+    if (livesEl) {
+      livesEl.textContent = '❤️'.repeat(Math.max(0, lives)) + '🖤'.repeat(Math.max(0, 3 - lives));
     }
   }
 
@@ -3894,6 +3940,37 @@ function mountFree(root, { modeId, nav }) {
     if (score > prev) {
       store.set(`names.best.${modeId}`, score);
     }
+  }
+
+  function startTimer() {
+    if (timerInterval) clearInterval(timerInterval);
+    timerInterval = setInterval(() => {
+      timeLeft--;
+      if (timerEl) timerEl.textContent = `⏱ ${timeLeft}s`;
+      if (timeLeft <= 0) {
+        clearInterval(timerInterval);
+        gameOver();
+      }
+    }, 1000);
+  }
+
+  function restartGame() {
+    isGameOver = false;
+    score = 0;
+    round = 1;
+    combo = 0;
+    lives = 3;
+    cocktailPool = [FACES[0], FACES[1], FACES[2]];
+    timeLeft = modeId === 'speed' ? 30 : 0;
+    scoreEl.textContent = '0';
+    roundEl.textContent = '1';
+    updateLives();
+    if (timerEl) timerEl.textContent = `⏱ ${timeLeft}s`;
+    if (timerInterval) clearInterval(timerInterval);
+    if (modeId === 'speed') startTimer();
+    fox.setMood('happy');
+    fox.say('Zaczynamy od nowa! Pokaż lisi spryt! 🦊✨', 'happy');
+    nextRound();
   }
 
   function gameOver() {
@@ -3906,6 +3983,11 @@ function mountFree(root, { modeId, nav }) {
 
     const best = store.get(`names.best.${modeId}`, score);
     playArea.innerHTML = '';
+
+    const restartBtn = h('button', { class: 'btn btn-primary', type: 'button' }, 'Zagraj ponownie ↻');
+    restartBtn.addEventListener('click', restartGame);
+    const backBtn = h('a', { class: 'btn btn-ghost', href: '#/names' }, 'Inny tryb');
+
     playArea.append(
       h('div', { class: 'game-over-box' },
         h('h2', {}, '🎉 Świetna gra!'),
@@ -3914,14 +3996,9 @@ function mountFree(root, { modeId, nav }) {
           h('span', {}, 'punktów')
         ),
         h('div', { class: 'go-best' }, `🏆 Twój rekord: ${best}`),
-        h('div', { class: 'go-actions' },
-          h('button', { class: 'btn btn-primary', type: 'button' }, 'Zagraj ponownie 🔄')
-        )
+        h('div', { class: 'go-actions' }, restartBtn, backBtn)
       )
     );
-    playArea.querySelector('.go-actions button').addEventListener('click', () => {
-      mountFree(root, { modeId, nav });
-    });
   }
 
   function nextRound() {
@@ -3934,9 +4011,14 @@ function mountFree(root, { modeId, nav }) {
       const wrong = shuffle(others).slice(0, 3);
       const choices = shuffle([currentTarget, ...wrong]);
 
+      // W pierwszych 3 rundach dajemy podpowiedź cechy, potem gracz musi rozpoznać sam!
+      const clueText = round <= 3
+        ? `Podpowiedź cechy: ${currentTarget.feature}`
+        : 'Rozpoznaj twarz z własnej pamięci!';
+
       const card = h('div', { class: 'who-target-card' },
         h('div', { class: 'who-avatar', html: currentTarget.svg }),
-        h('div', { class: 'who-clue' }, 'Podpowiedź: ', currentTarget.feature)
+        h('div', { class: 'who-clue' }, clueText)
       );
 
       const opts = h('div', { class: 'who-grid' });
@@ -3955,10 +4037,16 @@ function mountFree(root, { modeId, nav }) {
           } else {
             sfx.wrong();
             combo = 0;
-            fox.setMood('sad', 1200);
-            fox.say(`To ${currentTarget.name}! Kotwica: ${currentTarget.feature} ⚓ Następnym razem się uda! 🦊`, 'think', { revert: 2600 });
+            lives--;
+            updateLives();
             btn.classList.add('wrong');
-            setTimeout(nextRound, 1200);
+            if (lives <= 0) {
+              gameOver();
+            } else {
+              fox.setMood('sad', 1200);
+              fox.say(`To ${currentTarget.name}! Kotwica: ${currentTarget.feature} ⚓ Masz jeszcze ${lives} szanse. 🦊`, 'think', { revert: 2600 });
+              setTimeout(nextRound, 1200);
+            }
           }
         });
         opts.append(btn);
@@ -3967,11 +4055,9 @@ function mountFree(root, { modeId, nav }) {
       playArea.append(card, opts);
     } else if (modeId === 'find') {
       currentTarget = pool[rand(0, pool.length - 1)];
-      const displayed = shuffle(pool).slice(0, 6);
-      if (!displayed.some(f => f.id === currentTarget.id)) {
-        displayed[0] = currentTarget;
-      }
-      const shuffled = shuffle(displayed);
+      const count = Math.min(pool.length, round <= 2 ? 4 : round <= 5 ? 6 : 8);
+      const others = pool.filter(f => f.id !== currentTarget.id);
+      const displayed = shuffle([currentTarget, ...shuffle(others).slice(0, count - 1)]);
 
       const question = h('div', { class: 'find-question' },
         h('h3', {}, `Znajdź: `, h('span', { class: 'grad' }, currentTarget.name)),
@@ -3979,7 +4065,7 @@ function mountFree(root, { modeId, nav }) {
       );
 
       const grid = h('div', { class: 'faces-selection-grid' });
-      shuffled.forEach(f => {
+      displayed.forEach(f => {
         const btn = h('button', { class: 'face-tile-btn', type: 'button', html: f.svg });
         btn.addEventListener('click', () => {
           if (f.id === currentTarget.id) {
@@ -3994,9 +4080,15 @@ function mountFree(root, { modeId, nav }) {
           } else {
             sfx.wrong();
             combo = 0;
-            fox.setMood('sad', 1000);
-            fox.say(`To nie ta osoba! Przypomnij sobie jej cechę szczególną 🔍`, 'think', { revert: 2000 });
+            lives--;
+            updateLives();
             btn.classList.add('wrong');
+            if (lives <= 0) {
+              gameOver();
+            } else {
+              fox.setMood('sad', 1000);
+              fox.say(`To nie ta osoba! Przypomnij sobie jej cechę 🔍 Pozostało szans: ${lives}`, 'think', { revert: 2200 });
+            }
           }
         });
         grid.append(btn);
@@ -4020,12 +4112,16 @@ function mountFree(root, { modeId, nav }) {
           if (c.id === currentTarget.id) {
             sfx.pop();
             score += 10;
+            timeLeft += 2; // bonus czasowy
             round++;
             scoreEl.textContent = `${score}`;
             roundEl.textContent = `${round}`;
+            if (timerEl) timerEl.textContent = `⏱ ${timeLeft}s`;
             nextRound();
           } else {
             sfx.wrong();
+            timeLeft = Math.max(1, timeLeft - 2);
+            if (timerEl) timerEl.textContent = `⏱ ${timeLeft}s`;
             btn.classList.add('wrong');
             setTimeout(nextRound, 300);
           }
@@ -4072,14 +4168,7 @@ function mountFree(root, { modeId, nav }) {
   }
 
   if (modeId === 'speed') {
-    timerInterval = setInterval(() => {
-      timeLeft--;
-      if (timerEl) timerEl.textContent = `⏱ ${timeLeft}s`;
-      if (timeLeft <= 0) {
-        clearInterval(timerInterval);
-        gameOver();
-      }
-    }, 1000);
+    startTimer();
   }
 
   nextRound();
@@ -4262,11 +4351,14 @@ const LESSONS = [
     title: 'Cyfry 0 i 1 (S/Z oraz T/D)',
     subtitle: 'Pierwsze litery alfabetu pamięci',
     desc: 'Poznaj sekret, dzięki któremu mistrzowie świata zapamiętują tysiące cyfr.',
+    speech: 'Uhuhu! Cześć! Jestem Sówka 🦉 Zastanawiasz się, po co uczyć się tej techniki? Pokażę Ci sekretny kod, dzięki któremu łatwo zapamiętasz numer PIN, PESEL czy ważne daty w szkole – bez nudnego wkuwania!',
     theory: [
-      'System Major zamienia cyfry na spółgłoski, a samogłoski służą jako klej do tworzenia słów.',
-      '• 0 = S, Z (Zero zaczyna się na Z, syczący dźwięk).',
-      '• 1 = T, D (Litera T oraz D mają JEDNĄ pionową kreskę, dokładnie jak cyfra 1).',
-      'Przykład: Słowo „KOT” – ma T na końcu (1). Słowo „SOS” ma S (0).'
+      'Po co nam ta technika? Nasz mózg gubi się w suchych, nudnych cyfrach, ale uwielbia słowa i kolorowe obrazy!',
+      'System Major zamienia cyfry na dźwięki spółgłosek. Dzięki temu z dowolnego numeru ułożysz śmieszne słowo, które od razu zapamiętasz!',
+      'Poznajmy dwie pierwsze cyfry kodu:',
+      '• 0 = S oraz Z – słowo „Zero” zaczyna się na literę Z, a zero syczy cichutko jak wąż: sss!',
+      '• 1 = T oraz D – spójrz na literę T oraz D: obie mają JEDNĄ prostą pionową kreskę, dokładnie jak cyfra 1!',
+      'To bardzo proste! Zobacz: słowo „KOT” ma T na końcu (1), a słowo „SOS” ma S (0).'
     ],
     task: {
       prompt: 'Która spółgłoska odpowiada cyfrze 1 w systemie Major?',
@@ -4280,12 +4372,14 @@ const LESSONS = [
     title: 'Cyfry 2 i 3 (N oraz M)',
     subtitle: 'Nóżki liter',
     desc: 'Spójrz na litery N i M – ich kształt mówi sam za siebie!',
+    speech: 'Świetnie Ci poszło! Zobacz, cyfry 2 i 3 mają swoje ukryte nóżki – dzieci i dorośli zapamiętują je w sekundę!',
     theory: [
-      '• 2 = N (małe „n” ma DWA brzuszki / dwie nóżki opierające się o linię).',
-      '• 3 = M (małe „m” ma TRZY nóżki).',
+      'Kolejne dwie cyfry to najprostsza zabawa w skojarzenia kształtów:',
+      '• 2 = N – małe „n” ma DWA brzuszki / dwie nóżki stojące na ziemi.',
+      '• 3 = M – małe „m” ma TRZY nóżki (raz, dwa, trzy!).',
       'To najprostsza zasada wizualna w całym systemie!',
-      'Gdy widzisz 2 → myślisz N (np. Nos, Nóż).',
-      'Gdy widzisz 3 → myślisz M (np. Mysz, Młot).'
+      'Gdy w numerze telefonu lub dacie widzisz 2 → myślisz o N (np. Nos, Nóż).',
+      'Gdy widzisz 3 → myślisz o M (np. Mysz, Młot).'
     ],
     task: {
       prompt: 'Dlaczego cyfrze 3 przypisana jest litera M?',
@@ -4299,10 +4393,12 @@ const LESSONS = [
     title: 'Cyfry 4 i 5 (R oraz L)',
     subtitle: 'CzteRy oraz rzymskie L',
     desc: 'Jak zapamiętać 4 i 5 bez wysiłku?',
+    speech: 'Uhuhu! Pora na cyfry 4 i 5. Wsłuchaj się w dźwięki i spójrz na dłoń!',
     theory: [
-      '• 4 = R (Słowo „czteRy” ma bardzo wyraźne, dźwięczne R na końcu).',
-      '• 5 = L (Rzymska liczba L oznacza 50; dłoń z rozpostartym kciukiem i palcem wskazującym tworzy literę L i ma 5 palców).',
-      'Przykład: 4 to Rura lub Ryba, 5 to Liść lub Lama.'
+      'Dlaczego 4 to R, a 5 to L? To sprytne skojarzenia:',
+      '• 4 = R – powiedz głośno słowo „czteRy” – słyszysz to mocne, dźwięczne R na końcu?',
+      '• 5 = L – spójrz na dłoń: kciuk i palec wskazujący tworzą kształt litery L, a cała dłoń ma 5 palców! (Rzymskie L to też 50).',
+      'Przykłady ze świata: 4 to Rura lub Ryba, a 5 to Liść lub Lama.'
     ],
     task: {
       prompt: 'Jaki dźwięk odpowiada cyfrze 4?',
@@ -4316,10 +4412,12 @@ const LESSONS = [
     title: 'Cyfry 6 i 7 (J/SZ/CZ oraz K/G)',
     subtitle: 'Szóstka i kanciaste K',
     desc: 'Połowa alfabetu za nami! Poznaj szeleszczące dźwięki i siódemkę.',
+    speech: 'Jesteśmy już w połowie drogi! Szeleszcząca szóstka i kanciaste K czekają na Ciebie!',
     theory: [
-      '• 6 = J, SZ, CZ (Sześć brzmi szeleszcząco, litera J to 6. spółgłoska alfabetu).',
-      '• 7 = K, G (Wyobraź sobie dwie siódemki 7 odwrócone do siebie – tworzą ramiona litery K).',
-      'Przykłady: 6 = Jeż, Szal. 7 = Koc, Kot, Kura.'
+      'Poznajemy szóstkę i siódemkę:',
+      '• 6 = J, SZ, CZ – powiedz „Sześć” – to najbardziej szeleszcząca cyfra w języku polskim! (A litera J to 6. spółgłoska alfabetu).',
+      '• 7 = K, G – wyobraź sobie dwie cyfry 7 przytknięte do siebie plecami – tworzą ostre ramiona litery K!',
+      'Z tych literek powstaną fantastyczne słowa: 6 to Jeż lub Szal, a 7 to Koc, Kot lub Kura.'
     ],
     task: {
       prompt: 'Która para spółgłosek odpowiada cyfrze 7?',
@@ -4333,10 +4431,12 @@ const LESSONS = [
     title: 'Cyfry 8 i 9 (F/W oraz P/B)',
     subtitle: 'Pętelki i lustrzane odbicia',
     desc: 'Ostatnie dwie cyfry domykające alfabet Majora.',
+    speech: 'Ostatni krok alfabetu! Dwie pętelki i obrócona dziewiątka – i cały kod 0-9 masz w małym palcu!',
     theory: [
-      '• 8 = F, W (Pisane małe „f” ma dwie pętelki, dokładnie jak cyfra 8).',
-      '• 9 = P, B (Cyfra 9 w lustrze to litera P; a obrócona do góry nogami to małe b).',
-      'Gratulacje! Znasz już całe 0-9:',
+      'Domykamy cały alfabet cyfr:',
+      '• 8 = F, W – pisana mała literka „f” ma dwie pętelki na górze i na dole, dokładnie jak cyfra 8.',
+      '• 9 = P, B – cyfra 9 w lustrze wygląda jak litera P, a gdy obróci się ją do góry nogami – jak małe b!',
+      'Gratulacje! Znasz już całe 0 do 9:',
       '0: S/Z | 1: T/D | 2: N | 3: M | 4: R | 5: L | 6: J/SZ | 7: K/G | 8: F/W | 9: P/B.'
     ],
     task: {
@@ -4351,13 +4451,15 @@ const LESSONS = [
     title: 'Samogłoski jako klej',
     subtitle: 'Budowanie słów z samogłosek A, E, I, O, U, Y',
     desc: 'Samogłoski NIE MAJĄ wartości liczbowej. Służą tylko do lepienia słów!',
+    speech: 'Teraz dzieje się magia! Użyjemy samogłosek jak plasteliny do lepienia całych słów!',
     theory: [
-      'W systemie Major litery A, E, I, O, U, Y oraz H nie oznaczają żadnej cyfry.',
-      'Dzięki temu możesz wstawić DOWOLNE samogłoski między spółgłoski, by utworzyć sensowne słowo!',
+      'Po co nam samogłoski (A, E, I, O, U, Y)?',
+      'W systemie Major samogłoski NIE MAJĄ żadnej cyfry – są jak darmowy klej albo plastelina!',
+      'Dzięki temu możesz wstawić DOWOLNE samogłoski między spółgłoski, by utworzyć sensowne, barwne słowo!',
       'Spójrz na liczbę 71:',
       '• 7 = K, 1 = T.',
-      '• Dodajemy samogłoskę „O” w środek → powstaje KOT!',
-      '• Albo dodajemy „A” → KAT! Albo „I” → KIT!'
+      '• Wkładasz samogłoskę „O” w środek → powstaje puszysty KOT!',
+      '• Albo dodajesz „A” → KAT! Albo „I” → KIT!'
     ],
     task: {
       prompt: 'Jaką liczbę koduje słowo „NOS” (N=2, S=0)?',
@@ -4371,13 +4473,14 @@ const LESSONS = [
     title: '2-cyfrowe obrazy (kołki pamięciowe)',
     subtitle: 'TOR, RAK, FALA, BUT',
     desc: 'Przekształcaj pary liczb w konkretne, trójwymiarowe przedmioty.',
+    speech: 'Uhuhu! Popatrz, jak liczby zamieniają się w trójwymiarowe zabawki w Twojej głowie!',
     theory: [
-      'Zamiast pamiętać nudne liczby, pamiętasz obrazy:',
-      '• 14 = T(1) + R(4) = TOR kolejowy 🚂',
-      '• 47 = R(4) + K(7) = RAK ze szczypcami 🦞',
-      '• 71 = K(7) + T(1) = KOT 🐱',
+      'Zamiast pamiętać nudne liczby, pamiętasz wyraziste obrazy (kołki pamięciowe):',
+      '• 14 = T(1) + R(4) = kolejowy TOR 🚂',
+      '• 47 = R(4) + K(7) = szczypiący RAK 🦞',
+      '• 71 = K(7) + T(1) = puszysty KOT 🐱',
       '• 91 = B(9) + T(1) = skórzany BUT 👞',
-      'Widzisz obraz → od razu wiesz, jaka to liczba!'
+      'Gdy widzisz obraz przed oczami → od razu wiesz, jaka to liczba!'
     ],
     task: {
       prompt: 'Które słowo poprawnie koduje liczbę 14 (1=T, 4=R)?',
@@ -4391,11 +4494,12 @@ const LESSONS = [
     title: 'Egzamin Profesora: Kod PIN',
     subtitle: 'Praktyczne zapamiętanie 4-cyfrowego kodu',
     desc: 'Wykorzystaj 2 obrazy, aby zapamiętać PIN 71-14 na zawsze.',
+    speech: 'Pora na wielki finał! Zobacz, jak w 3 sekundy zapamiętasz 4-cyfrowy PIN do bankomatu lub telefonu na zawsze!',
     theory: [
-      'Twój nowy kod do sejfu to: 7114.',
+      'Twój nowy kod PIN do telefonu lub karty to: 7114.',
       'Dzielimy go na dwa 2-cyfrowe kołki:',
-      '• 71 = KOT 🐱',
-      '• 14 = TOR kolejowy 🚂',
+      '• 71 = KOT 🐱 (K=7, T=1)',
+      '• 14 = TOR kolejowy 🚂 (T=1, R=4)',
       'Łączymy je w żywą scenę: Gigantyczny KOT leży na TORACH i łapą zatrzymuje pociąg!',
       'Gdy stoisz przed bankomatem, widzisz Kota na Torach: Kot(71) + Tor(14) = 7114!'
     ],
@@ -4437,11 +4541,20 @@ function mountMap(root, { nav }) {
     );
   });
 
+  const whyCard = h('div', { class: 'why-card' },
+    h('span', { class: 'why-icon' }, '🎯'),
+    h('div', { class: 'why-content' },
+      h('b', {}, 'Po co Ci ta technika w codziennym życiu?'),
+      h('p', {}, 'Daty historyczne, rocznice, numery kont, statystyki i kody dostępowe. Zamiast męczących liczb pamiętasz żywe obrazy i filmy, które zostają w głowie na całe lata!')
+    )
+  );
+
   const view = h('section', { class: 'screen train-map' },
     h('div', { class: 'crumbs' }, h('a', { href: '#/major', class: 'back' }, '← Menu gry')),
     h('h1', {}, '🦉 ', h('span', { class: 'grad' }, 'Akademia Majora ze Sówką')),
     h('p', { class: 'lead' }, '8 fundamentalnych lekcji, od dźwięków 0-9 po swobodne zapamiętywanie kodów PIN i PESEL.'),
     owl.el,
+    whyCard,
     h('div', { class: 'map-list' }, items)
   );
 
@@ -4464,7 +4577,7 @@ function mountStep(root, { nav, index }) {
   let answered = false;
 
   const theoryBox = h('div', { class: 'theory-card' },
-    h('h3', {}, '🎓 Wykład: ', les.title),
+    h('h3', {}, '🦉 Tajnik Sówki: ', les.title),
     h('div', { class: 'theory-text' }, les.theory.map(p => h('p', {}, p)))
   );
 
@@ -4532,7 +4645,7 @@ function mountStep(root, { nav, index }) {
 
   root.append(view);
   setTimeout(() => {
-    owl.say(`Wykład ${index + 1}: ${les.subtitle}. Przeczytaj uważnie zasady fonetyczne.`, 'happy');
+    owl.say(les.speech || `Uhuhu! Lekcja ${index + 1}: ${les.subtitle}. Spójrz na podpowiedź poniżej!`, 'happy');
   }, 250);
 
   return () => owl.destroy();
@@ -4553,17 +4666,20 @@ function mountFree(root, { modeId, nav }) {
   let score = 0;
   let round = 1;
   let combo = 0;
+  let lives = 3;
   let isGameOver = false;
 
   const scoreEl = h('span', { class: 'hud-score' }, '0');
   const roundEl = h('span', { class: 'hud-round' }, '1');
+  const livesEl = h('span', { class: 'hud-lives' }, '❤️❤️❤️');
   const playArea = h('div', { class: 'free-play-area' });
 
   const view = h('section', { class: 'screen free-screen' },
     h('div', { class: 'crumbs' }, h('a', { href: '#/major', class: 'back' }, '← Wybór trybu')),
     h('div', { class: 'hud' },
       h('div', { class: 'hud-item' }, h('small', {}, 'Wynik'), scoreEl),
-      h('div', { class: 'hud-item' }, h('small', {}, 'Runda'), roundEl)
+      h('div', { class: 'hud-item' }, h('small', {}, 'Runda'), roundEl),
+      h('div', { class: 'hud-item' }, h('small', {}, 'Szanse'), livesEl)
     ),
     owl.el,
     playArea
@@ -4571,18 +4687,37 @@ function mountFree(root, { modeId, nav }) {
 
   root.append(view);
 
-  const CHEERS = ['Huu-huu! Wyśmienicie! 🦉', 'Kod złamany! 📜', 'Znakomita spółgłoska! 🎓', 'Matematyczna precyzja! ⚡', 'Perfekcyjny Major! 🌟'];
+  const CHEERS = ['Huuu-hu! Fenomenalnie! 🦉', 'Kod złamany w sekundę! 🔐', 'Spółgłoski opanowane! 📖', 'Geniusz pamięci! 💡', 'Świetny strzał! 🎯'];
   function cheerOwl(c) {
     if (c % 3 === 0 && c > 0) {
-      owl.say(`Combo x${c}! Twój umysł przetwarza kody z prędkością światła! 🦉⚡`, 'cheer', { revert: 1400 });
+      owl.say(`Combo x${c}! Twój mózg zamienia liczby w arcydzieła! 🦉✨`, 'cheer', { revert: 1400 });
+      owl.hop?.();
     } else {
       owl.say(rand(CHEERS), 'cheer', { revert: 1000 });
     }
   }
 
+  function updateLives() {
+    livesEl.textContent = '❤️'.repeat(Math.max(0, lives)) + '🖤'.repeat(Math.max(0, 3 - lives));
+  }
+
   function saveBest() {
     const prev = store.get(`major.best.${modeId}`, 0);
     if (score > prev) store.set(`major.best.${modeId}`, score);
+  }
+
+  function restartGame() {
+    isGameOver = false;
+    score = 0;
+    round = 1;
+    combo = 0;
+    lives = 3;
+    scoreEl.textContent = '0';
+    roundEl.textContent = '1';
+    updateLives();
+    owl.setMood('happy');
+    owl.say('Zaczynamy od nowa! Spółgłoski czekają! 🦉📚', 'happy');
+    nextRound();
   }
 
   function gameOver() {
@@ -4594,6 +4729,11 @@ function mountFree(root, { modeId, nav }) {
 
     const best = store.get(`major.best.${modeId}`, score);
     playArea.innerHTML = '';
+
+    const restartBtn = h('button', { class: 'btn btn-primary', type: 'button' }, 'Zagraj ponownie ↻');
+    restartBtn.addEventListener('click', restartGame);
+    const backBtn = h('a', { class: 'btn btn-ghost', href: '#/major' }, 'Inny tryb');
+
     playArea.append(
       h('div', { class: 'game-over-box' },
         h('h2', {}, '🎓 Wspaniała runda!'),
@@ -4602,14 +4742,23 @@ function mountFree(root, { modeId, nav }) {
           h('span', {}, 'punktów')
         ),
         h('div', { class: 'go-best' }, `🏆 Rekord w tym trybie: ${best}`),
-        h('div', { class: 'go-actions' },
-          h('button', { class: 'btn btn-primary', type: 'button' }, 'Zagraj ponownie 🔄')
-        )
+        h('div', { class: 'go-actions' }, restartBtn, backBtn)
       )
     );
-    playArea.querySelector('.go-actions button').addEventListener('click', () => {
-      mountFree(root, { modeId, nav });
-    });
+  }
+
+  function handleWrong(solutionText) {
+    sfx.wrong();
+    combo = 0;
+    lives--;
+    updateLives();
+    if (lives <= 0) {
+      gameOver();
+    } else {
+      owl.setMood('sad', 1200);
+      owl.say(`${solutionText} Pozostało szans: ${lives} 🦉`, 'think', { revert: 2600 });
+      setTimeout(nextRound, 1200);
+    }
   }
 
   function nextRound() {
@@ -4641,12 +4790,8 @@ function mountFree(root, { modeId, nav }) {
             cheerOwl(combo);
             nextRound();
           } else {
-            sfx.wrong();
-            combo = 0;
-            owl.setMood('sad', 1200);
-            owl.say(`Cyfra ${target.digit} to: ${target.sounds}! ${target.rule}`, 'think', { revert: 2800 });
             btn.classList.add('wrong');
-            setTimeout(nextRound, 1200);
+            handleWrong(`Cyfra ${target.digit} to: ${target.sounds}! (${target.rule})`);
           }
         });
         opts.append(btn);
@@ -4678,12 +4823,8 @@ function mountFree(root, { modeId, nav }) {
             cheerOwl(combo);
             nextRound();
           } else {
-            sfx.wrong();
-            combo = 0;
-            owl.setMood('sad', 1200);
-            owl.say(`${target.word} koduje liczbę ${target.num} (${target.code})`, 'think', { revert: 2500 });
             btn.classList.add('wrong');
-            setTimeout(nextRound, 1200);
+            handleWrong(`${target.word} koduje liczbę ${target.num} (${target.code})`);
           }
         });
         opts.append(btn);
@@ -4715,12 +4856,8 @@ function mountFree(root, { modeId, nav }) {
             cheerOwl(combo);
             nextRound();
           } else {
-            sfx.wrong();
-            combo = 0;
-            owl.setMood('sad', 1200);
-            owl.say(`Dla liczby ${target.num} poprawny jest ${target.word} (${target.code})`, 'think', { revert: 2500 });
             btn.classList.add('wrong');
-            setTimeout(nextRound, 1200);
+            handleWrong(`Dla liczby ${target.num} poprawny jest ${target.word} (${target.code})`);
           }
         });
         opts.append(btn);
@@ -4728,19 +4865,28 @@ function mountFree(root, { modeId, nav }) {
       playArea.append(card, opts);
 
     } else if (modeId === 'pin') {
-      // 4-digit PIN training
+      // 4-digit PIN training (or 6-digit in later rounds)
+      const is6Digit = round >= 7;
       const p1 = PEG_WORDS_2DIGIT[rand(0, PEG_WORDS_2DIGIT.length - 1)];
       const p2 = PEG_WORDS_2DIGIT[rand(0, PEG_WORDS_2DIGIT.length - 1)];
-      const pinCode = `${p1.num}${p2.num}`;
+      const p3 = is6Digit ? PEG_WORDS_2DIGIT[rand(0, PEG_WORDS_2DIGIT.length - 1)] : null;
+      const pinCode = is6Digit ? `${p1.num}${p2.num}${p3.num}` : `${p1.num}${p2.num}`;
+
+      // Podpowiedzi w pierwszych 3 rundach, potem pamięć własna!
+      const storyContent = round <= 3
+        ? h('div', { class: 'pin-story' },
+            h('p', {}, `Obraz 1: `, h('b', {}, p1.word), ` (${p1.img})`),
+            h('p', {}, `Obraz 2: `, h('b', {}, p2.word), ` (${p2.img})`),
+            h('p', { class: 'muted' }, `Wyobraź sobie akcję łączącą oba przedmioty!`)
+          )
+        : h('div', { class: 'pin-story' },
+            h('p', { class: 'muted' }, is6Digit ? 'Zaawansowany PIN 6-cyfrowy! Zakoduj 3 obrazy w myślach.' : 'Zakoduj obie liczby w słowa i stwórz własną scenkę w głowie!')
+          );
 
       const card = h('div', { class: 'major-card' },
-        h('h3', {}, '💳 Zapamiętaj PIN:'),
+        h('h3', {}, is6Digit ? '💳 Zapamiętaj 6-cyfrowy PIN:' : '💳 Zapamiętaj PIN:'),
         h('span', { class: 'pin-display' }, pinCode),
-        h('div', { class: 'pin-story' },
-          h('p', {}, `Obraz 1: `, h('b', {}, p1.word), ` (${p1.img})`),
-          h('p', {}, `Obraz 2: `, h('b', {}, p2.word), ` (${p2.img})`),
-          h('p', { class: 'muted' }, `Wyobraź sobie akcję łączącą oba przedmioty!`)
-        )
+        storyContent
       );
 
       const checkBtn = h('button', { class: 'btn btn-primary mt-2', type: 'button' }, 'Zapamiętane! Sprawdź mnie ▶');
@@ -4750,12 +4896,17 @@ function mountFree(root, { modeId, nav }) {
           h('h3', {}, 'Jaki był kod PIN?')
         );
 
-        // Generate 4 options
-        const wrongPins = [
-          `${p2.num}${p1.num}`,
-          `${p1.num}${PEG_WORDS_2DIGIT[(rand(0, PEG_WORDS_2DIGIT.length - 1))].num}`,
-          `${PEG_WORDS_2DIGIT[(rand(0, PEG_WORDS_2DIGIT.length - 1))].num}${p2.num}`
-        ].filter(p => p !== pinCode);
+        const wrongPins = is6Digit
+          ? [
+              `${p2.num}${p1.num}${p3.num}`,
+              `${p1.num}${p3.num}${p2.num}`,
+              `${p3.num}${p2.num}${p1.num}`
+            ].filter(p => p !== pinCode)
+          : [
+              `${p2.num}${p1.num}`,
+              `${p1.num}${PEG_WORDS_2DIGIT[rand(0, PEG_WORDS_2DIGIT.length - 1)].num}`,
+              `${PEG_WORDS_2DIGIT[rand(0, PEG_WORDS_2DIGIT.length - 1)].num}${p2.num}`
+            ].filter(p => p !== pinCode);
 
         const pinChoices = shuffle([pinCode, ...wrongPins]).slice(0, 4);
         const pinOpts = h('div', { class: 'opt-grid' });
@@ -4764,17 +4915,16 @@ function mountFree(root, { modeId, nav }) {
           btn.addEventListener('click', () => {
             if (pinOpt === pinCode) {
               sfx.fanfare();
-              score += 25 + combo * 5;
+              score += (is6Digit ? 35 : 25) + combo * 5;
               combo++;
               round++;
               scoreEl.textContent = `${score}`;
               roundEl.textContent = `${round}`;
-              owl.setMood('cheer', 1500);
-              owl.say('Perfekcyjnie! PIN zapamiętany w ułamku sekundy!', 'cheer', { revert: 2000 });
-              setTimeout(nextRound, 1500);
+              cheerOwl(combo);
+              setTimeout(nextRound, 1200);
             } else {
-              sfx.wrong();
-              gameOver();
+              btn.classList.add('wrong');
+              handleWrong(`Prawidłowy PIN to ${pinCode}.`);
             }
           });
           pinOpts.append(btn);
@@ -5010,12 +5160,14 @@ const LESSONS = [
     title: 'Metoda słów-kluczy',
     subtitle: 'Koniec z nudnym wkuwaniem słówek',
     desc: 'Odkryj metodę badaczy Atkinsona i Raugha, która zwiększa tempo nauki języków trzykrotnie!',
+    speech: 'Cześć, tu Papużka Pola! 🦜 Marzysz o swobodnych podróżach po świecie i piątkach z angielskiego czy hiszpańskiego? Pokażę Ci czarodziejski trik ze słowami-kluczami – zapamiętasz każde trudne słówko w kilka sekund, bez nudnego wkuwania!',
     theory: [
-      'Tradycyjne powtarzanie słówek po 50 razy jest męczące i szybko ulatuje z głowy.',
-      'Metoda słów-kluczy (Keyword Method) opiera się na 2 prostych krokach:',
-      '1. Znajdź polskie słowo, które brzmi podobnie do obcego wyrazu (Most Fonetyczny).',
-      '2. Stwórz w wyobraźni krótką, zabawną scenkę łączącą ten most z prawdziwym znaczeniem!',
-      'Gdy słyszysz obce słowo, Twój mózg natychmiast przywołuje scenkę i znasz tłumaczenie!'
+      'Po co nam ta metoda? Zwykłe powtarzanie słówek po 50 razy w zeszycie jest nudne, męczące i szybko ulatuje z głowy.',
+      'Metoda słów-kluczy (Keyword Method) to sekret poliglotów i mistrzów pamięci na całym świecie!',
+      'Składa się z 2 prostych, zabawnych kroków:',
+      '1. Znajdź polskie słowo, które brzmi podobnie do obcego wyrazu (to nasz Most Fonetyczny).',
+      '2. Połącz ten dźwięk ze znaczeniem słówka w śmieszną, bajkową scenkę w wyobraźni!',
+      'Gdy usłyszysz obce słowo, Twój mózg natychmiast przypomni sobie śmieszną scenkę i od razu znasz znaczenie!'
     ],
     task: {
       prompt: 'Z jakich dwóch kroków składa się metoda słów-kluczy?',
@@ -5034,11 +5186,13 @@ const LESSONS = [
     title: 'Dźwiękowy bliźniak',
     subtitle: 'Jak brzmi angielskie „mushroom”?',
     desc: 'Uczymy się szukać polskich słów brzmiących jak obcy wyraz.',
+    speech: 'Posłuchaj dźwięków! Każde obce słówko ma w języku polskim swojego śmiesznego bliźniaka!',
     theory: [
-      'Spójrz na angielskie słowo „mushroom” (grzyb).',
+      'Krok 1 w praktyce: szukamy dźwiękowego bliźniaka.',
+      'Spójrz na angielskie słówko „mushroom” (grzyb).',
       'Powiedz je na głos: „masz-rum”.',
       'Brzmi dokładnie jak polskie pytanie: „MASZ RUM?!” 🏴‍☠️',
-      'Dźwiękowy bliźniak nie musi być w 100% idealny – wystarczy, że da Twojemu umysłowi wyraźny punkt zaczepienia.'
+      'Dźwiękowy bliźniak nie musi być w 100% idealny – wystarczy, że da Twojemu umysłowi wesoły punkt zaczepienia!'
     ],
     task: {
       prompt: 'Jaki polski zwrot brzmi niemal identycznie jak angielskie słówko „mushroom”?',
@@ -5052,12 +5206,13 @@ const LESSONS = [
     title: 'Wybuchowa scenka',
     subtitle: 'Łączenie mostu ze znaczeniem',
     desc: 'Sam dźwięk nie wystarczy – musisz połączyć go z tym, co dane słówko oznacza.',
+    speech: 'A teraz łączymy dźwięk ze znaczeniem! Zobacz tego pirackiego prawdziwka w swojej wyobraźni!',
     theory: [
       'Mamy już most „MASZ RUM” i wiemy, że mushroom oznacza GRZYB.',
-      'Teraz zamknij oczy i zobacz to:',
-      'Wielki, leśny prawdziwek z wąsami i w czapce pirata staje przed Tobą, wali pięścią w stół i groźnie wrzeszczy: „MASZ RUM W BUTELCE?!”',
-      'Poczuj zapach lasu i usłysz ten piracki krzyk.',
-      'Teraz już nigdy nie zapomnisz, co to mushroom!'
+      'Teraz najważniejszy moment – zrób z tego film przed oczami:',
+      'Wielki leśny prawdziwek z wąsami i w trójkątnym kapeluszu pirata staje przed Tobą, uderza pięścią w stół i groźnie krzyczy: „MASZ RUM W BUTELCE?!”',
+      'Poczuj zapach lasu i zobacz tego śmiesznego grzyba.',
+      'Teraz już nigdy w życiu nie zapomnisz słowa mushroom!'
     ],
     task: {
       prompt: 'Co oznacza angielskie słówko „mushroom”?',
@@ -5071,11 +5226,12 @@ const LESSONS = [
     title: 'Angielski w mig',
     subtitle: 'Candle, Feather, Pillow',
     desc: 'Trzy nowe angielskie słówka zapamiętane w minutę.',
+    speech: 'Kraaa! Zobacz, jak w minutę zapamiętasz trzy angielskie słówka na klasówkę z angielskiego!',
     theory: [
-      'Ćwiczymy kolejne angielskie mosty:',
+      'Ćwiczymy kolejne angielskie mosty dźwiękowe:',
       '• CANDLE (świeca) → KUNDEL: wesoły kundelek biegnie z płonącą świecą na ogonie! 🕯️',
-      '• FEATHER (pióro) → SWETER: z wełnianego swetra wyrastają wielkie gęsie pióra! 🪶',
-      '• PILLOW (poduszka) → PIŁA: tniesz deskę miękką puchową poduszką! 🛏️'
+      '• FEATHER (pióro) → SWETER: z wełnianego swetra nagle wyrastają wielkie gęsie pióra! 🪶',
+      '• PILLOW (poduszka) → PIŁA: drwal próbuje ściąć wielkie drzewo miękką puchową poduszką! 🛏️'
     ],
     task: {
       prompt: 'KUNDEL niosący świecę na ogonie pomaga zapamiętać słówko:',
@@ -5089,11 +5245,12 @@ const LESSONS = [
     title: 'Hiszpańska fiesta',
     subtitle: 'Gato, Perro, Cuchara',
     desc: 'Metoda działa w każdym języku świata – sprawdźmy hiszpański!',
+    speech: 'Ta metoda działa w każdym języku świata! Przenosimy się do słonecznej Hiszpanii!',
     theory: [
-      'Zobacz, jak bajecznie uczy się hiszpańskiego:',
-      '• GATO (kot) → GATKI: rudy kot spaceruje w czerwonych gatkach w grochy! 🐱',
-      '• PERRO (pies) → PERON: pies w czapce kolejarza szczeka na peronie! 🐶',
-      '• CUCHARA (łyżka) → KUCHARZ: kucharz żongluje wielkimi złotymi łyżkami! 🥄'
+      'Zobacz, jak bajecznie prosto uczy się hiszpańskiego:',
+      '• GATO (kot) → GATKI: rudy kot dumnie spaceruje w czerwonych gatkach w białe grochy! 🐱',
+      '• PERRO (pies) → PERON: pies w czapce zawiadowcy stacji szczeka na peronie kolejowym! 🐶',
+      '• CUCHARA (łyżka) → KUCHARZ: kucharz żongluje wielkimi błyszczącymi łyżkami do zupy! 🥄'
     ],
     task: {
       prompt: 'Rudy kot w wielkich GATKACH to skojarzenie dla hiszpańskiego słówka:',
@@ -5107,12 +5264,13 @@ const LESSONS = [
     title: 'Egzamin Poligloty',
     subtitle: 'Sprawdzian mistrzowskich mostów',
     desc: 'Czas na ostateczny test u Papużki Poli! Błyskawiczne tłumaczenie w obie strony.',
+    speech: 'Wielki egzamin poligloty! Z tą techniką możesz nauczyć się tysięcy słówek z dowolnego języka!',
     theory: [
-      'Znasz już najpotężniejsze narzędzie językowe świata.',
-      'Niezależnie, czy uczysz się angielskiego, hiszpańskiego, niemieckiego czy japońskiego:',
-      '1. Usłysz dźwięk i znajdź polski odpowiednik.',
-      '2. Stwórz żywą, zabawną scenkę.',
-      '3. Ciesz się setkami nowych słówek bez zakuwania!'
+      'Brawo! Masz w ręku najpotężniejsze narzędzie do nauki języków obcych na świecie.',
+      'Gdy w szkole lub w podróży spotkasz nowe słówko:',
+      '1. Usłysz jego dźwięk i znajdź polskiego bliźniaka.',
+      '2. Stwórz wyrazistą, zabawną scenkę.',
+      '3. Ciesz się swobodną rozmową bez stresu i zakuwania!'
     ],
     task: {
       prompt: 'Co oznacza hiszpańskie słowo „cuchara” (most: KUCHARZ machający wielką łyżką)?',
@@ -5151,11 +5309,20 @@ function mountMap(root, { nav }) {
     );
   });
 
+  const whyCard = h('div', { class: 'why-card' },
+    h('span', { class: 'why-icon' }, '🎯'),
+    h('div', { class: 'why-content' },
+      h('b', {}, 'Po co Ci ta technika w codziennym życiu?'),
+      h('p', {}, '3x szybsza nauka dowolnego języka obcego (angielski, hiszpański, niemiecki)! Zamiast wkuwać 50 razy, tworzysz jeden polski most dźwiękowy i pamiętasz znaczenie od razu!')
+    )
+  );
+
   const view = h('section', { class: 'screen train-map' },
     h('div', { class: 'crumbs' }, h('a', { href: '#/words', class: 'back' }, '← Menu gry')),
     h('h1', {}, '🦜 ', h('span', { class: 'grad' }, 'Szkoła Językowa Papużki Poli')),
     h('p', { class: 'lead' }, 'Poznaj metodę słów-kluczy i zapamiętuj obce słówka w locie bez zakuwania.'),
     parrot.el,
+    whyCard,
     h('div', { class: 'map-list' }, items)
   );
 
@@ -5178,7 +5345,7 @@ function mountStep(root, { nav, index }) {
   let answered = false;
 
   const theoryBox = h('div', { class: 'theory-card' },
-    h('h3', {}, '🦜 Lekcja: ', les.title),
+    h('h3', {}, '🦜 Papuzie odkrycie: ', les.title),
     h('div', { class: 'theory-text' }, les.theory.map(p => h('p', {}, p)))
   );
 
@@ -5246,7 +5413,7 @@ function mountStep(root, { nav, index }) {
 
   root.append(view);
   setTimeout(() => {
-    parrot.say(`Lekcja ${index + 1}: ${les.subtitle}. Zobacz, jak brzmi słowo-klucz!`, 'happy');
+    parrot.say(les.speech || `Lekcja ${index + 1}: ${les.subtitle}. Posłuchaj tego słówka!`, 'happy');
   }, 250);
 
   return () => parrot.destroy();
@@ -5267,12 +5434,14 @@ function mountFree(root, { modeId, nav }) {
   let score = 0;
   let round = 1;
   let combo = 0;
+  let lives = 3;
   let timeLeft = modeId === 'sprint' ? 30 : 0;
   let timerInterval = null;
   let isGameOver = false;
 
   const scoreEl = h('span', { class: 'hud-score' }, '0');
   const roundEl = h('span', { class: 'hud-round' }, '1');
+  const livesEl = (modeId === 'translate' || modeId === 'bridge') ? h('span', { class: 'hud-lives' }, '❤️❤️❤️') : null;
   const timerEl = modeId === 'sprint' ? h('span', { class: 'hud-timer' }, '⏱ 30s') : null;
   const playArea = h('div', { class: 'free-play-area' });
 
@@ -5281,6 +5450,7 @@ function mountFree(root, { modeId, nav }) {
     h('div', { class: 'hud' },
       h('div', { class: 'hud-item' }, h('small', {}, 'Wynik'), scoreEl),
       h('div', { class: 'hud-item' }, h('small', {}, 'Runda'), roundEl),
+      livesEl ? h('div', { class: 'hud-item' }, h('small', {}, 'Szanse'), livesEl) : null,
       timerEl ? h('div', { class: 'hud-item' }, h('small', {}, 'Czas'), timerEl) : null
     ),
     parrot.el,
@@ -5289,18 +5459,55 @@ function mountFree(root, { modeId, nav }) {
 
   root.append(view);
 
-  const CHEERS = ['Ćwir! Genialnie! 🦜', 'Słówko w kieszeni! 🌴', 'Skojarzenie w punkt! 🌈', 'Poliglotyczny talent! ✨', 'Pola bije skrzydłami! 💬'];
+  const CHEERS = ['Poliglota! 🦜✨', 'Most fonetyczny działa! 🌉', 'Jak rodowity mówca! 🗣️', 'Słowo zapamiętane! 📖', 'Bez pudła! 🎯'];
   function cheerParrot(c) {
     if (c % 3 === 0 && c > 0) {
-      parrot.say(`Combo x${c}! Mówisz już jak rodowity mówca! 🦜🌍`, 'cheer', { revert: 1400 });
+      parrot.say(`Combo x${c}! Pola śpiewa z zachwytu! Twój słownik pęka w szwach! 🦜🎶`, 'cheer', { revert: 1400 });
+      parrot.hop?.();
     } else {
       parrot.say(rand(CHEERS), 'cheer', { revert: 1000 });
+    }
+  }
+
+  function updateLives() {
+    if (livesEl) {
+      livesEl.textContent = '❤️'.repeat(Math.max(0, lives)) + '🖤'.repeat(Math.max(0, 3 - lives));
     }
   }
 
   function saveBest() {
     const prev = store.get(`words.best.${modeId}`, 0);
     if (score > prev) store.set(`words.best.${modeId}`, score);
+  }
+
+  function startTimer() {
+    if (timerInterval) clearInterval(timerInterval);
+    timerInterval = setInterval(() => {
+      timeLeft--;
+      if (timerEl) timerEl.textContent = `⏱ ${timeLeft}s`;
+      if (timeLeft <= 0) {
+        clearInterval(timerInterval);
+        gameOver();
+      }
+    }, 1000);
+  }
+
+  function restartGame() {
+    isGameOver = false;
+    score = 0;
+    round = 1;
+    combo = 0;
+    lives = 3;
+    timeLeft = modeId === 'sprint' ? 30 : 0;
+    scoreEl.textContent = '0';
+    roundEl.textContent = '1';
+    updateLives();
+    if (timerEl) timerEl.textContent = `⏱ ${timeLeft}s`;
+    if (timerInterval) clearInterval(timerInterval);
+    if (modeId === 'sprint') startTimer();
+    parrot.setMood('happy');
+    parrot.say('Zaczynamy od nowa! Poliglotyczna przygoda trwa! 🦜✨', 'happy');
+    nextRound();
   }
 
   function gameOver() {
@@ -5313,6 +5520,11 @@ function mountFree(root, { modeId, nav }) {
 
     const best = store.get(`words.best.${modeId}`, score);
     playArea.innerHTML = '';
+
+    const restartBtn = h('button', { class: 'btn btn-primary', type: 'button' }, 'Zagraj ponownie ↻');
+    restartBtn.addEventListener('click', restartGame);
+    const backBtn = h('a', { class: 'btn btn-ghost', href: '#/words' }, 'Inny tryb');
+
     playArea.append(
       h('div', { class: 'game-over-box' },
         h('h2', {}, '🎉 Rewelacyjny wynik!'),
@@ -5321,14 +5533,27 @@ function mountFree(root, { modeId, nav }) {
           h('span', {}, 'punktów')
         ),
         h('div', { class: 'go-best' }, `🏆 Rekord w tym trybie: ${best}`),
-        h('div', { class: 'go-actions' },
-          h('button', { class: 'btn btn-primary', type: 'button' }, 'Zagraj ponownie 🔄')
-        )
+        h('div', { class: 'go-actions' }, restartBtn, backBtn)
       )
     );
-    playArea.querySelector('.go-actions button').addEventListener('click', () => {
-      mountFree(root, { modeId, nav });
-    });
+  }
+
+  function handleWrong(solutionText) {
+    sfx.wrong();
+    combo = 0;
+    if (modeId === 'polyglot') {
+      gameOver();
+      return;
+    }
+    lives--;
+    updateLives();
+    if (lives <= 0) {
+      gameOver();
+    } else {
+      parrot.setMood('sad', 1200);
+      parrot.say(`${solutionText} Pozostało szans: ${lives} 🦜`, 'think', { revert: 2600 });
+      setTimeout(nextRound, 1200);
+    }
   }
 
   function nextRound() {
@@ -5344,7 +5569,8 @@ function mountFree(root, { modeId, nav }) {
       const card = h('div', { class: 'vocab-card' },
         h('span', { class: 'vocab-emoji' }, target.emoji),
         h('h2', { class: 'vocab-word' }, target.foreign),
-        h('span', { class: 'vocab-lang' }, `Język: ${target.lang}`)
+        h('span', { class: 'vocab-lang' }, `Język: ${target.lang}`),
+        round <= 2 && modeId === 'translate' ? h('p', { class: 'muted' }, `Wymowa zbliżona do: „${target.bridge}”`) : null
       );
 
       const opts = h('div', { class: 'opt-grid' });
@@ -5356,20 +5582,23 @@ function mountFree(root, { modeId, nav }) {
             score += 10 + combo * 2;
             combo++;
             round++;
+            if (modeId === 'sprint') {
+              timeLeft += 2; // bonus czasowy
+              if (timerEl) timerEl.textContent = `⏱ ${timeLeft}s`;
+            }
             scoreEl.textContent = `${score}`;
             roundEl.textContent = `${round}`;
             cheerParrot(combo);
             nextRound();
           } else {
-            sfx.wrong();
-            if (modeId === 'polyglot') {
-              gameOver();
+            btn.classList.add('wrong');
+            if (modeId === 'sprint') {
+              sfx.wrong();
+              timeLeft = Math.max(1, timeLeft - 2);
+              if (timerEl) timerEl.textContent = `⏱ ${timeLeft}s`;
+              setTimeout(nextRound, 300);
             } else {
-              combo = 0;
-              parrot.setMood('sad', 1200);
-              parrot.say(`${target.foreign} to ${target.meaning}! Pamiętasz most: ${target.bridge}?`, 'think', { revert: 2800 });
-              btn.classList.add('wrong');
-              setTimeout(nextRound, 1200);
+              handleWrong(`${target.foreign} to ${target.meaning} (most: ${target.bridge})!`);
             }
           }
         });
@@ -5400,12 +5629,8 @@ function mountFree(root, { modeId, nav }) {
             cheerParrot(combo);
             nextRound();
           } else {
-            sfx.wrong();
-            combo = 0;
-            parrot.setMood('sad', 1200);
-            parrot.say(`Mostem dla ${target.foreign} jest: ${target.bridge}!`, 'think', { revert: 2800 });
             btn.classList.add('wrong');
-            setTimeout(nextRound, 1200);
+            handleWrong(`Mostem dla ${target.foreign} jest: ${target.bridge}!`);
           }
         });
         opts.append(btn);
@@ -5415,14 +5640,7 @@ function mountFree(root, { modeId, nav }) {
   }
 
   if (modeId === 'sprint') {
-    timerInterval = setInterval(() => {
-      timeLeft--;
-      if (timerEl) timerEl.textContent = `⏱ ${timeLeft}s`;
-      if (timeLeft <= 0) {
-        clearInterval(timerInterval);
-        gameOver();
-      }
-    }, 1000);
+    startTimer();
   }
 
   nextRound();
@@ -5685,13 +5903,16 @@ const LESSONS = [
     title: 'Cztery żywioły talii',
     subtitle: 'Pik, Kier, Karo i Trefl',
     desc: 'Poznaj cztery kolory talii i ich wizualne motywy przewodnie.',
+    speech: 'Abrakadabra! Cześć, jestem Szop Magik! 🦝 Czy wiesz, jak iluzjoniści pamiętają całą talię kart w kilkadziesiąt sekund? Zamieniają nudne figury w superbohaterów i kręcą z nich bajkowy film! Pokażę Ci, jak to zrobić!',
     theory: [
-      'W talii kart mamy 4 kolory, z których każdy ma swój niepowtarzalny nastrój:',
-      '• PIK (♠) – ciemny, tajemniczy, magowie, iluzjoniści i noc.',
-      '• KIER (♥) – czerwone serca, rycerze, królowie, ogień i pasja.',
-      '• KARO (♦) – diamenty, złoto, bogactwo, skarby i piraci.',
-      '• TREFL (♣) – zielone liście, las, natura, druidzi i łucznicy.',
-      'Gdy widzisz kolor, natychmiast wiesz, do jakiego świata należy karta!'
+      'Po co uczyć się zapamiętywania kart? To nie tylko wspaniała sztuczka, którą zachwycisz kolegów w szkole i rodzinę przy stole!',
+      'System PAO (karty i sekwencje) to najpotężniejsza technika do zapamiętywania długich ciągów kolejnych kroków, przepisów, procedur i list!',
+      'Zaczynamy od 4 magicznych żywiołów talii:',
+      '• PIK (♠) – tajemniczy, czarny świat magów, iluzjonistów i nocy.',
+      '• KIER (♥) – czerwone serca, dzielni rycerze, królowie, ogień i przygoda.',
+      '• KARO (♦) – diamenty, złoto, bogactwo, skrzynie skarbów i piraci.',
+      '• TREFL (♣) – zielone liście, las, natura, druidzi i leśni łucznicy.',
+      'Gdy widzisz kolor, od razu wiesz, do jakiego świata należy karta!'
     ],
     task: {
       prompt: 'Jaki motyw wizualny odpowiada kolorowi KARO (♦)?',
@@ -5705,13 +5926,14 @@ const LESSONS = [
     title: 'Karty dworskie',
     subtitle: 'Walet, Dama i Król',
     desc: 'Figury to najpotężniejsze persony w talii. Każda ma swoją osobowość.',
+    speech: 'Oto nasi bohaterowie! Każda figura zamienia się w żywą postać z bajki!',
     theory: [
-      'Figury najłatwiej zamienić na wyraziste postacie:',
-      '• Król Kier (K♥) → Król Artur ze złotym mieczem Excalibur 👑',
-      '• Dama Karo (Q♦) → Królowa Kleopatra rzucająca błękitnym diamentem 💎',
-      '• Walet Trefl (J♣) → Robin Hood strzelający z dębowego łuku 🏹',
-      '• As Pik (A♠) → Szop Magik wyciągający lśniący cylinder 🦝',
-      'Zamiast abstrakcyjnej figury, widzisz żywego bohatera!'
+      'Karty dworskie najłatwiej zamienić na wyrazistych bohaterów:',
+      '• Król Kier (K♥) → Król Artur w złotej koronie ze świecącym mieczem Excalibur 👑',
+      '• Dama Karo (Q♦) → Królowa Kleopatra rzucająca lśniącym błękitnym diamentem 💎',
+      '• Walet Trefl (J♣) → Robin Hood strzelający z potężnego dębowego łuku 🏹',
+      '• As Pik (A♠) → Szop Magik wyciągający lśniący cylinder z kapelusza 🦝',
+      'Zamiast płaskiego kartonika widzisz żywą postać jak z komiksu!'
     ],
     task: {
       prompt: 'Kim jest Król Kier (K♥) w naszym systemie kart?',
@@ -5725,13 +5947,14 @@ const LESSONS = [
     title: 'Filozofia PAO',
     subtitle: 'Postać, Akcja i Obiekt',
     desc: 'Metoda stosowana przez rekordzistów Guinnessa do zapamiętania 52 kart w 20 sekund!',
+    speech: 'Sekret rekordzistów Guinnessa: formuła PAO! Trzy karty zamieniamy w jedną bajkę!',
     theory: [
       'System PAO (Person - Action - Object) przypisuje do każdej karty:',
       '1. POSTAĆ (kto to jest?)',
       '2. AKCJĘ (co robi?)',
-      '3. OBIEKT (czym manipuluje?)',
-      'Dzięki temu jedna karta może być postacią, druga akcją, a trzecia obiektem.',
-      'To pozwala skompresować aż 3 karty w JEDEN zabawny obraz!'
+      '3. OBIEKT (czym się bawi lub czym rzuca?)',
+      'Dzięki temu jedna karta daje postać, druga jej akcję, a trzecia przedmiot.',
+      'To pozwala skompresować aż 3 karty w JEDEN zabawny, filmowy kadr w głowie!'
     ],
     task: {
       prompt: 'Co oznacza skrót metody PAO?',
@@ -5745,12 +5968,13 @@ const LESSONS = [
     title: 'Łączenie 2 kart w 1 scenę',
     subtitle: 'Fuzja Króla Artura i Kleopatry',
     desc: 'Jak zapamiętać parę kart w ułamku sekundy?',
+    speech: 'Połączmy dwie karty w jedną scenę! Król Artur i Kleopatra robią coś szalonego!',
     theory: [
-      'Wyobraź sobie, że pierwsza karta to Król Kier (K♥), a druga to Dama Karo (Q♦).',
+      'Wyobraź sobie parę kart: pierwsza to Król Kier (K♥), a druga to Dama Karo (Q♦).',
       'Bierzemy POSTAĆ z pierwszej karty: Król Artur 👑',
       'I bierzemy AKCJĘ + OBIEKT z drugiej karty: rzuca błękitnym diamentem 💎!',
-      'Scena w głowie: Król Artur z całej siły rzuca w dal wielkim błękitnym diamentem!',
-      'Gdy widzisz tę scenę, natychmiast odczytujesz: K♥ oraz Q♦!'
+      'Scena w głowie: Król Artur bierze zamach i z całej siły ciska wielkim diamentem w dal!',
+      'Gdy widzisz tę scenę przed oczami, natychmiast odczytujesz: K♥ oraz Q♦!'
     ],
     task: {
       prompt: 'Jakie karty koduje scena: „Król Artur rzuca wielkim błękitnym diamentem”?',
@@ -5764,13 +5988,14 @@ const LESSONS = [
     title: 'Praktyka: Rozdanie pokerowe',
     subtitle: 'Zapamiętaj 3 karty na stole',
     desc: 'Sprawdź swoje umiejętności na stole do gry.',
+    speech: 'Prawdziwe rozdanie na stole! Trzy karty zapamiętane w 3 sekundy!',
     theory: [
       'Na stole lądują 3 karty: As Pik (A♠), Walet Trefl (J♣) i 7 Kier (7♥).',
-      '• A♠ = Szop Magik',
-      '• J♣ = napina i strzela z dębowego łuku',
-      '• 7♥ = kieliszek złotego martini Jamesa Bonda',
-      'Zobacz to: Szop Magik bierze wielki dębowy łuk i z uśmiechem wystrzeliwuje z niego kieliszek martini!',
-      'Zapamiętane w 3 sekundy na całe życie!'
+      '• A♠ = Szop Magik (Postać)',
+      '• J♣ = napina i strzela z dębowego łuku (Akcja)',
+      '• 7♥ = kieliszek złotego napoju (Obiekt)',
+      'Zobacz to: Szop Magik bierze wielki łuk i z uśmiechem wystrzeliwuje z niego kieliszek niczym strzałę!',
+      'Śmieszne, wyraziste i nie do zapomnienia!'
     ],
     task: {
       prompt: 'Kto strzelał z łuku w naszej scenie (reprezentując Asa Pik)?',
@@ -5784,12 +6009,13 @@ const LESSONS = [
     title: 'Egzamin Iluzjonisty',
     subtitle: 'Ostateczny test Szopa Magika',
     desc: 'Opanowałeś tajniki talii kart. Czas na certyfikat iluzjonisty!',
+    speech: 'Wielki egzamin iluzjonisty! Twoja pamięć jest teraz szybsza niż zręczne dłonie magika!',
     theory: [
-      'Brawo! Znasz już sekrety pamięciowych iluzji:',
-      '1. 4 żywioły kolorów.',
+      'Brawo! Znasz już sekrety pamięciowych iluzjonistów:',
+      '1. 4 żywioły kolorów talii.',
       '2. Postacie dworskie.',
       '3. Formuła PAO (Postać - Akcja - Obiekt).',
-      'Teraz jesteś gotowy na każdą rozgrywkę i grę swobodną!'
+      'Teraz jesteś gotowy na każdą rozgrywkę z przyjaciółmi i grę swobodną!'
     ],
     task: {
       prompt: 'Co wyciąga Szop Magik z cylindra na karcie As Pik?',
@@ -5828,11 +6054,20 @@ function mountMap(root, { nav }) {
     );
   });
 
+  const whyCard = h('div', { class: 'why-card' },
+    h('span', { class: 'why-icon' }, '🎯'),
+    h('div', { class: 'why-content' },
+      h('b', {}, 'Po co Ci ta technika w codziennym życiu?'),
+      h('p', {}, 'Elitarny trening skupienia, uwagi i pamięci roboczej stosowany przez arcymistrzów. Zwiększa koncentrację przy nauce, pozwala dominować w grach karcianych i uczy kodowania złożonych procedur!')
+    )
+  );
+
   const view = h('section', { class: 'screen train-map' },
     h('div', { class: 'crumbs' }, h('a', { href: '#/cards', class: 'back' }, '← Menu gry')),
     h('h1', {}, '🦝 ', h('span', { class: 'grad' }, 'Szkoła Magii Kart')),
     h('p', { class: 'lead' }, 'Poznaj technikę PAO i zapamiętuj całe talie kart z Szopem Magikiem.'),
     raccoon.el,
+    whyCard,
     h('div', { class: 'map-list' }, items)
   );
 
@@ -5855,7 +6090,7 @@ function mountStep(root, { nav, index }) {
   let answered = false;
 
   const theoryBox = h('div', { class: 'theory-card' },
-    h('h3', {}, '🎩 Lekcja: ', les.title),
+    h('h3', {}, '🦝 Magiczna sztuczka Szopa: ', les.title),
     h('div', { class: 'theory-text' }, les.theory.map(p => h('p', {}, p)))
   );
 
@@ -5923,7 +6158,7 @@ function mountStep(root, { nav, index }) {
 
   root.append(view);
   setTimeout(() => {
-    raccoon.say(`Lekcja ${index + 1}: ${les.subtitle}. Spójrz na karty i zasady PAO!`, 'happy');
+    raccoon.say(les.speech || `Abrakadabra! Lekcja ${index + 1}: ${les.subtitle}. Spójrz na magiczną sztuczkę!`, 'happy');
   }, 250);
 
   return () => raccoon.destroy();
@@ -5944,12 +6179,14 @@ function mountFree(root, { modeId, nav }) {
   let score = 0;
   let round = 1;
   let combo = 0;
+  let lives = 3;
   let timeLeft = modeId === 'deck_rush' ? 30 : 0;
   let timerInterval = null;
   let isGameOver = false;
 
   const scoreEl = h('span', { class: 'hud-score' }, '0');
   const roundEl = h('span', { class: 'hud-round' }, '1');
+  const livesEl = (modeId === 'pao' || modeId === 'missing') ? h('span', { class: 'hud-lives' }, '❤️❤️❤️') : null;
   const timerEl = modeId === 'deck_rush' ? h('span', { class: 'hud-timer' }, '⏱ 30s') : null;
   const playArea = h('div', { class: 'free-play-area' });
 
@@ -5958,6 +6195,7 @@ function mountFree(root, { modeId, nav }) {
     h('div', { class: 'hud' },
       h('div', { class: 'hud-item' }, h('small', {}, 'Wynik'), scoreEl),
       h('div', { class: 'hud-item' }, h('small', {}, 'Runda'), roundEl),
+      livesEl ? h('div', { class: 'hud-item' }, h('small', {}, 'Szanse'), livesEl) : null,
       timerEl ? h('div', { class: 'hud-item' }, h('small', {}, 'Czas'), timerEl) : null
     ),
     raccoon.el,
@@ -5966,18 +6204,55 @@ function mountFree(root, { modeId, nav }) {
 
   root.append(view);
 
-  const CHEERS = ['Abrakadabra! 🦝✨', 'Karta w garści! ♠️', 'Czysta magia PAO! 🎩', 'As w rękawie! 🃏', 'Bez pudła! 🎯'];
+  const CHEERS = ['Abrakadabra! 🦝✨', 'Karta w garści! ♠️', 'Czysta magia PAO! 🎩', 'As w rękawie! 🃏', 'Bez pudła! 🎯', 'Mistrzowska intuicja! 🪄'];
   function cheerRaccoon(c) {
     if (c % 3 === 0 && c > 0) {
       raccoon.say(`Combo x${c}! Cała talia drży przed Twoją pamięcią! 🦝🪄`, 'cheer', { revert: 1400 });
+      raccoon.hop?.();
     } else {
       raccoon.say(rand(CHEERS), 'cheer', { revert: 1000 });
+    }
+  }
+
+  function updateLives() {
+    if (livesEl) {
+      livesEl.textContent = '❤️'.repeat(Math.max(0, lives)) + '🖤'.repeat(Math.max(0, 3 - lives));
     }
   }
 
   function saveBest() {
     const prev = store.get(`cards.best.${modeId}`, 0);
     if (score > prev) store.set(`cards.best.${modeId}`, score);
+  }
+
+  function startTimer() {
+    if (timerInterval) clearInterval(timerInterval);
+    timerInterval = setInterval(() => {
+      timeLeft--;
+      if (timerEl) timerEl.textContent = `⏱ ${timeLeft}s`;
+      if (timeLeft <= 0) {
+        clearInterval(timerInterval);
+        gameOver();
+      }
+    }, 1000);
+  }
+
+  function restartGame() {
+    isGameOver = false;
+    score = 0;
+    round = 1;
+    combo = 0;
+    lives = 3;
+    timeLeft = modeId === 'deck_rush' ? 30 : 0;
+    scoreEl.textContent = '0';
+    roundEl.textContent = '1';
+    updateLives();
+    if (timerEl) timerEl.textContent = `⏱ ${timeLeft}s`;
+    if (timerInterval) clearInterval(timerInterval);
+    if (modeId === 'deck_rush') startTimer();
+    raccoon.setMood('happy');
+    raccoon.say('Zaczynamy od nowa! Pokaż mistrzowską pamięć! 🦝✨', 'happy');
+    nextRound();
   }
 
   function gameOver() {
@@ -5990,6 +6265,11 @@ function mountFree(root, { modeId, nav }) {
 
     const best = store.get(`cards.best.${modeId}`, score);
     playArea.innerHTML = '';
+
+    const restartBtn = h('button', { class: 'btn btn-primary', type: 'button' }, 'Zagraj ponownie ↻');
+    restartBtn.addEventListener('click', restartGame);
+    const backBtn = h('a', { class: 'btn btn-ghost', href: '#/cards' }, 'Inny tryb');
+
     playArea.append(
       h('div', { class: 'game-over-box' },
         h('h2', {}, '🎉 Pokaz zakończony sukcesem!'),
@@ -5998,14 +6278,9 @@ function mountFree(root, { modeId, nav }) {
           h('span', {}, 'punktów')
         ),
         h('div', { class: 'go-best' }, `🏆 Rekord w tym trybie: ${best}`),
-        h('div', { class: 'go-actions' },
-          h('button', { class: 'btn btn-primary', type: 'button' }, 'Zagraj ponownie 🔄')
-        )
+        h('div', { class: 'go-actions' }, restartBtn, backBtn)
       )
     );
-    playArea.querySelector('.go-actions button').addEventListener('click', () => {
-      mountFree(root, { modeId, nav });
-    });
   }
 
   async function nextRound() {
@@ -6013,7 +6288,7 @@ function mountFree(root, { modeId, nav }) {
     playArea.innerHTML = '';
 
     if (modeId === 'sequence') {
-      const seqLen = Math.min(6, 2 + Math.floor(round / 2));
+      const seqLen = Math.min(10, 2 + Math.floor(round / 2));
       const sequence = shuffle([...CARDS_PAO]).slice(0, seqLen);
 
       const previewBox = h('div', { class: 'cards-preview-box' },
@@ -6022,7 +6297,7 @@ function mountFree(root, { modeId, nav }) {
       );
       playArea.append(previewBox);
 
-      await sleep(2500 + seqLen * 600);
+      await sleep(1800 + seqLen * 500);
       if (isGameOver) return;
       playArea.innerHTML = '';
 
@@ -6092,33 +6367,41 @@ function mountFree(root, { modeId, nav }) {
           } else {
             sfx.wrong();
             combo = 0;
-            raccoon.setMood('sad', 1200);
-            raccoon.say(`${target.name} to: ${target.person} (${target.action})!`, 'think', { revert: 2800 });
+            lives--;
+            updateLives();
             btn.classList.add('wrong');
-            setTimeout(nextRound, 1200);
+            if (lives <= 0) {
+              gameOver();
+            } else {
+              raccoon.setMood('sad', 1200);
+              raccoon.say(`Ojej! ${target.name} to: ${target.person} (${target.action})! Masz jeszcze ${lives} szanse. 🦝`, 'think', { revert: 2600 });
+              setTimeout(nextRound, 1200);
+            }
           }
         });
         opts.append(btn);
       });
+
       playArea.append(card, opts);
 
     } else if (modeId === 'missing') {
-      const four = shuffle([...CARDS_PAO]).slice(0, 4);
-      const hiddenIdx = rand(0, 3);
-      const hiddenCard = four[hiddenIdx];
+      const cardCount = Math.min(6, 3 + Math.floor(round / 3));
+      const poolCards = shuffle([...CARDS_PAO]).slice(0, cardCount);
+      const hiddenIdx = rand(0, poolCards.length - 1);
+      const hiddenCard = poolCards[hiddenIdx];
 
       const previewBox = h('div', { class: 'cards-preview-box' },
-        h('h3', {}, 'Zapamiętaj te 4 karty!'),
-        h('div', { class: 'cards-row' }, four.map(c => h('div', { html: getCardSvg(c) })))
+        h('h3', {}, `Zapamiętaj te ${cardCount} karty!`),
+        h('div', { class: 'cards-row' }, poolCards.map(c => h('div', { html: getCardSvg(c) })))
       );
       playArea.append(previewBox);
 
-      await sleep(2800);
+      await sleep(1800 + cardCount * 400);
       if (isGameOver) return;
       playArea.innerHTML = '';
 
       const coveredRow = h('div', { class: 'cards-row' },
-        four.map((c, i) => i === hiddenIdx
+        poolCards.map((c, i) => i === hiddenIdx
           ? h('div', { class: 'playing-card card-back' }, '❓')
           : h('div', { html: getCardSvg(c) })
         )
@@ -6147,7 +6430,17 @@ function mountFree(root, { modeId, nav }) {
             nextRound();
           } else {
             sfx.wrong();
-            gameOver();
+            combo = 0;
+            lives--;
+            updateLives();
+            btn.classList.add('wrong');
+            if (lives <= 0) {
+              gameOver();
+            } else {
+              raccoon.setMood('sad', 1200);
+              raccoon.say(`Zakrytą kartą był ${hiddenCard.name}! Zostały Ci ${lives} szanse. 🦝`, 'think', { revert: 2600 });
+              setTimeout(nextRound, 1200);
+            }
           }
         });
         opts.append(btn);
@@ -6172,12 +6465,16 @@ function mountFree(root, { modeId, nav }) {
           if (c.id === target.id) {
             sfx.pop();
             score += 10;
+            timeLeft += 2; // bonus czasowy za spryt!
             round++;
             scoreEl.textContent = `${score}`;
             roundEl.textContent = `${round}`;
+            if (timerEl) timerEl.textContent = `⏱ ${timeLeft}s`;
             nextRound();
           } else {
             sfx.wrong();
+            timeLeft = Math.max(1, timeLeft - 2);
+            if (timerEl) timerEl.textContent = `⏱ ${timeLeft}s`;
             btn.classList.add('wrong');
             setTimeout(nextRound, 300);
           }
@@ -6189,14 +6486,7 @@ function mountFree(root, { modeId, nav }) {
   }
 
   if (modeId === 'deck_rush') {
-    timerInterval = setInterval(() => {
-      timeLeft--;
-      if (timerEl) timerEl.textContent = `⏱ ${timeLeft}s`;
-      if (timeLeft <= 0) {
-        clearInterval(timerInterval);
-        gameOver();
-      }
-    }, 1000);
+    startTimer();
   }
 
   nextRound();
@@ -6372,12 +6662,15 @@ const LESSONS = [
     title: 'Efekt domina i siła akcji',
     subtitle: 'Nigdy nie stawiaj rzeczy obok siebie',
     desc: 'Najczęstszy błąd: wyobrażenie sobie parasola leżącego obok arbuza. To nie zadziała!',
+    speech: 'Chrup, chrup! Cześć! Jestem Wiewiórka Basia 🐿️ Zawsze wiem, gdzie schowałam orzeszki! Pokażę Ci metodę łańcucha skojarzeń – dzięki niej zapamiętasz listę zakupów, rzeczy do plecaka czy plan dnia bez żadnej kartki papieru!',
     theory: [
-      'Nasz mózg ignoruje statyczne, nudne obrazy. Aby coś zapamiętać, potrzebujesz DYNAMICZNEJ AKCJI!',
+      'Po co nam ta technika? Ile razy zdarzyło Ci się pójść do sklepu i zapomnieć połowy rzeczy, albo pakować plecak do szkoły i zostawić strój na WF w domu?',
+      'Metoda łańcuchowa łączy myśli w głowie jak klocki domina: gdy popchniesz pierwszy klocek, cała reszta sama wskakuje do głowy!',
+      'ZASADA NR 1: PRAWIDŁO DYNAMICZNEJ AKCJI:',
+      'Nasz mózg natychmiast zapomina nudne, spokojne obrazki. Aby coś zapamiętać, potrzebujesz ruchu i akcji!',
       'Gdy łączysz PARASOL ☂️ z ARBUZEM 🍉:',
-      'NIE wyobrażaj sobie parasola opartego o arbuza.',
-      'Zobacz, jak parasol otwiera się z potężnym hukiem i z impetem PRZEBIJA wielkiego arbuza, z którego tryska fontanna lepkiego soku!',
-      'Akcja, zderzenie i emocje sprawiają, że połączenie staje się nierozerwalne!'
+      'NIE wyobrażaj sobie parasola opartego o arbuza!',
+      'Zobacz, jak parasol otwiera się z potężnym hukiem i z impetem PRZEBIJA wielkiego arbuza, z którego na wszystkie strony tryska słodki, czerwony sok!'
     ],
     task: {
       prompt: 'Jakie połączenie parasola z arbuzem zapamiętasz najdłużej?',
@@ -6396,11 +6689,13 @@ const LESSONS = [
     title: 'Zasada dwóch ogniw',
     subtitle: 'Myśl tylko o A i B!',
     desc: 'Wielka ulga: nie musisz trzymać w głowie całej historii na raz.',
+    speech: 'Wielka ulga: myślisz tylko o dwóch rzeczach naraz! Reszta świata może poczekać!',
     theory: [
-      'Sekret metody łańcuchowej tkwi w jej nazwie: to ŁAŃCUCH ogniw.',
-      'Gdy łączysz Parasol z Arbuzem, zapominasz o reszcie świata.',
-      'Gdy łączysz Arbuz z Rowerem (sok z arbuza tworzy kałużę, na której ślizga się rower), myślisz TYLKO o Arbuzie i Rowerze!',
-      'Każde ogniwo pociąga kolejne. Twój mózg skupia się tylko na JEDNEJ parze naraz.'
+      'Dlaczego to takie proste? Nie musisz trzymać w głowie całej długiej listy na raz!',
+      'W łańcuchu liczy się tylko bieżąca para ogniw (A i B):',
+      'Gdy łączysz Parasol z Arbuzem – myślisz tylko o nich.',
+      'Gdy łączysz Arbuz z Rowerem (sok z arbuza tworzy lepką kałużę, na której ślizga się rower) – myślisz TYLKO o Arbuzie i Rowerze!',
+      'Każde ogniwo pociąga za sobą kolejne jak wagoniki w pociągu!'
     ],
     task: {
       prompt: 'Gdy łączysz arbuz z rowerem, o czym powinieneś myśleć?',
@@ -6414,12 +6709,13 @@ const LESSONS = [
     title: 'Trzy zmysły pamięci',
     subtitle: 'Dźwięk, ruch i przesada',
     desc: 'Wzbogać swoje wyobrażenia o zmysły.',
+    speech: 'Włączamy zmysły! Spraw, by przedmioty były gigantyczne, hałaśliwe i zabawne!',
     theory: [
       'Najsilniejsze skojarzenia angażują co najmniej 3 zmysły:',
-      '1. RUCH – przedmioty wirują, spadają, eksplodują.',
-      '2. DŹWIĘK – usłysz brzęk, pisk opon, krzyk, huk dzwonka zegara.',
-      '3. PRZESADA – wyobraź sobie nie mały zegarek, ale ZEGAR wielkości wieżowca, który uderza w rower!',
-      'Im bardziej absurdalny i komiczny obraz, tym łatwiej go przywołać.'
+      '1. RUCH – przedmioty wirują, skaczą, odbijają się jak piłki.',
+      '2. DŹWIĘK – usłysz głośny pisk, dzwonienie budzika, plusk wody.',
+      '3. PRZESADA – wyobraź sobie nie zwykły mały zegarek, ale ZEGAR wielki jak wieżowiec, który z łomotem uderza w rower!',
+      'Im bardziej śmieszny i niezwykły obraz, tym łatwiej go przywołać!'
     ],
     task: {
       prompt: 'Rower wpada na ZEGAR. Jak wzmocnić to skojarzenie?',
@@ -6438,14 +6734,15 @@ const LESSONS = [
     title: 'Praktyka: Lista zakupów bez kartki',
     subtitle: '5 produktów w jednym łańcuchu',
     desc: 'Prawdziwy test życiowy: Chleb, Pomidory, Mleko, Kawa, Miód.',
+    speech: 'Sprawdźmy to w prawdziwym życiu! 5 produktów ze sklepu zapamiętanych w mgnieniu oka!',
     theory: [
-      'Budujemy łańcuch zakupów:',
-      '1. CHLEB 🍞 → olbrzymi bochenek służy jako trampolina dla...',
-      '2. POMIDORÓW 🍅 → które toczą się i wskakują do kartonu...',
-      '3. MLEKA 🥛 → mleko wytryskuje prosto na ziarenka...',
-      '4. KAWY ☕ → tańczące ziarenka kawy wpadają do słoika...',
-      '5. MIODU 🍯 → złocisty, lepki miód oblepia wszystko!',
-      'Idziesz do sklepu i odtwarzasz historię krok po kroku!'
+      'Budujemy łańcuch zakupów bez kartki:',
+      '1. CHLEB 🍞 → olbrzymi chrupiący bochenek służy jako trampolina dla...',
+      '2. POMIDORÓW 🍅 → które toczą się i z pluskiem wskakują do kartonu...',
+      '3. MLEKA 🥛 → białe mleko wytryskuje jak gejzer na tańczące ziarenka...',
+      '4. KAWY ☕ → które wpadają prosto do wielkiego słoika...',
+      '5. MIODU 🍯 → złocisty, cieplutki miód oblepia wszystko dookoła!',
+      'Wchodzisz do sklepu i z uśmiechem odtwarzasz film krok po kroku!'
     ],
     task: {
       prompt: 'Co działo się z pomidorami po zeskoczeniu z chleba?',
@@ -6459,13 +6756,14 @@ const LESSONS = [
     title: 'Spacer w tył',
     subtitle: 'Odtwarzanie sekwencji od końca',
     desc: 'Dlaczego metoda łańcuchowa jest tak potężna? Bo działa w obie strony!',
+    speech: 'Czarodziejski spacer w tył! Ten łańcuch działa w obie strony jak po sznurku!',
     theory: [
-      'Spróbujmy cofnąć listę zakupów od końca:',
+      'Prawdziwa supermoc: cofamy listę zakupów od końca!',
       '• MIÓD 🍯 → co oblepił? Ziarenka KAWY ☕!',
       '• KAWA ☕ → skąd wyleciała? Z kartonu MLEKA 🥛!',
       '• MLEKO 🥛 → na co trysnęło? Na czerwone POMIDORY 🍅!',
-      '• POMIDORY 🍅 → po czym się toczyły? Po bochenku CHLEBA 🍞!',
-      'To dowód, że Twoje powiązania są żelazne i trwałe.'
+      '• POMIDORY 🍅 → po czym skakały? Po bochenku CHLEBA 🍞!',
+      'Twój mózg potrafi odtworzyć listę od początku i od końca bez ani jednego błędu!'
     ],
     task: {
       prompt: 'Jaki produkt znajdował się bezpośrednio przed kawą?',
@@ -6479,11 +6777,12 @@ const LESSONS = [
     title: 'Wiewiórcza spiżarnia: 10 ogniw',
     subtitle: 'Wielki finał metody łańcuchowej',
     desc: 'Zbuduj łańcuch 10 szalonych przedmiotów i zdobądź tytuł Mistrza Skojarzeń!',
+    speech: 'Wielki finał u Basi! Aż 10 szalonych ogniw – Twoja spiżarnia pamięci jest pełna skarbów!',
     theory: [
       'Opanowałeś wszystkie prawa łańcucha skojarzeń:',
       '• Parasol → Arbuz → Rower → Zegar → Balon → Kaktus → Gitara → Lody → Klucz → Latarka.',
       'Każdy przedmiot taranuje kolejny z dźwiękiem i ruchem.',
-      'Basia jest zachwycona! Twoja spiżarnia pamięci jest pełna orzeszków! 🐿️'
+      'Wiewiórka Basia bije Ci brawo! Możesz zapamiętać dowolną liczbę rzeczy na sprawdzian lub wycieczkę! 🐿️'
     ],
     task: {
       prompt: 'Co przebija lecący w chmurach balon w naszej historii?',
@@ -6522,11 +6821,20 @@ function mountMap(root, { nav }) {
     );
   });
 
+  const whyCard = h('div', { class: 'why-card' },
+    h('span', { class: 'why-icon' }, '🎯'),
+    h('div', { class: 'why-content' },
+      h('b', {}, 'Po co Ci ta technika w codziennym życiu?'),
+      h('p', {}, 'Duże zakupy w markecie bez spoglądania w telefon, kolejność punktów wystąpienia czy procedury krok po kroku – dzięki efektowi domina jedno ogniwo samo pociąga kolejne!')
+    )
+  );
+
   const view = h('section', { class: 'screen train-map' },
     h('div', { class: 'crumbs' }, h('a', { href: '#/link', class: 'back' }, '← Menu gry')),
     h('h1', {}, '🐿️ ', h('span', { class: 'grad' }, 'Łańcuch Skojarzeń z Basią')),
     h('p', { class: 'lead' }, 'Poznaj metodę łączenia myśli jak domino i nigdy więcej nie zgub wątku.'),
     squirrel.el,
+    whyCard,
     h('div', { class: 'map-list' }, items)
   );
 
@@ -6549,7 +6857,7 @@ function mountStep(root, { nav, index }) {
   let answered = false;
 
   const theoryBox = h('div', { class: 'theory-card' },
-    h('h3', {}, '🐿️ Lekcja: ', les.title),
+    h('h3', {}, '🐿️ Sprytny trik Basi: ', les.title),
     h('div', { class: 'theory-text' }, les.theory.map(p => h('p', {}, p)))
   );
 
@@ -6617,7 +6925,7 @@ function mountStep(root, { nav, index }) {
 
   root.append(view);
   setTimeout(() => {
-    squirrel.say(`Lekcja ${index + 1}: ${les.subtitle}. Zobacz, jak działa żywa akcja!`, 'happy');
+    squirrel.say(les.speech || `Chrup, chrup! Lekcja ${index + 1}: ${les.subtitle}. Zobacz, jak połączymy te rzeczy!`, 'happy');
   }, 250);
 
   return () => squirrel.destroy();
@@ -6638,17 +6946,20 @@ function mountFree(root, { modeId, nav }) {
   let score = 0;
   let round = 1;
   let combo = 0;
+  let lives = 3;
   let isGameOver = false;
 
   const scoreEl = h('span', { class: 'hud-score' }, '0');
   const roundEl = h('span', { class: 'hud-round' }, '1');
+  const livesEl = (modeId === 'forward' || modeId === 'reverse') ? h('span', { class: 'hud-lives' }, '❤️❤️❤️') : null;
   const playArea = h('div', { class: 'free-play-area' });
 
   const view = h('section', { class: 'screen free-screen' },
     h('div', { class: 'crumbs' }, h('a', { href: '#/link', class: 'back' }, '← Wybór trybu')),
     h('div', { class: 'hud' },
       h('div', { class: 'hud-item' }, h('small', {}, 'Wynik'), scoreEl),
-      h('div', { class: 'hud-item' }, h('small', {}, 'Ogniwo'), roundEl)
+      h('div', { class: 'hud-item' }, h('small', {}, 'Runda'), roundEl),
+      livesEl ? h('div', { class: 'hud-item' }, h('small', {}, 'Szanse'), livesEl) : null
     ),
     squirrel.el,
     playArea
@@ -6656,18 +6967,39 @@ function mountFree(root, { modeId, nav }) {
 
   root.append(view);
 
-  const CHEERS = ['Hop! Piękne ogniwo! 🐿️', 'Łańcuch trzyma mocno! 🔗', 'Skojarzenie błyskawica! ⚡', 'Kolejny orzeszek w dziupli! 🌰', 'Super akcja! 🎯'];
+  const CHEERS = ['Łańcuch trzyma mocno! 🐿️✨', 'Efekt domina w akcji! 💥', 'Kolejne ogniwo połączone! 🔗', 'Znakomita wyobraźnia! 🧠', 'Bez pudła! 🎯'];
   function cheerSquirrel(c) {
     if (c % 3 === 0 && c > 0) {
-      squirrel.say(`Combo x${c}! Pamięciowy efekt domina działa cuda! 🐿️🔥`, 'cheer', { revert: 1400 });
+      squirrel.say(`Combo x${c}! Twoja opowieść jest nierozerwalna! 🐿️🌰`, 'cheer', { revert: 1400 });
+      squirrel.hop?.();
     } else {
       squirrel.say(rand(CHEERS), 'cheer', { revert: 1000 });
+    }
+  }
+
+  function updateLives() {
+    if (livesEl) {
+      livesEl.textContent = '❤️'.repeat(Math.max(0, lives)) + '🖤'.repeat(Math.max(0, 3 - lives));
     }
   }
 
   function saveBest() {
     const prev = store.get(`link.best.${modeId}`, 0);
     if (score > prev) store.set(`link.best.${modeId}`, score);
+  }
+
+  function restartGame() {
+    isGameOver = false;
+    score = 0;
+    round = 1;
+    combo = 0;
+    lives = 3;
+    scoreEl.textContent = '0';
+    roundEl.textContent = '1';
+    updateLives();
+    squirrel.setMood('happy');
+    squirrel.say('Zaczynamy od nowa! Połączmy wszystkie ogniwa! 🐿️🌰', 'happy');
+    nextRound();
   }
 
   function gameOver() {
@@ -6679,6 +7011,11 @@ function mountFree(root, { modeId, nav }) {
 
     const best = store.get(`link.best.${modeId}`, score);
     playArea.innerHTML = '';
+
+    const restartBtn = h('button', { class: 'btn btn-primary', type: 'button' }, 'Zagraj ponownie ↻');
+    restartBtn.addEventListener('click', restartGame);
+    const backBtn = h('a', { class: 'btn btn-ghost', href: '#/link' }, 'Inny tryb');
+
     playArea.append(
       h('div', { class: 'game-over-box' },
         h('h2', {}, '🎉 Świetny łańcuch myśli!'),
@@ -6687,14 +7024,27 @@ function mountFree(root, { modeId, nav }) {
           h('span', {}, 'punktów')
         ),
         h('div', { class: 'go-best' }, `🏆 Rekord w tym trybie: ${best}`),
-        h('div', { class: 'go-actions' },
-          h('button', { class: 'btn btn-primary', type: 'button' }, 'Zagraj ponownie 🔄')
-        )
+        h('div', { class: 'go-actions' }, restartBtn, backBtn)
       )
     );
-    playArea.querySelector('.go-actions button').addEventListener('click', () => {
-      mountFree(root, { modeId, nav });
-    });
+  }
+
+  function handleWrong(solutionText) {
+    sfx.wrong();
+    combo = 0;
+    if (modeId === 'missing_link' || modeId === 'endless_chain') {
+      gameOver();
+      return;
+    }
+    lives--;
+    updateLives();
+    if (lives <= 0) {
+      gameOver();
+    } else {
+      squirrel.setMood('sad', 1200);
+      squirrel.say(`${solutionText} Masz jeszcze ${lives} szanse. 🐿️`, 'think', { revert: 2600 });
+      setTimeout(nextRound, 1200);
+    }
   }
 
   function nextRound() {
@@ -6709,7 +7059,7 @@ function mountFree(root, { modeId, nav }) {
       const card = h('div', { class: 'link-card' },
         h('span', { class: 'link-emoji' }, curr.emoji),
         h('h2', {}, curr.name),
-        h('p', { class: 'link-action-hint' }, `Akcja: ${curr.storyAction}`),
+        round <= 3 ? h('p', { class: 'link-action-hint' }, `Akcja: ${curr.storyAction}`) : null,
         h('p', { class: 'muted' }, 'Co jest kolejnym ogniwem w tym łańcuchu?')
       );
 
@@ -6731,12 +7081,8 @@ function mountFree(root, { modeId, nav }) {
             cheerSquirrel(combo);
             nextRound();
           } else {
-            sfx.wrong();
-            combo = 0;
-            squirrel.setMood('sad', 1200);
-            squirrel.say(`Po ${curr.name} następuje ${nextItem.name}!`, 'think', { revert: 2800 });
             btn.classList.add('wrong');
-            setTimeout(nextRound, 1200);
+            handleWrong(`Po ${curr.name} następuje ${nextItem.name}!`);
           }
         });
         opts.append(btn);
@@ -6772,12 +7118,8 @@ function mountFree(root, { modeId, nav }) {
             cheerSquirrel(combo);
             nextRound();
           } else {
-            sfx.wrong();
-            combo = 0;
-            squirrel.setMood('sad', 1200);
-            squirrel.say(`Przed ${curr.name} był ${prevItem.name}!`, 'think', { revert: 2800 });
             btn.classList.add('wrong');
-            setTimeout(nextRound, 1200);
+            handleWrong(`Przed ${curr.name} znajdował się: ${prevItem.name}!`);
           }
         });
         opts.append(btn);
@@ -6835,7 +7177,7 @@ function mountFree(root, { modeId, nav }) {
         h('span', { class: 'link-emoji' }, curr.emoji),
         h('h2', {}, curr.name),
         h('p', {}, `Ogniwo #${round} w łańcuchu domina.`),
-        h('p', { class: 'text-muted' }, 'Wskaż natychmiast kolejne powiązanie:')
+        h('p', { class: 'muted' }, 'Wskaż natychmiast kolejne powiązanie:')
       );
 
       const others = LINK_ITEMS.filter(it => it.id !== nextItem.id);
@@ -6994,7 +7336,7 @@ const MONTH_ANCHORS = [
 
 function getDoomsdayOfYear(year) {
   // Doomsday algorithm anchor for years
-  // 2024: 3 (Środa), 2025: 4 (Czwartek), 2026: 5 (Piątek)
+  // 2024: 4 (Czwartek), 2025: 5 (Piątek), 2026: 6 (Sobota)
   const d = new Date(year, 3, 4); // 4th April is always Doomsday
   return d.getDay();
 }
@@ -7047,19 +7389,15 @@ const LESSONS = [
   {
     id: 'cal-1',
     title: 'Sekret kalendarza w głowie',
-    subtitle: 'Dni tygodnia to liczby modulo 7',
-    desc: 'Odkryj matematyczną tajemnicę geniusza Johna Conwaya – algorytm Doomsday.',
+    subtitle: 'Dni tygodnia to liczby 0 do 6',
+    desc: 'Odkryj tajemnicę geniusza Johna Conwaya – kalendarz w pamięci.',
+    speech: 'Cześć! Jestem Żółwik Zenon 🐢. Nigdy się nie spieszę, bo znam sekret czasu! Czy wiesz, że możesz w 2 sekundy odgadnąć, w jaki dzień tygodnia wypadną Twoje urodziny, Boże Narodzenie czy początek wakacji? Pokażę Ci tę niezwykłą sztuczkę!',
     theory: [
-      'Każdy tydzień ma 7 dni. Zamiast zapamiętywać 365 dat, wystarczy liczyć reszty z dzielenia przez 7 (modulo 7).',
-      'Przypisujemy liczbom dni tygodnia:',
-      '• 0 = Niedziela (Non-day) ☀️',
-      '• 1 = Poniedziałek 🌙',
-      '• 2 = Wtorek 🔥',
-      '• 3 = Środa 💧',
-      '• 4 = Czwartek ⚡',
-      '• 5 = Piątek 🎉',
-      '• 6 = Sobota 🪐',
-      'W roku 2026 dzień kotwiczny (Doomsday) to PIĄTEK (5).'
+      'Po co nam ta technika? Wyobraź sobie miny znajomych w szkole lub w pracy, gdy ktoś rzuci datę, a Ty po 2 sekundach w pamięci odpowiesz: „To będzie sobota!”. Poczujesz się jak chodzący ludzki kalkulator!',
+      'Tydzień ma 7 dni i kręci się w kółko jak karuzela. Ponumerujmy dni tygodnia od 0 do 6:',
+      '• 1 = Poniedziałek 🌙 | 2 = Wtorek 🔥 | 3 = Środa 💧 | 4 = Czwartek ⚡ | 5 = Piątek 🎉 | 6 = Sobota 🪐',
+      '• 0 = Niedziela ☀️ (dzień relaksu i odpoczynku, okrągłe zero pracy!)',
+      'W roku 2026 dniem kotwicznym (magiczną bazą) jest SOBOTA (6). Zapamiętajmy tę liczbę!'
     ],
     task: {
       prompt: 'Jaki dzień tygodnia odpowiada liczbie 5 w systemie kalendarzowym?',
@@ -7073,15 +7411,16 @@ const LESSONS = [
     title: 'Bliźniacze daty parzyste',
     subtitle: '4.04, 6.06, 8.08, 10.10, 12.12',
     desc: 'Wszystkie parzyste miesiące mają kotwicę w dniu równym numerowi miesiąca!',
+    speech: 'Oto najłatwiejsza reguła na świecie: daty parzyste to lustrzane bliźniaki!',
     theory: [
-      'To najbardziej elegancka reguła kalendarza na świecie:',
-      'W DOWOLNYM ROKU następujące daty wypadają w DOKŁADNIE TEN SAM DZIEŃ TYGODNIA:',
+      'Spójrz, jak genialnie zbudowany jest kalendarz:',
+      'W każdym parzystym miesiącu numer miesiąca to dokładnie ten sam dzień kotwiczny:',
       '• 4 kwietnia (4.04)',
       '• 6 czerwca (6.06)',
       '• 8 sierpnia (8.08)',
       '• 10 października (10.10)',
       '• 12 grudnia (12.12)',
-      'W roku 2026 każda z tych dat to PIĄTEK! Zapamiętaj tę piątkę parzystych dat!'
+      'W roku 2026 każda z tych 5 dat to dokładnie ten sam dzień: SOBOTA!'
     ],
     task: {
       prompt: 'Która data jest kotwicą Doomsday dla sierpnia (8. miesiąc)?',
@@ -7095,12 +7434,13 @@ const LESSONS = [
     title: 'Miesiące nieparzyste',
     subtitle: 'Praca 9 do 5 na stacji 7/11',
     desc: 'Jak zapamiętać kotwice dla maja, lipca, września i listopada?',
+    speech: 'A co z miesiącami nieparzystymi? Mamy na nie wesołą rymowankę o stacji benzynowej!',
     theory: [
-      'Dla miesięcy nieparzystych mamy łatwe do zapamiętania powiedzonko:',
+      'Dla miesięcy nieparzystych mamy łatwe powiedzonko:',
       '„Pracuję od 9 do 5 na stacji 7/11”:',
-      '• 9 maja (9.05) oraz 5 września (5.09) → zamiana 9 i 5!',
-      '• 11 lipca (11.07) oraz 7 listopada (7.11) → zamiana 7 i 11!',
-      'Te 4 daty również wypadają w ten sam dzień tygodnia co parzyste bliźniaki!'
+      '• 9 maja (9.05) oraz 5 września (5.09) → zamieniamy 9 i 5!',
+      '• 11 lipca (11.07) oraz 7 listopada (7.11) → zamieniamy 7 i 11!',
+      'Te 4 daty to w 2026 roku również ta sama nasza kotwica: SOBOTA!'
     ],
     task: {
       prompt: 'Jaki dzień maja (5. miesiąc) jest kotwicą w regule „od 9 do 5”?',
@@ -7114,18 +7454,19 @@ const LESSONS = [
     title: 'Obliczanie daty w 3 krokach',
     subtitle: 'Przykład: 15 sierpnia 2026',
     desc: 'Jak policzyć dzień tygodnia dla dowolnego dnia w miesiącu?',
+    speech: 'Teraz połączymy kropki! Zobacz, jak w 3 prostych krokach policzyć dowolną datę!',
     theory: [
-      'Chcesz wiedzieć, jaki dzień tygodnia to 15 sierpnia 2026:',
-      '1. Znasz kotwicę sierpnia: 8 sierpnia (8.08).',
-      '2. Wiesz, że w 2026 roku kotwica to PIĄTEK (5).',
-      '3. Różnica: 15 - 8 = 7 dni. Ponieważ 7 dni to pełny tydzień (7 mod 7 = 0), 15 sierpnia to DOKŁADNIE TEN SAM DZIEŃ: PIĄTEK!',
-      'Gdyby to był 16 sierpnia → piątek + 1 dzień = sobota!'
+      'Chcesz wiedzieć, jaki dzień tygodnia to np. 15 sierpnia 2026:',
+      '1. Znasz kotwicę sierpnia: to bliźniak 8 sierpnia (8.08).',
+      '2. Wiesz, że w 2026 roku kotwica to SOBOTA (6).',
+      '3. Liczymy różnicę dni: 15 - 8 = 7 dni. Pełne 7 dni to dokładnie tydzień, więc 15 sierpnia to również SOBOTA!',
+      'Gdyby to był 17 sierpnia? 8 sierpnia + 9 dni (czyli tydzień + 2 dni): sobota + 2 dni = poniedziałek!'
     ],
     task: {
-      prompt: 'Jeśli 8 sierpnia to Piątek, jaki dzień tygodnia to 10 sierpnia (8 + 2 dni)?',
-      options: ['Niedziela (Piątek + 2 dni)', 'Sobota', 'Poniedziałek', 'Czwartek'],
+      prompt: 'Jeśli 8 sierpnia to Sobota, jaki dzień tygodnia to 10 sierpnia (8 + 2 dni)?',
+      options: ['Poniedziałek (Sobota + 2 dni)', 'Niedziela', 'Wtorek', 'Czwartek'],
       correct: 0,
-      hint: 'Piątek + 1 dzień = Sobota; Piątek + 2 dni = Niedziela!'
+      hint: 'Sobota + 1 dzień = Niedziela; Sobota + 2 dni = Poniedziałek!'
     }
   },
   {
@@ -7133,10 +7474,12 @@ const LESSONS = [
     title: 'Marzec i Dzień Liczby Pi',
     subtitle: '14 marca oraz luty',
     desc: 'Ostatnie elementy układanki.',
+    speech: 'Marzec i luty! Poznaj dzień liczby Pi oraz ostatni dzień zimy!',
     theory: [
-      '• Marzec (3. miesiąc): kotwicą jest 14 marca (3.14 to Dzień Liczby Pi!).',
+      'Dwa ostatnie miesiące do kompletu:',
+      '• Marzec (3. miesiąc): kotwicą jest 14 marca (3.14 to słynny Dzień Liczby Pi!).',
       '• Luty: kotwicą jest ZAWSZE OSTATNI DZIEŃ LUTEGO (28 lutego, a w przestępnym 29 lutego).',
-      'Teraz znasz kotwicę dla każdego miesiąca w całym roku kalendarzowym!'
+      'Teraz znasz magiczną kotwicę dla każdego miesiąca w całym roku kalendarzowym!'
     ],
     task: {
       prompt: 'Który dzień marca jest kotwicą Doomsday (związaną z liczbą Pi 3.14)?',
@@ -7150,19 +7493,20 @@ const LESSONS = [
     title: 'Egzamin Żółwika Zegarowego',
     subtitle: 'Certyfikat mistrza kalendarza',
     desc: 'Żółwik zadaje finałowe pytanie! Wykorzystaj kotwice i modulo 7.',
+    speech: 'Wielki finał u Żółwika Zenona! Znasz już tajemnicę wiecznego kalendarza w głowie!',
     theory: [
-      'Brawo! Znasz już potężny algorytm Conwaya:',
+      'Brawo! Opanowałeś legendarny algorytm kalendarzowy Johna Conwaya:',
       '• Parzyste: 4.04, 6.06, 8.08, 10.10, 12.12.',
       '• Nieparzyste: 9.05, 5.09, 11.07, 7.11.',
-      '• Marzec: 14.03 (Pi).',
+      '• Marzec: 14.03 (Dzień Pi).',
       '• Luty: 28.02.',
-      'Nawet najszybszy komputer nie zrobi tego z takim wdziękiem jak Ty! 🐢'
+      'Nawet najszybszy komputer nie zrobi tego z takim wdziękiem i spokojem jak Ty! 🐢'
     ],
     task: {
-      prompt: 'Jaki dzień tygodnia to 12 grudnia 2026 roku (pamiętając, że kotwica 2026 to Piątek)?',
-      options: ['Piątek (bo 12.12 to bezpośrednia kotwica Doomsday!)', 'Sobota', 'Niedziela', 'Środa'],
+      prompt: 'Jaki dzień tygodnia to 12 grudnia 2026 roku (pamiętając, że kotwica 2026 to Sobota)?',
+      options: ['Sobota (bo 12.12 to bezpośrednia kotwica Doomsday!)', 'Niedziela', 'Piątek', 'Środa'],
       correct: 0,
-      hint: '12.12 to parzysty bliźniak – dokładnie dzień kotwicy (Piątek)!'
+      hint: '12.12 to parzysty bliźniak – dokładnie dzień kotwicy (Sobota)!'
     }
   }
 ];
@@ -7195,11 +7539,20 @@ function mountMap(root, { nav }) {
     );
   });
 
+  const whyCard = h('div', { class: 'why-card' },
+    h('span', { class: 'why-icon' }, '🎯'),
+    h('div', { class: 'why-content' },
+      h('b', {}, 'Po co Ci ta technika w codziennym życiu?'),
+      h('p', {}, 'Błyskawiczne planowanie spotkań, terminów i wyjazdów bez sięgania po smartfon. Zrobisz też genialny popis na imprezie, podając dzień tygodnia urodzin każdego ze znajomych!')
+    )
+  );
+
   const view = h('section', { class: 'screen train-map' },
     h('div', { class: 'crumbs' }, h('a', { href: '#/calendar', class: 'back' }, '← Menu gry')),
     h('h1', {}, '🐢 ', h('span', { class: 'grad' }, 'Kalendarz w głowie z Żółwikiem')),
     h('p', { class: 'lead' }, 'Poznaj algorytm Doomsday i naucz się podawać dzień tygodnia każdej daty w kilka sekund.'),
     turtle.el,
+    whyCard,
     h('div', { class: 'map-list' }, items)
   );
 
@@ -7222,7 +7575,7 @@ function mountStep(root, { nav, index }) {
   let answered = false;
 
   const theoryBox = h('div', { class: 'theory-card' },
-    h('h3', {}, '⏱️ Lekcja: ', les.title),
+    h('h3', {}, '🐢 Mądrość Żółwika: ', les.title),
     h('div', { class: 'theory-text' }, les.theory.map(p => h('p', {}, p)))
   );
 
@@ -7290,7 +7643,7 @@ function mountStep(root, { nav, index }) {
 
   root.append(view);
   setTimeout(() => {
-    turtle.say(`Lekcja ${index + 1}: ${les.subtitle}. Sprawdź kotwice i modulo 7!`, 'happy');
+    turtle.say(les.speech || `Cześć! Lekcja ${index + 1}: ${les.subtitle}. Spokojnie zbadajmy daty!`, 'happy');
   }, 250);
 
   return () => turtle.destroy();
@@ -7311,12 +7664,14 @@ function mountFree(root, { modeId, nav }) {
   let score = 0;
   let round = 1;
   let combo = 0;
+  let lives = 3;
   let timeLeft = modeId === 'clock_beat' ? 30 : 0;
   let timerInterval = null;
   let isGameOver = false;
 
   const scoreEl = h('span', { class: 'hud-score' }, '0');
   const roundEl = h('span', { class: 'hud-round' }, '1');
+  const livesEl = (modeId === 'weekday' || modeId === 'anchors') ? h('span', { class: 'hud-lives' }, '❤️❤️❤️') : null;
   const timerEl = modeId === 'clock_beat' ? h('span', { class: 'hud-timer' }, '⏱ 30s') : null;
   const playArea = h('div', { class: 'free-play-area' });
 
@@ -7325,6 +7680,7 @@ function mountFree(root, { modeId, nav }) {
     h('div', { class: 'hud' },
       h('div', { class: 'hud-item' }, h('small', {}, 'Wynik'), scoreEl),
       h('div', { class: 'hud-item' }, h('small', {}, 'Runda'), roundEl),
+      livesEl ? h('div', { class: 'hud-item' }, h('small', {}, 'Szanse'), livesEl) : null,
       timerEl ? h('div', { class: 'hud-item' }, h('small', {}, 'Czas'), timerEl) : null
     ),
     turtle.el,
@@ -7333,12 +7689,19 @@ function mountFree(root, { modeId, nav }) {
 
   root.append(view);
 
-  const CHEERS = ['W punkt! Czas zatrzymany! 🐢', 'Zegar bije dla Ciebie! ⏳', 'Mistrz modulo 7! ⏱️', 'Spokojnie i celnie! 🕰️', 'Genialna data! 📅'];
+  const CHEERS = ['Dzień obliczony w sekundę! 🐢⚡', 'Mistrz kalendarza! 📅', 'Algorytm Conwaya działa! 🧠', 'Bez pudła! 🎯', 'Znakomita precyzja! ⏱️'];
   function cheerTurtle(c) {
     if (c % 3 === 0 && c > 0) {
-      turtle.say(`Combo x${c}! Algorytm Doomsday w małym palcu! 🐢🌟`, 'cheer', { revert: 1400 });
+      turtle.say(`Combo x${c}! Twój zegar biologiczny wyprzedza komputery! 🐢✨`, 'cheer', { revert: 1400 });
+      turtle.hop?.();
     } else {
       turtle.say(rand(CHEERS), 'cheer', { revert: 1000 });
+    }
+  }
+
+  function updateLives() {
+    if (livesEl) {
+      livesEl.textContent = '❤️'.repeat(Math.max(0, lives)) + '🖤'.repeat(Math.max(0, 3 - lives));
     }
   }
 
@@ -7347,16 +7710,51 @@ function mountFree(root, { modeId, nav }) {
     if (score > prev) store.set(`calendar.best.${modeId}`, score);
   }
 
+  function startTimer() {
+    if (timerInterval) clearInterval(timerInterval);
+    timerInterval = setInterval(() => {
+      timeLeft--;
+      if (timerEl) timerEl.textContent = `⏱ ${timeLeft}s`;
+      if (timeLeft <= 0) {
+        clearInterval(timerInterval);
+        gameOver();
+      }
+    }, 1000);
+  }
+
+  function restartGame() {
+    isGameOver = false;
+    score = 0;
+    round = 1;
+    combo = 0;
+    lives = 3;
+    timeLeft = modeId === 'clock_beat' ? 30 : 0;
+    scoreEl.textContent = '0';
+    roundEl.textContent = '1';
+    updateLives();
+    if (timerEl) timerEl.textContent = `⏱ ${timeLeft}s`;
+    if (timerInterval) clearInterval(timerInterval);
+    if (modeId === 'clock_beat') startTimer();
+    turtle.setMood('happy');
+    turtle.say('Zaczynamy od nowa! Kalendarz w Twojej głowie! 🐢🗓️', 'happy');
+    nextRound();
+  }
+
   function gameOver() {
     isGameOver = true;
     if (timerInterval) clearInterval(timerInterval);
     saveBest();
     sfx.fanfare();
     turtle.setMood('cheer', 3000);
-    turtle.say(`Koniec czasu! Twój wynik: ${score} pkt! Prawdziwy władca kalendarza! 🐢`, 'cheer');
+    turtle.say(`Koniec gry! Twój wynik: ${score} pkt! Prawdziwy władca kalendarza! 🐢`, 'cheer');
 
     const best = store.get(`calendar.best.${modeId}`, score);
     playArea.innerHTML = '';
+
+    const restartBtn = h('button', { class: 'btn btn-primary', type: 'button' }, 'Zagraj ponownie ↻');
+    restartBtn.addEventListener('click', restartGame);
+    const backBtn = h('a', { class: 'btn btn-ghost', href: '#/calendar' }, 'Inny tryb');
+
     playArea.append(
       h('div', { class: 'game-over-box' },
         h('h2', {}, '🎉 Mistrzowski wynik!'),
@@ -7365,14 +7763,27 @@ function mountFree(root, { modeId, nav }) {
           h('span', {}, 'punktów')
         ),
         h('div', { class: 'go-best' }, `🏆 Rekord w tym trybie: ${best}`),
-        h('div', { class: 'go-actions' },
-          h('button', { class: 'btn btn-primary', type: 'button' }, 'Zagraj ponownie 🔄')
-        )
+        h('div', { class: 'go-actions' }, restartBtn, backBtn)
       )
     );
-    playArea.querySelector('.go-actions button').addEventListener('click', () => {
-      mountFree(root, { modeId, nav });
-    });
+  }
+
+  function handleWrong(solutionText) {
+    sfx.wrong();
+    combo = 0;
+    if (modeId === 'time_travel') {
+      gameOver();
+      return;
+    }
+    lives--;
+    updateLives();
+    if (lives <= 0) {
+      gameOver();
+    } else {
+      turtle.setMood('sad', 1200);
+      turtle.say(`${solutionText} Pozostało szans: ${lives} 🐢`, 'think', { revert: 2600 });
+      setTimeout(nextRound, 1200);
+    }
   }
 
   function nextRound() {
@@ -7388,10 +7799,14 @@ function mountFree(root, { modeId, nav }) {
       const correctDayIdx = calculateWeekday(year, mInfo.month, day);
       const correctDay = DAYS_OF_WEEK[correctDayIdx];
 
+      const hintText = round <= 3 && modeId === 'weekday'
+        ? `Wskazówka: kotwica miesiąca to ${mInfo.anchorDay}.${mInfo.month < 10 ? '0' + mInfo.month : mInfo.month}`
+        : null;
+
       const card = h('div', { class: 'calendar-card' },
         h('div', { class: 'cal-date-badge' }, `${day} ${mInfo.name.toLowerCase()} ${year}`),
         h('h2', {}, 'Jaki to dzień tygodnia?'),
-        h('p', { class: 'muted' }, `Wskazówka: kotwica miesiąca to ${mInfo.anchorDay}.${mInfo.month < 10 ? '0' + mInfo.month : mInfo.month}`)
+        hintText ? h('p', { class: 'muted' }, hintText) : null
       );
 
       const opts = h('div', { class: 'opt-grid' });
@@ -7403,20 +7818,23 @@ function mountFree(root, { modeId, nav }) {
             score += 15 + combo * 3;
             combo++;
             round++;
+            if (modeId === 'clock_beat') {
+              timeLeft += 2; // bonus czasowy
+              if (timerEl) timerEl.textContent = `⏱ ${timeLeft}s`;
+            }
             scoreEl.textContent = `${score}`;
             roundEl.textContent = `${round}`;
             cheerTurtle(combo);
             nextRound();
           } else {
-            sfx.wrong();
-            if (modeId === 'time_travel') {
-              gameOver();
+            btn.classList.add('wrong');
+            if (modeId === 'clock_beat') {
+              sfx.wrong();
+              timeLeft = Math.max(1, timeLeft - 2);
+              if (timerEl) timerEl.textContent = `⏱ ${timeLeft}s`;
+              setTimeout(nextRound, 300);
             } else {
-              combo = 0;
-              turtle.setMood('sad', 1200);
-              turtle.say(`${day} ${mInfo.name} ${year} to ${correctDay.name}!`, 'think', { revert: 2800 });
-              btn.classList.add('wrong');
-              setTimeout(nextRound, 1200);
+              handleWrong(`${day} ${mInfo.name} ${year} to ${correctDay.name}!`);
             }
           }
         });
@@ -7449,12 +7867,8 @@ function mountFree(root, { modeId, nav }) {
             cheerTurtle(combo);
             nextRound();
           } else {
-            sfx.wrong();
-            combo = 0;
-            turtle.setMood('sad', 1200);
-            turtle.say(`Dla ${target.name} kotwicą jest ${target.anchorDay}. dzień (${target.rule})!`, 'think', { revert: 2800 });
             btn.classList.add('wrong');
-            setTimeout(nextRound, 1200);
+            handleWrong(`Dla ${target.name} kotwicą jest ${target.anchorDay}. dzień (${target.rule})!`);
           }
         });
         opts.append(btn);
@@ -7464,14 +7878,7 @@ function mountFree(root, { modeId, nav }) {
   }
 
   if (modeId === 'clock_beat') {
-    timerInterval = setInterval(() => {
-      timeLeft--;
-      if (timerEl) timerEl.textContent = `⏱ ${timeLeft}s`;
-      if (timeLeft <= 0) {
-        clearInterval(timerInterval);
-        gameOver();
-      }
-    }, 1000);
+    startTimer();
   }
 
   nextRound();
@@ -7637,6 +8044,12 @@ return {
   /* ==========================================================================
      15. APP ROUTING & CORE INIT
      ========================================================================== */
+
+
+
+
+
+
 
 
 

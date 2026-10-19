@@ -12,12 +12,14 @@ export function mountFree(root, { modeId, nav }) {
   let score = 0;
   let round = 1;
   let combo = 0;
+  let lives = 3;
   let timeLeft = modeId === 'deck_rush' ? 30 : 0;
   let timerInterval = null;
   let isGameOver = false;
 
   const scoreEl = h('span', { class: 'hud-score' }, '0');
   const roundEl = h('span', { class: 'hud-round' }, '1');
+  const livesEl = (modeId === 'pao' || modeId === 'missing') ? h('span', { class: 'hud-lives' }, '❤️❤️❤️') : null;
   const timerEl = modeId === 'deck_rush' ? h('span', { class: 'hud-timer' }, '⏱ 30s') : null;
   const playArea = h('div', { class: 'free-play-area' });
 
@@ -26,6 +28,7 @@ export function mountFree(root, { modeId, nav }) {
     h('div', { class: 'hud' },
       h('div', { class: 'hud-item' }, h('small', {}, 'Wynik'), scoreEl),
       h('div', { class: 'hud-item' }, h('small', {}, 'Runda'), roundEl),
+      livesEl ? h('div', { class: 'hud-item' }, h('small', {}, 'Szanse'), livesEl) : null,
       timerEl ? h('div', { class: 'hud-item' }, h('small', {}, 'Czas'), timerEl) : null
     ),
     raccoon.el,
@@ -34,18 +37,55 @@ export function mountFree(root, { modeId, nav }) {
 
   root.append(view);
 
-  const CHEERS = ['Abrakadabra! 🦝✨', 'Karta w garści! ♠️', 'Czysta magia PAO! 🎩', 'As w rękawie! 🃏', 'Bez pudła! 🎯'];
+  const CHEERS = ['Abrakadabra! 🦝✨', 'Karta w garści! ♠️', 'Czysta magia PAO! 🎩', 'As w rękawie! 🃏', 'Bez pudła! 🎯', 'Mistrzowska intuicja! 🪄'];
   function cheerRaccoon(c) {
     if (c % 3 === 0 && c > 0) {
       raccoon.say(`Combo x${c}! Cała talia drży przed Twoją pamięcią! 🦝🪄`, 'cheer', { revert: 1400 });
+      raccoon.hop?.();
     } else {
       raccoon.say(rand(CHEERS), 'cheer', { revert: 1000 });
+    }
+  }
+
+  function updateLives() {
+    if (livesEl) {
+      livesEl.textContent = '❤️'.repeat(Math.max(0, lives)) + '🖤'.repeat(Math.max(0, 3 - lives));
     }
   }
 
   function saveBest() {
     const prev = store.get(`cards.best.${modeId}`, 0);
     if (score > prev) store.set(`cards.best.${modeId}`, score);
+  }
+
+  function startTimer() {
+    if (timerInterval) clearInterval(timerInterval);
+    timerInterval = setInterval(() => {
+      timeLeft--;
+      if (timerEl) timerEl.textContent = `⏱ ${timeLeft}s`;
+      if (timeLeft <= 0) {
+        clearInterval(timerInterval);
+        gameOver();
+      }
+    }, 1000);
+  }
+
+  function restartGame() {
+    isGameOver = false;
+    score = 0;
+    round = 1;
+    combo = 0;
+    lives = 3;
+    timeLeft = modeId === 'deck_rush' ? 30 : 0;
+    scoreEl.textContent = '0';
+    roundEl.textContent = '1';
+    updateLives();
+    if (timerEl) timerEl.textContent = `⏱ ${timeLeft}s`;
+    if (timerInterval) clearInterval(timerInterval);
+    if (modeId === 'deck_rush') startTimer();
+    raccoon.setMood('happy');
+    raccoon.say('Zaczynamy od nowa! Pokaż mistrzowską pamięć! 🦝✨', 'happy');
+    nextRound();
   }
 
   function gameOver() {
@@ -58,6 +98,11 @@ export function mountFree(root, { modeId, nav }) {
 
     const best = store.get(`cards.best.${modeId}`, score);
     playArea.innerHTML = '';
+
+    const restartBtn = h('button', { class: 'btn btn-primary', type: 'button' }, 'Zagraj ponownie ↻');
+    restartBtn.addEventListener('click', restartGame);
+    const backBtn = h('a', { class: 'btn btn-ghost', href: '#/cards' }, 'Inny tryb');
+
     playArea.append(
       h('div', { class: 'game-over-box' },
         h('h2', {}, '🎉 Pokaz zakończony sukcesem!'),
@@ -66,14 +111,9 @@ export function mountFree(root, { modeId, nav }) {
           h('span', {}, 'punktów')
         ),
         h('div', { class: 'go-best' }, `🏆 Rekord w tym trybie: ${best}`),
-        h('div', { class: 'go-actions' },
-          h('button', { class: 'btn btn-primary', type: 'button' }, 'Zagraj ponownie 🔄')
-        )
+        h('div', { class: 'go-actions' }, restartBtn, backBtn)
       )
     );
-    playArea.querySelector('.go-actions button').addEventListener('click', () => {
-      mountFree(root, { modeId, nav });
-    });
   }
 
   async function nextRound() {
@@ -81,7 +121,7 @@ export function mountFree(root, { modeId, nav }) {
     playArea.innerHTML = '';
 
     if (modeId === 'sequence') {
-      const seqLen = Math.min(6, 2 + Math.floor(round / 2));
+      const seqLen = Math.min(10, 2 + Math.floor(round / 2));
       const sequence = shuffle([...CARDS_PAO]).slice(0, seqLen);
 
       const previewBox = h('div', { class: 'cards-preview-box' },
@@ -90,7 +130,7 @@ export function mountFree(root, { modeId, nav }) {
       );
       playArea.append(previewBox);
 
-      await sleep(2500 + seqLen * 600);
+      await sleep(1800 + seqLen * 500);
       if (isGameOver) return;
       playArea.innerHTML = '';
 
@@ -160,33 +200,41 @@ export function mountFree(root, { modeId, nav }) {
           } else {
             sfx.wrong();
             combo = 0;
-            raccoon.setMood('sad', 1200);
-            raccoon.say(`${target.name} to: ${target.person} (${target.action})!`, 'think', { revert: 2800 });
+            lives--;
+            updateLives();
             btn.classList.add('wrong');
-            setTimeout(nextRound, 1200);
+            if (lives <= 0) {
+              gameOver();
+            } else {
+              raccoon.setMood('sad', 1200);
+              raccoon.say(`Ojej! ${target.name} to: ${target.person} (${target.action})! Masz jeszcze ${lives} szanse. 🦝`, 'think', { revert: 2600 });
+              setTimeout(nextRound, 1200);
+            }
           }
         });
         opts.append(btn);
       });
+
       playArea.append(card, opts);
 
     } else if (modeId === 'missing') {
-      const four = shuffle([...CARDS_PAO]).slice(0, 4);
-      const hiddenIdx = rand(0, 3);
-      const hiddenCard = four[hiddenIdx];
+      const cardCount = Math.min(6, 3 + Math.floor(round / 3));
+      const poolCards = shuffle([...CARDS_PAO]).slice(0, cardCount);
+      const hiddenIdx = rand(0, poolCards.length - 1);
+      const hiddenCard = poolCards[hiddenIdx];
 
       const previewBox = h('div', { class: 'cards-preview-box' },
-        h('h3', {}, 'Zapamiętaj te 4 karty!'),
-        h('div', { class: 'cards-row' }, four.map(c => h('div', { html: getCardSvg(c) })))
+        h('h3', {}, `Zapamiętaj te ${cardCount} karty!`),
+        h('div', { class: 'cards-row' }, poolCards.map(c => h('div', { html: getCardSvg(c) })))
       );
       playArea.append(previewBox);
 
-      await sleep(2800);
+      await sleep(1800 + cardCount * 400);
       if (isGameOver) return;
       playArea.innerHTML = '';
 
       const coveredRow = h('div', { class: 'cards-row' },
-        four.map((c, i) => i === hiddenIdx
+        poolCards.map((c, i) => i === hiddenIdx
           ? h('div', { class: 'playing-card card-back' }, '❓')
           : h('div', { html: getCardSvg(c) })
         )
@@ -215,7 +263,17 @@ export function mountFree(root, { modeId, nav }) {
             nextRound();
           } else {
             sfx.wrong();
-            gameOver();
+            combo = 0;
+            lives--;
+            updateLives();
+            btn.classList.add('wrong');
+            if (lives <= 0) {
+              gameOver();
+            } else {
+              raccoon.setMood('sad', 1200);
+              raccoon.say(`Zakrytą kartą był ${hiddenCard.name}! Zostały Ci ${lives} szanse. 🦝`, 'think', { revert: 2600 });
+              setTimeout(nextRound, 1200);
+            }
           }
         });
         opts.append(btn);
@@ -240,12 +298,16 @@ export function mountFree(root, { modeId, nav }) {
           if (c.id === target.id) {
             sfx.pop();
             score += 10;
+            timeLeft += 2; // bonus czasowy za spryt!
             round++;
             scoreEl.textContent = `${score}`;
             roundEl.textContent = `${round}`;
+            if (timerEl) timerEl.textContent = `⏱ ${timeLeft}s`;
             nextRound();
           } else {
             sfx.wrong();
+            timeLeft = Math.max(1, timeLeft - 2);
+            if (timerEl) timerEl.textContent = `⏱ ${timeLeft}s`;
             btn.classList.add('wrong');
             setTimeout(nextRound, 300);
           }
@@ -257,14 +319,7 @@ export function mountFree(root, { modeId, nav }) {
   }
 
   if (modeId === 'deck_rush') {
-    timerInterval = setInterval(() => {
-      timeLeft--;
-      if (timerEl) timerEl.textContent = `⏱ ${timeLeft}s`;
-      if (timeLeft <= 0) {
-        clearInterval(timerInterval);
-        gameOver();
-      }
-    }, 1000);
+    startTimer();
   }
 
   nextRound();

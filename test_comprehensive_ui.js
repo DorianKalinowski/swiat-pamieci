@@ -103,11 +103,13 @@ async function runAllTests() {
     const dom = setupDom('#/digits/train/1');
     const doc = dom.window.document;
 
-    // Kliknij wprowadzenie
-    for (let i = 0; i < 3; i++) {
+    // Kliknij wprowadzenie dopóki pojawia się przycisk intro
+    for (let i = 0; i < 10; i++) {
       const btn = await waitFor(doc, () => doc.querySelector('.controls .btn-primary'), `intro button ${i}`);
+      const txt = btn.textContent;
       btn.click();
       await new Promise(r => setTimeout(r, 60));
+      if (txt.includes('Zaczynamy')) break;
     }
 
     // Faza prezentacji - pomiń
@@ -209,12 +211,14 @@ async function runAllTests() {
     const tiger = await waitFor(doc, () => doc.querySelector('svg.tiger'), 'Tygrysek');
     assert(!!tiger, 'Tygrysek asystuje w trakcie lekcji');
 
-    // 2. Wprowadzenie Tygryska (4 kroki dialogu)
+    // 2. Wprowadzenie Tygryska
     console.log('   Przechodzenie przez dialogi wprowadzenia Tygryska...');
-    for (let step = 0; step < 4; step++) {
+    for (let step = 0; step < 10; step++) {
       const nextBtn = await waitFor(doc, () => doc.querySelector('.controls .btn-primary'), `dialog step ${step}`);
+      const txt = nextBtn.textContent;
       nextBtn.click();
       await new Promise(r => setTimeout(r, 60));
+      if (txt.includes('Zaczynamy')) break;
     }
 
     // 3. Faza prezentacji pałacu (Spacer)

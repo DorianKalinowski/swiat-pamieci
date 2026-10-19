@@ -6,11 +6,14 @@ export const LESSONS = [
     title: 'Cyfry 0 i 1 (S/Z oraz T/D)',
     subtitle: 'Pierwsze litery alfabetu pamięci',
     desc: 'Poznaj sekret, dzięki któremu mistrzowie świata zapamiętują tysiące cyfr.',
+    speech: 'Uhuhu! Cześć! Jestem Sówka 🦉 Zastanawiasz się, po co uczyć się tej techniki? Pokażę Ci sekretny kod, dzięki któremu łatwo zapamiętasz numer PIN, PESEL czy ważne daty w szkole – bez nudnego wkuwania!',
     theory: [
-      'System Major zamienia cyfry na spółgłoski, a samogłoski służą jako klej do tworzenia słów.',
-      '• 0 = S, Z (Zero zaczyna się na Z, syczący dźwięk).',
-      '• 1 = T, D (Litera T oraz D mają JEDNĄ pionową kreskę, dokładnie jak cyfra 1).',
-      'Przykład: Słowo „KOT” – ma T na końcu (1). Słowo „SOS” ma S (0).'
+      'Po co nam ta technika? Nasz mózg gubi się w suchych, nudnych cyfrach, ale uwielbia słowa i kolorowe obrazy!',
+      'System Major zamienia cyfry na dźwięki spółgłosek. Dzięki temu z dowolnego numeru ułożysz śmieszne słowo, które od razu zapamiętasz!',
+      'Poznajmy dwie pierwsze cyfry kodu:',
+      '• 0 = S oraz Z – słowo „Zero” zaczyna się na literę Z, a zero syczy cichutko jak wąż: sss!',
+      '• 1 = T oraz D – spójrz na literę T oraz D: obie mają JEDNĄ prostą pionową kreskę, dokładnie jak cyfra 1!',
+      'To bardzo proste! Zobacz: słowo „KOT” ma T na końcu (1), a słowo „SOS” ma S (0).'
     ],
     task: {
       prompt: 'Która spółgłoska odpowiada cyfrze 1 w systemie Major?',
@@ -24,12 +27,14 @@ export const LESSONS = [
     title: 'Cyfry 2 i 3 (N oraz M)',
     subtitle: 'Nóżki liter',
     desc: 'Spójrz na litery N i M – ich kształt mówi sam za siebie!',
+    speech: 'Świetnie Ci poszło! Zobacz, cyfry 2 i 3 mają swoje ukryte nóżki – dzieci i dorośli zapamiętują je w sekundę!',
     theory: [
-      '• 2 = N (małe „n” ma DWA brzuszki / dwie nóżki opierające się o linię).',
-      '• 3 = M (małe „m” ma TRZY nóżki).',
+      'Kolejne dwie cyfry to najprostsza zabawa w skojarzenia kształtów:',
+      '• 2 = N – małe „n” ma DWA brzuszki / dwie nóżki stojące na ziemi.',
+      '• 3 = M – małe „m” ma TRZY nóżki (raz, dwa, trzy!).',
       'To najprostsza zasada wizualna w całym systemie!',
-      'Gdy widzisz 2 → myślisz N (np. Nos, Nóż).',
-      'Gdy widzisz 3 → myślisz M (np. Mysz, Młot).'
+      'Gdy w numerze telefonu lub dacie widzisz 2 → myślisz o N (np. Nos, Nóż).',
+      'Gdy widzisz 3 → myślisz o M (np. Mysz, Młot).'
     ],
     task: {
       prompt: 'Dlaczego cyfrze 3 przypisana jest litera M?',
@@ -43,10 +48,12 @@ export const LESSONS = [
     title: 'Cyfry 4 i 5 (R oraz L)',
     subtitle: 'CzteRy oraz rzymskie L',
     desc: 'Jak zapamiętać 4 i 5 bez wysiłku?',
+    speech: 'Uhuhu! Pora na cyfry 4 i 5. Wsłuchaj się w dźwięki i spójrz na dłoń!',
     theory: [
-      '• 4 = R (Słowo „czteRy” ma bardzo wyraźne, dźwięczne R na końcu).',
-      '• 5 = L (Rzymska liczba L oznacza 50; dłoń z rozpostartym kciukiem i palcem wskazującym tworzy literę L i ma 5 palców).',
-      'Przykład: 4 to Rura lub Ryba, 5 to Liść lub Lama.'
+      'Dlaczego 4 to R, a 5 to L? To sprytne skojarzenia:',
+      '• 4 = R – powiedz głośno słowo „czteRy” – słyszysz to mocne, dźwięczne R na końcu?',
+      '• 5 = L – spójrz na dłoń: kciuk i palec wskazujący tworzą kształt litery L, a cała dłoń ma 5 palców! (Rzymskie L to też 50).',
+      'Przykłady ze świata: 4 to Rura lub Ryba, a 5 to Liść lub Lama.'
     ],
     task: {
       prompt: 'Jaki dźwięk odpowiada cyfrze 4?',
@@ -60,10 +67,12 @@ export const LESSONS = [
     title: 'Cyfry 6 i 7 (J/SZ/CZ oraz K/G)',
     subtitle: 'Szóstka i kanciaste K',
     desc: 'Połowa alfabetu za nami! Poznaj szeleszczące dźwięki i siódemkę.',
+    speech: 'Jesteśmy już w połowie drogi! Szeleszcząca szóstka i kanciaste K czekają na Ciebie!',
     theory: [
-      '• 6 = J, SZ, CZ (Sześć brzmi szeleszcząco, litera J to 6. spółgłoska alfabetu).',
-      '• 7 = K, G (Wyobraź sobie dwie siódemki 7 odwrócone do siebie – tworzą ramiona litery K).',
-      'Przykłady: 6 = Jeż, Szal. 7 = Koc, Kot, Kura.'
+      'Poznajemy szóstkę i siódemkę:',
+      '• 6 = J, SZ, CZ – powiedz „Sześć” – to najbardziej szeleszcząca cyfra w języku polskim! (A litera J to 6. spółgłoska alfabetu).',
+      '• 7 = K, G – wyobraź sobie dwie cyfry 7 przytknięte do siebie plecami – tworzą ostre ramiona litery K!',
+      'Z tych literek powstaną fantastyczne słowa: 6 to Jeż lub Szal, a 7 to Koc, Kot lub Kura.'
     ],
     task: {
       prompt: 'Która para spółgłosek odpowiada cyfrze 7?',
@@ -77,10 +86,12 @@ export const LESSONS = [
     title: 'Cyfry 8 i 9 (F/W oraz P/B)',
     subtitle: 'Pętelki i lustrzane odbicia',
     desc: 'Ostatnie dwie cyfry domykające alfabet Majora.',
+    speech: 'Ostatni krok alfabetu! Dwie pętelki i obrócona dziewiątka – i cały kod 0-9 masz w małym palcu!',
     theory: [
-      '• 8 = F, W (Pisane małe „f” ma dwie pętelki, dokładnie jak cyfra 8).',
-      '• 9 = P, B (Cyfra 9 w lustrze to litera P; a obrócona do góry nogami to małe b).',
-      'Gratulacje! Znasz już całe 0-9:',
+      'Domykamy cały alfabet cyfr:',
+      '• 8 = F, W – pisana mała literka „f” ma dwie pętelki na górze i na dole, dokładnie jak cyfra 8.',
+      '• 9 = P, B – cyfra 9 w lustrze wygląda jak litera P, a gdy obróci się ją do góry nogami – jak małe b!',
+      'Gratulacje! Znasz już całe 0 do 9:',
       '0: S/Z | 1: T/D | 2: N | 3: M | 4: R | 5: L | 6: J/SZ | 7: K/G | 8: F/W | 9: P/B.'
     ],
     task: {
@@ -95,13 +106,15 @@ export const LESSONS = [
     title: 'Samogłoski jako klej',
     subtitle: 'Budowanie słów z samogłosek A, E, I, O, U, Y',
     desc: 'Samogłoski NIE MAJĄ wartości liczbowej. Służą tylko do lepienia słów!',
+    speech: 'Teraz dzieje się magia! Użyjemy samogłosek jak plasteliny do lepienia całych słów!',
     theory: [
-      'W systemie Major litery A, E, I, O, U, Y oraz H nie oznaczają żadnej cyfry.',
-      'Dzięki temu możesz wstawić DOWOLNE samogłoski między spółgłoski, by utworzyć sensowne słowo!',
+      'Po co nam samogłoski (A, E, I, O, U, Y)?',
+      'W systemie Major samogłoski NIE MAJĄ żadnej cyfry – są jak darmowy klej albo plastelina!',
+      'Dzięki temu możesz wstawić DOWOLNE samogłoski między spółgłoski, by utworzyć sensowne, barwne słowo!',
       'Spójrz na liczbę 71:',
       '• 7 = K, 1 = T.',
-      '• Dodajemy samogłoskę „O” w środek → powstaje KOT!',
-      '• Albo dodajemy „A” → KAT! Albo „I” → KIT!'
+      '• Wkładasz samogłoskę „O” w środek → powstaje puszysty KOT!',
+      '• Albo dodajesz „A” → KAT! Albo „I” → KIT!'
     ],
     task: {
       prompt: 'Jaką liczbę koduje słowo „NOS” (N=2, S=0)?',
@@ -115,13 +128,14 @@ export const LESSONS = [
     title: '2-cyfrowe obrazy (kołki pamięciowe)',
     subtitle: 'TOR, RAK, FALA, BUT',
     desc: 'Przekształcaj pary liczb w konkretne, trójwymiarowe przedmioty.',
+    speech: 'Uhuhu! Popatrz, jak liczby zamieniają się w trójwymiarowe zabawki w Twojej głowie!',
     theory: [
-      'Zamiast pamiętać nudne liczby, pamiętasz obrazy:',
-      '• 14 = T(1) + R(4) = TOR kolejowy 🚂',
-      '• 47 = R(4) + K(7) = RAK ze szczypcami 🦞',
-      '• 71 = K(7) + T(1) = KOT 🐱',
+      'Zamiast pamiętać nudne liczby, pamiętasz wyraziste obrazy (kołki pamięciowe):',
+      '• 14 = T(1) + R(4) = kolejowy TOR 🚂',
+      '• 47 = R(4) + K(7) = szczypiący RAK 🦞',
+      '• 71 = K(7) + T(1) = puszysty KOT 🐱',
       '• 91 = B(9) + T(1) = skórzany BUT 👞',
-      'Widzisz obraz → od razu wiesz, jaka to liczba!'
+      'Gdy widzisz obraz przed oczami → od razu wiesz, jaka to liczba!'
     ],
     task: {
       prompt: 'Które słowo poprawnie koduje liczbę 14 (1=T, 4=R)?',
@@ -135,11 +149,12 @@ export const LESSONS = [
     title: 'Egzamin Profesora: Kod PIN',
     subtitle: 'Praktyczne zapamiętanie 4-cyfrowego kodu',
     desc: 'Wykorzystaj 2 obrazy, aby zapamiętać PIN 71-14 na zawsze.',
+    speech: 'Pora na wielki finał! Zobacz, jak w 3 sekundy zapamiętasz 4-cyfrowy PIN do bankomatu lub telefonu na zawsze!',
     theory: [
-      'Twój nowy kod do sejfu to: 7114.',
+      'Twój nowy kod PIN do telefonu lub karty to: 7114.',
       'Dzielimy go na dwa 2-cyfrowe kołki:',
-      '• 71 = KOT 🐱',
-      '• 14 = TOR kolejowy 🚂',
+      '• 71 = KOT 🐱 (K=7, T=1)',
+      '• 14 = TOR kolejowy 🚂 (T=1, R=4)',
       'Łączymy je w żywą scenę: Gigantyczny KOT leży na TORACH i łapą zatrzymuje pociąg!',
       'Gdy stoisz przed bankomatem, widzisz Kota na Torach: Kot(71) + Tor(14) = 7114!'
     ],
