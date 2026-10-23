@@ -33,13 +33,25 @@ export function mountFree(root, { modeId, nav }) {
 
   root.append(view);
 
-  const CHEERS = ['Huuu-hu! Fenomenalnie! 🦉', 'Kod złamany w sekundę! 🔐', 'Spółgłoski opanowane! 📖', 'Geniusz pamięci! 💡', 'Świetny strzał! 🎯'];
+  const CHEERS = [
+    'Huuu-hu! Fenomenalnie! Kod złamany! 🦉✨',
+    'Spółgłoski opanowane do perfekcji! 📖🔐',
+    'Geniusz fonetyczny! Sówka bije skrzydłami! 💡🎉',
+    'Świetny strzał! Cyfry zamieniają się w magię! 🎯🦉',
+    'Uhuhu! Błyskawiczny umysł profesora! ⚡🧠',
+    'Arcydzieło pamięci! Twój kod działa bez pudła! 🌟📚',
+    'Prawdziwy erudyta! Lecimy po kolejny rekord! 🚀🦉'
+  ];
   function cheerOwl(c) {
-    if (c % 3 === 0 && c > 0) {
+    if (c % 5 === 0 && c > 0) {
+      owl.say(`Mega combo x${c}! Tytuł Wielkiego Mistrza Majora jest Twój! 🦉🏆🌟`, 'cheer', { revert: 1800 });
+      owl.spin?.();
+    } else if (c % 2 === 0 && c > 0) {
       owl.say(`Combo x${c}! Twój mózg zamienia liczby w arcydzieła! 🦉✨`, 'cheer', { revert: 1400 });
       owl.hop?.();
     } else {
-      owl.say(rand(CHEERS), 'cheer', { revert: 1000 });
+      owl.hop?.();
+      owl.say(rand(CHEERS), 'cheer', { revert: 1100 });
     }
   }
 

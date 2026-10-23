@@ -17,7 +17,15 @@ const MILESTONES = {
   12: 'Dwanaście cyfr?! Jesteś mistrzem! 🏆',
   15: 'Piętnaście! To poziom zawodów pamięciowych 🤯'
 };
-const CHEERS = ['Tak! 😸', 'Mrrr, dobrze!', 'Świetnie!', 'Jedziemy dalej!', 'Bez pudła! 🎯'];
+const CHEERS = [
+  'Tak! Kotek mruczy z zachwytu! 😸✨',
+  'Mrrr, bezbłędnie w punkt! 🐾',
+  'Kocia precyzja! Pamięć jak u rysia! 🐈💨',
+  'Pazurki w górę! Fenomenalnie! 😻⭐',
+  'Bez pudła! Cyfry wchodzą gładko! 🎯',
+  'Miau! Kolejny poziom zdobyty! 🌟🚀',
+  'Czysty geniusz! Mruczek bije brawo! 👏😸'
+];
 
 export function mountFree(root, { modeId, nav }) {
   const mode = getMode(modeId);
@@ -93,8 +101,15 @@ export function mountFree(root, { modeId, nav }) {
       if (answer === expected) {
         sfx.good(); buzz(25);
         best = Math.max(best, len); store.set(bestKey, best);
-        if (level % 5 === 0 && shield < 1) { shield = 1; cat.say('Zdobyłeś 🛡️ tarczę! Uratuje Cię przed jedną pomyłką.', 'cheer', { revert: 2000 }); }
-        else cat.say(rand(CHEERS), 'cheer', { revert: 1200 });
+        if (level % 5 === 0 && shield < 1) {
+          shield = 1;
+          cat.spin();
+          confetti(70);
+          cat.say('Zdobyłeś 🛡️ tarczę! Mruczek kręci piruet z radości!', 'cheer', { revert: 2200 });
+        } else {
+          cat.hop();
+          cat.say(rand(CHEERS), 'cheer', { revert: 1200 });
+        }
         level++;
         if (!(await sleep(1250, signal))) return;
         continue;

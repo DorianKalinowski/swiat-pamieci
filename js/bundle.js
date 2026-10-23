@@ -1142,7 +1142,15 @@
     12: 'Dwanaście cyfr?! Jesteś mistrzem! 🏆',
     15: 'Piętnaście! To poziom zawodów pamięciowych 🤯'
   };
-  const CHEERS = ['Tak! 😸', 'Mrrr, bezbłędnie! ✨', 'Kocia precyzja! 🐾', 'Pazurki w górę! 😻', 'Jedziemy dalej!', 'Bez pudła! 🎯', 'Czysty geniusz! ⚡'];
+  const CHEERS = [
+    'Tak! Kotek mruczy z zachwytu! 😸✨',
+    'Mrrr, bezbłędnie w punkt! 🐾',
+    'Kocia precyzja! Pamięć jak u rysia! 🐈💨',
+    'Pazurki w górę! Fenomenalnie! 😻⭐',
+    'Bez pudła! Cyfry wchodzą gładko! 🎯',
+    'Miau! Kolejny poziom zdobyty! 🌟🚀',
+    'Czysty geniusz! Mruczek bije brawo! 👏😸'
+  ];
 
   function mountFree(root, { modeId, nav }) {
     const mode = getMode(modeId);
@@ -1218,8 +1226,15 @@
         if (answer === expected) {
           sfx.good(); buzz(25);
           best = Math.max(best, len); store.set(bestKey, best);
-          if (level % 5 === 0 && shield < 1) { shield = 1; cat.say('Zdobyłeś 🛡️ tarczę! Uratuje Cię przed jedną pomyłką.', 'cheer', { revert: 2000 }); }
-          else cat.say(rand(CHEERS), 'cheer', { revert: 1200 });
+          if (level % 5 === 0 && shield < 1) {
+            shield = 1;
+            cat.spin();
+            confetti(70);
+            cat.say('Zdobyłeś 🛡️ tarczę! Mruczek kręci piruet z radości!', 'cheer', { revert: 2200 });
+          } else {
+            cat.hop();
+            cat.say(rand(CHEERS), 'cheer', { revert: 1200 });
+          }
           level++;
           if (!(await sleep(1250, signal))) return;
           continue;
@@ -2215,29 +2230,54 @@
       }
 
       sfx.win();
-      confetti(80);
+      confetti(90);
       tiger.roar();
+      tiger.hop();
 
       stage.replaceChildren();
       controls.replaceChildren();
 
+      const makeNext = (cls = 'btn btn-primary btn-lg pulse-next') => {
+        const b = h('button', { class: cls, type: 'button' }, `Kolejny poziom ${level + 1} ▶`);
+        b.onclick = () => {
+          sfx.pop();
+          level++;
+          startRound();
+        };
+        return b;
+      };
+
+      const makeMenu = (cls = 'btn btn-ghost') => {
+        const b = h('button', { class: cls, type: 'button' }, 'Menu pałacu');
+        b.onclick = () => {
+          sfx.pop();
+          nav('palace');
+        };
+        return b;
+      };
+
       const winCard = h('div', { class: 'palace-finish-card' },
         h('h2', {}, `🎉 Poziom ${level} zaliczony!`),
-        h('p', { class: 'finish-congrats' }, `Genialnie! Twój pałac rośnie w siłę! Aktualny wynik: ${score}`)
+        h('p', { class: 'finish-congrats' }, `Genialnie! Twój pałac rośnie w siłę! Wynik: ${score} ${score === 1 ? 'komnata' : score < 5 ? 'komnaty' : 'komnat'}.`),
+        h('div', { class: 'finish-actions mt-3', style: 'display:flex; gap:12px; flex-wrap:wrap; justify-content:center;' },
+          makeNext(),
+          makeMenu()
+        )
       );
       stage.append(winCard);
 
-      const nextBtn = h('button', { class: 'btn btn-primary', type: 'button' }, `Poziom ${level + 1} ▶`);
-      nextBtn.onclick = () => {
-        sfx.pop();
-        level++;
-        startRound();
-      };
+      controls.append(
+        makeNext('btn btn-primary'),
+        makeMenu('btn btn-ghost')
+      );
+
       const TIGER_CHEERS = [
-        `Poziom ${level} w kieszeni! Gotowy na trudniejszą trasę? 🐯`,
+        `Poziom ${level} w kieszeni! Pokaż pazur w kolejnej komnacie! 🐯🔥`,
         `Potężny skok! Komnaty pałacu stoją przed Tobą otworem! 🏰✨`,
-        `Rrr! Niezrównana pamięć! Leon jest z Ciebie dumny! 🔥`,
-        `Genialna wędrówka! Twój pałac pamięci lśni złotem! 🏛️`
+        `Rrr! Niezrównana pamięć! Leon skacze z dumy! 🐾🎉`,
+        `Genialna wędrówka! Twój pałac pamięci lśni czystym złotem! 🏛️💎`,
+        `Mistrzowskie przejście! Loci w głowie poukładane jak w skarbcu! 🗝️⭐`,
+        `Rawrr! Ani jednej pomyłki! Następny poziom czeka! 🚀🔥`
       ];
       tiger.say(rand(TIGER_CHEERS), 'cheer');
     }
@@ -3919,13 +3959,25 @@ function mountFree(root, { modeId, nav }) {
 
   root.append(view);
 
-  const CHEERS = ['Lisi spryt! 🦊', 'Kotwica zadziałała! ⚓', 'Zauważone bezbłędnie! 🔍', 'Hau! Celnie! ✨', 'Oko sokoła! 🎯'];
+  const CHEERS = [
+    'Lisi spryt w akcji! Twarz zapamiętana! 🦊✨',
+    'Kotwica zadziałała bezbłędnie! ⚓🎯',
+    'Oko detektywa! Nikt się przed Tobą nie ukryje! 🔍⭐',
+    'Brawo! Twoja pamięć do twarzy imponuje! 🌟',
+    'Hau! Celne trafienie prosto w dziesiątkę! 🎯🦊',
+    'Genialnie! Kojarzenie na poziomie mistrza! 🧠💡',
+    'Lisek skacze z radości! Jesteś nie do zatrzymania! 🐾🎉'
+  ];
   function cheerFox(c) {
-    if (c % 3 === 0 && c > 0) {
+    if (c % 5 === 0 && c > 0) {
+      fox.say(`Niewiarygodne combo x${c}! Jesteś legendą bankietu! 🦊🏆✨`, 'cheer', { revert: 1800 });
+      fox.spin?.();
+    } else if (c % 2 === 0 && c > 0) {
       fox.say(`Combo x${c}! Twoje oko wyłapie każdy detal! 🦊✨`, 'cheer', { revert: 1400 });
       fox.hop?.();
     } else {
-      fox.say(rand(CHEERS), 'cheer', { revert: 1000 });
+      fox.hop?.();
+      fox.say(rand(CHEERS), 'cheer', { revert: 1100 });
     }
   }
 
@@ -4687,13 +4739,25 @@ function mountFree(root, { modeId, nav }) {
 
   root.append(view);
 
-  const CHEERS = ['Huuu-hu! Fenomenalnie! 🦉', 'Kod złamany w sekundę! 🔐', 'Spółgłoski opanowane! 📖', 'Geniusz pamięci! 💡', 'Świetny strzał! 🎯'];
+  const CHEERS = [
+    'Huuu-hu! Fenomenalnie! Kod złamany! 🦉✨',
+    'Spółgłoski opanowane do perfekcji! 📖🔐',
+    'Geniusz fonetyczny! Sówka bije skrzydłami! 💡🎉',
+    'Świetny strzał! Cyfry zamieniają się w magię! 🎯🦉',
+    'Uhuhu! Błyskawiczny umysł profesora! ⚡🧠',
+    'Arcydzieło pamięci! Twój kod działa bez pudła! 🌟📚',
+    'Prawdziwy erudyta! Lecimy po kolejny rekord! 🚀🦉'
+  ];
   function cheerOwl(c) {
-    if (c % 3 === 0 && c > 0) {
+    if (c % 5 === 0 && c > 0) {
+      owl.say(`Mega combo x${c}! Tytuł Wielkiego Mistrza Majora jest Twój! 🦉🏆🌟`, 'cheer', { revert: 1800 });
+      owl.spin?.();
+    } else if (c % 2 === 0 && c > 0) {
       owl.say(`Combo x${c}! Twój mózg zamienia liczby w arcydzieła! 🦉✨`, 'cheer', { revert: 1400 });
       owl.hop?.();
     } else {
-      owl.say(rand(CHEERS), 'cheer', { revert: 1000 });
+      owl.hop?.();
+      owl.say(rand(CHEERS), 'cheer', { revert: 1100 });
     }
   }
 
@@ -5459,13 +5523,25 @@ function mountFree(root, { modeId, nav }) {
 
   root.append(view);
 
-  const CHEERS = ['Poliglota! 🦜✨', 'Most fonetyczny działa! 🌉', 'Jak rodowity mówca! 🗣️', 'Słowo zapamiętane! 📖', 'Bez pudła! 🎯'];
+  const CHEERS = [
+    'Kraaa! Poliglota w pełnej krasie! 🦜✨',
+    'Most fonetyczny połączył słowa idealnie! 🌉⭐',
+    'Mówisz jak rodowity mieszkaniec! 🗣️🎉',
+    'Słowo wyryte w pamięci na zawsze! 📖💎',
+    'Bez pudła! Języki świata stoją przed Tobą otworem! 🌍🎯',
+    'Pola śpiewa z zachwytu! Co za słuch i pamięć! 🎶🦜',
+    'Genialne skojarzenie! Pędzimy do kolejnych słówek! 🚀💡'
+  ];
   function cheerParrot(c) {
-    if (c % 3 === 0 && c > 0) {
-      parrot.say(`Combo x${c}! Pola śpiewa z zachwytu! Twój słownik pęka w szwach! 🦜🎶`, 'cheer', { revert: 1400 });
+    if (c % 5 === 0 && c > 0) {
+      parrot.say(`Niewiarygodne combo x${c}! Pola bije skrzydłami w piruecie! 🦜👑✨`, 'cheer', { revert: 1800 });
+      parrot.spin?.();
+    } else if (c % 2 === 0 && c > 0) {
+      parrot.say(`Combo x${c}! Twój słownik pęka w szwach! 🦜🎶`, 'cheer', { revert: 1400 });
       parrot.hop?.();
     } else {
-      parrot.say(rand(CHEERS), 'cheer', { revert: 1000 });
+      parrot.hop?.();
+      parrot.say(rand(CHEERS), 'cheer', { revert: 1100 });
     }
   }
 
@@ -6204,13 +6280,24 @@ function mountFree(root, { modeId, nav }) {
 
   root.append(view);
 
-  const CHEERS = ['Abrakadabra! 🦝✨', 'Karta w garści! ♠️', 'Czysta magia PAO! 🎩', 'As w rękawie! 🃏', 'Bez pudła! 🎯', 'Mistrzowska intuicja! 🪄'];
+  const CHEERS = [
+    'Abrakadabra! Czysta iluzja pamięci! 🦝✨',
+    'Karta w garści! As wyciągnięty z rękawa! ♠️🎩',
+    'Magia PAO działa bezbłędnie! Postać i akcja w punkt! 🪄⭐',
+    'Oklaski na sali! Szop Magik kłania się z kapeluszem! 👏🃏',
+    'Talia kart nie ma przed Tobą tajemnic! 👑💎',
+    'Niezwykły pokaz zręczności umysłu! Płyniemy dalej! 🚀🦝'
+  ];
   function cheerRaccoon(c) {
-    if (c % 3 === 0 && c > 0) {
+    if (c % 5 === 0 && c > 0) {
+      raccoon.say(`Potężne combo x${c}! Szop kręci cylinder w piruecie! 🦝🎩✨`, 'cheer', { revert: 1800 });
+      raccoon.spin?.();
+    } else if (c % 2 === 0 && c > 0) {
       raccoon.say(`Combo x${c}! Cała talia drży przed Twoją pamięcią! 🦝🪄`, 'cheer', { revert: 1400 });
       raccoon.hop?.();
     } else {
-      raccoon.say(rand(CHEERS), 'cheer', { revert: 1000 });
+      raccoon.hop?.();
+      raccoon.say(rand(CHEERS), 'cheer', { revert: 1100 });
     }
   }
 
@@ -6967,13 +7054,24 @@ function mountFree(root, { modeId, nav }) {
 
   root.append(view);
 
-  const CHEERS = ['Łańcuch trzyma mocno! 🐿️✨', 'Efekt domina w akcji! 💥', 'Kolejne ogniwo połączone! 🔗', 'Znakomita wyobraźnia! 🧠', 'Bez pudła! 🎯'];
+  const CHEERS = [
+    'Chrup, chrup! Łańcuch trzyma jak ze stali! 🐿️✨',
+    'Efekt domina w akcji! Myśli przeskakują same! 💥🔗',
+    'Kolejne ogniwo połączone mistrzowską historią! 📖⭐',
+    'Wyobraźnia na 200%! Basia skacze z gałęzi z radości! 🌰🎉',
+    'Ani jedno ogniwo nie pękło! Żelazna pamięć! 🛡️🐿️',
+    'Spiżarnia pełna skojarzeń! Budujemy dalej! 🏰🥜'
+  ];
   function cheerSquirrel(c) {
-    if (c % 3 === 0 && c > 0) {
+    if (c % 5 === 0 && c > 0) {
+      squirrel.say(`Cudowne combo x${c}! Wiewiórcza opowieść wszech czasów! 🐿️🏆🌰`, 'cheer', { revert: 1800 });
+      squirrel.spin?.();
+    } else if (c % 2 === 0 && c > 0) {
       squirrel.say(`Combo x${c}! Twoja opowieść jest nierozerwalna! 🐿️🌰`, 'cheer', { revert: 1400 });
       squirrel.hop?.();
     } else {
-      squirrel.say(rand(CHEERS), 'cheer', { revert: 1000 });
+      squirrel.hop?.();
+      squirrel.say(rand(CHEERS), 'cheer', { revert: 1100 });
     }
   }
 
@@ -7689,13 +7787,24 @@ function mountFree(root, { modeId, nav }) {
 
   root.append(view);
 
-  const CHEERS = ['Dzień obliczony w sekundę! 🐢⚡', 'Mistrz kalendarza! 📅', 'Algorytm Conwaya działa! 🧠', 'Bez pudła! 🎯', 'Znakomita precyzja! ⏱️'];
+  const CHEERS = [
+    'Dzień obliczony w ułamku sekundy! 🐢⚡',
+    'Prawdziwy władca czasu i kalendarza! 📅✨',
+    'Algorytm Conwaya opanowany po mistrzowsku! 🧠⏱️',
+    'Bez pudła! Żółwik kłania się w uznaniu! 🎯🐢',
+    'Zegarmistrzowska precyzja! Nic Cię nie zaskoczy! ⏰⭐',
+    'Spokój i geniusz! Kalendarz w Twojej głowie lśni! 🪐🗓️'
+  ];
   function cheerTurtle(c) {
-    if (c % 3 === 0 && c > 0) {
+    if (c % 5 === 0 && c > 0) {
+      turtle.say(`Absolutne mistrzostwo x${c}! Żółwik Zenon bije brawo z zachwytu! 🐢🏆⏱️`, 'cheer', { revert: 1800 });
+      turtle.spin?.();
+    } else if (c % 2 === 0 && c > 0) {
       turtle.say(`Combo x${c}! Twój zegar biologiczny wyprzedza komputery! 🐢✨`, 'cheer', { revert: 1400 });
       turtle.hop?.();
     } else {
-      turtle.say(rand(CHEERS), 'cheer', { revert: 1000 });
+      turtle.hop?.();
+      turtle.say(rand(CHEERS), 'cheer', { revert: 1100 });
     }
   }
 
@@ -8044,6 +8153,8 @@ return {
   /* ==========================================================================
      15. APP ROUTING & CORE INIT
      ========================================================================== */
+
+
 
 
 

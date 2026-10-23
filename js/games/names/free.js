@@ -41,13 +41,25 @@ export function mountFree(root, { modeId, nav }) {
 
   root.append(view);
 
-  const CHEERS = ['Lisi spryt! 🦊', 'Kotwica zadziałała! ⚓', 'Zauważone bezbłędnie! 🔍', 'Hau! Celnie! ✨', 'Oko sokoła! 🎯'];
+  const CHEERS = [
+    'Lisi spryt w akcji! Twarz zapamiętana! 🦊✨',
+    'Kotwica zadziałała bezbłędnie! ⚓🎯',
+    'Oko detektywa! Nikt się przed Tobą nie ukryje! 🔍⭐',
+    'Brawo! Twoja pamięć do twarzy imponuje! 🌟',
+    'Hau! Celne trafienie prosto w dziesiątkę! 🎯🦊',
+    'Genialnie! Kojarzenie na poziomie mistrza! 🧠💡',
+    'Lisek skacze z radości! Jesteś nie do zatrzymania! 🐾🎉'
+  ];
   function cheerFox(c) {
-    if (c % 3 === 0 && c > 0) {
+    if (c % 5 === 0 && c > 0) {
+      fox.say(`Niewiarygodne combo x${c}! Jesteś legendą bankietu! 🦊🏆✨`, 'cheer', { revert: 1800 });
+      fox.spin?.();
+    } else if (c % 2 === 0 && c > 0) {
       fox.say(`Combo x${c}! Twoje oko wyłapie każdy detal! 🦊✨`, 'cheer', { revert: 1400 });
       fox.hop?.();
     } else {
-      fox.say(rand(CHEERS), 'cheer', { revert: 1000 });
+      fox.hop?.();
+      fox.say(rand(CHEERS), 'cheer', { revert: 1100 });
     }
   }
 

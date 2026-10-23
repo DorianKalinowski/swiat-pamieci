@@ -37,13 +37,24 @@ export function mountFree(root, { modeId, nav }) {
 
   root.append(view);
 
-  const CHEERS = ['Dzień obliczony w sekundę! 🐢⚡', 'Mistrz kalendarza! 📅', 'Algorytm Conwaya działa! 🧠', 'Bez pudła! 🎯', 'Znakomita precyzja! ⏱️'];
+  const CHEERS = [
+    'Dzień obliczony w ułamku sekundy! 🐢⚡',
+    'Prawdziwy władca czasu i kalendarza! 📅✨',
+    'Algorytm Conwaya opanowany po mistrzowsku! 🧠⏱️',
+    'Bez pudła! Żółwik kłania się w uznaniu! 🎯🐢',
+    'Zegarmistrzowska precyzja! Nic Cię nie zaskoczy! ⏰⭐',
+    'Spokój i geniusz! Kalendarz w Twojej głowie lśni! 🪐🗓️'
+  ];
   function cheerTurtle(c) {
-    if (c % 3 === 0 && c > 0) {
+    if (c % 5 === 0 && c > 0) {
+      turtle.say(`Absolutne mistrzostwo x${c}! Żółwik Zenon bije brawo z zachwytu! 🐢🏆⏱️`, 'cheer', { revert: 1800 });
+      turtle.spin?.();
+    } else if (c % 2 === 0 && c > 0) {
       turtle.say(`Combo x${c}! Twój zegar biologiczny wyprzedza komputery! 🐢✨`, 'cheer', { revert: 1400 });
       turtle.hop?.();
     } else {
-      turtle.say(rand(CHEERS), 'cheer', { revert: 1000 });
+      turtle.hop?.();
+      turtle.say(rand(CHEERS), 'cheer', { revert: 1100 });
     }
   }
 

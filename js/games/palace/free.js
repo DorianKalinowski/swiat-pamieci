@@ -329,27 +329,56 @@ export function mountFree(root, { nav, modeId }) {
     }
 
     sfx.win();
-    confetti(80);
+    confetti(90);
     tiger.roar();
+    tiger.hop();
 
     stage.replaceChildren();
     controls.replaceChildren();
 
+    const makeNext = (cls = 'btn btn-primary btn-lg pulse-next') => {
+      const b = h('button', { class: cls, type: 'button' }, `Kolejny poziom ${level + 1} ▶`);
+      b.onclick = () => {
+        sfx.pop();
+        level++;
+        startRound();
+      };
+      return b;
+    };
+
+    const makeMenu = (cls = 'btn btn-ghost') => {
+      const b = h('button', { class: cls, type: 'button' }, 'Menu pałacu');
+      b.onclick = () => {
+        sfx.pop();
+        nav('palace');
+      };
+      return b;
+    };
+
     const winCard = h('div', { class: 'palace-finish-card' },
       h('h2', {}, `🎉 Poziom ${level} zaliczony!`),
-      h('p', { class: 'finish-congrats' }, `Genialnie! Twój pałac rośnie w siłę! Aktualny wynik: ${score}`)
+      h('p', { class: 'finish-congrats' }, `Genialnie! Twój pałac rośnie w siłę! Wynik: ${score} ${score === 1 ? 'komnata' : score < 5 ? 'komnaty' : 'komnat'}.`),
+      h('div', { class: 'finish-actions mt-3', style: 'display:flex; gap:12px; flex-wrap:wrap; justify-content:center;' },
+        makeNext(),
+        makeMenu()
+      )
     );
     stage.append(winCard);
 
-    const nextBtn = h('button', { class: 'btn btn-primary', type: 'button' }, `Poziom ${level + 1} ▶`);
-    nextBtn.onclick = () => {
-      sfx.pop();
-      level++;
-      startRound();
-    };
-    controls.append(nextBtn);
+    controls.append(
+      makeNext('btn btn-primary'),
+      makeMenu('btn btn-ghost')
+    );
 
-    tiger.say(`Poziom ${level} w kieszeni! Gotowy na trudniejszą trasę? 🐯`, 'cheer');
+    const TIGER_CHEERS = [
+      `Poziom ${level} w kieszeni! Pokaż pazur w kolejnej komnacie! 🐯🔥`,
+      `Potężny skok! Komnaty pałacu stoją przed Tobą otworem! 🏰✨`,
+      `Rrr! Niezrównana pamięć! Leon skacze z dumy! 🐾🎉`,
+      `Genialna wędrówka! Twój pałac pamięci lśni czystym złotem! 🏛️💎`,
+      `Mistrzowskie przejście! Loci w głowie poukładane jak w skarbcu! 🗝️⭐`,
+      `Rawrr! Ani jednej pomyłki! Następny poziom czeka! 🚀🔥`
+    ];
+    tiger.say(rand(TIGER_CHEERS), 'cheer');
   }
 
   function handleGameOver(pair, expected, picked) {

@@ -33,13 +33,24 @@ export function mountFree(root, { modeId, nav }) {
 
   root.append(view);
 
-  const CHEERS = ['Łańcuch trzyma mocno! 🐿️✨', 'Efekt domina w akcji! 💥', 'Kolejne ogniwo połączone! 🔗', 'Znakomita wyobraźnia! 🧠', 'Bez pudła! 🎯'];
+  const CHEERS = [
+    'Chrup, chrup! Łańcuch trzyma jak ze stali! 🐿️✨',
+    'Efekt domina w akcji! Myśli przeskakują same! 💥🔗',
+    'Kolejne ogniwo połączone mistrzowską historią! 📖⭐',
+    'Wyobraźnia na 200%! Basia skacze z gałęzi z radości! 🌰🎉',
+    'Ani jedno ogniwo nie pękło! Żelazna pamięć! 🛡️🐿️',
+    'Spiżarnia pełna skojarzeń! Budujemy dalej! 🏰🥜'
+  ];
   function cheerSquirrel(c) {
-    if (c % 3 === 0 && c > 0) {
+    if (c % 5 === 0 && c > 0) {
+      squirrel.say(`Cudowne combo x${c}! Wiewiórcza opowieść wszech czasów! 🐿️🏆🌰`, 'cheer', { revert: 1800 });
+      squirrel.spin?.();
+    } else if (c % 2 === 0 && c > 0) {
       squirrel.say(`Combo x${c}! Twoja opowieść jest nierozerwalna! 🐿️🌰`, 'cheer', { revert: 1400 });
       squirrel.hop?.();
     } else {
-      squirrel.say(rand(CHEERS), 'cheer', { revert: 1000 });
+      squirrel.hop?.();
+      squirrel.say(rand(CHEERS), 'cheer', { revert: 1100 });
     }
   }
 

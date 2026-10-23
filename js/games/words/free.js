@@ -37,13 +37,25 @@ export function mountFree(root, { modeId, nav }) {
 
   root.append(view);
 
-  const CHEERS = ['Poliglota! 🦜✨', 'Most fonetyczny działa! 🌉', 'Jak rodowity mówca! 🗣️', 'Słowo zapamiętane! 📖', 'Bez pudła! 🎯'];
+  const CHEERS = [
+    'Kraaa! Poliglota w pełnej krasie! 🦜✨',
+    'Most fonetyczny połączył słowa idealnie! 🌉⭐',
+    'Mówisz jak rodowity mieszkaniec! 🗣️🎉',
+    'Słowo wyryte w pamięci na zawsze! 📖💎',
+    'Bez pudła! Języki świata stoją przed Tobą otworem! 🌍🎯',
+    'Pola śpiewa z zachwytu! Co za słuch i pamięć! 🎶🦜',
+    'Genialne skojarzenie! Pędzimy do kolejnych słówek! 🚀💡'
+  ];
   function cheerParrot(c) {
-    if (c % 3 === 0 && c > 0) {
-      parrot.say(`Combo x${c}! Pola śpiewa z zachwytu! Twój słownik pęka w szwach! 🦜🎶`, 'cheer', { revert: 1400 });
+    if (c % 5 === 0 && c > 0) {
+      parrot.say(`Niewiarygodne combo x${c}! Pola bije skrzydłami w piruecie! 🦜👑✨`, 'cheer', { revert: 1800 });
+      parrot.spin?.();
+    } else if (c % 2 === 0 && c > 0) {
+      parrot.say(`Combo x${c}! Twój słownik pęka w szwach! 🦜🎶`, 'cheer', { revert: 1400 });
       parrot.hop?.();
     } else {
-      parrot.say(rand(CHEERS), 'cheer', { revert: 1000 });
+      parrot.hop?.();
+      parrot.say(rand(CHEERS), 'cheer', { revert: 1100 });
     }
   }
 

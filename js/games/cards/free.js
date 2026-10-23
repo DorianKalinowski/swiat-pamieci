@@ -37,13 +37,24 @@ export function mountFree(root, { modeId, nav }) {
 
   root.append(view);
 
-  const CHEERS = ['Abrakadabra! 🦝✨', 'Karta w garści! ♠️', 'Czysta magia PAO! 🎩', 'As w rękawie! 🃏', 'Bez pudła! 🎯', 'Mistrzowska intuicja! 🪄'];
+  const CHEERS = [
+    'Abrakadabra! Czysta iluzja pamięci! 🦝✨',
+    'Karta w garści! As wyciągnięty z rękawa! ♠️🎩',
+    'Magia PAO działa bezbłędnie! Postać i akcja w punkt! 🪄⭐',
+    'Oklaski na sali! Szop Magik kłania się z kapeluszem! 👏🃏',
+    'Talia kart nie ma przed Tobą tajemnic! 👑💎',
+    'Niezwykły pokaz zręczności umysłu! Płyniemy dalej! 🚀🦝'
+  ];
   function cheerRaccoon(c) {
-    if (c % 3 === 0 && c > 0) {
+    if (c % 5 === 0 && c > 0) {
+      raccoon.say(`Potężne combo x${c}! Szop kręci cylinder w piruecie! 🦝🎩✨`, 'cheer', { revert: 1800 });
+      raccoon.spin?.();
+    } else if (c % 2 === 0 && c > 0) {
       raccoon.say(`Combo x${c}! Cała talia drży przed Twoją pamięcią! 🦝🪄`, 'cheer', { revert: 1400 });
       raccoon.hop?.();
     } else {
-      raccoon.say(rand(CHEERS), 'cheer', { revert: 1000 });
+      raccoon.hop?.();
+      raccoon.say(rand(CHEERS), 'cheer', { revert: 1100 });
     }
   }
 
