@@ -3,7 +3,7 @@ export const MODES = [
     id: 'translate',
     name: 'Błyskawiczny tłumacz',
     emoji: '🦜',
-    desc: 'Spójrz na obce słowo (angielski/hiszpański) i przypomnij sobie polskie znaczenie.',
+    desc: 'Spójrz na angielskie słowo i błyskawicznie wskaż polskie znaczenie.',
     color: ['#00b09b', '#96c93d'],
     badge: 'Klasyczny'
   },

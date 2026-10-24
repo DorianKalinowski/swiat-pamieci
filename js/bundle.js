@@ -3450,15 +3450,47 @@ function createTurtleAvatar(mood = 'happy', size = 56) {
     hook: 'Marek ma MARKER i maluje nim wielkie okulary!',
     job: 'Architekt',
     color: '#3498db',
-    svg: `<svg viewBox="0 0 100 100" class="face-svg">
-      <circle cx="50" cy="50" r="42" fill="#fed7aa"/>
-      <path d="M20 38 Q50 10 80 38" fill="#4a2810"/>
-      <circle cx="36" cy="52" r="13" fill="none" stroke="#f59e0b" stroke-width="3"/>
-      <circle cx="64" cy="52" r="13" fill="none" stroke="#f59e0b" stroke-width="3"/>
-      <line x1="49" y1="52" x2="51" y2="52" stroke="#f59e0b" stroke-width="3"/>
-      <circle cx="36" cy="52" r="3" fill="#1e293b"/>
-      <circle cx="64" cy="52" r="3" fill="#1e293b"/>
-      <path d="M42 70 Q50 76 58 70" stroke="#b45309" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    svg: `<svg viewBox="0 0 100 100" class="face-svg" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="m-skin" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#fed7aa"/><stop offset="100%" stop-color="#fbcfe8"/></linearGradient>
+        <linearGradient id="m-gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fef08a"/><stop offset="50%" stop-color="#f59e0b"/><stop offset="100%" stop-color="#d97706"/></linearGradient>
+        <linearGradient id="m-hair" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#451a03"/><stop offset="100%" stop-color="#1e1b4b"/></linearGradient>
+      </defs>
+      <!-- Ramiona / koszula architekta -->
+      <path d="M22 96 C22 80 32 76 50 76 C68 76 78 80 78 96 Z" fill="#3b82f6"/>
+      <path d="M42 76 L50 86 L58 76 Z" fill="#ffffff"/>
+      <path d="M46 76 L50 82 L54 76 Z" fill="#93c5fd"/>
+      <!-- Szyja i uszy -->
+      <path d="M42 66 h16 v14 h-16 z" fill="#fbcfe8"/>
+      <circle cx="21" cy="50" r="7" fill="#fed7aa"/>
+      <circle cx="79" cy="50" r="7" fill="#fed7aa"/>
+      <!-- Głowa -->
+      <ellipse cx="50" cy="48" rx="30" ry="32" fill="url(#m-skin)"/>
+      <!-- Włosy stylowe -->
+      <path d="M20 40 C18 20 32 10 50 10 C68 10 82 20 80 40 C75 24 65 18 50 18 C35 18 25 24 20 40 Z" fill="url(#m-hair)"/>
+      <path d="M24 34 C30 22 45 20 54 26 C46 22 32 26 28 36 Z" fill="#78350f" opacity="0.6"/>
+      <!-- Oczy i brwi -->
+      <path d="M30 38 Q36 34 42 38" stroke="#451a03" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path d="M58 38 Q64 34 70 38" stroke="#451a03" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <circle cx="36" cy="48" r="3.5" fill="#1e293b"/>
+      <circle cx="37.5" cy="46.5" r="1.2" fill="#ffffff"/>
+      <circle cx="64" cy="48" r="3.5" fill="#1e293b"/>
+      <circle cx="65.5" cy="46.5" r="1.2" fill="#ffffff"/>
+      <!-- Nos i uśmiech -->
+      <path d="M48 48 Q50 54 53 54" stroke="#d97706" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path d="M40 62 Q50 70 60 62" stroke="#b45309" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+      <!-- Róż na policzkach -->
+      <circle cx="28" cy="56" r="4.5" fill="#f43f5e" opacity="0.25"/>
+      <circle cx="72" cy="56" r="4.5" fill="#f43f5e" opacity="0.25"/>
+      <!-- SYGNOWANA CECHA: WIELKIE OKRĄGŁE OKULARY W ZŁOTEJ OPRAWCE -->
+      <circle cx="36" cy="48" r="14.5" fill="none" stroke="url(#m-gold)" stroke-width="3.5" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.25))"/>
+      <circle cx="64" cy="48" r="14.5" fill="none" stroke="url(#m-gold)" stroke-width="3.5" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.25))"/>
+      <path d="M50.5 48 H50" stroke="url(#m-gold)" stroke-width="3.5" stroke-linecap="round"/>
+      <line x1="21.5" y1="46" x2="16" y2="44" stroke="url(#m-gold)" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="78.5" y1="46" x2="84" y2="44" stroke="url(#m-gold)" stroke-width="2.5" stroke-linecap="round"/>
+      <!-- Odblask w szkłach okularów -->
+      <path d="M26 42 Q32 37 40 40" stroke="#ffffff" stroke-width="1.8" fill="none" opacity="0.75" stroke-linecap="round"/>
+      <path d="M54 42 Q60 37 68 40" stroke="#ffffff" stroke-width="1.8" fill="none" opacity="0.75" stroke-linecap="round"/>
     </svg>`
   },
   {
@@ -3468,17 +3500,59 @@ function createTurtleAvatar(mood = 'happy', size = 56) {
     hook: 'Basia gra na BASIE, a jej rudy kok podskakuje w rytm!',
     job: 'Muzyczka',
     color: '#e67e22',
-    svg: `<svg viewBox="0 0 100 100" class="face-svg">
-      <circle cx="50" cy="20" r="16" fill="#d97706"/>
-      <circle cx="50" cy="52" r="40" fill="#fde68a"/>
-      <path d="M18 42 Q50 24 82 42" fill="#d97706"/>
-      <circle cx="35" cy="52" r="3.5" fill="#1e293b"/>
-      <circle cx="65" cy="52" r="3.5" fill="#1e293b"/>
-      <circle cx="28" cy="58" r="1.5" fill="#b45309"/>
-      <circle cx="31" cy="62" r="1.5" fill="#b45309"/>
-      <circle cx="72" cy="58" r="1.5" fill="#b45309"/>
-      <circle cx="69" cy="62" r="1.5" fill="#b45309"/>
-      <path d="M40 70 Q50 80 60 70" stroke="#dc2626" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    svg: `<svg viewBox="0 0 100 100" class="face-svg" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="b-skin" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#fff1f2"/><stop offset="100%" stop-color="#fecdd3"/></linearGradient>
+        <linearGradient id="b-hair" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#f97316"/><stop offset="50%" stop-color="#ea580c"/><stop offset="100%" stop-color="#c2410c"/></linearGradient>
+      </defs>
+      <!-- SYGNOWANA CECHA 1: WYSOKI RUDY KOK -->
+      <circle cx="50" cy="14" r="15" fill="url(#b-hair)" filter="drop-shadow(0 3px 6px rgba(0,0,0,0.2))"/>
+      <circle cx="50" cy="14" r="11" fill="none" stroke="#fdba74" stroke-width="2" opacity="0.6"/>
+      <!-- Gumka do koka z perełką -->
+      <rect x="42" y="24" width="16" height="5" rx="2.5" fill="#4f46e5"/>
+      <circle cx="50" cy="26.5" r="2.5" fill="#facc15"/>
+      <!-- Ramiona / dekolt z naszyjnikiem -->
+      <path d="M20 96 C20 78 32 74 50 74 C68 74 80 78 80 96 Z" fill="#ec4899"/>
+      <path d="M42 74 Q50 82 58 74" stroke="#fbbf24" stroke-width="2" fill="none"/>
+      <!-- Szyja i uszy -->
+      <path d="M42 66 h16 v12 h-16 z" fill="#fecdd3"/>
+      <circle cx="21" cy="52" r="6.5" fill="#ffe4e6"/>
+      <circle cx="79" cy="52" r="6.5" fill="#ffe4e6"/>
+      <!-- Kolczyki nutki -->
+      <circle cx="21" cy="59" r="2" fill="#fbbf24"/>
+      <circle cx="79" cy="59" r="2" fill="#fbbf24"/>
+      <!-- Głowa -->
+      <ellipse cx="50" cy="50" rx="29" ry="30" fill="url(#b-skin)"/>
+      <!-- Grzywka i pasma włosów -->
+      <path d="M21 44 C20 30 34 26 50 26 C66 26 80 30 79 44 C72 32 60 30 50 34 C40 30 28 32 21 44 Z" fill="url(#b-hair)"/>
+      <!-- Pasemka spadające po bokach -->
+      <path d="M20 44 Q17 56 21 64" stroke="url(#b-hair)" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+      <path d="M80 44 Q83 56 79 64" stroke="url(#b-hair)" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+      <!-- Oczy z rzęsami i brwi -->
+      <path d="M31 40 Q37 36 43 40" stroke="#9a3412" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path d="M57 40 Q63 36 69 40" stroke="#9a3412" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <circle cx="37" cy="48" r="3.5" fill="#047857"/>
+      <circle cx="38" cy="46.5" r="1.3" fill="#ffffff"/>
+      <path d="M33 46 L31 44 M41 46 L43 44" stroke="#1e293b" stroke-width="1.2" stroke-linecap="round"/>
+      <circle cx="63" cy="48" r="3.5" fill="#047857"/>
+      <circle cx="64" cy="46.5" r="1.3" fill="#ffffff"/>
+      <path d="M59 46 L57 44 M67 46 L69 44" stroke="#1e293b" stroke-width="1.2" stroke-linecap="round"/>
+      <!-- Nosek i radosny uśmiech -->
+      <path d="M48 49 Q50 53 52 50" stroke="#ea580c" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+      <path d="M41 62 Q50 72 59 62" stroke="#e11d48" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <circle cx="28" cy="56" r="5" fill="#fb7185" opacity="0.3"/>
+      <circle cx="72" cy="56" r="5" fill="#fb7185" opacity="0.3"/>
+      <!-- SYGNOWANA CECHA 2: PIEGI NA POLICZKACH I NOSIE -->
+      <circle cx="26" cy="54" r="1.5" fill="#c2410c"/>
+      <circle cx="29" cy="58" r="1.6" fill="#9a3412"/>
+      <circle cx="33" cy="54" r="1.4" fill="#c2410c"/>
+      <circle cx="31" cy="62" r="1.3" fill="#9a3412"/>
+      <circle cx="47" cy="54" r="1.2" fill="#c2410c"/>
+      <circle cx="53" cy="54" r="1.2" fill="#c2410c"/>
+      <circle cx="67" cy="54" r="1.4" fill="#c2410c"/>
+      <circle cx="71" cy="58" r="1.6" fill="#9a3412"/>
+      <circle cx="74" cy="54" r="1.5" fill="#c2410c"/>
+      <circle cx="69" cy="62" r="1.3" fill="#9a3412"/>
     </svg>`
   },
   {
@@ -3488,13 +3562,43 @@ function createTurtleAvatar(mood = 'happy', size = 56) {
     hook: 'KRZACZASTY Krzysztof gubi w brodzie Krzyżacki miecz!',
     job: 'Programista',
     color: '#10b981',
-    svg: `<svg viewBox="0 0 100 100" class="face-svg">
-      <circle cx="50" cy="46" r="38" fill="#fcd34d"/>
-      <path d="M22 36 Q50 16 78 36" fill="#18181b"/>
-      <circle cx="37" cy="46" r="3.5" fill="#18181b"/>
-      <circle cx="63" cy="46" r="3.5" fill="#18181b"/>
-      <path d="M24 54 C24 95, 76 95, 76 54 Q50 68 24 54 Z" fill="#18181b"/>
-      <path d="M42 60 Q50 64 58 60" stroke="#fcd34d" stroke-width="2" fill="none"/>
+    svg: `<svg viewBox="0 0 100 100" class="face-svg" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="k-beard" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#27272a"/><stop offset="50%" stop-color="#18181b"/><stop offset="100%" stop-color="#09090b"/></linearGradient>
+        <linearGradient id="k-skin" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#fef08a"/><stop offset="100%" stop-color="#fed7aa"/></linearGradient>
+      </defs>
+      <!-- Koszula w kratę drwala -->
+      <path d="M18 96 C18 78 30 74 50 74 C70 74 82 78 82 96 Z" fill="#dc2626"/>
+      <line x1="30" y1="76" x2="30" y2="96" stroke="#991b1b" stroke-width="2"/>
+      <line x1="70" y1="76" x2="70" y2="96" stroke="#991b1b" stroke-width="2"/>
+      <line x1="18" y1="86" x2="82" y2="86" stroke="#991b1b" stroke-width="2"/>
+      <!-- Szyja i uszy -->
+      <path d="M42 66 h16 v12 h-16 z" fill="#fed7aa"/>
+      <circle cx="20" cy="48" r="7" fill="#fde68a"/>
+      <circle cx="80" cy="48" r="7" fill="#fde68a"/>
+      <!-- Głowa -->
+      <ellipse cx="50" cy="46" rx="30" ry="31" fill="url(#k-skin)"/>
+      <!-- Włosy -->
+      <path d="M20 38 C20 16 34 12 50 12 C66 12 80 16 80 38 C74 24 62 20 50 20 C38 20 26 24 20 38 Z" fill="url(#k-beard)"/>
+      <path d="M22 36 C25 28 35 24 45 23" stroke="#3f3f46" stroke-width="2" fill="none"/>
+      <!-- Gęste brwi i oczy programisty -->
+      <path d="M28 38 L43 38" stroke="#18181b" stroke-width="4.5" stroke-linecap="round"/>
+      <path d="M57 38 L72 38" stroke="#18181b" stroke-width="4.5" stroke-linecap="round"/>
+      <circle cx="36" cy="45" r="3.6" fill="#18181b"/>
+      <circle cx="37.5" cy="43.5" r="1.3" fill="#ffffff"/>
+      <circle cx="64" cy="45" r="3.6" fill="#18181b"/>
+      <circle cx="65.5" cy="43.5" r="1.3" fill="#ffffff"/>
+      <!-- Nos -->
+      <path d="M47 44 Q50 51 53 51" stroke="#d97706" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <!-- SYGNOWANA CECHA: BUJNA, GĘSTA CZARNA BRODA DRWALA -->
+      <path d="M20 48 C20 85, 32 96, 50 96 C68 96, 80 85, 80 48 C76 52, 70 56, 62 55 C56 54, 52 58, 50 58 C48 58, 44 54, 38 55 C30 56, 24 52, 20 48 Z" fill="url(#k-beard)" filter="drop-shadow(0 4px 10px rgba(0,0,0,0.35))"/>
+      <!-- Wąsy drwala -->
+      <path d="M32 55 Q50 63 68 55 Q50 52 32 55 Z" fill="#27272a"/>
+      <!-- Uśmiech widoczny pod wąsem -->
+      <path d="M43 62 Q50 67 57 62" stroke="#fef08a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <!-- Pasma faktury brody -->
+      <path d="M35 70 Q50 88 50 94" stroke="#3f3f46" stroke-width="1.8" fill="none" opacity="0.6"/>
+      <path d="M65 70 Q50 88 50 94" stroke="#3f3f46" stroke-width="1.8" fill="none" opacity="0.6"/>
     </svg>`
   },
   {
@@ -3504,13 +3608,44 @@ function createTurtleAvatar(mood = 'happy', size = 56) {
     hook: 'Kasia pije KAKAO z fioletowego kubka, a kolczyk brzęczy!',
     job: 'Projektantka UX',
     color: '#8b5cf6',
-    svg: `<svg viewBox="0 0 100 100" class="face-svg">
-      <circle cx="50" cy="50" r="40" fill="#fef08a"/>
-      <path d="M14 42 Q50 12 86 42 Q92 78 82 86 Q50 56 18 86 Z" fill="#7c3aed"/>
-      <circle cx="36" cy="50" r="3.5" fill="#1e293b"/>
-      <circle cx="64" cy="50" r="3.5" fill="#1e293b"/>
-      <circle cx="54" cy="58" r="2.5" fill="none" stroke="#f59e0b" stroke-width="1.8"/>
-      <path d="M42 70 Q50 78 58 70" stroke="#be185d" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    svg: `<svg viewBox="0 0 100 100" class="face-svg" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="ka-hair" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#c084fc"/><stop offset="40%" stop-color="#9333ea"/><stop offset="100%" stop-color="#581c87"/></linearGradient>
+        <linearGradient id="ka-skin" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#fef08a"/><stop offset="100%" stop-color="#fed7aa"/></linearGradient>
+      </defs>
+      <!-- Ramiona / czarny golf UX designerki -->
+      <path d="M22 96 C22 80 32 76 50 76 C68 76 78 80 78 96 Z" fill="#18181b"/>
+      <rect x="42" y="70" width="16" height="8" rx="3" fill="#27272a"/>
+      <!-- Szyja i uszy -->
+      <path d="M42 64 h16 v10 h-16 z" fill="#fed7aa"/>
+      <circle cx="22" cy="50" r="6.5" fill="#fde68a"/>
+      <circle cx="78" cy="50" r="6.5" fill="#fde68a"/>
+      <!-- Głowa -->
+      <ellipse cx="50" cy="48" rx="28" ry="30" fill="url(#ka-skin)"/>
+      <!-- SYGNOWANA CECHA 1: LŚNIĄCE FIOLETOWE WŁOSY (Asymetryczny styl) -->
+      <path d="M16 48 C12 24 30 10 50 10 C70 10 86 22 84 52 C78 28 66 20 50 20 C32 20 18 32 16 48 Z" fill="url(#ka-hair)"/>
+      <path d="M16 48 C14 68 24 82 28 86 C24 72 20 58 22 46 Z" fill="url(#ka-hair)"/>
+      <path d="M84 48 C86 64 80 74 76 80 C78 68 82 58 80 46 Z" fill="url(#ka-hair)"/>
+      <!-- Błyszczące pasmo fioletowe -->
+      <path d="M28 22 Q42 16 56 22 Q40 20 30 30 Z" fill="#e9d5ff" opacity="0.8"/>
+      <!-- Oczy i staranne brwi -->
+      <path d="M31 38 Q37 34 43 38" stroke="#581c87" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path d="M57 38 Q63 34 69 38" stroke="#581c87" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <circle cx="37" cy="46" r="3.5" fill="#312e81"/>
+      <circle cx="38" cy="44.5" r="1.3" fill="#ffffff"/>
+      <path d="M32 44 L30 42 M42 44 L44 42" stroke="#312e81" stroke-width="1.3" stroke-linecap="round"/>
+      <circle cx="63" cy="46" r="3.5" fill="#312e81"/>
+      <circle cx="64" cy="44.5" r="1.3" fill="#ffffff"/>
+      <path d="M58 44 L56 42 M68 44 L70 42" stroke="#312e81" stroke-width="1.3" stroke-linecap="round"/>
+      <!-- Nos -->
+      <path d="M48 46 Q50 54 52 53" stroke="#b45309" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <!-- SYGNOWANA CECHA 2: ZŁOTY KOLCZYK W NOSIE (NOSE RING) -->
+      <circle cx="55" cy="53" r="3" fill="none" stroke="#f59e0b" stroke-width="2.2" filter="drop-shadow(0 1px 3px rgba(0,0,0,0.3))"/>
+      <circle cx="56.5" cy="52" r="0.8" fill="#ffffff"/>
+      <!-- Usta z modną szminką -->
+      <path d="M41 64 Q50 72 59 64" stroke="#9333ea" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <circle cx="28" cy="55" r="4.5" fill="#c084fc" opacity="0.3"/>
+      <circle cx="72" cy="55" r="4.5" fill="#c084fc" opacity="0.3"/>
     </svg>`
   },
   {
@@ -3520,13 +3655,43 @@ function createTurtleAvatar(mood = 'happy', size = 56) {
     hook: 'Tomasz to mistrz TOMU wierszy – kłania się w muszce i błyszczy zębami!',
     job: 'Prezenter TV',
     color: '#f43f5e',
-    svg: `<svg viewBox="0 0 100 100" class="face-svg">
-      <circle cx="50" cy="46" r="38" fill="#ffedd5"/>
-      <path d="M20 32 Q50 14 80 32" fill="#78350f"/>
-      <circle cx="36" cy="46" r="3.5" fill="#1e293b"/>
-      <circle cx="64" cy="46" r="3.5" fill="#1e293b"/>
-      <path d="M34 64 Q50 82 66 64 Z" fill="#ffffff" stroke="#1e293b" stroke-width="1.5"/>
-      <path d="M42 86 L50 89 L58 86 L54 94 L50 90 L46 94 Z" fill="#dc2626"/>
+    svg: `<svg viewBox="0 0 100 100" class="face-svg" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="t-suit" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1e1b4b"/><stop offset="100%" stop-color="#0f172a"/></linearGradient>
+        <linearGradient id="t-bow" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ef4444"/><stop offset="100%" stop-color="#991b1b"/></linearGradient>
+      </defs>
+      <!-- Garnitur prezentera TV -->
+      <path d="M18 96 C18 78 30 74 50 74 C70 74 82 78 82 96 Z" fill="url(#t-suit)"/>
+      <!-- Biała koszula ze stójką -->
+      <path d="M40 74 L50 86 L60 74 Z" fill="#ffffff"/>
+      <!-- SYGNOWANA CECHA 1: ELEGANCKA CZERWONA MUSZKA -->
+      <path d="M40 84 L48 87 L40 90 Z" fill="url(#t-bow)"/>
+      <path d="M60 84 L52 87 L60 90 Z" fill="url(#t-bow)"/>
+      <circle cx="50" cy="87" r="3" fill="#b91c1c" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.3))"/>
+      <!-- Szyja i uszy -->
+      <path d="M42 66 h16 v10 h-16 z" fill="#fed7aa"/>
+      <circle cx="21" cy="48" r="6.5" fill="#ffedd5"/>
+      <circle cx="79" cy="48" r="6.5" fill="#ffedd5"/>
+      <!-- Głowa -->
+      <ellipse cx="50" cy="46" rx="29" ry="30" fill="#ffedd5"/>
+      <!-- Fryzura prezentera z przedziałkiem -->
+      <path d="M21 38 C20 16 35 10 50 10 C66 10 80 16 79 38 C75 22 62 18 48 18 C34 18 25 24 21 38 Z" fill="#78350f"/>
+      <path d="M30 22 Q48 16 68 22" stroke="#b45309" stroke-width="2" fill="none" opacity="0.6"/>
+      <!-- Brwi i błyszczące oczy -->
+      <path d="M31 36 Q37 32 43 36" stroke="#451a03" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path d="M57 36 Q63 32 69 36" stroke="#451a03" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <circle cx="37" cy="44" r="3.5" fill="#1e293b"/>
+      <circle cx="38.5" cy="42.5" r="1.3" fill="#ffffff"/>
+      <circle cx="63" cy="44" r="3.5" fill="#1e293b"/>
+      <circle cx="64.5" cy="42.5" r="1.3" fill="#ffffff"/>
+      <!-- Nos -->
+      <path d="M48 45 Q50 51 53 51" stroke="#d97706" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <!-- SYGNOWANA CECHA 2: SZEROKI, HOLLYWOODZKI UŚMIECH Z ZĘBAMI -->
+      <path d="M30 58 Q50 78 70 58 Q50 54 30 58 Z" fill="#1e293b" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.2))"/>
+      <path d="M33 58 Q50 63 67 58 C64 68 36 68 33 58 Z" fill="#ffffff"/>
+      <line x1="50" y1="58" x2="50" y2="65" stroke="#e2e8f0" stroke-width="1.2"/>
+      <!-- Błysk w zębach (Hollywood sparkle) -->
+      <path d="M36 59 L38 59 M37 58 L37 60" stroke="#facc15" stroke-width="1.5" stroke-linecap="round"/>
     </svg>`
   },
   {
@@ -3536,14 +3701,42 @@ function createTurtleAvatar(mood = 'happy', size = 56) {
     hook: 'Ola krzyczy OLE! na meczu i macha kucykami!',
     job: 'Trenerka fitness',
     color: '#06b6d4',
-    svg: `<svg viewBox="0 0 100 100" class="face-svg">
-      <circle cx="16" cy="36" r="12" fill="#b45309"/>
-      <circle cx="84" cy="36" r="12" fill="#b45309"/>
-      <circle cx="50" cy="52" r="38" fill="#fed7aa"/>
-      <rect x="22" y="32" width="56" height="8" rx="4" fill="#10b981"/>
-      <circle cx="36" cy="52" r="3.5" fill="#1e293b"/>
-      <circle cx="64" cy="52" r="3.5" fill="#1e293b"/>
-      <path d="M42 70 Q50 78 58 70" stroke="#b45309" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    svg: `<svg viewBox="0 0 100 100" class="face-svg" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="o-hair" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#b45309"/><stop offset="50%" stop-color="#d97706"/><stop offset="100%" stop-color="#78350f"/></linearGradient>
+      </defs>
+      <!-- SYGNOWANA CECHA 1: DWA ZAWADIACKIE KUCYKI (Lewy i Prawy) -->
+      <ellipse cx="14" cy="34" rx="11" ry="14" fill="url(#o-hair)" filter="drop-shadow(0 3px 6px rgba(0,0,0,0.25))"/>
+      <circle cx="21" cy="36" r="4" fill="#ec4899"/>
+      <ellipse cx="86" cy="34" rx="11" ry="14" fill="url(#o-hair)" filter="drop-shadow(0 3px 6px rgba(0,0,0,0.25))"/>
+      <circle cx="79" cy="36" r="4" fill="#ec4899"/>
+      <!-- Ramiona / koszulka sportowa fitness -->
+      <path d="M22 96 C22 78 32 74 50 74 C68 74 78 78 78 96 Z" fill="#06b6d4"/>
+      <path d="M38 74 L50 86 L62 74 Z" fill="#fed7aa"/>
+      <!-- Szyja i uszy -->
+      <path d="M42 66 h16 v12 h-16 z" fill="#fed7aa"/>
+      <circle cx="22" cy="52" r="6" fill="#fed7aa"/>
+      <circle cx="78" cy="52" r="6" fill="#fed7aa"/>
+      <!-- Głowa -->
+      <ellipse cx="50" cy="50" rx="28" ry="30" fill="#fed7aa"/>
+      <!-- Włosy na głowie -->
+      <path d="M22 40 C22 20 34 16 50 16 C66 16 78 20 78 40 C74 26 62 22 50 22 C38 22 26 26 22 40 Z" fill="url(#o-hair)"/>
+      <!-- SYGNOWANA CECHA 2: ZIELONA OPASKA SPORTOWA NA CZOLE -->
+      <rect x="20" y="30" width="60" height="9" rx="4.5" fill="#10b981" stroke="#059669" stroke-width="1.5" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.2))"/>
+      <line x1="25" y1="34.5" x2="75" y2="34.5" stroke="#ffffff" stroke-width="1.5" stroke-dasharray="4 2" opacity="0.8"/>
+      <!-- Oczy i wesołe mrugnięcie -->
+      <circle cx="36" cy="48" r="3.5" fill="#1e293b"/>
+      <circle cx="37" cy="46.5" r="1.3" fill="#ffffff"/>
+      <!-- Drugie oko mrugające zawadiacko! -->
+      <path d="M60 48 Q64 43 68 48" stroke="#1e293b" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <!-- Brwi -->
+      <path d="M30 41 L40 40" stroke="#78350f" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M60 40 L70 41" stroke="#78350f" stroke-width="2.2" stroke-linecap="round"/>
+      <!-- Nos i uśmiech sportowca -->
+      <path d="M48 49 Q50 53 52 50" stroke="#b45309" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+      <path d="M40 61 Q50 71 60 61" stroke="#dc2626" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+      <circle cx="28" cy="56" r="4.5" fill="#fb7185" opacity="0.35"/>
+      <circle cx="72" cy="56" r="4.5" fill="#fb7185" opacity="0.35"/>
     </svg>`
   },
   {
@@ -3553,15 +3746,41 @@ function createTurtleAvatar(mood = 'happy', size = 56) {
     hook: 'Piotr pisze gęsim PIÓREM przez swój złoty monokl!',
     job: 'Detektyw',
     color: '#6366f1',
-    svg: `<svg viewBox="0 0 100 100" class="face-svg">
-      <circle cx="50" cy="48" r="38" fill="#ffedd5"/>
-      <path d="M22 28 Q50 14 78 28" fill="#334155"/>
-      <circle cx="35" cy="46" r="3.5" fill="#1e293b"/>
-      <circle cx="65" cy="46" r="3.5" fill="#1e293b"/>
-      <circle cx="65" cy="46" r="9" fill="none" stroke="#eab308" stroke-width="2"/>
-      <line x1="74" y1="46" x2="84" y2="72" stroke="#eab308" stroke-width="1.5"/>
-      <path d="M30 62 Q40 56 50 62 Q60 56 70 62 Q60 66 50 64 Q40 66 30 62 Z" fill="#1e293b"/>
-      <path d="M44 72 Q50 76 56 72" stroke="#1e293b" stroke-width="2" fill="none"/>
+    svg: `<svg viewBox="0 0 100 100" class="face-svg" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="p-gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fef08a"/><stop offset="50%" stop-color="#eab308"/><stop offset="100%" stop-color="#ca8a04"/></linearGradient>
+      </defs>
+      <!-- Płaszcz detektywa z klapami -->
+      <path d="M18 96 C18 78 30 74 50 74 C70 74 82 78 82 96 Z" fill="#334155"/>
+      <path d="M42 74 L50 86 L58 74 Z" fill="#ffffff"/>
+      <path d="M47 74 L50 82 L53 74 Z" fill="#475569"/>
+      <!-- Szyja i uszy -->
+      <path d="M42 66 h16 v12 h-16 z" fill="#ffedd5"/>
+      <circle cx="21" cy="48" r="6.5" fill="#ffedd5"/>
+      <circle cx="79" cy="48" r="6.5" fill="#ffedd5"/>
+      <!-- Głowa -->
+      <ellipse cx="50" cy="46" rx="29" ry="30" fill="#ffedd5"/>
+      <!-- Ulizana fryzura a la Poirot -->
+      <path d="M21 38 C20 16 35 12 50 12 C65 12 80 16 79 38 C74 24 62 20 50 20 C38 20 26 24 21 38 Z" fill="#18181b"/>
+      <!-- Lewe oko i brew -->
+      <path d="M30 36 Q36 32 42 36" stroke="#18181b" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <circle cx="36" cy="44" r="3.2" fill="#1e293b"/>
+      <circle cx="37.2" cy="42.8" r="1.1" fill="#ffffff"/>
+      <!-- Prawe oko (pod monoklem) -->
+      <path d="M58 35 Q64 30 70 35" stroke="#18181b" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <circle cx="64" cy="44" r="3.5" fill="#1e293b"/>
+      <circle cx="65.5" cy="42.5" r="1.3" fill="#ffffff"/>
+      <!-- SYGNOWANA CECHA 1: ZŁOTY MONOKL Z ŁAŃCUSZKIEM -->
+      <circle cx="64" cy="44" r="12" fill="none" stroke="url(#p-gold)" stroke-width="2.8" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.3))"/>
+      <path d="M57 38 Q64 34 71 37" stroke="#ffffff" stroke-width="1.6" fill="none" opacity="0.75" stroke-linecap="round"/>
+      <!-- Łańcuszek biegnący od monokla do klapy płaszcza -->
+      <path d="M74 48 C80 58 78 72 70 82" stroke="url(#p-gold)" stroke-width="1.8" fill="none" stroke-dasharray="2 1.5"/>
+      <!-- Nos detektywa -->
+      <path d="M47 43 Q50 51 53 51" stroke="#d97706" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <!-- SYGNOWANA CECHA 2: ZAKRĘCONY WĄS A LA POIROT -->
+      <path d="M26 56 C34 50 44 58 50 57 C56 58 66 50 74 56 C78 58 78 63 73 60 C66 56 56 65 50 60 C44 65 34 56 27 60 C22 63 22 58 26 56 Z" fill="#18181b" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.3))"/>
+      <!-- Lekki dyskretny uśmieszek pod wąsem -->
+      <path d="M44 66 Q50 70 56 66" stroke="#b45309" stroke-width="2" fill="none" stroke-linecap="round"/>
     </svg>`
   },
   {
@@ -3571,15 +3790,43 @@ function createTurtleAvatar(mood = 'happy', size = 56) {
     hook: 'Ania je soczystego ANANASA, a sok skapuje na pieprzyk!',
     job: 'Fotografka',
     color: '#ec4899',
-    svg: `<svg viewBox="0 0 100 100" class="face-svg">
-      <circle cx="50" cy="50" r="40" fill="#fef08a"/>
-      <path d="M16 42 Q50 20 84 42" fill="#1c1917"/>
-      <circle cx="16" cy="54" r="7" fill="none" stroke="#cbd5e1" stroke-width="2"/>
-      <circle cx="84" cy="54" r="7" fill="none" stroke="#cbd5e1" stroke-width="2"/>
-      <circle cx="36" cy="50" r="3.5" fill="#1e293b"/>
-      <circle cx="64" cy="50" r="3.5" fill="#1e293b"/>
-      <circle cx="41" cy="66" r="2" fill="#1e293b"/>
-      <path d="M42 72 Q50 80 58 72" stroke="#e11d48" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    svg: `<svg viewBox="0 0 100 100" class="face-svg" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="an-silver" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ffffff"/><stop offset="50%" stop-color="#cbd5e1"/><stop offset="100%" stop-color="#64748b"/></linearGradient>
+        <linearGradient id="an-hair" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#262626"/><stop offset="100%" stop-color="#171717"/></linearGradient>
+      </defs>
+      <!-- Ramiona / stylowa koszulka fotografki z paskiem aparatu -->
+      <path d="M20 96 C20 78 32 74 50 74 C68 74 80 78 80 96 Z" fill="#475569"/>
+      <path d="M26 96 L60 74 L66 76 L32 96 Z" fill="#1e293b"/>
+      <!-- Szyja i uszy -->
+      <path d="M42 66 h16 v12 h-16 z" fill="#fef08a"/>
+      <circle cx="22" cy="50" r="6.5" fill="#fef08a"/>
+      <circle cx="78" cy="50" r="6.5" fill="#fef08a"/>
+      <!-- SYGNOWANA CECHA 1: SREBRNE KOLCZYKI KOŁA (HOOP EARRINGS) -->
+      <circle cx="19" cy="54" r="8" fill="none" stroke="url(#an-silver)" stroke-width="2.6" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.3))"/>
+      <circle cx="81" cy="54" r="8" fill="none" stroke="url(#an-silver)" stroke-width="2.6" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.3))"/>
+      <!-- Głowa -->
+      <ellipse cx="50" cy="48" rx="28" ry="30" fill="#fef08a"/>
+      <!-- Fryzura: Stylowy ciemny bob z grzywką -->
+      <path d="M18 46 C16 22 30 12 50 12 C70 12 84 22 82 46 C86 64 78 72 74 74 C78 56 80 40 76 34 C68 24 58 24 50 24 C42 24 32 24 24 34 C20 40 22 56 26 74 C22 72 14 64 18 46 Z" fill="url(#an-hair)"/>
+      <path d="M26 30 Q50 20 74 30 Q50 26 26 30 Z" fill="#404040"/>
+      <!-- Oczy z ładnymi rzęsami i brwi -->
+      <path d="M32 38 Q37 34 43 38" stroke="#171717" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+      <path d="M57 38 Q63 34 69 38" stroke="#171717" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+      <circle cx="37" cy="46" r="3.5" fill="#451a03"/>
+      <circle cx="38" cy="44.5" r="1.3" fill="#ffffff"/>
+      <path d="M33 44 L31 42 M41 44 L43 42" stroke="#171717" stroke-width="1.3" stroke-linecap="round"/>
+      <circle cx="63" cy="46" r="3.5" fill="#451a03"/>
+      <circle cx="64" cy="44.5" r="1.3" fill="#ffffff"/>
+      <path d="M59 44 L57 42 M67 44 L69 42" stroke="#171717" stroke-width="1.3" stroke-linecap="round"/>
+      <!-- Nos -->
+      <path d="M48 47 Q50 52 52 50" stroke="#d97706" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+      <!-- Usta z malinową szminką -->
+      <path d="M41 62 Q50 71 59 62" stroke="#e11d48" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <!-- SYGNOWANA CECHA 2: UROCZY PIEPRZYK NAD USTAMI (BEAUTY MARK) -->
+      <circle cx="43" cy="57" r="2.2" fill="#171717" filter="drop-shadow(0 1px 2px rgba(0,0,0,0.4))"/>
+      <circle cx="28" cy="54" r="4.5" fill="#fb7185" opacity="0.3"/>
+      <circle cx="72" cy="54" r="4.5" fill="#fb7185" opacity="0.3"/>
     </svg>`
   }
 ];
@@ -4164,16 +4411,12 @@ function mountFree(root, { modeId, nav }) {
           if (c.id === currentTarget.id) {
             sfx.pop();
             score += 10;
-            timeLeft += 2; // bonus czasowy
             round++;
             scoreEl.textContent = `${score}`;
             roundEl.textContent = `${round}`;
-            if (timerEl) timerEl.textContent = `⏱ ${timeLeft}s`;
             nextRound();
           } else {
             sfx.wrong();
-            timeLeft = Math.max(1, timeLeft - 2);
-            if (timerEl) timerEl.textContent = `⏱ ${timeLeft}s`;
             btn.classList.add('wrong');
             setTimeout(nextRound, 300);
           }
@@ -5105,78 +5348,111 @@ return {
   /* --- WORDS GAME MODULE --- */
   const wordsGame = (function() {
     const VOCAB = [
-  {
-    id: 'w1',
-    foreign: 'mushroom',
-    lang: 'angielski',
-    meaning: 'grzyb',
-    bridge: 'MASZ RUM',
-    story: 'Wielki leśny borowik wyciąga rękę i krzyczy pirackim głosem: „MASZ RUM w butelce?!”',
-    emoji: '🍄'
-  },
-  {
-    id: 'w2',
-    foreign: 'gato',
-    lang: 'hiszpański',
-    meaning: 'kot',
-    bridge: 'GATKI',
-    story: 'Rudy kot przechadza się dumnie po płocie w wielkich czerwonych GATKACH w żółte grochy!',
-    emoji: '🐱'
-  },
-  {
-    id: 'w3',
-    foreign: 'candle',
-    lang: 'angielski',
-    meaning: 'świeca',
-    bridge: 'KUNDEL',
-    story: 'Wesoły KUNDELEK biegnie przez pokój niosąc na czubku ogona płonącą, woskową ŚWIECĘ!',
-    emoji: '🕯️'
-  },
-  {
-    id: 'w4',
-    foreign: 'perro',
-    lang: 'hiszpański',
-    meaning: 'pies',
-    bridge: 'PERON',
-    story: 'Zaspany PIES w czapce zawiadowcy biega po PERONIE kolejowym i szczeka na pociągi!',
-    emoji: '🐶'
-  },
-  {
-    id: 'w5',
-    foreign: 'feather',
-    lang: 'angielski',
-    meaning: 'pióro',
-    bridge: 'SWETER',
-    story: 'Zakładasz wełniany SWETER, a z każdego oczka wyrasta wielkie, łaskoczące gęsie PIÓRO!',
-    emoji: '🪶'
-  },
-  {
-    id: 'w6',
-    foreign: 'cuchara',
-    lang: 'hiszpański',
-    meaning: 'łyżka',
-    bridge: 'KUCHARZ',
-    story: 'Brodaty KUCHARZ w białym czepku gra jak na gitarze wielką, błyszczącą ŁYŻKĄ do zupy!',
-    emoji: '🥄'
-  },
-  {
-    id: 'w7',
-    foreign: 'pillow',
-    lang: 'angielski',
-    meaning: 'poduszka',
-    bridge: 'PIŁA',
-    story: 'Chcesz uciąć deskę, ale zamiast PIŁY trzymasz miękką puchową PODUSZKĘ, z której lecą pióra!',
-    emoji: '🛏️'
-  },
-  {
-    id: 'w8',
-    foreign: 'manzana',
-    lang: 'hiszpański',
-    meaning: 'jabłko',
-    bridge: 'MARZANNA',
-    story: 'Topiona w rzece słomiana MARZANNA ma zamiast głowy olbrzymie, soczyste czerwone JABŁKO!',
-    emoji: '🍎'
-  }
+  { id: 'w1', foreign: 'mushroom', lang: 'angielski', meaning: 'grzyb', bridge: 'MASZ RUM', story: 'Wielki leśny borowik wyciąga rękę i krzyczy pirackim głosem: „MASZ RUM w butelce?!”', emoji: '🍄' },
+  { id: 'w2', foreign: 'candle', lang: 'angielski', meaning: 'świeca', bridge: 'KUNDEL', story: 'Wesoły KUNDELEK biegnie przez pokój, niosąc na czubku ogona płonącą, woskową ŚWIECĘ!', emoji: '🕯️' },
+  { id: 'w3', foreign: 'feather', lang: 'angielski', meaning: 'pióro', bridge: 'SWETER', story: 'Zakładasz wełniany SWETER, a z każdego oczka wyrasta wielkie, łaskoczące gęsie PIÓRO!', emoji: '🪶' },
+  { id: 'w4', foreign: 'pillow', lang: 'angielski', meaning: 'poduszka', bridge: 'PIŁA', story: 'Chcesz uciąć deskę, ale zamiast PIŁY trzymasz miękką puchową PODUSZKĘ, z której lecą pióra!', emoji: '🛏️' },
+  { id: 'w5', foreign: 'shark', lang: 'angielski', meaning: 'rekin', bridge: 'SZARIK', story: 'Groźny żarłacz REKIN macha przyjaźnie ogonem i szczeka jak wierny pies SZARIK!', emoji: '🦈' },
+  { id: 'w6', foreign: 'beetle', lang: 'angielski', meaning: 'chrząszcz', bridge: 'BITELSI', story: 'Cztery CHRZĄSZCZE w czarnych garniturach grają na gitarach na scenie jak The BEATLES!', emoji: '🪲' },
+  { id: 'w7', foreign: 'fork', lang: 'angielski', meaning: 'widelec', bridge: 'FOKA', story: 'Wesoła FOKA na plaży żongluje na nosie wielkim, srebrnym WIDELCEM!', emoji: '🍴' },
+  { id: 'w8', foreign: 'bat', lang: 'angielski', meaning: 'nietoperz', bridge: 'BAT', story: 'Czarny NIETOPERZ w masce Zorro lata pod sufitem i strzela z długiego skórzanego BATA!', emoji: '🦇' },
+  { id: 'w9', foreign: 'ship', lang: 'angielski', meaning: 'statek', bridge: 'SZYP', story: 'Potężny STATEK oceaniczny ma zamiast masztów wielkie kolczaste SZYPUŁKI dzikiej róży!', emoji: '🚢' },
+  { id: 'w10', foreign: 'cloud', lang: 'angielski', meaning: 'chmura', bridge: 'KLAUN', story: 'Wesoły KLAUN z czerwonym nosem skacze jak na trampolinie po puszystej białej CHMURZE!', emoji: '☁️' },
+  { id: 'w11', foreign: 'bread', lang: 'angielski', meaning: 'chleb', bridge: 'BRUD', story: 'Chcesz zjeść chrupiący CHLEB, ale ma na skórce wielki napis BRUD zrobiony z czekolady!', emoji: '🍞' },
+  { id: 'w12', foreign: 'horse', lang: 'angielski', meaning: 'koń', bridge: 'HOSSA', story: 'Biały KOŃ zakłada garnitur maklera i krzyczy na giełdzie: „Idzie HOSSA, kupujemy siano!”', emoji: '🐴' },
+  { id: 'w13', foreign: 'snake', lang: 'angielski', meaning: 'wąż', bridge: 'ŚNIEG', story: 'Długi zielony WĄŻ w ciepłej czapce lepi wesołego bałwana ze ŚNIEGU na mrozie!', emoji: '🐍' },
+  { id: 'w14', foreign: 'coat', lang: 'angielski', meaning: 'płaszcz', bridge: 'KOT', story: 'Rudy KOT spaceruje dumnie w długim, ciepłym zimowym PŁASZCZU z paskiem!', emoji: '🧥' },
+  { id: 'w15', foreign: 'mirror', lang: 'angielski', meaning: 'lustro', bridge: 'MURAWA', story: 'Spoglądasz w LUSTRO, a zamiast Twojej twarzy rośnie w nim zielona MURAWA piłkarska!', emoji: '🪞' },
+  { id: 'w16', foreign: 'spoon', lang: 'angielski', meaning: 'łyżka', bridge: 'SZPIEG', story: 'Błyszcząca ŁYŻKA w ciemnych okularach udaje SZPIEGA i nurkuje w talerzu z rosołem!', emoji: '🥄' },
+  { id: 'w17', foreign: 'plate', lang: 'angielski', meaning: 'talerz', bridge: 'PŁETWA', story: 'Płetwonurek kładzie wielką gumową PŁETWĘ prosto na płaski TALERZ obiadowy!', emoji: '🍽️' },
+  { id: 'w18', foreign: 'cup', lang: 'angielski', meaning: 'kubek', bridge: 'KAP', story: 'Z kranu robi głośne KAP, KAP, KAP wprost do kolorowego KUBKA z herbatą!', emoji: '☕' },
+  { id: 'w19', foreign: 'boot', lang: 'angielski', meaning: 'but', bridge: 'BUTLA', story: 'Kowbojski skórzany BUT ma zamiast obcasa wielką metalową BUTLĘ z gazem!', emoji: '👢' },
+  { id: 'w20', foreign: 'ring', lang: 'angielski', meaning: 'pierścień', bridge: 'RING', story: 'Na środku bokserskiego RINGU lśni gigantyczny złoty PIERŚCIEŃ z diamentem!', emoji: '💍' },
+  { id: 'w21', foreign: 'bell', lang: 'angielski', meaning: 'dzwon', bridge: 'BELKA', story: 'Pod dachem wisi drewniana BELKA, na której zawieszony jest wielki mosiężny DZWON!', emoji: '🔔' },
+  { id: 'w22', foreign: 'key', lang: 'angielski', meaning: 'klucz', bridge: 'KIJ', story: 'Wielki złoty KLUCZ do sejfu służy hokeiście jako zakrzywiony KIJ do gry!', emoji: '🔑' },
+  { id: 'w23', foreign: 'lock', lang: 'angielski', meaning: 'zamek', bridge: 'LOK', story: 'Fryzjerka robi lokówką wielki, sprężysty LOK z metalowego ZAMKA w drzwiach!', emoji: '🔒' },
+  { id: 'w24', foreign: 'rope', lang: 'angielski', meaning: 'lina', bridge: 'ROPA', story: 'Chcesz wspiąć się po LINIE, ale jest cała oblepiona czarną, śliską ROPĄ naftową!', emoji: '🪢' },
+  { id: 'w25', foreign: 'leaf', lang: 'angielski', meaning: 'liść', bridge: 'LIFT', story: 'Zielony dębowy LIŚĆ wsiada do windy (LIFTU) i wjeżdża na sam czubek drzewa!', emoji: '🍃' },
+  { id: 'w26', foreign: 'tree', lang: 'angielski', meaning: 'drzewo', bridge: 'TRIO', story: 'W koronie rozłożystego DRZEWA wesołe TRIO wiewiórek śpiewa operową arię!', emoji: '🌳' },
+  { id: 'w27', foreign: 'bridge', lang: 'angielski', meaning: 'most', bridge: 'BRYDŻ', story: 'Kierowcy stoją na wielkim MOŚCIE i z nudów grają na maskach aut w BRYDŻA!', emoji: '🌉' },
+  { id: 'w28', foreign: 'lake', lang: 'angielski', meaning: 'jezioro', bridge: 'LEK', story: 'Wrzucasz do czystego JEZIORA musujący LEK witaminowy i cała woda buzuje bąbelkami!', emoji: '🌊' },
+  { id: 'w29', foreign: 'peach', lang: 'angielski', meaning: 'brzoskwinia', bridge: 'PISZCZY', story: 'Gryziesz soczystą, miękką BRZOSKWINIĘ, a ona głośno PISZCZY ze śmiechu!', emoji: '🍑' },
+  { id: 'w30', foreign: 'frog', lang: 'angielski', meaning: 'żaba', bridge: 'FROK', story: 'Zielona ŻABA zakłada balowy elegancki FRAK (frok) i tańczy walca na liściu lilii!', emoji: '🐸' },
+  { id: 'w31', foreign: 'duck', lang: 'angielski', meaning: 'kaczka', bridge: 'DAKTYL', story: 'Żółta KACZKA pływa po stawie i zamiast chleba zajada słodkie DAKTYLE!', emoji: '🦆' },
+  { id: 'w32', foreign: 'bear', lang: 'angielski', meaning: 'niedźwiedź', bridge: 'BERŁO', story: 'Brunatny NIEDŹWIEDŹ w koronie trzyma w łapie złote królewskie BERŁO i je miód!', emoji: '🐻' },
+  { id: 'w33', foreign: 'wolf', lang: 'angielski', meaning: 'wilk', bridge: 'WULKAN', story: 'Szary WILK wyje do księżyca stojąc na samym szczycie dymiącego WULKANU!', emoji: '🐺' },
+  { id: 'w34', foreign: 'fox', lang: 'angielski', meaning: 'lis', bridge: 'FOKS', story: 'Rudy LIS zakłada smoking i tańczy po lesie eleganckiego FOKSTROTA!', emoji: '🦊' },
+  { id: 'w35', foreign: 'deer', lang: 'angielski', meaning: 'jeleń', bridge: 'DYREKTOR', story: 'Dumny JELEŃ z wielkim porożem siada za biurkiem jako nowy DYREKTOR korporacji!', emoji: '🦌' },
+  { id: 'w36', foreign: 'goat', lang: 'angielski', meaning: 'koza', bridge: 'GOT', story: 'Biała rogata KOZA ubiera się na czarno i słucha mrocznej muzyki jak prawdziwy GOT!', emoji: '🐐' },
+  { id: 'w37', foreign: 'pig', lang: 'angielski', meaning: 'świnia', bridge: 'PIGUŁKA', story: 'Różowa ŚWINIA w fartuchu lekarskim przepisuje na katar wielką różową PIGUŁKĘ!', emoji: '🐷' },
+  { id: 'w38', foreign: 'cow', lang: 'angielski', meaning: 'krowa', bridge: 'KAWA', story: 'Łaciata KROWA na pastwisku pije z filiżanki gorącą KAWĘ z pianką z własnego mleka!', emoji: '🐮' },
+  { id: 'w39', foreign: 'sheep', lang: 'angielski', meaning: 'owca', bridge: 'SZYBA', story: 'Puchata biała OWCA biegnie przez łąkę i z impetem myje językiem wielką SZYBĘ!', emoji: '🐑' },
+  { id: 'w40', foreign: 'mouse', lang: 'angielski', meaning: 'mysz', bridge: 'MAJTEK', story: 'Mała polna MYSZ w marynarskich pasiastych MAJTKACH steruje żaglówką!', emoji: '🐭' },
+  { id: 'w41', foreign: 'bird', lang: 'angielski', meaning: 'ptak', bridge: 'BURDA', story: 'Kolorowy PTAK na gałęzi krzyczy i wywołuje na podwórku wielką awanturę i BURDĘ!', emoji: '🐦' },
+  { id: 'w42', foreign: 'owl', lang: 'angielski', meaning: 'sowa', bridge: 'AUL', story: 'Mądra SOWA w birecie profesorskim prowadzi wykład w wielkiej uniwersyteckiej AULI!', emoji: '🦉' },
+  { id: 'w43', foreign: 'eagle', lang: 'angielski', meaning: 'orzeł', bridge: 'IGŁA', story: 'Wielki górski ORZEŁ trzyma w szponach zamiast gałązki cienką krawiecką IGŁĘ z nitką!', emoji: '🦅' },
+  { id: 'w44', foreign: 'spider', lang: 'angielski', meaning: 'pająk', bridge: 'SPAJDI', story: 'Wielki włochaty PAJĄK zakłada kostium Spider-Mana (SPAJDI) i wspina się po ścianie!', emoji: '🕷️' },
+  { id: 'w45', foreign: 'bee', lang: 'angielski', meaning: 'pszczoła', bridge: 'BIEG', story: 'Pracowita PSZCZOŁA zakłada buty z kolcami i bierze udział w BIEGU sprinterskim na 100m!', emoji: '🐝' },
+  { id: 'w46', foreign: 'ant', lang: 'angielski', meaning: 'mrówka', bridge: 'ANTENA', story: 'Mała pracowita MRÓWKA niesie na plecach olbrzymią telewizyjną ANTENĘ satelitarną!', emoji: '🐜' },
+  { id: 'w47', foreign: 'crab', lang: 'angielski', meaning: 'krab', bridge: 'KRA', story: 'Czerwony morski KRAB szczypcami rozłupuje wielką lodową KRĘ na biegunie!', emoji: '🦀' },
+  { id: 'w48', foreign: 'whale', lang: 'angielski', meaning: 'wieloryb', bridge: 'WELUR', story: 'Olbrzymi błękitny WIELORYB nosi na grzbiecie elegancki smoking uszyty z WELURU!', emoji: '🐋' },
+  { id: 'w49', foreign: 'seal', lang: 'angielski', meaning: 'foka', bridge: 'SILNIK', story: 'Zwinna FOKA pływa w oceanie z doczepionym do ogona motorowodnym SILNIKIEM turbo!', emoji: '🦭' },
+  { id: 'w50', foreign: 'lion', lang: 'angielski', meaning: 'lew', bridge: 'LAJON', story: 'Król zwierząt LEW przed polowaniem zajada chrupiący batonik LION!', emoji: '🦁' },
+  { id: 'w51', foreign: 'tiger', lang: 'angielski', meaning: 'tygrys', bridge: 'TAJGA', story: 'Pasiasty TYGRYS w futrzanej czapce biega po syberyjskiej TAJDZE i szuka ciepła!', emoji: '🐯' },
+  { id: 'w52', foreign: 'monkey', lang: 'angielski', meaning: 'małpa', bridge: 'MANKIET', story: 'Wesoła MAŁPKA kradnie w sklepie elegancką koszulę i zapina złoty spinek w MANKIECIE!', emoji: '🐵' },
+  { id: 'w53', foreign: 'apple', lang: 'angielski', meaning: 'jabłko', bridge: 'APEL', story: 'Dyrektor szkoły staje na środku boiska i ogłasza APEL, rzucając w uczniów JABŁKAMI!', emoji: '🍎' },
+  { id: 'w54', foreign: 'pear', lang: 'angielski', meaning: 'gruszka', bridge: 'PERŁA', story: 'Rozkrawasz żółtą słodką GRUSZKĘ, a w środku lśni wielka biała morska PERŁA!', emoji: '🍐' },
+  { id: 'w55', foreign: 'plum', lang: 'angielski', meaning: 'śliwka', bridge: 'PLAMA', story: 'Fioletowa soczysta ŚLIWKA spada na biały obrus i zostawia wielką atramentową PLAMĘ!', emoji: '🫐' },
+  { id: 'w56', foreign: 'cherry', lang: 'angielski', meaning: 'wiśnia', bridge: 'CZERWIEŃ', story: 'Dojrzała czerwona WIŚNIA świeci w nocy intensywną, neonową CZERWIENIĄ!', emoji: '🍒' },
+  { id: 'w57', foreign: 'nut', lang: 'angielski', meaning: 'orzech', bridge: 'NUTA', story: 'Rozłupujesz twardy ORZECH włoski, a ze środka wylatuje złota, śpiewająca NUTA muzyczna!', emoji: '🥜' },
+  { id: 'w58', foreign: 'carrot', lang: 'angielski', meaning: 'marchew', bridge: 'KARETA', story: 'Królewska pomarańczowa MARCHEW jedzie do pałacu w złotej KARECIE zaprzężonej w konie!', emoji: '🥕' },
+  { id: 'w59', foreign: 'onion', lang: 'angielski', meaning: 'cebula', bridge: 'ANIOŁ', story: 'Kroisz ostrą CEBULĘ i płaczesz, a biały ANIOŁ podaje Ci chusteczkę do nosa!', emoji: '🧅' },
+  { id: 'w60', foreign: 'garlic', lang: 'angielski', meaning: 'czosnek', bridge: 'GARLIK / GAR', story: 'Biały ząbek CZOSNKU wskakuje do wielkiego GARA z gorącą zupą i odstrasza wampiry!', emoji: '🧄' },
+  { id: 'w61', foreign: 'milk', lang: 'angielski', meaning: 'mleko', bridge: 'MILK / MILION', story: 'Karton białego MLEKA wygrywa na loterii MILION złotych i oblewa wszystkich ze szczęścia!', emoji: '🥛' },
+  { id: 'w62', foreign: 'cheese', lang: 'angielski', meaning: 'ser', bridge: 'CZYSTY', story: 'Żółty szwajcarski SER z dziurami bierze kąpiel w wannie, bo lubi być pachnący i CZYSTY!', emoji: '🧀' },
+  { id: 'w63', foreign: 'butter', lang: 'angielski', meaning: 'masło', bridge: 'BATERIA', story: 'Smarujesz kanapkę żółtym MASŁEM, a kromka zaczyna świecić, bo masło to BATERIA!', emoji: '🧈' },
+  { id: 'w64', foreign: 'meat', lang: 'angielski', meaning: 'mięso', bridge: 'MIT', story: 'Wikingowie siadają przy ognisku, pieką soczyste MIĘSO i opowiadają prastary grecki MIT!', emoji: '🥩' },
+  { id: 'w65', foreign: 'fish', lang: 'angielski', meaning: 'ryba', bridge: 'FISZKA', story: 'Srebrna RYBA wyskakuje z wody i uczy się słówek, zapisując je na papierowej FISZCE!', emoji: '🐟' },
+  { id: 'w66', foreign: 'soup', lang: 'angielski', meaning: 'zupa', bridge: 'SĘP', story: 'Głodny leśny SĘP przylatuje do kuchni i z apetytem zajada gorącą pomidorową ZUPĘ!', emoji: '🍲' },
+  { id: 'w67', foreign: 'salt', lang: 'angielski', meaning: 'sól', bridge: 'SALTO', story: 'Solniczka z białą SOLĄ wyskakuje w powietrze i robi potrójne akrobatyczne SALTO!', emoji: '🧂' },
+  { id: 'w68', foreign: 'sugar', lang: 'angielski', meaning: 'cukier', bridge: 'SZUR', story: 'Biały słodki CUKIER wsypuje się do szklanki z głośnym SZUR, SZUR po dnie!', emoji: '🍬' },
+  { id: 'w69', foreign: 'honey', lang: 'angielski', meaning: 'miód', bridge: 'HANI', story: 'Mała dziewczynka HANIA smaruje pajdę chleba słodkim, lejącym się MIODEM!', emoji: '🍯' },
+  { id: 'w70', foreign: 'cake', lang: 'angielski', meaning: 'ciasto', bridge: 'KEKS', story: 'Kucharz piecze urodzinowe CIASTO, ale przez pomyłkę wychodzi mu bakaliowy KEKS!', emoji: '🍰' },
+  { id: 'w71', foreign: 'house', lang: 'angielski', meaning: 'dom', bridge: 'HAŁAS', story: 'Wielki piętrowy DOM trzęsie się w posadach, bo dzieci robią w nim potworny HAŁAS!', emoji: '🏠' },
+  { id: 'w72', foreign: 'room', lang: 'angielski', meaning: 'pokój', bridge: 'RUMOR', story: 'Otwierasz drzwi do POKOJU, a tam meble tańczą i robią ogromny RUMOR!', emoji: '🚪' },
+  { id: 'w73', foreign: 'door', lang: 'angielski', meaning: 'drzwi', bridge: 'DÓR', story: 'Pukasz w drewniane DRZWI, a one grają głośny, wesoły akord w tonacji C-DUR!', emoji: '🚪' },
+  { id: 'w74', foreign: 'window', lang: 'angielski', meaning: 'okno', bridge: 'WINDA', story: 'Zamiast otwierać OKNO, wciskasz guzik i całe okno zjeżdża w dół jak WINDA!', emoji: '🪟' },
+  { id: 'w75', foreign: 'floor', lang: 'angielski', meaning: 'podłoga', bridge: 'FLOR / FLORYDA', story: 'Myjesz PODŁOGĘ mopem, a deski zamieniają się w piaszczystą plażę na FLORYDZIE!', emoji: '🪵' },
+  { id: 'w76', foreign: 'roof', lang: 'angielski', meaning: 'dach', bridge: 'RUFA', story: 'Na spadzisty DACH domu spada z nieba wielka drewniana RUFA statku piratów!', emoji: '🏠' },
+  { id: 'w77', foreign: 'wall', lang: 'angielski', meaning: 'ściana', bridge: 'WAŁ', story: 'Biała ŚCIANA w pokoju pęka i zamienia się w wysoki ziemny WAŁ przeciwpowodziowy!', emoji: '🧱' },
+  { id: 'w78', foreign: 'table', lang: 'angielski', meaning: 'stół', bridge: 'TABLICA', story: 'Drewniany STÓŁ jadalny zamienia się nagle w szkolną TABLICĘ ze wzorami matematycznymi!', emoji: '🪵' },
+  { id: 'w79', foreign: 'chair', lang: 'angielski', meaning: 'krzesło', bridge: 'CZERW', story: 'Wygodne biurowe KRZESŁO zaczyna świecić na jaskrawy CZERWONY kolor!', emoji: '🪑' },
+  { id: 'w80', foreign: 'bed', lang: 'angielski', meaning: 'łóżko', bridge: 'BEDUIN', story: 'Pustynny BEDUIN rozbija namiot na piasku i kładzie się spać w wielkim miękkim ŁÓŻKU!', emoji: '🛏️' },
+  { id: 'w81', foreign: 'clock', lang: 'angielski', meaning: 'zegar', bridge: 'KLOC', story: 'Ścienny ZEGAR tyka głośno, a z kukułki zamiast ptaka wylatuje ciężki drewniany KLOC!', emoji: '⏰' },
+  { id: 'w82', foreign: 'book', lang: 'angielski', meaning: 'książka', bridge: 'BUK', story: 'W wielkiej starej KSIĄŻCE zamiast papieru są liście potężnego BUKU!', emoji: '📖' },
+  { id: 'w83', foreign: 'pen', lang: 'angielski', meaning: 'długopis', bridge: 'PIENIĄDZ', story: 'Piszesz sprawdzian DŁUGOPISEM, a z wkładu zamiast tuszu wylatują złote PIENIĄDZE!', emoji: '🖊️' },
+  { id: 'w84', foreign: 'bag', lang: 'angielski', meaning: 'torba', bridge: 'BAGNO', story: 'Wrzucasz zakupy do płóciennej TORBY, a w środku bulgocze zielone, pachnące BAGNO!', emoji: '🛍️' },
+  { id: 'w85', foreign: 'box', lang: 'angielski', meaning: 'pudełko', bridge: 'BOKSER', story: 'Otwierasz kartonowe PUDEŁKO z paczką, a ze środka wyskakuje BOKSER w rękawicach!', emoji: '📦' },
+  { id: 'w86', foreign: 'car', lang: 'angielski', meaning: 'samochód', bridge: 'KARA', story: 'Szybki sportowy SAMOCHÓD parkuje na zakazie i kierowcę spotyka surowa KARA!', emoji: '🚗' },
+  { id: 'w87', foreign: 'bus', lang: 'angielski', meaning: 'autobus', bridge: 'BUSOLA', story: 'Żółty szkolny AUTOBUS gubi drogę we mgle i kierowca nawiguje wielką mosiężną BUSOLĄ!', emoji: '🚌' },
+  { id: 'w88', foreign: 'train', lang: 'angielski', meaning: 'pociąg', bridge: 'TRENER', story: 'Długi POCIĄG towarowy zatrzymuje się na stacji, a maszynistą jest surowy TRENER fitness!', emoji: '🚆' },
+  { id: 'w89', foreign: 'plane', lang: 'angielski', meaning: 'samolot', bridge: 'PLAN', story: 'Wielki pasażerski SAMOLOT rozkłada w locie gigantyczny papierowy PLAN miasta!', emoji: '✈️' },
+  { id: 'w90', foreign: 'bike', lang: 'angielski', meaning: 'rower', bridge: 'BAJKA', story: 'Czerwony dziecięcy ROWER sam kręci pedałami i przenosi Cię wprost w środek BAJKI!', emoji: '🚲' },
+  { id: 'w91', foreign: 'road', lang: 'angielski', meaning: 'droga', bridge: 'RÓD', story: 'Szeroka asfaltowa DROGA prowadzi prosto do zamku, w którym mieszka królewski RÓD!', emoji: '🛣️' },
+  { id: 'w92', foreign: 'sun', lang: 'angielski', meaning: 'słońce', bridge: 'SANIE', story: 'Gorące żółte SŁOŃCE zakłada okulary przeciwsłoneczne i jeździ po chmurach w SANIACH!', emoji: '☀️' },
+  { id: 'w93', foreign: 'moon', lang: 'angielski', meaning: 'księżyc', bridge: 'MUNDUR', story: 'Srebrny KSIĘŻYC w pełni zakłada wojskowy MUNDUR i salutuje gwiazdom na niebie!', emoji: '🌙' },
+  { id: 'w94', foreign: 'star', lang: 'angielski', meaning: 'gwiazda', bridge: 'STARA', story: 'Jasna lśniąca GWIAZDA na niebie mruga okiem i mówi, że jest już bardzo STARA!', emoji: '⭐' },
+  { id: 'w95', foreign: 'rain', lang: 'angielski', meaning: 'deszcz', bridge: 'REIN / RENIFER', story: 'Z nieba leje ulewny DESZCZ, a renifery Świętego Mikołaja tańczą w kałużach!', emoji: '🌧️' },
+  { id: 'w96', foreign: 'snow', lang: 'angielski', meaning: 'śnieg', bridge: 'SNOPEK', story: 'Zimą na pole spada biały puchaty ŚNIEG i przykrywa wysoki SNOPEK siana!', emoji: '❄️' },
+  { id: 'w97', foreign: 'wind', lang: 'angielski', meaning: 'wiatr', bridge: 'WINDA', story: 'Za oknem wieje potężny WIATR, który porywa zewnętrzną szklaną WINDĘ wieżowca!', emoji: '💨' },
+  { id: 'w98', foreign: 'fire', lang: 'angielski', meaning: 'ogień', bridge: 'FAJERWERKI', story: 'W kominku płonie wesoły OGIEŃ, z którego strzelają kolorowe sylwestrowe FAJERWERKI!', emoji: '🔥' },
+  { id: 'w99', foreign: 'water', lang: 'angielski', meaning: 'woda', bridge: 'WATA', story: 'Odkręcasz kran z czystą WODĄ, a ze zlewu zamiast kropel wylatuje słodka WATA cukrowa!', emoji: '💧' },
+  { id: 'w100', foreign: 'sea', lang: 'angielski', meaning: 'morze', bridge: 'SIERŚĆ', story: 'Błękitne wzburzone MORZE wyrzuca na brzeg falę, która jest miękka jak kocia SIERŚĆ!', emoji: '🌊' },
+  { id: 'w101', foreign: 'sand', lang: 'angielski', meaning: 'piasek', bridge: 'SANDAŁ', story: 'Chodzisz po gorącej plaży, a żółty drobny PIASEK sam wskakuje Ci w skórzany SANDAŁ!', emoji: '🏖️' },
+  { id: 'w102', foreign: 'rock', lang: 'angielski', meaning: 'skała', bridge: 'ROK', story: 'Stroma twarda SKAŁA w górach ma na szczycie wielki napis: „Szczęśliwego Nowego ROKU!”', emoji: '🪨' },
+  { id: 'w103', foreign: 'coin', lang: 'angielski', meaning: 'moneta', bridge: 'KOŃ', story: 'Wrzucasz do skarbonki błyszczącą MONETĘ, a ze środka słychać, jak rży mały KOŃ!', emoji: '🪙' },
+  { id: 'w104', foreign: 'sword', lang: 'angielski', meaning: 'miecz', bridge: 'SWĄD', story: 'Rycerz wyciąga ze skały ostry MIECZ, a w powietrzu unosi się zapach spalenizny i SWĄD!', emoji: '⚔️' },
+  { id: 'w105', foreign: 'crown', lang: 'angielski', meaning: 'korona', bridge: 'KRAN', story: 'Królewska złota KORONA z diamentami leży w łazience i zatyka cieknący KRAN!', emoji: '👑' }
 ];
 
 
@@ -5185,7 +5461,7 @@ const MODES = [
     id: 'translate',
     name: 'Błyskawiczny tłumacz',
     emoji: '🦜',
-    desc: 'Spójrz na obce słowo (angielski/hiszpański) i przypomnij sobie polskie znaczenie.',
+    desc: 'Spójrz na angielskie słowo i błyskawicznie wskaż polskie znaczenie.',
     color: ['#00b09b', '#96c93d'],
     badge: 'Klasyczny'
   },
@@ -5223,18 +5499,18 @@ const LESSONS = [
     id: 'words-1',
     title: 'Metoda słów-kluczy',
     subtitle: 'Koniec z nudnym wkuwaniem słówek',
-    desc: 'Odkryj metodę badaczy Atkinsona i Raugha, która zwiększa tempo nauki języków trzykrotnie!',
-    speech: 'Cześć, tu Papużka Pola! 🦜 Marzysz o swobodnych podróżach po świecie i piątkach z angielskiego czy hiszpańskiego? Pokażę Ci czarodziejski trik ze słowami-kluczami – zapamiętasz każde trudne słówko w kilka sekund, bez nudnego wkuwania!',
+    desc: 'Odkryj metodę badaczy Atkinsona i Raugha, która zwiększa tempo nauki angielskiego trzykrotnie!',
+    speech: 'Cześć, tu Papużka Pola! 🦜 Marzysz o swobodnych podróżach po świecie i piątkach z angielskiego? Pokażę Ci czarodziejski trik ze słowami-kluczami – zapamiętasz każde angielskie słówko w kilka sekund, bez nudnego wkuwania!',
     theory: [
-      'Po co nam ta metoda? Zwykłe powtarzanie słówek po 50 razy w zeszycie jest nudne, męczące i szybko ulatuje z głowy.',
+      'Po co nam ta metoda? Zwykłe powtarzanie angielskich słówek po 50 razy w zeszycie jest nudne, męczące i szybko ulatuje z głowy.',
       'Metoda słów-kluczy (Keyword Method) to sekret poliglotów i mistrzów pamięci na całym świecie!',
       'Składa się z 2 prostych, zabawnych kroków:',
-      '1. Znajdź polskie słowo, które brzmi podobnie do obcego wyrazu (to nasz Most Fonetyczny).',
+      '1. Znajdź polskie słowo, które brzmi podobnie do angielskiego wyrazu (to nasz Most Fonetyczny).',
       '2. Połącz ten dźwięk ze znaczeniem słówka w śmieszną, bajkową scenkę w wyobraźni!',
-      'Gdy usłyszysz obce słowo, Twój mózg natychmiast przypomni sobie śmieszną scenkę i od razu znasz znaczenie!'
+      'Gdy usłyszysz angielskie słowo, Twój mózg natychmiast przypomni sobie śmieszną scenkę i od razu znasz znaczenie!'
     ],
     task: {
-      prompt: 'Z jakich dwóch kroków składa się metoda słów-kluczy?',
+      prompt: 'Z jakich dwóch kroków składa się metoda słów-kluczy w nauce angielskiego?',
       options: [
         'Most fonetyczny (brzmienie) + żywa scenka ze znaczeniem',
         'Przepisywanie słówka 100 razy w zeszycie',
@@ -5249,8 +5525,8 @@ const LESSONS = [
     id: 'words-2',
     title: 'Dźwiękowy bliźniak',
     subtitle: 'Jak brzmi angielskie „mushroom”?',
-    desc: 'Uczymy się szukać polskich słów brzmiących jak obcy wyraz.',
-    speech: 'Posłuchaj dźwięków! Każde obce słówko ma w języku polskim swojego śmiesznego bliźniaka!',
+    desc: 'Uczymy się szukać polskich słów brzmiących jak angielski wyraz.',
+    speech: 'Posłuchaj dźwięków! Każde angielskie słówko ma w języku polskim swojego śmiesznego bliźniaka!',
     theory: [
       'Krok 1 w praktyce: szukamy dźwiękowego bliźniaka.',
       'Spójrz na angielskie słówko „mushroom” (grzyb).',
@@ -5306,41 +5582,41 @@ const LESSONS = [
   },
   {
     id: 'words-5',
-    title: 'Hiszpańska fiesta',
-    subtitle: 'Gato, Perro, Cuchara',
-    desc: 'Metoda działa w każdym języku świata – sprawdźmy hiszpański!',
-    speech: 'Ta metoda działa w każdym języku świata! Przenosimy się do słonecznej Hiszpanii!',
+    title: 'Kolejne perełki: Shark, Beetle, Fork',
+    subtitle: 'Rekin Szarik, Chrząszcze The Beatles i Foka z widelcem',
+    desc: 'Błyskawiczne skojarzenia dla rekinów, chrząszczy i widelców po angielsku!',
+    speech: 'Zobacz, jak wesołe są angielskie skojarzenia! Każde słówko to gotowa historyjka!',
     theory: [
-      'Zobacz, jak bajecznie prosto uczy się hiszpańskiego:',
-      '• GATO (kot) → GATKI: rudy kot dumnie spaceruje w czerwonych gatkach w białe grochy! 🐱',
-      '• PERRO (pies) → PERON: pies w czapce zawiadowcy stacji szczeka na peronie kolejowym! 🐶',
-      '• CUCHARA (łyżka) → KUCHARZ: kucharz żongluje wielkimi błyszczącymi łyżkami do zupy! 🥄'
+      'Poznajemy kolejne 3 angielskie perełki z naszej bogatej puli ponad 100 wyrazów:',
+      '• SHARK (rekin) → SZARIK: groźny rekin w wodzie macha przyjaźnie ogonem i szczeka jak pies Szarik! 🦈',
+      '• BEETLE (chrząszcz) → BITELSI: cztery chrząszcze w garniturach grają rocka jak zespół The Beatles! 🪲',
+      '• FORK (widelec) → FOKA: cyrkowa foka na plaży żongluje na czubku nosa wielkim widelcem! 🍴'
     ],
     task: {
-      prompt: 'Rudy kot w wielkich GATKACH to skojarzenie dla hiszpańskiego słówka:',
-      options: ['gato (kot)', 'perro (pies)', 'cuchara (łyżka)', 'manzana (jabłko)'],
+      prompt: 'FOKA żonglująca na nosie widelcem pomaga zapamiętać angielskie słowo:',
+      options: ['fork (widelec)', 'shark (rekin)', 'beetle (chrząszcz)', 'candle (świeca)'],
       correct: 0,
-      hint: 'Gatki = Gato!'
+      hint: 'Foka żongluje widelcem = fork!'
     }
   },
   {
     id: 'words-6',
     title: 'Egzamin Poligloty',
-    subtitle: 'Sprawdzian mistrzowskich mostów',
-    desc: 'Czas na ostateczny test u Papużki Poli! Błyskawiczne tłumaczenie w obie strony.',
-    speech: 'Wielki egzamin poligloty! Z tą techniką możesz nauczyć się tysięcy słówek z dowolnego języka!',
+    subtitle: 'Wielki sprawdzian angielskich mostów',
+    desc: 'Czas na ostateczny test u Papużki Poli! Błyskawiczne tłumaczenie z angielskiego.',
+    speech: 'Wielki finał u Papużki Poli! Z tą techniką masz w pamięci ponad 100 angielskich słówek!',
     theory: [
-      'Brawo! Masz w ręku najpotężniejsze narzędzie do nauki języków obcych na świecie.',
-      'Gdy w szkole lub w podróży spotkasz nowe słówko:',
+      'Brawo! Masz w ręku najpotężniejsze narzędzie do nauki języka angielskiego na świecie.',
+      'Gdy w szkole, filmie czy w podróży spotkasz nowe angielskie słówko:',
       '1. Usłysz jego dźwięk i znajdź polskiego bliźniaka.',
       '2. Stwórz wyrazistą, zabawną scenkę.',
-      '3. Ciesz się swobodną rozmową bez stresu i zakuwania!'
+      '3. Ciesz się swobodną znajomością angielskiego bez stresu i zakuwania! 🦜🇬🇧'
     ],
     task: {
-      prompt: 'Co oznacza hiszpańskie słowo „cuchara” (most: KUCHARZ machający wielką łyżką)?',
-      options: ['Łyżka', 'Widelec', 'Garnek', 'Kucharz'],
+      prompt: 'Co oznacza angielskie słówko „shark” (most: pies SZARIK machający ogonem w płetwie rekina)?',
+      options: ['Rekin', 'Pies', 'Statek', 'Woda'],
       correct: 0,
-      hint: 'Kucharz machał wielką łyżką do zupy!'
+      hint: 'Szarik jako rekin w oceanie!'
     }
   }
 ];
@@ -5377,7 +5653,7 @@ function mountMap(root, { nav }) {
     h('span', { class: 'why-icon' }, '🎯'),
     h('div', { class: 'why-content' },
       h('b', {}, 'Po co Ci ta technika w codziennym życiu?'),
-      h('p', {}, '3x szybsza nauka dowolnego języka obcego (angielski, hiszpański, niemiecki)! Zamiast wkuwać 50 razy, tworzysz jeden polski most dźwiękowy i pamiętasz znaczenie od razu!')
+      h('p', {}, '3x szybsza nauka słówek z języka angielskiego! Zamiast wkuwać 50 razy, tworzysz jeden polski most dźwiękowy i pamiętasz znaczenie od razu!')
     )
   );
 
@@ -5658,10 +5934,6 @@ function mountFree(root, { modeId, nav }) {
             score += 10 + combo * 2;
             combo++;
             round++;
-            if (modeId === 'sprint') {
-              timeLeft += 2; // bonus czasowy
-              if (timerEl) timerEl.textContent = `⏱ ${timeLeft}s`;
-            }
             scoreEl.textContent = `${score}`;
             roundEl.textContent = `${round}`;
             cheerParrot(combo);
@@ -5670,8 +5942,6 @@ function mountFree(root, { modeId, nav }) {
             btn.classList.add('wrong');
             if (modeId === 'sprint') {
               sfx.wrong();
-              timeLeft = Math.max(1, timeLeft - 2);
-              if (timerEl) timerEl.textContent = `⏱ ${timeLeft}s`;
               setTimeout(nextRound, 300);
             } else {
               handleWrong(`${target.foreign} to ${target.meaning} (most: ${target.bridge})!`);
@@ -5752,7 +6022,7 @@ function mountMenu(root, { nav }) {
       h('div', {},
         h('span', { class: 'bc-kicker' }, '🦜 Szkolenie z Papużką Polą'),
         h('h3', {}, done === 0 ? 'Rozpocznij naukę słówek' : done === LESSONS.length ? 'Powtórz szkolenie' : 'Kontynuuj szkolenie'),
-        h('p', {}, `${LESSONS.length} lekcji · metoda słów-kluczy · angielski i hiszpański bez zakuwania`)
+        h('p', {}, `${LESSONS.length} lekcji · metoda słów-kluczy · ponad 100 angielskich słówek w locie`)
       ),
       h('div', { class: 'ring', style: `--p:${pct}` }, h('span', {}, `${done}/${LESSONS.length}`))
     ),
@@ -6552,16 +6822,12 @@ function mountFree(root, { modeId, nav }) {
           if (c.id === target.id) {
             sfx.pop();
             score += 10;
-            timeLeft += 2; // bonus czasowy za spryt!
             round++;
             scoreEl.textContent = `${score}`;
             roundEl.textContent = `${round}`;
-            if (timerEl) timerEl.textContent = `⏱ ${timeLeft}s`;
             nextRound();
           } else {
             sfx.wrong();
-            timeLeft = Math.max(1, timeLeft - 2);
-            if (timerEl) timerEl.textContent = `⏱ ${timeLeft}s`;
             btn.classList.add('wrong');
             setTimeout(nextRound, 300);
           }
@@ -6684,24 +6950,26 @@ return {
   /* --- LINK GAME MODULE --- */
   const linkGame = (function() {
     const LINK_ITEMS = [
-  { id: 'li1', name: 'Parasol', emoji: '☂️', storyAction: 'wystrzeliwuje w niebo jak rakieta' },
-  { id: 'li2', name: 'Arbuz', emoji: '🍉', storyAction: 'eksploduje fontanną słodkiego czerwonego soku' },
-  { id: 'li3', name: 'Rower', emoji: '🚲', storyAction: 'ślizga się po arbuzowym soku i trąbi klaksonem' },
-  { id: 'li4', name: 'Zegar', emoji: '⏰', storyAction: 'dzwoni jak szalony i odbija się od kierownicy' },
-  { id: 'li5', name: 'Balon', emoji: '🎈', storyAction: 'porywa zegar prosto w chmury' },
-  { id: 'li6', name: 'Kaktus', emoji: '🌵', storyAction: 'przebija balon tysiącem złotych kolców' },
-  { id: 'li7', name: 'Gitara', emoji: '🎸', storyAction: 'gra rockowe solo spadając na kaktus' },
-  { id: 'li8', name: 'Lody', emoji: '🍦', storyAction: 'topnieją i zalewają struny gitary czekoladą' },
-  { id: 'li9', name: 'Klucz', emoji: '🔑', storyAction: 'zamrożony w lodach otwiera latające drzwi' },
-  { id: 'li10', name: 'Latarka', emoji: '🔦', storyAction: 'rozświetla złoty klucz potężnym promieniem lasera' }
-];
-
-const SHOPPING_CHAIN = [
-  { name: 'Chleb', emoji: '🍞', connect: 'Wielki bochenek chleba służy jako poduszka dla...' },
-  { name: 'Pomidory', emoji: '🍅', connect: 'Olbrzymie pomidory toczą się po chlebie i wskakują do...' },
-  { name: 'Mleko', emoji: '🥛', connect: 'Wielki karton mleka wystrzeliwuje strumień wprost na...' },
-  { name: 'Kawa', emoji: '☕', connect: 'Ziarenka kawy tańczą flamenco na pianie z mleka obok...' },
-  { name: 'Miód', emoji: '🍯', connect: 'Złoty słoik miodu wylewa się na tańczącą kawę!' }
+  { id: 'li1', name: 'Parasol', emoji: '☂️', storyAction: 'otwiera się z hukiem i z impetem taranuje soczystego...' },
+  { id: 'li2', name: 'Arbuz', emoji: '🍉', storyAction: 'eksploduje fontanną słodkiego soku, na którym ślizga się...' },
+  { id: 'li3', name: 'Rower', emoji: '🚲', storyAction: 'trąbi jak szalony i z łomotem wpada na gigantyczny...' },
+  { id: 'li4', name: 'Zegar', emoji: '⏰', storyAction: 'bije na alarm i porywa go wysoko w chmury kolorowy...' },
+  { id: 'li5', name: 'Balon', emoji: '🎈', storyAction: 'unosi się w powietrzu i przebija go ostry pustynny...' },
+  { id: 'li6', name: 'Kaktus', emoji: '🌵', storyAction: 'w który z głośnym brzękiem uderza grająca rocka...' },
+  { id: 'li7', name: 'Gitara', emoji: '🎸', storyAction: 'na której struny skapują z góry zimne, pyszne...' },
+  { id: 'li8', name: 'Lody', emoji: '🍦', storyAction: 'w których zamrożony jest wielki, złoty...' },
+  { id: 'li9', name: 'Klucz', emoji: '🔑', storyAction: 'który z błyskiem rozświetla silna kieszonkowa...' },
+  { id: 'li10', name: 'Latarka', emoji: '🔦', storyAction: 'której snop światła pada na lśniący, drogocenny...' },
+  { id: 'li11', name: 'Skarb', emoji: '💎', storyAction: 'którego w jaskini pilnuje potężny, ziejący ogniem...' },
+  { id: 'li12', name: 'Smok', emoji: '🐉', storyAction: 'który ryczy i odpala wielką, srebrną...' },
+  { id: 'li13', name: 'Rakieta', emoji: '🚀', storyAction: 'która z prędkością światła ląduje na srebrzystym...' },
+  { id: 'li14', name: 'Księżyc', emoji: '🌙', storyAction: 'który okazuje się w całości zrobiony z żółtego...' },
+  { id: 'li15', name: 'Ser', emoji: '🧀', storyAction: 'w którym wielkie dziury wygryza mała, zwinna...' },
+  { id: 'li16', name: 'Mysz', emoji: '🐭', storyAction: 'która ucieka i z impetem skacze na sprężystą...' },
+  { id: 'li17', name: 'Trampolina', emoji: '🎪', storyAction: 'która wystrzeliwuje mysz wprost w wielki czekoladowy...' },
+  { id: 'li18', name: 'Tort', emoji: '🎂', storyAction: 'na którego samym szczycie płonie woskowa...' },
+  { id: 'li19', name: 'Świeca', emoji: '🕯️', storyAction: 'której rozgrzany wosk zastyga w magiczny, błyszczący...' },
+  { id: 'li20', name: 'Kryształ', emoji: '🔮', storyAction: 'który w środku odbija cały ten 20-elementowy świat skojarzeń!' }
 ];
 
 
@@ -6746,136 +7014,167 @@ const MODES = [
 const LESSONS = [
   {
     id: 'link-1',
-    title: 'Efekt domina i siła akcji',
-    subtitle: 'Nigdy nie stawiaj rzeczy obok siebie',
-    desc: 'Najczęstszy błąd: wyobrażenie sobie parasola leżącego obok arbuza. To nie zadziała!',
-    speech: 'Chrup, chrup! Cześć! Jestem Wiewiórka Basia 🐿️ Zawsze wiem, gdzie schowałam orzeszki! Pokażę Ci metodę łańcucha skojarzeń – dzięki niej zapamiętasz listę zakupów, rzeczy do plecaka czy plan dnia bez żadnej kartki papieru!',
+    title: 'Efekt domina: Pierwsze 4 ogniwa',
+    subtitle: 'Parasol ☂️ → Arbuz 🍉 → Rower 🚲 → Zegar ⏰',
+    desc: 'Odkryj zasadę dynamicznej akcji i zapamiętaj pierwsze 4 ogniwa wielkiego łańcucha.',
+    speech: 'Chrup, chrup! Cześć! Jestem Wiewiórka Basia 🐿️ Zawsze wiem, gdzie schowałam każdy orzeszek! Nauczę Cię metody łańcucha skojarzeń – dzięki niej zapamiętasz całą listę aż 20 rzeczy bez ani jednej kartki papieru!',
     theory: [
-      'Po co nam ta technika? Ile razy zdarzyło Ci się pójść do sklepu i zapomnieć połowy rzeczy, albo pakować plecak do szkoły i zostawić strój na WF w domu?',
-      'Metoda łańcuchowa łączy myśli w głowie jak klocki domina: gdy popchniesz pierwszy klocek, cała reszta sama wskakuje do głowy!',
+      'Po co nam ta technika? Ile razy zdarzyło Ci się zapomnieć rzeczy do szkoły, listy zakupów czy punktów prezentacji?',
+      'Metoda łańcuchowa łączy myśli w głowie jak klocki domina: gdy popchniesz pierwszy klocek, cała reszta sama wskakuje do pamięci!',
       'ZASADA NR 1: PRAWIDŁO DYNAMICZNEJ AKCJI:',
-      'Nasz mózg natychmiast zapomina nudne, spokojne obrazki. Aby coś zapamiętać, potrzebujesz ruchu i akcji!',
-      'Gdy łączysz PARASOL ☂️ z ARBUZEM 🍉:',
-      'NIE wyobrażaj sobie parasola opartego o arbuza!',
-      'Zobacz, jak parasol otwiera się z potężnym hukiem i z impetem PRZEBIJA wielkiego arbuza, z którego na wszystkie strony tryska słodki, czerwony sok!'
+      'Nasz mózg natychmiast zapomina nudne, spokojne obrazki. Aby coś zapamiętać na zawsze, potrzebujesz ruchu, dźwięku i zderzenia!',
+      'Poznajmy pierwsze 4 ogniwa naszego wielkiego łańcucha:',
+      '1. PARASOL ☂️ → otwiera się z potężnym hukiem i z impetem taranuje wielkiego soczystego...',
+      '2. ARBUZA 🍉 → który eksploduje fontanną słodkiego czerwonego soku, na którym ślizga się...',
+      '3. ROWER 🚲 → który trąbi klaksonem i z łomotem wpada na gigantyczny...',
+      '4. ZEGAR ⏰ → który dzwoni jak oszalały!'
     ],
     task: {
-      prompt: 'Jakie połączenie parasola z arbuzem zapamiętasz najdłużej?',
+      prompt: 'W jaki sposób PARASOL łączy się w wyobraźni z ARBUZEM?',
       options: [
-        'Parasol z hukiem wystrzeliwuje i taranuje arbuza, rozbryzgując czerwony sok!',
+        'Parasol wystrzeliwuje i z impetem taranuje arbuza, rozbryzgując czerwony sok!',
         'Parasol leży spokojnie na stole obok arbuza',
         'Parasol i arbuz są czarno-białe',
-        'Zwykły parasol w sklepie'
+        'Parasol wisi na wieszaku w sklepie'
       ],
       correct: 0,
-      hint: 'Wybierz najbardziej dynamiczną, wybuchową akcję!'
+      hint: 'Wybierz najbardziej wybuchową, dynamiczną akcję!'
     }
   },
   {
     id: 'link-2',
-    title: 'Zasada dwóch ogniw',
-    subtitle: 'Myśl tylko o A i B!',
-    desc: 'Wielka ulga: nie musisz trzymać w głowie całej historii na raz.',
-    speech: 'Wielka ulga: myślisz tylko o dwóch rzeczach naraz! Reszta świata może poczekać!',
+    title: 'Zmysły i przesada: Ogniwa 4 do 8',
+    subtitle: 'Zegar ⏰ → Balon 🎈 → Kaktus 🌵 → Gitara 🎸 → Lody 🍦',
+    desc: 'Włączamy dźwięk, dotyk i gigantyczne rozmiary w kolejnych 4 ogniwach.',
+    speech: 'Włączamy zmysły! Zobacz, jak zegar porywa balon na kaktus, a gitara gra rocka w lodach!',
     theory: [
-      'Dlaczego to takie proste? Nie musisz trzymać w głowie całej długiej listy na raz!',
-      'W łańcuchu liczy się tylko bieżąca para ogniw (A i B):',
-      'Gdy łączysz Parasol z Arbuzem – myślisz tylko o nich.',
-      'Gdy łączysz Arbuz z Rowerem (sok z arbuza tworzy lepką kałużę, na której ślizga się rower) – myślisz TYLKO o Arbuzie i Rowerze!',
-      'Każde ogniwo pociąga za sobą kolejne jak wagoniki w pociągu!'
+      'Aby łańcuch trzymał jak ze stali, używaj zmysłów: dźwięku, dotyku i komicznej przesady!',
+      'Dołączamy kolejne 4 ogniwa do naszego pociągu (mamy już 8!):',
+      '4. ZEGAR ⏰ → dzwoni na alarm, a z jego tarczy wyskakuje kolorowy...',
+      '5. BALON 🎈 → który unosi się wysoko w niebo i z hukiem pęka, bo nabija się na kolczasty...',
+      '6. KAKTUS 🌵 → w który z głośnym brzękiem uderza spadająca z nieba elektryczna...',
+      '7. GITARA 🎸 → grająca ostre rockowe solo, na której struny z góry skapują wielkie truskawkowe...',
+      '8. LODY 🍦 → które zalewają gryf gitary słodkim kremem!'
     ],
     task: {
-      prompt: 'Gdy łączysz arbuz z rowerem, o czym powinieneś myśleć?',
-      options: ['Tylko o żywej interakcji między arbuzem a rowerem', 'O wszystkich 100 rzeczach naraz', 'O pogodzie za oknem', 'O niczym'],
+      prompt: 'Co dzieje się z GITARĄ 🎸 po zderzeniu z kaktusem?',
+      options: [
+        'Gra rockowe solo, a na jej struny skapują z góry truskawkowe lody 🍦',
+        'Zostaje schowana do futerału',
+        'Leży cicho w szafie',
+        'Zamienia się w drewno'
+      ],
       correct: 0,
-      hint: 'Zasada łańcucha: skupiasz się wyłącznie na bieżącej parze ogniw!'
+      hint: 'Gitara gra rocka, a lody skapują na jej struny!'
     }
   },
   {
     id: 'link-3',
-    title: 'Trzy zmysły pamięci',
-    subtitle: 'Dźwięk, ruch i przesada',
-    desc: 'Wzbogać swoje wyobrażenia o zmysły.',
-    speech: 'Włączamy zmysły! Spraw, by przedmioty były gigantyczne, hałaśliwe i zabawne!',
+    title: 'Zagadka w jaskini: Ogniwa 8 do 12',
+    subtitle: 'Lody 🍦 → Klucz 🔑 → Latarka 🔦 → Skarb 💎 → Smok 🐉',
+    desc: 'Odkryj tajemnicę klucza, latarki, skarbu i smoka – już 12 ogniw!',
+    speech: 'Mamy już 12 ogniw! W lodach tkwi klucz, latarka rozświetla skarb, a w jaskini czuwa smok!',
     theory: [
-      'Najsilniejsze skojarzenia angażują co najmniej 3 zmysły:',
-      '1. RUCH – przedmioty wirują, skaczą, odbijają się jak piłki.',
-      '2. DŹWIĘK – usłysz głośny pisk, dzwonienie budzika, plusk wody.',
-      '3. PRZESADA – wyobraź sobie nie zwykły mały zegarek, ale ZEGAR wielki jak wieżowiec, który z łomotem uderza w rower!',
-      'Im bardziej śmieszny i niezwykły obraz, tym łatwiej go przywołać!'
+      'Wielka zaleta łańcucha: skupiasz się ZAWSZE tylko na bieżącej parze ogniw (A i B). Reszta przyjdzie sama!',
+      'Budujemy kolejne 4 fascynujące ogniwa:',
+      '8. LODY 🍦 → wgryzasz się w lody i nagle zgrzytasz zębami o zamrożony w środku złoty...',
+      '9. KLUCZ 🔑 → wyjmujesz klucz, a w ciemności rozświetla go silnym laserowym snopem potężna...',
+      '10. LATARKA 🔦 → promień latarki pada w głąb jaskini i ukazuje olbrzymi, błyszczący...',
+      '11. SKARB 💎 → pełen diamentów i złota, którego z groźnym rykiem pilnuje zielony...',
+      '12. SMOK 🐉 → ziejący kłębami ognia!'
     ],
     task: {
-      prompt: 'Rower wpada na ZEGAR. Jak wzmocnić to skojarzenie?',
+      prompt: 'W jaki sposób KLUCZ 🔑 łączy się w łańcuchu z LATARKĄ 🔦?',
       options: [
-        'Zegar jest gigantyczny, głośno dzwoni i odbija się z hukiem od kierownicy roweru!',
-        'Rower stoi w piwnicy bez ruchu',
-        'Zegar ma wyjętą baterię i milczy',
-        'Zwykły mały zegarek leży w kieszeni'
+        'Złoty klucz rozświetla w ciemności silny snop światła z latarki',
+        'Klucz leży w szufladzie, a latarka na biurku',
+        'Latarka ma wyjęte baterie',
+        'Klucz jest z plastiku'
       ],
       correct: 0,
-      hint: 'Włącz głośny dźwięk, ruch i olbrzymi rozmiar!'
+      hint: 'Latarka oświetla klucz jaskrawym promieniem!'
     }
   },
   {
     id: 'link-4',
-    title: 'Praktyka: Lista zakupów bez kartki',
-    subtitle: '5 produktów w jednym łańcuchu',
-    desc: 'Prawdziwy test życiowy: Chleb, Pomidory, Mleko, Kawa, Miód.',
-    speech: 'Sprawdźmy to w prawdziwym życiu! 5 produktów ze sklepu zapamiętanych w mgnieniu oka!',
+    title: 'Kosmiczny lot: Ogniwa 12 do 16',
+    subtitle: 'Smok 🐉 → Rakieta 🚀 → Księżyc 🌙 → Ser 🧀 → Mysz 🐭',
+    desc: 'Smok odpala rakietę i leci na serowy księżyc! Opanowane aż 16 ogniw.',
+    speech: 'Kosmiczny lot u Basi! Smok odpala rakietę i ląduje na księżycu z sera! To już 16 ogniw!',
     theory: [
-      'Budujemy łańcuch zakupów bez kartki:',
-      '1. CHLEB 🍞 → olbrzymi chrupiący bochenek służy jako trampolina dla...',
-      '2. POMIDORÓW 🍅 → które toczą się i z pluskiem wskakują do kartonu...',
-      '3. MLEKA 🥛 → białe mleko wytryskuje jak gejzer na tańczące ziarenka...',
-      '4. KAWY ☕ → które wpadają prosto do wielkiego słoika...',
-      '5. MIODU 🍯 → złocisty, cieplutki miód oblepia wszystko dookoła!',
-      'Wchodzisz do sklepu i z uśmiechem odtwarzasz film krok po kroku!'
+      'Mózg uwielbia opowieści z rozmachem – im bardziej fantastyczne, tym silniejszy ślad pamięciowy!',
+      'Łączymy kolejne 4 ogniwa kosmicznej podróży:',
+      '12. SMOK 🐉 → macha skrzydłami, zieje ogniem i z rykiem odpala kosmiczną...',
+      '13. RAKIETĘ 🚀 → która z rykiem silników leci prosto w kosmos i ląduje na srebrzystym...',
+      '14. KSIĘŻYCU 🌙 → który po wbiciu flagi okazuje się w całości zrobiony ze smakowitego, żółtego...',
+      '15. SERA 🧀 → z wielkimi dziurami, w których biega i wygryza kawałki wesoła polna...',
+      '16. MYSZ 🐭 → z długim ogonkiem!'
     ],
     task: {
-      prompt: 'Co działo się z pomidorami po zeskoczeniu z chleba?',
-      options: ['Wskoczyły do wytryskującego kartonu mleka', 'Zostały w torbie', 'Zamieniły się w kamienie', 'Zjadł je pies'],
+      prompt: 'Co okazuje się po wylądowaniu rakiety na KSIĘŻYCU 🌙?',
+      options: [
+        'Księżyc jest w całości zrobiony z żółtego sera 🧀, w którym biega mysz!',
+        'Księżyc jest zimną skałą bez niczego',
+        'Rakieta zawraca na Ziemię',
+        'Księżyc gaśnie i znika'
+      ],
       correct: 0,
-      hint: 'Pomidory wpadły do mleka!'
+      hint: 'Księżyc z żółtego sera!'
     }
   },
   {
     id: 'link-5',
-    title: 'Spacer w tył',
-    subtitle: 'Odtwarzanie sekwencji od końca',
-    desc: 'Dlaczego metoda łańcuchowa jest tak potężna? Bo działa w obie strony!',
-    speech: 'Czarodziejski spacer w tył! Ten łańcuch działa w obie strony jak po sznurku!',
+    title: 'Finałowa piątka i bieg w tył: 16 do 20',
+    subtitle: 'Mysz 🐭 → Trampolina 🎪 → Tort 🎂 → Świeca 🕯️ → Kryształ 🔮',
+    desc: 'Ostatnie 4 ogniwa i niezwykła umiejętność odtwarzania całego łańcucha od końca!',
+    speech: 'Mamy komplet 20 ogniw! A teraz najfajniejsza supermoc: odtworzymy wszystko od tyłu!',
     theory: [
-      'Prawdziwa supermoc: cofamy listę zakupów od końca!',
-      '• MIÓD 🍯 → co oblepił? Ziarenka KAWY ☕!',
-      '• KAWA ☕ → skąd wyleciała? Z kartonu MLEKA 🥛!',
-      '• MLEKO 🥛 → na co trysnęło? Na czerwone POMIDORY 🍅!',
-      '• POMIDORY 🍅 → po czym skakały? Po bochenku CHLEBA 🍞!',
-      'Twój mózg potrafi odtworzyć listę od początku i od końca bez ani jednego błędu!'
+      'Dopinamy ostatnie ogniwa do pełnej liczby DWUDZIESTU:',
+      '16. MYSZ 🐭 → wystraszona ucieka i z impetem skacze wysoko na sprężystą...',
+      '17. TRAMPOLINĘ 🎪 → która wystrzeliwuje mysz jak z procy prosto w wielki czekoladowy...',
+      '18. TORT 🎂 → na którego samym szczycie płonie woskowa...',
+      '19. ŚWIECA 🕯️ → której gorący wosk zastyga w magiczny, lśniący...',
+      '20. KRYSZTAŁ 🔮 → odbijający w środku całą naszą niesamowitą przygodę!',
+      'SUPERMOC: Ten łańcuch działa w obie strony! Cofnij się od końca:',
+      'Kryształ ← Świeca ← Tort ← Trampolina ← Mysz... i tak aż do Parasola!'
     ],
     task: {
-      prompt: 'Jaki produkt znajdował się bezpośrednio przed kawą?',
-      options: ['Mleko (mleko wytryskujące na kawę)', 'Chleb', 'Miód', 'Pomidory'],
+      prompt: 'Co zastyga z wosku płonącej ŚWIECY 🕯️ na torcie, kończąc 20-elementowy łańcuch?',
+      options: [
+        'Magiczny, lśniący KRYSZTAŁ 🔮',
+        'Zwykły szary kamień',
+        'Kawałek drewna',
+        'Kropla wody'
+      ],
       correct: 0,
-      hint: 'Mleko zalało tańczącą kawę!'
+      hint: 'Wosk zamienia się w błyszczący kryształ!'
     }
   },
   {
     id: 'link-6',
-    title: 'Wiewiórcza spiżarnia: 10 ogniw',
-    subtitle: 'Wielki finał metody łańcuchowej',
-    desc: 'Zbuduj łańcuch 10 szalonych przedmiotów i zdobądź tytuł Mistrza Skojarzeń!',
-    speech: 'Wielki finał u Basi! Aż 10 szalonych ogniw – Twoja spiżarnia pamięci jest pełna skarbów!',
+    title: 'Egzamin Mistrza: Cały łańcuch 20 ogniw!',
+    subtitle: 'Kompletna lista 20 skarbów pamięci',
+    desc: 'Wielki sprawdzian u Wiewiórki Basi. Sprawdź, jak bez wysiłku znasz całe 20 wyrazów po kolei!',
+    speech: 'Wielki Finał u Wiewiórki Basi! Właśnie nauczyłeś się listy 20 wyrazów w idealnym porządku! Jesteś prawdziwym Mistrzem Skojarzeń! 🐿️🏆',
     theory: [
-      'Opanowałeś wszystkie prawa łańcucha skojarzeń:',
-      '• Parasol → Arbuz → Rower → Zegar → Balon → Kaktus → Gitara → Lody → Klucz → Latarka.',
-      'Każdy przedmiot taranuje kolejny z dźwiękiem i ruchem.',
-      'Wiewiórka Basia bije Ci brawo! Możesz zapamiętać dowolną liczbę rzeczy na sprawdzian lub wycieczkę! 🐿️'
+      'Spójrz na to, czego dokonałeś bez ani jednej kartki papieru:',
+      '1. Parasol ☂️ → 2. Arbuz 🍉 → 3. Rower 🚲 → 4. Zegar ⏰ → 5. Balon 🎈 →',
+      '6. Kaktus 🌵 → 7. Gitara 🎸 → 8. Lody 🍦 → 9. Klucz 🔑 → 10. Latarka 🔦 →',
+      '11. Skarb 💎 → 12. Smok 🐉 → 13. Rakieta 🚀 → 14. Księżyc 🌙 → 15. Ser 🧀 →',
+      '16. Mysz 🐭 → 17. Trampolina 🎪 → 18. Tort 🎂 → 19. Świeca 🕯️ → 20. Kryształ 🔮.',
+      'Każde ogniwo nieuchronnie pociąga kolejne. Możesz w ten sposób zapamiętać przemówienie, procedurę czy 20 sprawunków na zakupy!',
+      'Wiewiórka Basia kręci z radości piruety i wręcza Ci Złotego Orzeszka Pamięci! 🌰✨'
     ],
     task: {
-      prompt: 'Co przebija lecący w chmurach balon w naszej historii?',
-      options: ['Kaktus z tysiącem złotych kolców', 'Parasol', 'Rower', 'Gitara'],
+      prompt: 'Co znajduje się bezpośrednio po SKARBIE (11), a przed RAKIETĄ (13)?',
+      options: [
+        'Smok 🐉 (strzegący skarbu i odpalający rakietę)',
+        'Gitara 🎸',
+        'Zegar ⏰',
+        'Tort 🎂'
+      ],
       correct: 0,
-      hint: 'Balon wpada prosto na ostry kaktus!'
+      hint: 'Skarbu pilnował ziejący ogniem smok, który wsiadł do rakiety!'
     }
   }
 ];
@@ -7333,7 +7632,7 @@ function mountMenu(root, { nav }) {
       h('div', {},
         h('span', { class: 'bc-kicker' }, '🐿️ Szkolenie z Wiewiórką Basią'),
         h('h3', {}, done === 0 ? 'Rozpocznij naukę łańcucha' : done === LESSONS.length ? 'Powtórz szkolenie' : 'Kontynuuj szkolenie'),
-        h('p', {}, `${LESSONS.length} lekcji · efekt domina · lista zakupów bez kartki · spacer w tył`)
+        h('p', {}, `${LESSONS.length} lekcji · efekt domina · cały łańcuch 20 ogniw bez kartki`)
       ),
       h('div', { class: 'ring', style: `--p:${pct}` }, h('span', {}, `${done}/${LESSONS.length}`))
     ),
@@ -7486,16 +7785,18 @@ const MODES = [
 const LESSONS = [
   {
     id: 'cal-1',
-    title: 'Sekret kalendarza w głowie',
-    subtitle: 'Dni tygodnia to liczby 0 do 6',
+    title: 'Sekret kalendarza i Kotwica Roku',
+    subtitle: 'Dni tygodnia 0-6 oraz fundament Doomsday',
     desc: 'Odkryj tajemnicę geniusza Johna Conwaya – kalendarz w pamięci.',
-    speech: 'Cześć! Jestem Żółwik Zenon 🐢. Nigdy się nie spieszę, bo znam sekret czasu! Czy wiesz, że możesz w 2 sekundy odgadnąć, w jaki dzień tygodnia wypadną Twoje urodziny, Boże Narodzenie czy początek wakacji? Pokażę Ci tę niezwykłą sztuczkę!',
+    speech: 'Cześć! Jestem Żółwik Zenon 🐢. Nigdy się nie spieszę, bo znam sekret czasu! Czy wiesz, że możesz w 2 sekundy odgadnąć, w jaki dzień tygodnia wypadną Twoje urodziny, Boże Narodzenie w 2026, a nawet data w 2035 roku? Pokażę Ci tę niezwykłą sztuczkę!',
     theory: [
       'Po co nam ta technika? Wyobraź sobie miny znajomych w szkole lub w pracy, gdy ktoś rzuci datę, a Ty po 2 sekundach w pamięci odpowiesz: „To będzie sobota!”. Poczujesz się jak chodzący ludzki kalkulator!',
       'Tydzień ma 7 dni i kręci się w kółko jak karuzela. Ponumerujmy dni tygodnia od 0 do 6:',
       '• 1 = Poniedziałek 🌙 | 2 = Wtorek 🔥 | 3 = Środa 💧 | 4 = Czwartek ⚡ | 5 = Piątek 🎉 | 6 = Sobota 🪐',
       '• 0 = Niedziela ☀️ (dzień relaksu i odpoczynku, okrągłe zero pracy!)',
-      'W roku 2026 dniem kotwicznym (magiczną bazą) jest SOBOTA (6). Zapamiętajmy tę liczbę!'
+      'CZYM JEST KOTWICA ROKU?',
+      'W każdym roku istnieje jeden magiczny dzień tygodnia, zwany Kotwicą Roku (Doomsday).',
+      'W roku 2026 dniem kotwicznym jest SOBOTA (6). Zapamiętajmy tę liczbę!'
     ],
     task: {
       prompt: 'Jaki dzień tygodnia odpowiada liczbie 5 w systemie kalendarzowym?',
@@ -7509,7 +7810,7 @@ const LESSONS = [
     title: 'Bliźniacze daty parzyste',
     subtitle: '4.04, 6.06, 8.08, 10.10, 12.12',
     desc: 'Wszystkie parzyste miesiące mają kotwicę w dniu równym numerowi miesiąca!',
-    speech: 'Oto najłatwiejsza reguła na świecie: daty parzyste to lustrzane bliźniaki!',
+    speech: 'Oto najłatwiejsza reguła na świecie: daty parzyste to lustrzane bliźniaki w każdym roku!',
     theory: [
       'Spójrz, jak genialnie zbudowany jest kalendarz:',
       'W każdym parzystym miesiącu numer miesiąca to dokładnie ten sam dzień kotwiczny:',
@@ -7518,7 +7819,7 @@ const LESSONS = [
       '• 8 sierpnia (8.08)',
       '• 10 października (10.10)',
       '• 12 grudnia (12.12)',
-      'W roku 2026 każda z tych 5 dat to dokładnie ten sam dzień: SOBOTA!'
+      'Te 5 dat ZAWSZE wypada w ten sam dzień tygodnia w danym roku! W 2026 roku każda z nich to dokładnie SOBOTA!'
     ],
     task: {
       prompt: 'Która data jest kotwicą Doomsday dla sierpnia (8. miesiąc)?',
@@ -7529,16 +7830,20 @@ const LESSONS = [
   },
   {
     id: 'cal-3',
-    title: 'Miesiące nieparzyste',
-    subtitle: 'Praca 9 do 5 na stacji 7/11',
-    desc: 'Jak zapamiętać kotwice dla maja, lipca, września i listopada?',
-    speech: 'A co z miesiącami nieparzystymi? Mamy na nie wesołą rymowankę o stacji benzynowej!',
+    title: 'Miesiące nieparzyste i Dzień Pi',
+    subtitle: 'Praca 9 do 5 na stacji 7/11, Dzień Pi (14.03) i luty',
+    desc: 'Komplet kotwic dla wszystkich 12 miesięcy w roku.',
+    speech: 'A co z miesiącami nieparzystymi? Mamy na nie wesołą rymowankę o stacji benzynowej i liczbie Pi!',
     theory: [
       'Dla miesięcy nieparzystych mamy łatwe powiedzonko:',
       '„Pracuję od 9 do 5 na stacji 7/11”:',
       '• 9 maja (9.05) oraz 5 września (5.09) → zamieniamy 9 i 5!',
       '• 11 lipca (11.07) oraz 7 listopada (7.11) → zamieniamy 7 i 11!',
-      'Te 4 daty to w 2026 roku również ta sama nasza kotwica: SOBOTA!'
+      'Do tego dochodzą pierwsze trzy miesiące roku:',
+      '• Styczeń: 3 stycznia (3.01) w zwykłym roku (lub 4.01 w przestępnym) – pamiętamy: 3 dni odpoczynku po sylwestrze!',
+      '• Luty: ZAWSZE OSTATNI DZIEŃ LUTEGO (28.02, a w przestępnym 29.02).',
+      '• Marzec: 14 marca (3.14 to słynny Dzień Liczby Pi!).',
+      'Wszystkie te daty to w 2026 roku również ta sama nasza kotwica: SOBOTA!'
     ],
     task: {
       prompt: 'Jaki dzień maja (5. miesiąc) jest kotwicą w regule „od 9 do 5”?',
@@ -7552,13 +7857,13 @@ const LESSONS = [
     title: 'Obliczanie daty w 3 krokach',
     subtitle: 'Przykład: 15 sierpnia 2026',
     desc: 'Jak policzyć dzień tygodnia dla dowolnego dnia w miesiącu?',
-    speech: 'Teraz połączymy kropki! Zobacz, jak w 3 prostych krokach policzyć dowolną datę!',
+    speech: 'Teraz połączymy kropki! Zobacz, jak w 3 prostych krokach policzyć dowolną datę w roku!',
     theory: [
       'Chcesz wiedzieć, jaki dzień tygodnia to np. 15 sierpnia 2026:',
       '1. Znasz kotwicę sierpnia: to bliźniak 8 sierpnia (8.08).',
       '2. Wiesz, że w 2026 roku kotwica to SOBOTA (6).',
       '3. Liczymy różnicę dni: 15 - 8 = 7 dni. Pełne 7 dni to dokładnie tydzień, więc 15 sierpnia to również SOBOTA!',
-      'Gdyby to był 17 sierpnia? 8 sierpnia + 9 dni (czyli tydzień + 2 dni): sobota + 2 dni = poniedziałek!'
+      'Gdyby to był 10 sierpnia? 8 sierpnia + 2 dni: Sobota + 2 dni = Poniedziałek!'
     ],
     task: {
       prompt: 'Jeśli 8 sierpnia to Sobota, jaki dzień tygodnia to 10 sierpnia (8 + 2 dni)?',
@@ -7569,42 +7874,49 @@ const LESSONS = [
   },
   {
     id: 'cal-5',
-    title: 'Marzec i Dzień Liczby Pi',
-    subtitle: '14 marca oraz luty',
-    desc: 'Ostatnie elementy układanki.',
-    speech: 'Marzec i luty! Poznaj dzień liczby Pi oraz ostatni dzień zimy!',
+    title: 'Podróżnik w czasie: Inne lata!',
+    subtitle: 'Jak znaleźć kotwicę dla 2027, 2028 czy 2035 roku?',
+    desc: 'Sekret przenoszenia kotwicy w przyszłość i przeszłość.',
+    speech: 'A teraz prawdziwa magia: Podróżnik w czasie! Nauczę Cię błyskawicznie znajdować kotwicę dla dowolnego innego roku!',
     theory: [
-      'Dwa ostatnie miesiące do kompletu:',
-      '• Marzec (3. miesiąc): kotwicą jest 14 marca (3.14 to słynny Dzień Liczby Pi!).',
-      '• Luty: kotwicą jest ZAWSZE OSTATNI DZIEŃ LUTEGO (28 lutego, a w przestępnym 29 lutego).',
-      'Teraz znasz magiczną kotwicę dla każdego miesiąca w całym roku kalendarzowym!'
+      'Dlaczego to działa w każdym roku?',
+      'Zwykły rok ma 365 dni = 52 pełne tygodnie + 1 dzień zapasu. Dlatego każdy zwykły rok przesuwa kotwicę o dokładnie +1 dzień!',
+      'Rok przestępny (ma 29 lutego) przesuwa kotwicę o +2 dni!',
+      'JAK TO LICZYĆ W PAMIĘCI?',
+      'Naszą domową bazą jest rok 2026 = SOBOTA (6):',
+      '• Rok 2027: (+1 rok) → Sobota + 1 = NIEDZIELA (0)! Wszystkie kotwice (4.04, 8.08, 12.12) w 2027 to Niedziela!',
+      '• Rok 2028: (przestępny! +2 dni) → Niedziela + 2 = WTOREK (2)!',
+      '• Rok 2025: (-1 rok w tył) → Sobota - 1 = PIĄTEK (5)!',
+      '• Rok 2035: różnica 9 lat + 2 lata przestępne (2028, 2032) = 11 dni przesunięcia. 11 mod 7 = 4 dni w przód od Soboty = ŚRODA (3)!',
+      'KOTWICE STULECI:',
+      '• Wiek XXI (lata 2000–2099): baza stulecia to WTOREK (2, łatwo zapamiętać: rok 2000 ma dwójkę na początku)!',
+      '• Wiek XX (lata 1900–1999): baza stulecia to ŚRODA (3, 3 sylaby: „dzie-więć-set”)!'
     ],
     task: {
-      prompt: 'Który dzień marca jest kotwicą Doomsday (związaną z liczbą Pi 3.14)?',
-      options: ['14 marca', '1 marca', '21 marca', '31 marca'],
+      prompt: 'Jeśli w 2026 roku kotwicą jest Sobota, jaka będzie kotwica roku 2027 (zwykły rok, +1 dzień)?',
+      options: ['Niedziela (Sobota + 1 dzień)', 'Poniedziałek', 'Piątek', 'Wtorek'],
       correct: 0,
-      hint: 'Liczba Pi to 3,14 → 14 marca!'
+      hint: 'Każdy normalny rok przesuwa kotwicę o 1 dzień w przód: Sobota + 1 = Niedziela!'
     }
   },
   {
     id: 'cal-6',
-    title: 'Egzamin Żółwika Zegarowego',
-    subtitle: 'Certyfikat mistrza kalendarza',
-    desc: 'Żółwik zadaje finałowe pytanie! Wykorzystaj kotwice i modulo 7.',
-    speech: 'Wielki finał u Żółwika Zenona! Znasz już tajemnicę wiecznego kalendarza w głowie!',
+    title: 'Egzamin Władcy Czasu',
+    subtitle: 'Sprawdzian dat w przeszłości i przyszłości',
+    desc: 'Wielki finał u Żółwika Zenona! Oblicz dzień tygodnia w innym roku.',
+    speech: 'Wielki Finał u Żółwika Zenona! Jesteś gotów na dowolny rok – przeszły, teraźniejszy i przyszły! 🐢⏳',
     theory: [
-      'Brawo! Opanowałeś legendarny algorytm kalendarzowy Johna Conwaya:',
-      '• Parzyste: 4.04, 6.06, 8.08, 10.10, 12.12.',
-      '• Nieparzyste: 9.05, 5.09, 11.07, 7.11.',
-      '• Marzec: 14.03 (Dzień Pi).',
-      '• Luty: 28.02.',
-      'Nawet najszybszy komputer nie zrobi tego z takim wdziękiem i spokojem jak Ty! 🐢'
+      'Brawo! Masz w głowie kompletny, wieczysty kalendarz na dowolny rok:',
+      '1. Znasz kotwice miesięcy: 4.04, 6.06, 8.08, 10.10, 12.12, 9.05, 5.09, 11.07, 7.11, 14.03, 28.02.',
+      '2. Znasz bazę 2026 (Sobota) i potrafisz przesunąć kotwicę na dowolny rok (+1 na rok, +2 na przestępny).',
+      '3. Dodajesz lub odejmujesz różnicę dni do najbliższej kotwicy!',
+      'Możesz teraz śmiało wejść w tryb „Podróżnik w czasie” i błyskawicznie podać dzień tygodnia dla dowolnej daty w historii i przyszłości! 🐢🪐'
     ],
     task: {
-      prompt: 'Jaki dzień tygodnia to 12 grudnia 2026 roku (pamiętając, że kotwica 2026 to Sobota)?',
-      options: ['Sobota (bo 12.12 to bezpośrednia kotwica Doomsday!)', 'Niedziela', 'Piątek', 'Środa'],
+      prompt: 'Jaki dzień tygodnia to 4 kwietnia 2027 roku (pamiętając, że kotwica 2027 to Niedziela)?',
+      options: ['Niedziela (bo 4.04 to bezpośrednia kotwica Doomsday!)', 'Sobota', 'Poniedziałek', 'Środa'],
       correct: 0,
-      hint: '12.12 to parzysty bliźniak – dokładnie dzień kotwicy (Sobota)!'
+      hint: '4.04 to kwietniowa kotwica – w 2027 roku przypada dokładnie w dzień kotwicy: Niedzielę!'
     }
   }
 ];
@@ -7769,7 +8081,7 @@ function mountFree(root, { modeId, nav }) {
 
   const scoreEl = h('span', { class: 'hud-score' }, '0');
   const roundEl = h('span', { class: 'hud-round' }, '1');
-  const livesEl = (modeId === 'weekday' || modeId === 'anchors') ? h('span', { class: 'hud-lives' }, '❤️❤️❤️') : null;
+  const livesEl = modeId !== 'clock_beat' ? h('span', { class: 'hud-lives' }, '❤️❤️❤️') : null;
   const timerEl = modeId === 'clock_beat' ? h('span', { class: 'hud-timer' }, '⏱ 30s') : null;
   const playArea = h('div', { class: 'free-play-area' });
 
@@ -7880,10 +8192,6 @@ function mountFree(root, { modeId, nav }) {
   function handleWrong(solutionText) {
     sfx.wrong();
     combo = 0;
-    if (modeId === 'time_travel') {
-      gameOver();
-      return;
-    }
     lives--;
     updateLives();
     if (lives <= 0) {
@@ -7900,7 +8208,22 @@ function mountFree(root, { modeId, nav }) {
     playArea.innerHTML = '';
 
     if (modeId === 'weekday' || modeId === 'clock_beat' || modeId === 'time_travel') {
-      const year = modeId === 'time_travel' ? rand(1975, 2035) : 2026;
+      let year;
+      if (modeId === 'time_travel') {
+        if (round <= 3) {
+          // Rundy 1-3: bliskie lata (2024-2028), gracz utrwala przesunięcie od 2026 (-2 do +2)
+          year = rand(2024, 2028);
+        } else if (round <= 7) {
+          // Rundy 4-7: lata 2020-2032
+          year = rand(2020, 2032);
+        } else {
+          // Rundy 8+: szersza podróż w czasie (1990-2035)
+          year = rand(1990, 2035);
+        }
+      } else {
+        year = 2026;
+      }
+
       const mIdx = rand(0, MONTH_ANCHORS.length - 1);
       const mInfo = MONTH_ANCHORS[mIdx];
       const maxDays = [1, 3, 5, 7, 8, 10, 12].includes(mInfo.month) ? 31 : mInfo.month === 2 ? 28 : 30;
@@ -7908,9 +8231,19 @@ function mountFree(root, { modeId, nav }) {
       const correctDayIdx = calculateWeekday(year, mInfo.month, day);
       const correctDay = DAYS_OF_WEEK[correctDayIdx];
 
-      const hintText = round <= 3 && modeId === 'weekday'
-        ? `Wskazówka: kotwica miesiąca to ${mInfo.anchorDay}.${mInfo.month < 10 ? '0' + mInfo.month : mInfo.month}`
-        : null;
+      const mAnchorText = `${mInfo.anchorDay}.${mInfo.month < 10 ? '0' + mInfo.month : mInfo.month}`;
+      const yearAnchor = DAYS_OF_WEEK[getDoomsdayOfYear(year)];
+
+      let hintText = null;
+      if (modeId === 'weekday' && round <= 3) {
+        hintText = `Wskazówka: kotwica miesiąca to ${mAnchorText} (w 2026 to Sobota)`;
+      } else if (modeId === 'time_travel') {
+        if (round <= 4) {
+          hintText = `Wskazówka: kotwica roku ${year} to ${yearAnchor.name} ⏳ (kotwica miesiąca: ${mAnchorText})`;
+        } else if (round <= 8) {
+          hintText = `Wskazówka: kotwica ${mInfo.name.toLowerCase()} to ${mAnchorText}`;
+        }
+      }
 
       const card = h('div', { class: 'calendar-card' },
         h('div', { class: 'cal-date-badge' }, `${day} ${mInfo.name.toLowerCase()} ${year}`),
@@ -7927,10 +8260,6 @@ function mountFree(root, { modeId, nav }) {
             score += 15 + combo * 3;
             combo++;
             round++;
-            if (modeId === 'clock_beat') {
-              timeLeft += 2; // bonus czasowy
-              if (timerEl) timerEl.textContent = `⏱ ${timeLeft}s`;
-            }
             scoreEl.textContent = `${score}`;
             roundEl.textContent = `${round}`;
             cheerTurtle(combo);
@@ -7939,8 +8268,6 @@ function mountFree(root, { modeId, nav }) {
             btn.classList.add('wrong');
             if (modeId === 'clock_beat') {
               sfx.wrong();
-              timeLeft = Math.max(1, timeLeft - 2);
-              if (timerEl) timerEl.textContent = `⏱ ${timeLeft}s`;
               setTimeout(nextRound, 300);
             } else {
               handleWrong(`${day} ${mInfo.name} ${year} to ${correctDay.name}!`);
@@ -8153,6 +8480,10 @@ return {
   /* ==========================================================================
      15. APP ROUTING & CORE INIT
      ========================================================================== */
+
+
+
+
 
 
 

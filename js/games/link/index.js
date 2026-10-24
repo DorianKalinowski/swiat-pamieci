@@ -22,7 +22,7 @@ function mountMenu(root, { nav }) {
       h('div', {},
         h('span', { class: 'bc-kicker' }, '🐿️ Szkolenie z Wiewiórką Basią'),
         h('h3', {}, done === 0 ? 'Rozpocznij naukę łańcucha' : done === LESSONS.length ? 'Powtórz szkolenie' : 'Kontynuuj szkolenie'),
-        h('p', {}, `${LESSONS.length} lekcji · efekt domina · lista zakupów bez kartki · spacer w tył`)
+        h('p', {}, `${LESSONS.length} lekcji · efekt domina · cały łańcuch 20 ogniw bez kartki`)
       ),
       h('div', { class: 'ring', style: `--p:${pct}` }, h('span', {}, `${done}/${LESSONS.length}`))
     ),

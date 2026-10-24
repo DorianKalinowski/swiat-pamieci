@@ -29,7 +29,7 @@ export function mountMap(root, { nav }) {
     h('span', { class: 'why-icon' }, '🎯'),
     h('div', { class: 'why-content' },
       h('b', {}, 'Po co Ci ta technika w codziennym życiu?'),
-      h('p', {}, '3x szybsza nauka dowolnego języka obcego (angielski, hiszpański, niemiecki)! Zamiast wkuwać 50 razy, tworzysz jeden polski most dźwiękowy i pamiętasz znaczenie od razu!')
+      h('p', {}, '3x szybsza nauka słówek z języka angielskiego! Zamiast wkuwać 50 razy, tworzysz jeden polski most dźwiękowy i pamiętasz znaczenie od razu!')
     )
   );
 

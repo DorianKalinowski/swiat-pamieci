@@ -22,7 +22,7 @@ function mountMenu(root, { nav }) {
       h('div', {},
         h('span', { class: 'bc-kicker' }, '🦜 Szkolenie z Papużką Polą'),
         h('h3', {}, done === 0 ? 'Rozpocznij naukę słówek' : done === LESSONS.length ? 'Powtórz szkolenie' : 'Kontynuuj szkolenie'),
-        h('p', {}, `${LESSONS.length} lekcji · metoda słów-kluczy · angielski i hiszpański bez zakuwania`)
+        h('p', {}, `${LESSONS.length} lekcji · metoda słów-kluczy · ponad 100 angielskich słówek w locie`)
       ),
       h('div', { class: 'ring', style: `--p:${pct}` }, h('span', {}, `${done}/${LESSONS.length}`))
     ),

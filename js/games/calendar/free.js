@@ -2,7 +2,7 @@ import { h, rand, shuffle, sleep } from '../../dom.js';
 import { sfx } from '../../sound.js';
 import { store } from '../../store.js';
 import { createTurtle } from '../../turtle.js';
-import { MONTH_ANCHORS, DAYS_OF_WEEK, calculateWeekday } from './logic.js';
+import { MONTH_ANCHORS, DAYS_OF_WEEK, calculateWeekday, getDoomsdayOfYear } from './logic.js';
 import { MODES } from './modes.js';
 
 export function mountFree(root, { modeId, nav }) {
@@ -19,7 +19,7 @@ export function mountFree(root, { modeId, nav }) {
 
   const scoreEl = h('span', { class: 'hud-score' }, '0');
   const roundEl = h('span', { class: 'hud-round' }, '1');
-  const livesEl = (modeId === 'weekday' || modeId === 'anchors') ? h('span', { class: 'hud-lives' }, '❤️❤️❤️') : null;
+  const livesEl = modeId !== 'clock_beat' ? h('span', { class: 'hud-lives' }, '❤️❤️❤️') : null;
   const timerEl = modeId === 'clock_beat' ? h('span', { class: 'hud-timer' }, '⏱ 30s') : null;
   const playArea = h('div', { class: 'free-play-area' });
 
@@ -130,10 +130,6 @@ export function mountFree(root, { modeId, nav }) {
   function handleWrong(solutionText) {
     sfx.wrong();
     combo = 0;
-    if (modeId === 'time_travel') {
-      gameOver();
-      return;
-    }
     lives--;
     updateLives();
     if (lives <= 0) {
@@ -150,7 +146,22 @@ export function mountFree(root, { modeId, nav }) {
     playArea.innerHTML = '';
 
     if (modeId === 'weekday' || modeId === 'clock_beat' || modeId === 'time_travel') {
-      const year = modeId === 'time_travel' ? rand(1975, 2035) : 2026;
+      let year;
+      if (modeId === 'time_travel') {
+        if (round <= 3) {
+          // Rundy 1-3: bliskie lata (2024-2028), gracz utrwala przesunięcie od 2026 (-2 do +2)
+          year = rand(2024, 2028);
+        } else if (round <= 7) {
+          // Rundy 4-7: lata 2020-2032
+          year = rand(2020, 2032);
+        } else {
+          // Rundy 8+: szersza podróż w czasie (1990-2035)
+          year = rand(1990, 2035);
+        }
+      } else {
+        year = 2026;
+      }
+
       const mIdx = rand(0, MONTH_ANCHORS.length - 1);
       const mInfo = MONTH_ANCHORS[mIdx];
       const maxDays = [1, 3, 5, 7, 8, 10, 12].includes(mInfo.month) ? 31 : mInfo.month === 2 ? 28 : 30;
@@ -158,9 +169,19 @@ export function mountFree(root, { modeId, nav }) {
       const correctDayIdx = calculateWeekday(year, mInfo.month, day);
       const correctDay = DAYS_OF_WEEK[correctDayIdx];
 
-      const hintText = round <= 3 && modeId === 'weekday'
-        ? `Wskazówka: kotwica miesiąca to ${mInfo.anchorDay}.${mInfo.month < 10 ? '0' + mInfo.month : mInfo.month}`
-        : null;
+      const mAnchorText = `${mInfo.anchorDay}.${mInfo.month < 10 ? '0' + mInfo.month : mInfo.month}`;
+      const yearAnchor = DAYS_OF_WEEK[getDoomsdayOfYear(year)];
+
+      let hintText = null;
+      if (modeId === 'weekday' && round <= 3) {
+        hintText = `Wskazówka: kotwica miesiąca to ${mAnchorText} (w 2026 to Sobota)`;
+      } else if (modeId === 'time_travel') {
+        if (round <= 4) {
+          hintText = `Wskazówka: kotwica roku ${year} to ${yearAnchor.name} ⏳ (kotwica miesiąca: ${mAnchorText})`;
+        } else if (round <= 8) {
+          hintText = `Wskazówka: kotwica ${mInfo.name.toLowerCase()} to ${mAnchorText}`;
+        }
+      }
 
       const card = h('div', { class: 'calendar-card' },
         h('div', { class: 'cal-date-badge' }, `${day} ${mInfo.name.toLowerCase()} ${year}`),
@@ -177,10 +198,6 @@ export function mountFree(root, { modeId, nav }) {
             score += 15 + combo * 3;
             combo++;
             round++;
-            if (modeId === 'clock_beat') {
-              timeLeft += 2; // bonus czasowy
-              if (timerEl) timerEl.textContent = `⏱ ${timeLeft}s`;
-            }
             scoreEl.textContent = `${score}`;
             roundEl.textContent = `${round}`;
             cheerTurtle(combo);
@@ -189,8 +206,6 @@ export function mountFree(root, { modeId, nav }) {
             btn.classList.add('wrong');
             if (modeId === 'clock_beat') {
               sfx.wrong();
-              timeLeft = Math.max(1, timeLeft - 2);
-              if (timerEl) timerEl.textContent = `⏱ ${timeLeft}s`;
               setTimeout(nextRound, 300);
             } else {
               handleWrong(`${day} ${mInfo.name} ${year} to ${correctDay.name}!`);

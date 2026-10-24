@@ -172,10 +172,6 @@ export function mountFree(root, { modeId, nav }) {
             score += 10 + combo * 2;
             combo++;
             round++;
-            if (modeId === 'sprint') {
-              timeLeft += 2; // bonus czasowy
-              if (timerEl) timerEl.textContent = `⏱ ${timeLeft}s`;
-            }
             scoreEl.textContent = `${score}`;
             roundEl.textContent = `${round}`;
             cheerParrot(combo);
@@ -184,8 +180,6 @@ export function mountFree(root, { modeId, nav }) {
             btn.classList.add('wrong');
             if (modeId === 'sprint') {
               sfx.wrong();
-              timeLeft = Math.max(1, timeLeft - 2);
-              if (timerEl) timerEl.textContent = `⏱ ${timeLeft}s`;
               setTimeout(nextRound, 300);
             } else {
               handleWrong(`${target.foreign} to ${target.meaning} (most: ${target.bridge})!`);

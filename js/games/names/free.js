@@ -246,16 +246,12 @@ export function mountFree(root, { modeId, nav }) {
           if (c.id === currentTarget.id) {
             sfx.pop();
             score += 10;
-            timeLeft += 2; // bonus czasowy
             round++;
             scoreEl.textContent = `${score}`;
             roundEl.textContent = `${round}`;
-            if (timerEl) timerEl.textContent = `⏱ ${timeLeft}s`;
             nextRound();
           } else {
             sfx.wrong();
-            timeLeft = Math.max(1, timeLeft - 2);
-            if (timerEl) timerEl.textContent = `⏱ ${timeLeft}s`;
             btn.classList.add('wrong');
             setTimeout(nextRound, 300);
           }

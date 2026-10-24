@@ -5,18 +5,18 @@ export const LESSONS = [
     id: 'words-1',
     title: 'Metoda słów-kluczy',
     subtitle: 'Koniec z nudnym wkuwaniem słówek',
-    desc: 'Odkryj metodę badaczy Atkinsona i Raugha, która zwiększa tempo nauki języków trzykrotnie!',
-    speech: 'Cześć, tu Papużka Pola! 🦜 Marzysz o swobodnych podróżach po świecie i piątkach z angielskiego czy hiszpańskiego? Pokażę Ci czarodziejski trik ze słowami-kluczami – zapamiętasz każde trudne słówko w kilka sekund, bez nudnego wkuwania!',
+    desc: 'Odkryj metodę badaczy Atkinsona i Raugha, która zwiększa tempo nauki angielskiego trzykrotnie!',
+    speech: 'Cześć, tu Papużka Pola! 🦜 Marzysz o swobodnych podróżach po świecie i piątkach z angielskiego? Pokażę Ci czarodziejski trik ze słowami-kluczami – zapamiętasz każde angielskie słówko w kilka sekund, bez nudnego wkuwania!',
     theory: [
-      'Po co nam ta metoda? Zwykłe powtarzanie słówek po 50 razy w zeszycie jest nudne, męczące i szybko ulatuje z głowy.',
+      'Po co nam ta metoda? Zwykłe powtarzanie angielskich słówek po 50 razy w zeszycie jest nudne, męczące i szybko ulatuje z głowy.',
       'Metoda słów-kluczy (Keyword Method) to sekret poliglotów i mistrzów pamięci na całym świecie!',
       'Składa się z 2 prostych, zabawnych kroków:',
-      '1. Znajdź polskie słowo, które brzmi podobnie do obcego wyrazu (to nasz Most Fonetyczny).',
+      '1. Znajdź polskie słowo, które brzmi podobnie do angielskiego wyrazu (to nasz Most Fonetyczny).',
       '2. Połącz ten dźwięk ze znaczeniem słówka w śmieszną, bajkową scenkę w wyobraźni!',
-      'Gdy usłyszysz obce słowo, Twój mózg natychmiast przypomni sobie śmieszną scenkę i od razu znasz znaczenie!'
+      'Gdy usłyszysz angielskie słowo, Twój mózg natychmiast przypomni sobie śmieszną scenkę i od razu znasz znaczenie!'
     ],
     task: {
-      prompt: 'Z jakich dwóch kroków składa się metoda słów-kluczy?',
+      prompt: 'Z jakich dwóch kroków składa się metoda słów-kluczy w nauce angielskiego?',
       options: [
         'Most fonetyczny (brzmienie) + żywa scenka ze znaczeniem',
         'Przepisywanie słówka 100 razy w zeszycie',
@@ -31,8 +31,8 @@ export const LESSONS = [
     id: 'words-2',
     title: 'Dźwiękowy bliźniak',
     subtitle: 'Jak brzmi angielskie „mushroom”?',
-    desc: 'Uczymy się szukać polskich słów brzmiących jak obcy wyraz.',
-    speech: 'Posłuchaj dźwięków! Każde obce słówko ma w języku polskim swojego śmiesznego bliźniaka!',
+    desc: 'Uczymy się szukać polskich słów brzmiących jak angielski wyraz.',
+    speech: 'Posłuchaj dźwięków! Każde angielskie słówko ma w języku polskim swojego śmiesznego bliźniaka!',
     theory: [
       'Krok 1 w praktyce: szukamy dźwiękowego bliźniaka.',
       'Spójrz na angielskie słówko „mushroom” (grzyb).',
@@ -88,41 +88,41 @@ export const LESSONS = [
   },
   {
     id: 'words-5',
-    title: 'Hiszpańska fiesta',
-    subtitle: 'Gato, Perro, Cuchara',
-    desc: 'Metoda działa w każdym języku świata – sprawdźmy hiszpański!',
-    speech: 'Ta metoda działa w każdym języku świata! Przenosimy się do słonecznej Hiszpanii!',
+    title: 'Kolejne perełki: Shark, Beetle, Fork',
+    subtitle: 'Rekin Szarik, Chrząszcze The Beatles i Foka z widelcem',
+    desc: 'Błyskawiczne skojarzenia dla rekinów, chrząszczy i widelców po angielsku!',
+    speech: 'Zobacz, jak wesołe są angielskie skojarzenia! Każde słówko to gotowa historyjka!',
     theory: [
-      'Zobacz, jak bajecznie prosto uczy się hiszpańskiego:',
-      '• GATO (kot) → GATKI: rudy kot dumnie spaceruje w czerwonych gatkach w białe grochy! 🐱',
-      '• PERRO (pies) → PERON: pies w czapce zawiadowcy stacji szczeka na peronie kolejowym! 🐶',
-      '• CUCHARA (łyżka) → KUCHARZ: kucharz żongluje wielkimi błyszczącymi łyżkami do zupy! 🥄'
+      'Poznajemy kolejne 3 angielskie perełki z naszej bogatej puli ponad 100 wyrazów:',
+      '• SHARK (rekin) → SZARIK: groźny rekin w wodzie macha przyjaźnie ogonem i szczeka jak pies Szarik! 🦈',
+      '• BEETLE (chrząszcz) → BITELSI: cztery chrząszcze w garniturach grają rocka jak zespół The Beatles! 🪲',
+      '• FORK (widelec) → FOKA: cyrkowa foka na plaży żongluje na czubku nosa wielkim widelcem! 🍴'
     ],
     task: {
-      prompt: 'Rudy kot w wielkich GATKACH to skojarzenie dla hiszpańskiego słówka:',
-      options: ['gato (kot)', 'perro (pies)', 'cuchara (łyżka)', 'manzana (jabłko)'],
+      prompt: 'FOKA żonglująca na nosie widelcem pomaga zapamiętać angielskie słowo:',
+      options: ['fork (widelec)', 'shark (rekin)', 'beetle (chrząszcz)', 'candle (świeca)'],
       correct: 0,
-      hint: 'Gatki = Gato!'
+      hint: 'Foka żongluje widelcem = fork!'
     }
   },
   {
     id: 'words-6',
     title: 'Egzamin Poligloty',
-    subtitle: 'Sprawdzian mistrzowskich mostów',
-    desc: 'Czas na ostateczny test u Papużki Poli! Błyskawiczne tłumaczenie w obie strony.',
-    speech: 'Wielki egzamin poligloty! Z tą techniką możesz nauczyć się tysięcy słówek z dowolnego języka!',
+    subtitle: 'Wielki sprawdzian angielskich mostów',
+    desc: 'Czas na ostateczny test u Papużki Poli! Błyskawiczne tłumaczenie z angielskiego.',
+    speech: 'Wielki finał u Papużki Poli! Z tą techniką masz w pamięci ponad 100 angielskich słówek!',
     theory: [
-      'Brawo! Masz w ręku najpotężniejsze narzędzie do nauki języków obcych na świecie.',
-      'Gdy w szkole lub w podróży spotkasz nowe słówko:',
+      'Brawo! Masz w ręku najpotężniejsze narzędzie do nauki języka angielskiego na świecie.',
+      'Gdy w szkole, filmie czy w podróży spotkasz nowe angielskie słówko:',
       '1. Usłysz jego dźwięk i znajdź polskiego bliźniaka.',
       '2. Stwórz wyrazistą, zabawną scenkę.',
-      '3. Ciesz się swobodną rozmową bez stresu i zakuwania!'
+      '3. Ciesz się swobodną znajomością angielskiego bez stresu i zakuwania! 🦜🇬🇧'
     ],
     task: {
-      prompt: 'Co oznacza hiszpańskie słowo „cuchara” (most: KUCHARZ machający wielką łyżką)?',
-      options: ['Łyżka', 'Widelec', 'Garnek', 'Kucharz'],
+      prompt: 'Co oznacza angielskie słówko „shark” (most: pies SZARIK machający ogonem w płetwie rekina)?',
+      options: ['Rekin', 'Pies', 'Statek', 'Woda'],
       correct: 0,
-      hint: 'Kucharz machał wielką łyżką do zupy!'
+      hint: 'Szarik jako rekin w oceanie!'
     }
   }
 ];

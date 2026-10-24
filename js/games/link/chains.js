@@ -1,20 +1,22 @@
 export const LINK_ITEMS = [
-  { id: 'li1', name: 'Parasol', emoji: '☂️', storyAction: 'wystrzeliwuje w niebo jak rakieta' },
-  { id: 'li2', name: 'Arbuz', emoji: '🍉', storyAction: 'eksploduje fontanną słodkiego czerwonego soku' },
-  { id: 'li3', name: 'Rower', emoji: '🚲', storyAction: 'ślizga się po arbuzowym soku i trąbi klaksonem' },
-  { id: 'li4', name: 'Zegar', emoji: '⏰', storyAction: 'dzwoni jak szalony i odbija się od kierownicy' },
-  { id: 'li5', name: 'Balon', emoji: '🎈', storyAction: 'porywa zegar prosto w chmury' },
-  { id: 'li6', name: 'Kaktus', emoji: '🌵', storyAction: 'przebija balon tysiącem złotych kolców' },
-  { id: 'li7', name: 'Gitara', emoji: '🎸', storyAction: 'gra rockowe solo spadając na kaktus' },
-  { id: 'li8', name: 'Lody', emoji: '🍦', storyAction: 'topnieją i zalewają struny gitary czekoladą' },
-  { id: 'li9', name: 'Klucz', emoji: '🔑', storyAction: 'zamrożony w lodach otwiera latające drzwi' },
-  { id: 'li10', name: 'Latarka', emoji: '🔦', storyAction: 'rozświetla złoty klucz potężnym promieniem lasera' }
-];
-
-export const SHOPPING_CHAIN = [
-  { name: 'Chleb', emoji: '🍞', connect: 'Wielki bochenek chleba służy jako poduszka dla...' },
-  { name: 'Pomidory', emoji: '🍅', connect: 'Olbrzymie pomidory toczą się po chlebie i wskakują do...' },
-  { name: 'Mleko', emoji: '🥛', connect: 'Wielki karton mleka wystrzeliwuje strumień wprost na...' },
-  { name: 'Kawa', emoji: '☕', connect: 'Ziarenka kawy tańczą flamenco na pianie z mleka obok...' },
-  { name: 'Miód', emoji: '🍯', connect: 'Złoty słoik miodu wylewa się na tańczącą kawę!' }
+  { id: 'li1', name: 'Parasol', emoji: '☂️', storyAction: 'otwiera się z hukiem i z impetem taranuje soczystego...' },
+  { id: 'li2', name: 'Arbuz', emoji: '🍉', storyAction: 'eksploduje fontanną słodkiego soku, na którym ślizga się...' },
+  { id: 'li3', name: 'Rower', emoji: '🚲', storyAction: 'trąbi jak szalony i z łomotem wpada na gigantyczny...' },
+  { id: 'li4', name: 'Zegar', emoji: '⏰', storyAction: 'bije na alarm i porywa go wysoko w chmury kolorowy...' },
+  { id: 'li5', name: 'Balon', emoji: '🎈', storyAction: 'unosi się w powietrzu i przebija go ostry pustynny...' },
+  { id: 'li6', name: 'Kaktus', emoji: '🌵', storyAction: 'w który z głośnym brzękiem uderza grająca rocka...' },
+  { id: 'li7', name: 'Gitara', emoji: '🎸', storyAction: 'na której struny skapują z góry zimne, pyszne...' },
+  { id: 'li8', name: 'Lody', emoji: '🍦', storyAction: 'w których zamrożony jest wielki, złoty...' },
+  { id: 'li9', name: 'Klucz', emoji: '🔑', storyAction: 'który z błyskiem rozświetla silna kieszonkowa...' },
+  { id: 'li10', name: 'Latarka', emoji: '🔦', storyAction: 'której snop światła pada na lśniący, drogocenny...' },
+  { id: 'li11', name: 'Skarb', emoji: '💎', storyAction: 'którego w jaskini pilnuje potężny, ziejący ogniem...' },
+  { id: 'li12', name: 'Smok', emoji: '🐉', storyAction: 'który ryczy i odpala wielką, srebrną...' },
+  { id: 'li13', name: 'Rakieta', emoji: '🚀', storyAction: 'która z prędkością światła ląduje na srebrzystym...' },
+  { id: 'li14', name: 'Księżyc', emoji: '🌙', storyAction: 'który okazuje się w całości zrobiony z żółtego...' },
+  { id: 'li15', name: 'Ser', emoji: '🧀', storyAction: 'w którym wielkie dziury wygryza mała, zwinna...' },
+  { id: 'li16', name: 'Mysz', emoji: '🐭', storyAction: 'która ucieka i z impetem skacze na sprężystą...' },
+  { id: 'li17', name: 'Trampolina', emoji: '🎪', storyAction: 'która wystrzeliwuje mysz wprost w wielki czekoladowy...' },
+  { id: 'li18', name: 'Tort', emoji: '🎂', storyAction: 'na którego samym szczycie płonie woskowa...' },
+  { id: 'li19', name: 'Świeca', emoji: '🕯️', storyAction: 'której rozgrzany wosk zastyga w magiczny, błyszczący...' },
+  { id: 'li20', name: 'Kryształ', emoji: '🔮', storyAction: 'który w środku odbija cały ten 20-elementowy świat skojarzeń!' }
 ];

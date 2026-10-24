@@ -249,16 +249,10 @@ async function runTests() {
 
     const wordEl = await waitFor(doc, () => doc.querySelector('.vocab-word'), 'vocab word');
     const foreign = wordEl.textContent.trim().toLowerCase();
-    const vocabMap = {
-      'mushroom': 'grzyb',
-      'gato': 'kot',
-      'candle': 'świeca',
-      'perro': 'pies',
-      'feather': 'pióro',
-      'cuchara': 'łyżka',
-      'pillow': 'poduszka',
-      'manzana': 'jabłko'
-    };
+    const vocabRaw = fs.readFileSync(path.join(baseDir, 'js/games/words/vocab.js'), 'utf8');
+    const vocabMatches = [...vocabRaw.matchAll(/foreign:\s*'([^']+)',\s*lang:\s*'[^']+',\s*meaning:\s*'([^']+)'/g)];
+    const vocabMap = {};
+    vocabMatches.forEach(m => { vocabMap[m[1].toLowerCase()] = m[2]; });
     const expectedMeaning = vocabMap[foreign];
 
     const opts = Array.from(await waitFor(doc, () => doc.querySelectorAll('.opt-grid .btn-opt'), 'opcje tłumaczeń'));
@@ -329,7 +323,17 @@ async function runTests() {
       'Gitara',
       'Lody',
       'Klucz',
-      'Latarka'
+      'Latarka',
+      'Skarb',
+      'Smok',
+      'Rakieta',
+      'Księżyc',
+      'Ser',
+      'Mysz',
+      'Trampolina',
+      'Tort',
+      'Świeca',
+      'Kryształ'
     ];
     const idx = linkChain.indexOf(currentName);
     const nextName = idx >= 0 && idx < linkChain.length - 1 ? linkChain[idx + 1] : null;

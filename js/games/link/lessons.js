@@ -1,138 +1,169 @@
-import { LINK_ITEMS, SHOPPING_CHAIN } from './chains.js';
+import { LINK_ITEMS } from './chains.js';
 
 export const LESSONS = [
   {
     id: 'link-1',
-    title: 'Efekt domina i siła akcji',
-    subtitle: 'Nigdy nie stawiaj rzeczy obok siebie',
-    desc: 'Najczęstszy błąd: wyobrażenie sobie parasola leżącego obok arbuza. To nie zadziała!',
-    speech: 'Chrup, chrup! Cześć! Jestem Wiewiórka Basia 🐿️ Zawsze wiem, gdzie schowałam orzeszki! Pokażę Ci metodę łańcucha skojarzeń – dzięki niej zapamiętasz listę zakupów, rzeczy do plecaka czy plan dnia bez żadnej kartki papieru!',
+    title: 'Efekt domina: Pierwsze 4 ogniwa',
+    subtitle: 'Parasol ☂️ → Arbuz 🍉 → Rower 🚲 → Zegar ⏰',
+    desc: 'Odkryj zasadę dynamicznej akcji i zapamiętaj pierwsze 4 ogniwa wielkiego łańcucha.',
+    speech: 'Chrup, chrup! Cześć! Jestem Wiewiórka Basia 🐿️ Zawsze wiem, gdzie schowałam każdy orzeszek! Nauczę Cię metody łańcucha skojarzeń – dzięki niej zapamiętasz całą listę aż 20 rzeczy bez ani jednej kartki papieru!',
     theory: [
-      'Po co nam ta technika? Ile razy zdarzyło Ci się pójść do sklepu i zapomnieć połowy rzeczy, albo pakować plecak do szkoły i zostawić strój na WF w domu?',
-      'Metoda łańcuchowa łączy myśli w głowie jak klocki domina: gdy popchniesz pierwszy klocek, cała reszta sama wskakuje do głowy!',
+      'Po co nam ta technika? Ile razy zdarzyło Ci się zapomnieć rzeczy do szkoły, listy zakupów czy punktów prezentacji?',
+      'Metoda łańcuchowa łączy myśli w głowie jak klocki domina: gdy popchniesz pierwszy klocek, cała reszta sama wskakuje do pamięci!',
       'ZASADA NR 1: PRAWIDŁO DYNAMICZNEJ AKCJI:',
-      'Nasz mózg natychmiast zapomina nudne, spokojne obrazki. Aby coś zapamiętać, potrzebujesz ruchu i akcji!',
-      'Gdy łączysz PARASOL ☂️ z ARBUZEM 🍉:',
-      'NIE wyobrażaj sobie parasola opartego o arbuza!',
-      'Zobacz, jak parasol otwiera się z potężnym hukiem i z impetem PRZEBIJA wielkiego arbuza, z którego na wszystkie strony tryska słodki, czerwony sok!'
+      'Nasz mózg natychmiast zapomina nudne, spokojne obrazki. Aby coś zapamiętać na zawsze, potrzebujesz ruchu, dźwięku i zderzenia!',
+      'Poznajmy pierwsze 4 ogniwa naszego wielkiego łańcucha:',
+      '1. PARASOL ☂️ → otwiera się z potężnym hukiem i z impetem taranuje wielkiego soczystego...',
+      '2. ARBUZA 🍉 → który eksploduje fontanną słodkiego czerwonego soku, na którym ślizga się...',
+      '3. ROWER 🚲 → który trąbi klaksonem i z łomotem wpada na gigantyczny...',
+      '4. ZEGAR ⏰ → który dzwoni jak oszalały!'
     ],
     task: {
-      prompt: 'Jakie połączenie parasola z arbuzem zapamiętasz najdłużej?',
+      prompt: 'W jaki sposób PARASOL łączy się w wyobraźni z ARBUZEM?',
       options: [
-        'Parasol z hukiem wystrzeliwuje i taranuje arbuza, rozbryzgując czerwony sok!',
+        'Parasol wystrzeliwuje i z impetem taranuje arbuza, rozbryzgując czerwony sok!',
         'Parasol leży spokojnie na stole obok arbuza',
         'Parasol i arbuz są czarno-białe',
-        'Zwykły parasol w sklepie'
+        'Parasol wisi na wieszaku w sklepie'
       ],
       correct: 0,
-      hint: 'Wybierz najbardziej dynamiczną, wybuchową akcję!'
+      hint: 'Wybierz najbardziej wybuchową, dynamiczną akcję!'
     }
   },
   {
     id: 'link-2',
-    title: 'Zasada dwóch ogniw',
-    subtitle: 'Myśl tylko o A i B!',
-    desc: 'Wielka ulga: nie musisz trzymać w głowie całej historii na raz.',
-    speech: 'Wielka ulga: myślisz tylko o dwóch rzeczach naraz! Reszta świata może poczekać!',
+    title: 'Zmysły i przesada: Ogniwa 4 do 8',
+    subtitle: 'Zegar ⏰ → Balon 🎈 → Kaktus 🌵 → Gitara 🎸 → Lody 🍦',
+    desc: 'Włączamy dźwięk, dotyk i gigantyczne rozmiary w kolejnych 4 ogniwach.',
+    speech: 'Włączamy zmysły! Zobacz, jak zegar porywa balon na kaktus, a gitara gra rocka w lodach!',
     theory: [
-      'Dlaczego to takie proste? Nie musisz trzymać w głowie całej długiej listy na raz!',
-      'W łańcuchu liczy się tylko bieżąca para ogniw (A i B):',
-      'Gdy łączysz Parasol z Arbuzem – myślisz tylko o nich.',
-      'Gdy łączysz Arbuz z Rowerem (sok z arbuza tworzy lepką kałużę, na której ślizga się rower) – myślisz TYLKO o Arbuzie i Rowerze!',
-      'Każde ogniwo pociąga za sobą kolejne jak wagoniki w pociągu!'
+      'Aby łańcuch trzymał jak ze stali, używaj zmysłów: dźwięku, dotyku i komicznej przesady!',
+      'Dołączamy kolejne 4 ogniwa do naszego pociągu (mamy już 8!):',
+      '4. ZEGAR ⏰ → dzwoni na alarm, a z jego tarczy wyskakuje kolorowy...',
+      '5. BALON 🎈 → który unosi się wysoko w niebo i z hukiem pęka, bo nabija się na kolczasty...',
+      '6. KAKTUS 🌵 → w który z głośnym brzękiem uderza spadająca z nieba elektryczna...',
+      '7. GITARA 🎸 → grająca ostre rockowe solo, na której struny z góry skapują wielkie truskawkowe...',
+      '8. LODY 🍦 → które zalewają gryf gitary słodkim kremem!'
     ],
     task: {
-      prompt: 'Gdy łączysz arbuz z rowerem, o czym powinieneś myśleć?',
-      options: ['Tylko o żywej interakcji między arbuzem a rowerem', 'O wszystkich 100 rzeczach naraz', 'O pogodzie za oknem', 'O niczym'],
+      prompt: 'Co dzieje się z GITARĄ 🎸 po zderzeniu z kaktusem?',
+      options: [
+        'Gra rockowe solo, a na jej struny skapują z góry truskawkowe lody 🍦',
+        'Zostaje schowana do futerału',
+        'Leży cicho w szafie',
+        'Zamienia się w drewno'
+      ],
       correct: 0,
-      hint: 'Zasada łańcucha: skupiasz się wyłącznie na bieżącej parze ogniw!'
+      hint: 'Gitara gra rocka, a lody skapują na jej struny!'
     }
   },
   {
     id: 'link-3',
-    title: 'Trzy zmysły pamięci',
-    subtitle: 'Dźwięk, ruch i przesada',
-    desc: 'Wzbogać swoje wyobrażenia o zmysły.',
-    speech: 'Włączamy zmysły! Spraw, by przedmioty były gigantyczne, hałaśliwe i zabawne!',
+    title: 'Zagadka w jaskini: Ogniwa 8 do 12',
+    subtitle: 'Lody 🍦 → Klucz 🔑 → Latarka 🔦 → Skarb 💎 → Smok 🐉',
+    desc: 'Odkryj tajemnicę klucza, latarki, skarbu i smoka – już 12 ogniw!',
+    speech: 'Mamy już 12 ogniw! W lodach tkwi klucz, latarka rozświetla skarb, a w jaskini czuwa smok!',
     theory: [
-      'Najsilniejsze skojarzenia angażują co najmniej 3 zmysły:',
-      '1. RUCH – przedmioty wirują, skaczą, odbijają się jak piłki.',
-      '2. DŹWIĘK – usłysz głośny pisk, dzwonienie budzika, plusk wody.',
-      '3. PRZESADA – wyobraź sobie nie zwykły mały zegarek, ale ZEGAR wielki jak wieżowiec, który z łomotem uderza w rower!',
-      'Im bardziej śmieszny i niezwykły obraz, tym łatwiej go przywołać!'
+      'Wielka zaleta łańcucha: skupiasz się ZAWSZE tylko na bieżącej parze ogniw (A i B). Reszta przyjdzie sama!',
+      'Budujemy kolejne 4 fascynujące ogniwa:',
+      '8. LODY 🍦 → wgryzasz się w lody i nagle zgrzytasz zębami o zamrożony w środku złoty...',
+      '9. KLUCZ 🔑 → wyjmujesz klucz, a w ciemności rozświetla go silnym laserowym snopem potężna...',
+      '10. LATARKA 🔦 → promień latarki pada w głąb jaskini i ukazuje olbrzymi, błyszczący...',
+      '11. SKARB 💎 → pełen diamentów i złota, którego z groźnym rykiem pilnuje zielony...',
+      '12. SMOK 🐉 → ziejący kłębami ognia!'
     ],
     task: {
-      prompt: 'Rower wpada na ZEGAR. Jak wzmocnić to skojarzenie?',
+      prompt: 'W jaki sposób KLUCZ 🔑 łączy się w łańcuchu z LATARKĄ 🔦?',
       options: [
-        'Zegar jest gigantyczny, głośno dzwoni i odbija się z hukiem od kierownicy roweru!',
-        'Rower stoi w piwnicy bez ruchu',
-        'Zegar ma wyjętą baterię i milczy',
-        'Zwykły mały zegarek leży w kieszeni'
+        'Złoty klucz rozświetla w ciemności silny snop światła z latarki',
+        'Klucz leży w szufladzie, a latarka na biurku',
+        'Latarka ma wyjęte baterie',
+        'Klucz jest z plastiku'
       ],
       correct: 0,
-      hint: 'Włącz głośny dźwięk, ruch i olbrzymi rozmiar!'
+      hint: 'Latarka oświetla klucz jaskrawym promieniem!'
     }
   },
   {
     id: 'link-4',
-    title: 'Praktyka: Lista zakupów bez kartki',
-    subtitle: '5 produktów w jednym łańcuchu',
-    desc: 'Prawdziwy test życiowy: Chleb, Pomidory, Mleko, Kawa, Miód.',
-    speech: 'Sprawdźmy to w prawdziwym życiu! 5 produktów ze sklepu zapamiętanych w mgnieniu oka!',
+    title: 'Kosmiczny lot: Ogniwa 12 do 16',
+    subtitle: 'Smok 🐉 → Rakieta 🚀 → Księżyc 🌙 → Ser 🧀 → Mysz 🐭',
+    desc: 'Smok odpala rakietę i leci na serowy księżyc! Opanowane aż 16 ogniw.',
+    speech: 'Kosmiczny lot u Basi! Smok odpala rakietę i ląduje na księżycu z sera! To już 16 ogniw!',
     theory: [
-      'Budujemy łańcuch zakupów bez kartki:',
-      '1. CHLEB 🍞 → olbrzymi chrupiący bochenek służy jako trampolina dla...',
-      '2. POMIDORÓW 🍅 → które toczą się i z pluskiem wskakują do kartonu...',
-      '3. MLEKA 🥛 → białe mleko wytryskuje jak gejzer na tańczące ziarenka...',
-      '4. KAWY ☕ → które wpadają prosto do wielkiego słoika...',
-      '5. MIODU 🍯 → złocisty, cieplutki miód oblepia wszystko dookoła!',
-      'Wchodzisz do sklepu i z uśmiechem odtwarzasz film krok po kroku!'
+      'Mózg uwielbia opowieści z rozmachem – im bardziej fantastyczne, tym silniejszy ślad pamięciowy!',
+      'Łączymy kolejne 4 ogniwa kosmicznej podróży:',
+      '12. SMOK 🐉 → macha skrzydłami, zieje ogniem i z rykiem odpala kosmiczną...',
+      '13. RAKIETĘ 🚀 → która z rykiem silników leci prosto w kosmos i ląduje na srebrzystym...',
+      '14. KSIĘŻYCU 🌙 → który po wbiciu flagi okazuje się w całości zrobiony ze smakowitego, żółtego...',
+      '15. SERA 🧀 → z wielkimi dziurami, w których biega i wygryza kawałki wesoła polna...',
+      '16. MYSZ 🐭 → z długim ogonkiem!'
     ],
     task: {
-      prompt: 'Co działo się z pomidorami po zeskoczeniu z chleba?',
-      options: ['Wskoczyły do wytryskującego kartonu mleka', 'Zostały w torbie', 'Zamieniły się w kamienie', 'Zjadł je pies'],
+      prompt: 'Co okazuje się po wylądowaniu rakiety na KSIĘŻYCU 🌙?',
+      options: [
+        'Księżyc jest w całości zrobiony z żółtego sera 🧀, w którym biega mysz!',
+        'Księżyc jest zimną skałą bez niczego',
+        'Rakieta zawraca na Ziemię',
+        'Księżyc gaśnie i znika'
+      ],
       correct: 0,
-      hint: 'Pomidory wpadły do mleka!'
+      hint: 'Księżyc z żółtego sera!'
     }
   },
   {
     id: 'link-5',
-    title: 'Spacer w tył',
-    subtitle: 'Odtwarzanie sekwencji od końca',
-    desc: 'Dlaczego metoda łańcuchowa jest tak potężna? Bo działa w obie strony!',
-    speech: 'Czarodziejski spacer w tył! Ten łańcuch działa w obie strony jak po sznurku!',
+    title: 'Finałowa piątka i bieg w tył: 16 do 20',
+    subtitle: 'Mysz 🐭 → Trampolina 🎪 → Tort 🎂 → Świeca 🕯️ → Kryształ 🔮',
+    desc: 'Ostatnie 4 ogniwa i niezwykła umiejętność odtwarzania całego łańcucha od końca!',
+    speech: 'Mamy komplet 20 ogniw! A teraz najfajniejsza supermoc: odtworzymy wszystko od tyłu!',
     theory: [
-      'Prawdziwa supermoc: cofamy listę zakupów od końca!',
-      '• MIÓD 🍯 → co oblepił? Ziarenka KAWY ☕!',
-      '• KAWA ☕ → skąd wyleciała? Z kartonu MLEKA 🥛!',
-      '• MLEKO 🥛 → na co trysnęło? Na czerwone POMIDORY 🍅!',
-      '• POMIDORY 🍅 → po czym skakały? Po bochenku CHLEBA 🍞!',
-      'Twój mózg potrafi odtworzyć listę od początku i od końca bez ani jednego błędu!'
+      'Dopinamy ostatnie ogniwa do pełnej liczby DWUDZIESTU:',
+      '16. MYSZ 🐭 → wystraszona ucieka i z impetem skacze wysoko na sprężystą...',
+      '17. TRAMPOLINĘ 🎪 → która wystrzeliwuje mysz jak z procy prosto w wielki czekoladowy...',
+      '18. TORT 🎂 → na którego samym szczycie płonie woskowa...',
+      '19. ŚWIECA 🕯️ → której gorący wosk zastyga w magiczny, lśniący...',
+      '20. KRYSZTAŁ 🔮 → odbijający w środku całą naszą niesamowitą przygodę!',
+      'SUPERMOC: Ten łańcuch działa w obie strony! Cofnij się od końca:',
+      'Kryształ ← Świeca ← Tort ← Trampolina ← Mysz... i tak aż do Parasola!'
     ],
     task: {
-      prompt: 'Jaki produkt znajdował się bezpośrednio przed kawą?',
-      options: ['Mleko (mleko wytryskujące na kawę)', 'Chleb', 'Miód', 'Pomidory'],
+      prompt: 'Co zastyga z wosku płonącej ŚWIECY 🕯️ na torcie, kończąc 20-elementowy łańcuch?',
+      options: [
+        'Magiczny, lśniący KRYSZTAŁ 🔮',
+        'Zwykły szary kamień',
+        'Kawałek drewna',
+        'Kropla wody'
+      ],
       correct: 0,
-      hint: 'Mleko zalało tańczącą kawę!'
+      hint: 'Wosk zamienia się w błyszczący kryształ!'
     }
   },
   {
     id: 'link-6',
-    title: 'Wiewiórcza spiżarnia: 10 ogniw',
-    subtitle: 'Wielki finał metody łańcuchowej',
-    desc: 'Zbuduj łańcuch 10 szalonych przedmiotów i zdobądź tytuł Mistrza Skojarzeń!',
-    speech: 'Wielki finał u Basi! Aż 10 szalonych ogniw – Twoja spiżarnia pamięci jest pełna skarbów!',
+    title: 'Egzamin Mistrza: Cały łańcuch 20 ogniw!',
+    subtitle: 'Kompletna lista 20 skarbów pamięci',
+    desc: 'Wielki sprawdzian u Wiewiórki Basi. Sprawdź, jak bez wysiłku znasz całe 20 wyrazów po kolei!',
+    speech: 'Wielki Finał u Wiewiórki Basi! Właśnie nauczyłeś się listy 20 wyrazów w idealnym porządku! Jesteś prawdziwym Mistrzem Skojarzeń! 🐿️🏆',
     theory: [
-      'Opanowałeś wszystkie prawa łańcucha skojarzeń:',
-      '• Parasol → Arbuz → Rower → Zegar → Balon → Kaktus → Gitara → Lody → Klucz → Latarka.',
-      'Każdy przedmiot taranuje kolejny z dźwiękiem i ruchem.',
-      'Wiewiórka Basia bije Ci brawo! Możesz zapamiętać dowolną liczbę rzeczy na sprawdzian lub wycieczkę! 🐿️'
+      'Spójrz na to, czego dokonałeś bez ani jednej kartki papieru:',
+      '1. Parasol ☂️ → 2. Arbuz 🍉 → 3. Rower 🚲 → 4. Zegar ⏰ → 5. Balon 🎈 →',
+      '6. Kaktus 🌵 → 7. Gitara 🎸 → 8. Lody 🍦 → 9. Klucz 🔑 → 10. Latarka 🔦 →',
+      '11. Skarb 💎 → 12. Smok 🐉 → 13. Rakieta 🚀 → 14. Księżyc 🌙 → 15. Ser 🧀 →',
+      '16. Mysz 🐭 → 17. Trampolina 🎪 → 18. Tort 🎂 → 19. Świeca 🕯️ → 20. Kryształ 🔮.',
+      'Każde ogniwo nieuchronnie pociąga kolejne. Możesz w ten sposób zapamiętać przemówienie, procedurę czy 20 sprawunków na zakupy!',
+      'Wiewiórka Basia kręci z radości piruety i wręcza Ci Złotego Orzeszka Pamięci! 🌰✨'
     ],
     task: {
-      prompt: 'Co przebija lecący w chmurach balon w naszej historii?',
-      options: ['Kaktus z tysiącem złotych kolców', 'Parasol', 'Rower', 'Gitara'],
+      prompt: 'Co znajduje się bezpośrednio po SKARBIE (11), a przed RAKIETĄ (13)?',
+      options: [
+        'Smok 🐉 (strzegący skarbu i odpalający rakietę)',
+        'Gitara 🎸',
+        'Zegar ⏰',
+        'Tort 🎂'
+      ],
       correct: 0,
-      hint: 'Balon wpada prosto na ostry kaktus!'
+      hint: 'Skarbu pilnował ziejący ogniem smok, który wsiadł do rakiety!'
     }
   }
 ];
