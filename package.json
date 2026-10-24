@@ -1,5 +1,23 @@
 {
-  "dependencies": {
+  "name": "swiat-pamieci",
+  "version": "1.0.0",
+  "description": "Świat Pamięci – PWA gamifikująca 8 zaawansowanych systemów mnemotechnicznych dla dzieci i dorosłych",
+  "main": "index.html",
+  "scripts": {
+    "test": "node test_verification_5_items.js && node test_freeplay_continuity.js && node test_all_8_systems.js && node test_friendly_lessons.js && node test_lesson4_and_restart.js",
+    "build": "node scripts/build_bundle.js"
+  },
+  "keywords": [
+    "memory-techniques",
+    "mnemonics",
+    "pwa",
+    "vanilla-javascript",
+    "gamification",
+    "education"
+  ],
+  "author": "Dorian Kalinowski",
+  "license": "UNLICENSED",
+  "devDependencies": {
     "jsdom": "^30.1.2"
   }
 }

@@ -10,6 +10,15 @@ pnpm-debug.log*
 test_output.log
 *.log
 
+# Environment & Secrets (Security protection)
+.env
+.env.*
+*.pem
+*.key
+*.cert
+id_rsa
+secrets/
+
 # OS generated files
 .DS_Store
 Thumbs.db
@@ -20,3 +29,5 @@ desktop.ini
 *.temp
 .vscode/
 .idea/
+.history/
+*.bak

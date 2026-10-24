@@ -4,7 +4,7 @@
 
 [![PWA Ready](https://img.shields.io/badge/PWA-Ready-success.svg)](#-funkcje-pwa-i-offline)
 [![Zero Runtime Dependencies](https://img.shields.io/badge/Dependencies-Zero%20(Pure%20JS)-blue.svg)](#-architektura-i-technologie)
-[![Tests Passing](https://img.shields.io/badge/Tests-96%2F96%20Passed-brightgreen.svg)](#-testy-automatyczne)
+[![Tests Passing](https://img.shields.io/badge/Tests-208%2B%20Passed-brightgreen.svg)](#-testy-automatyczne)
 [![Author](https://img.shields.io/badge/Autor-Dorian%20Kalinowski-orange.svg)](#-o-projekcie-i-autorze)
 [![Copyright](https://img.shields.io/badge/Copyright-%C2%A9%202026%20Wszelkie%20prawa%20zastrze%C5%BCone-blueviolet.svg)](#-licencja)
 
@@ -26,13 +26,13 @@ Każda technika pamięciowa ma dedykowanego nauczyciela – urocze, animowane zw
 | Moduł | Nauczyciel | Technika Pamięciowa | Co ćwiczysz? |
 | :--- | :--- | :--- | :--- |
 | **1. Cyfry** | 🐱 **Kotek Mruczek** | *System Kształtów Cyfr / Zakładkowy* | Błyskawiczne zapamiętywanie kodów PIN, numerów kont i ciągów cyfr dzięki skojarzeniom wizualnym (np. 1 = świeca, 2 = łabędź). |
-| **2. Pałac Pamięci** | 🐯 **Tygrysek Leoś** | *Metoda Loci (Rzymski Pokój)* | Przestrzenne rozmieszczanie informacji w wyobrażonym pokoju (drzwi, sofa, biurko, regał, okno itp.). |
-| **3. Imiona i Twarze** | 🦊 **Lisek Chytrusek** | *Hak Cechy Twarzy i Skojarzenia* | Kojarzenie charakterystycznych detali (okulary, fryzura, uśmiech) z imionami i barwnymi obrazami. |
-| **4. Główny System Pamięciowy** | 🦉 **Sówka Mądra Głowa** | *Fonetyczny System Cyfrowy (Major System)* | Kodowanie liczb od 0 do 99 w spółgłoski i słowa, pozwalające zapamiętywać daty, telefony i rekordy. |
-| **5. Słówka Językowe** | 🦜 **Papużka Pola** | *Metoda Słów Kluczy (Keyword Method)* | Błyskawiczne przyswajanie obcego słownictwa przez most fonetyczny w języku ojczystym. |
-| **6. Karty i Kolory** | 🦝 **Szop Pracz Filip** | *System Kolorów, Figur i Kodu Kart* | Technika wielkich mistrzów pamięci (Memory Champions) do zapamiętywania talii kart. |
-| **7. Metoda Łańcuchowa** | 🐿️ **Wiewiórka Basia** | *Łańcuch Skojarzeń i Żywe Opowieści* | Dynamiczne, barwne łączenie pojęć, list zakupów i przemówień w jedną niezapomnianą historię. |
-| **8. Kalendarz w Głowie** | 🐢 **Żółw Nestor** | *Algorytm Dnia Tygodnia (Doomsday)* | Obliczanie w pamięci dnia tygodnia dla dowolnej daty roku za pomocą prostych kotwic i wag miesięcy. |
+| **2. Pałac Pamięci** | 🐯 **Tygrysek Leon** | *Metoda Loci (Rzymski Pokój)* | Przestrzenne rozmieszczanie informacji w wyobrażonym pałacu komnat (Złota Brama, Sala Balowa, Skarbiec itp.). |
+| **3. Imiona i Twarze** | 🦊 **Lisek Bystrzak** | *Hak Cechy Twarzy i Skojarzenia* | Kojarzenie charakterystycznych detali (okulary, broda, uśmiech, fryzura) z imionami i barwnymi obrazami. |
+| **4. Główny System Pamięciowy** | 🦉 **Sówka Profesor** | *Fonetyczny System Cyfrowy (Major System)* | Kodowanie liczb od 0 do 99 w spółgłoski i słowa, pozwalające zapamiętywać daty, telefony i rekordy. |
+| **5. Słówka Językowe** | 🦜 **Papużka Pola** | *Metoda Słów Kluczy (Keyword Method)* | Błyskawiczne przyswajanie 100+ angielskich słówek przez zabawne polskie mosty fonetyczne. |
+| **6. Karty i PAO** | 🦝 **Szop Magik** | *System PAO (Osoba - Akcja - Obiekt)* | Zaawansowana technika mistrzów pamięci do kodowania kart do gry w dynamiczne scenki. |
+| **7. Metoda Łańcuchowa** | 🐿️ **Wiewiórka Basia** | *Łańcuch Skojarzeń i Żywe Opowieści* | Dynamiczne, barwne łączenie 20 wyrazów w jeden spójny, niezapomniany łańcuch przyczynowo-skutkowy. |
+| **8. Kalendarz w Głowie** | 🐢 **Żółwik Zenon** | *Algorytm Dnia Tygodnia (Doomsday)* | Obliczanie w pamięci dnia tygodnia dla dowolnej daty (2026 oraz podróże w czasie do innych lat). |
 
 ---
 
@@ -127,25 +127,25 @@ Następnie wejdź w przeglądarce pod adres: `http://localhost:8000`.
 
 ## 🧪 Testy Automatyczne
 
-Aplikacja posiada rygorystyczny zestaw 96 testów automatycznych, weryfikujący:
-1. Prawidłowość struktury SVG i renderowania oczu wszystkich 8 maskotek.
-2. Działanie routera i przełączanie pomiędzy widokami wszystkich modułów.
-3. Wszystkie lekcje szkoleniowe i ich walidację dla każdego z 8 systemów pamięciowych.
-4. Generatory gier swobodnych, dialogi dopingu i pocieszenia.
-5. Poprawność naliczania i zerowania serii dni (`streak`).
-6. Czystość i integralność PWA oraz manifestu.
+Aplikacja posiada rygorystyczny zestaw ponad **208 zautomatyzowanych testów** (jednostkowych, UI i integracyjnych), weryfikujący:
+1. Prawidłowość struktury SVG, detali graficznych i animacji oczu wszystkich 8 maskotek.
+2. Płynność i progresję rund we wszystkich grach swobodnych (brak dead-locków, brak modyfikacji timerów).
+3. Wszystkie lekcje szkoleniowe i ich walidację dla każdego z 8 systemów pamięciowych (przyjazny język dla dzieci i dorosłych).
+4. Pełną bazę 105 angielskich słówek z mostami fonetycznymi oraz 20-elementowy łańcuch skojarzeń.
+5. Poprawność algorytmu Doomsday w kalendarzu (obliczanie dni dla 2026 i podróży w czasie).
+6. Czystość i integralność PWA oraz manifestu (tryb offline).
 
-Aby uruchomić testy:
+Aby uruchomić pełny zestaw testów:
 ```bash
-node test_all_8_systems.js
+npm test
 ```
 
 Wynik:
 ```text
-=== PODSUMOWANIE TESTOW WSZYSTKICH 8 SYSTEMOW ===
-Przeszlo: 96 / 96 testow
-Bledy: 0
-Status: WSZYSTKIE 8 SYSTEMOW DZIALAJA PERFEKCYJNIE!
+====================================================
+🏁 WYNIKI TESTÓW: 208+ ZDANYCH, 0 NIEZDANYCH
+====================================================
+Status: WSZYSTKIE 8 SYSTEMÓW DZIAŁA PERFEKCYJNIE!
 ```
 
 ---
