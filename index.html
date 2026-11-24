@@ -38,11 +38,20 @@
         <path d="M22 29q2 2.5 4 0" stroke="#2b2140" stroke-width="1.8" fill="none" stroke-linecap="round"/>
       </svg>
       <span>Świat pamięci</span>
+      <span class="v-tag">v1.1</span>
     </a>
     <div class="top-actions">
       <button id="guideBtn" class="icon-btn" type="button" aria-label="Techniki pamięciowe" title="Ściągawka technik pamięciowych">💡</button>
       <button id="soundBtn" class="icon-btn" type="button" aria-pressed="true" aria-label="Dźwięk">🔊</button>
       <button id="installBtn" class="pill" type="button">⬇ <span>Pobierz</span></button>
+      <div class="lang-switcher" role="group" aria-label="Wybór języka / Language selection">
+        <button id="langPlBtn" class="lang-btn active" type="button" data-lang="pl" aria-pressed="true" title="Język polski">
+          <span class="lang-flag">🇵🇱</span> <span class="lang-txt">PL</span>
+        </button>
+        <button id="langEnBtn" class="lang-btn" type="button" data-lang="en" aria-pressed="false" title="American English">
+          <span class="lang-flag">🇺🇸</span> <span class="lang-txt">US</span>
+        </button>
+      </div>
       <button id="authorBtn" class="avatar-btn" type="button" aria-label="Poznaj autora – Dorian Kalinowski" title="Dorian Kalinowski – Twórca"><img src="assets/dorian.png" alt="Dorian Kalinowski" width="40" height="40"></button>
     </div>
   </header>
@@ -51,7 +60,7 @@
 
   <footer class="footer">
     <button type="button" class="link" id="authorLink">Stworzył Dorian Kalinowski</button>
-    <span>· Wszelkie prawa zastrzeżone © 2026</span>
+    <span>· Wszelkie prawa zastrzeżone © 2026 · v1.1</span>
   </footer>
 
   <!-- Modal: O autorze -->
@@ -60,7 +69,7 @@
     <div class="about-hero">
       <img src="assets/dorian.png" alt="Dorian Kalinowski" class="about-photo" width="130" height="130">
       <h2 id="aboutTitle">Dorian Kalinowski</h2>
-      <p class="about-role">Twórca aplikacji «Świat pamięci»</p>
+      <p class="about-role">Twórca aplikacji «Świat pamięci» (v1.1)</p>
     </div>
     <div class="mission-box">
       <div class="mission-icon">🎯</div>
@@ -72,7 +81,7 @@
       opierają się na prostych, dających mnóstwo frajdy zasadach.
     </p>
     <div class="roadmap-preview">
-      <b>8 systemów pamięciowych i ich nauczyciele:</b>
+      <b>10 systemów pamięciowych i ich nauczyciele:</b>
       <ul>
         <li>🔢 <strong>Cyfry</strong> – Kotek Mruczek 🐱 (Kształty cyfr i grupowanie)</li>
         <li>🏰 <strong>Pałac pamięci</strong> – Tygrysek Leon 🐯 (Metoda Loci i komnaty wyobraźni)</li>
@@ -80,19 +89,21 @@
         <li>🦉 <strong>System Major</strong> – Sówka Profesor 🦉 (Spółgłoski 0-9 i kody PIN)</li>
         <li>🦜 <strong>Słówka i języki</strong> – Papużka Pola 🦜 (Metoda słów-kluczy)</li>
         <li>🦝 <strong>Karty do gry</strong> – Szop Magik 🦝 (Metoda PAO: Postać - Akcja - Obiekt)</li>
-        <li>🐿️ <strong>Łańcuch skojarzeń</strong> – Wiewiórka Basia 🐿️ (Efekt domina i listy zakupów)</li>
-        <li>🐢 <strong>Kalendarz w głowie</strong> – Żółwik Zegarowy 🐢 (Algorytm Doomsday i modulo 7)</li>
+        <li>🐿️ <strong>Łańcuch skojarzeń</strong> – Wiewiórka Basia 🐿️ (Efekt domina i 20 ogniw)</li>
+        <li>🐢 <strong>Kalendarz w głowie</strong> – Żółwik Zenon 🐢 (Algorytm Doomsday i lata)</li>
+        <li>🐶 <strong>Akrostychy i rymy</strong> – Piesek Łatek 🐶 (Haczyki pierwszych liter i wiersze)</li>
+        <li>🐙 <strong>Mapy myśli</strong> – Ośmiornica Inka 🐙 (Nielinearne notatki i gałęzie wiedzy)</li>
       </ul>
     </div>
     <p class="muted" style="margin-bottom:6px">Graj codziennie chociaż kilka minut. Twoje urocze zwierzątka będą Ci kibicować! 🐾</p>
-    <p style="font-size:0.8rem;opacity:0.75;margin-top:2px;margin-bottom:14px">Wszelkie prawa zastrzeżone © 2026 Dorian Kalinowski</p>
+    <p style="font-size:0.8rem;opacity:0.75;margin-top:2px;margin-bottom:14px">Wszelkie prawa zastrzeżone © 2026 Dorian Kalinowski · v1.1</p>
     <form method="dialog"><button class="btn btn-primary">Do gry! 🚀</button></form>
   </dialog>
 
   <!-- Modal: Ściągawka technik pamięciowych -->
   <dialog id="guide" aria-labelledby="guideTitle">
     <form method="dialog"><button class="dialog-x" aria-label="Zamknij">✕</button></form>
-    <h2 id="guideTitle">💡 8 Technik Pamięciowych w Pigułce</h2>
+    <h2 id="guideTitle">💡 10 Technik Pamięciowych w Pigułce</h2>
     <div class="guide-scroll">
       <div class="guide-card">
         <h3>1. Cyfry – Kształty Cyfr (Kotek Mruczek 🐱)</h3>
@@ -161,9 +172,21 @@
       </div>
 
       <div class="guide-card">
-        <h3>8. Kalendarz w Głowie – Algorytm Doomsday (Żółwik Zegarowy 🐢)</h3>
+        <h3>8. Kalendarz w Głowie – Algorytm Doomsday (Żółwik Zenon 🐢)</h3>
         <p>Parzyste bliźniaki zawsze wypadają w ten sam dzień tygodnia: <strong>4.04, 6.06, 8.08, 10.10, 12.12</strong>!</p>
         <p class="panel-note">Dla nieparzystych: „Pracuję 9 do 5 (9.05 i 5.09) na stacji 7/11 (11.07 i 7.11)”. Licz resztę modulo 7 i znasz każdy dzień!</p>
+      </div>
+
+      <div class="guide-card">
+        <h3>9. Akrostychy i Rymowanki (Piesek Łatek 🐶)</h3>
+        <p>Pierwsze litery tworzą wesołe zdania, które na zawsze utrwalają kolejność i całe listy wiedzy.</p>
+        <p class="panel-note">Np. planety: <em>„Moja Wiecznie Zapracowana Mama Zawsze Smaży Nam Placki”</em> lub rzymskie cyfry: <em>„Lech Chce Dobrze Mieszkać”</em> (L-50, C-100, D-500, M-1000)!</p>
+      </div>
+
+      <div class="guide-card">
+        <h3>10. Mapy Myśli (Ośmiornica Inka 🐙)</h3>
+        <p>Mózg myśli promieniście od centrum ku krawędziom. Zamiast nudnych linijek tekstu – centralny obraz i barwne gałęzie!</p>
+        <p class="panel-note">Centrum to temat główny, a 8 macek to kategorie wiedzy z 1 słowem-kluczem i symbolem. Niezastąpione do nauki całych działów do egzaminu i planowania projektów!</p>
       </div>
     </div>
     <form method="dialog"><button class="btn btn-primary">Wszystko jasne! 🚀</button></form>

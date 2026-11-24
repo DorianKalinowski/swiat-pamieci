@@ -19,7 +19,7 @@ function mountMenu(root, { nav }) {
       h('div', {},
         h('span', { class: 'bc-kicker' }, '🎓 Szkolenie z kotem'),
         h('h3', {}, done === 0 ? 'Zacznij naukę' : done === LESSONS.length ? 'Powtórz szkolenie' : 'Kontynuuj szkolenie'),
-        h('p', {}, `${LESSONS.length} lekcji · od 3 do 12 cyfr · podpowiedzi Mruczka`)),
+        h('p', {}, `${LESSONS.length} lekcji · od 1 do 12 cyfr · podpowiedzi Mruczka`)),
       h('div', { class: 'ring', style: `--p:${pct}` }, h('span', {}, `${done}/${LESSONS.length}`))),
     h('div', { class: 'bc-foot' }, h('span', {}, `⭐ ${stars}/${LESSONS.length * 3}`), h('span', { class: 'gc-play' }, done ? 'Dalej ▶' : 'Start ▶'))
   );

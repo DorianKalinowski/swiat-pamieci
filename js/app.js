@@ -3,6 +3,7 @@ import { GAMES } from './games/registry.js';
 import { createCat } from './cat.js';
 import { sound, sfx } from './sound.js';
 import { store, touchStreak, currentStreak } from './store.js';
+import { getLang, setLang, applyLangToDOM } from './i18n.js';
 
 const app = $('#app');
 let cleanup = null;
@@ -91,6 +92,37 @@ const paintSound = () => {
 };
 soundBtn.addEventListener('click', () => { sound.toggle(); paintSound(); sfx.pop(); });
 paintSound();
+
+/* ---------- Język (PL / USA) ---------- */
+const langPlBtn = $('#langPlBtn');
+const langEnBtn = $('#langEnBtn');
+const paintLang = () => {
+  const cur = getLang();
+  if (langPlBtn) {
+    langPlBtn.classList.toggle('active', cur === 'pl');
+    langPlBtn.setAttribute('aria-pressed', String(cur === 'pl'));
+  }
+  if (langEnBtn) {
+    langEnBtn.classList.toggle('active', cur === 'en');
+    langEnBtn.setAttribute('aria-pressed', String(cur === 'en'));
+  }
+};
+langPlBtn?.addEventListener('click', () => {
+  if (getLang() === 'pl') return;
+  setLang('pl');
+  paintLang();
+  sfx.pop();
+  route();
+});
+langEnBtn?.addEventListener('click', () => {
+  if (getLang() === 'en') return;
+  setLang('en');
+  paintLang();
+  sfx.pop();
+  route();
+});
+paintLang();
+applyLangToDOM(getLang());
 
 /* ---------- Ściągawka Technik ---------- */
 const guide = $('#guide');

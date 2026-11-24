@@ -1,0 +1,432 @@
+[
+  {
+    "context": "acrostic lesson[1].theory[0]",
+    "pl": "Po co nam ta technika? Nasz mózg bardzo szybko męczy się i gubi, gdy musi zapamiętać suchą listę rzeczy w konkretnej kolejności. Jednak gdy z pierwszych liter ułożysz jedno zabawne, rymowane zdanie – zapamiętasz całą listę w mgnieniu oka na całe życie!",
+    "en": "Po co nam ta technika? Nasz mózg bardzo szybko męczy się i gubi, gdy musi zapamiętać suchą listę rzeczy w konkretnej kolejności. Jednak gdy z pierwszych liter ułożysz jedno zabawne, rymowane zdanie – zapamiętasz całą listę w mgnieniu oka na całe życie!"
+  },
+  {
+    "context": "acrostic lesson[1].theory[1]",
+    "pl": "Ta metoda nazywa się akrostychem lub metodą pierwszych liter. Zobacz, jak łatwo zapamiętać wszystkie 6 głównych kolorów tęczy:",
+    "en": "Ta metoda nazywa się akrostychem lub metodą pierwszych liter. Zobacz, jak łatwo zapamiętać wszystkie 6 głównych kolorów tęczy:"
+  },
+  {
+    "context": "acrostic lesson[1].theory[2]",
+    "pl": "Zdanie-trop brzmi: „Czemu Patrzysz Żabko Zielona Na Fiołki?”",
+    "en": "Zdanie-trop brzmi: „Czemu Patrzysz Żabko Zielona Na Fiołki?”"
+  },
+  {
+    "context": "acrostic lesson[1].theory[3]",
+    "pl": "Spójrz na pierwsze litery każdego słowa:",
+    "en": "Spójrz na pierwsze litery każdego słowa:"
+  },
+  {
+    "context": "acrostic lesson[1].theory[4]",
+    "pl": "• Czemu → Czerwień (Czerwony 🔴)",
+    "en": "• Czemu → Czerwień (Czerwony 🔴)"
+  },
+  {
+    "context": "acrostic lesson[1].theory[5]",
+    "pl": "• Patrzysz → Pomarańcz (Pomarańczowy 🟠)",
+    "en": "• Patrzysz → Pomarańcz (Pomarańczowy 🟠)"
+  },
+  {
+    "context": "acrostic lesson[1].theory[6]",
+    "pl": "• Żabko → Żółć (Żółty 🟡)",
+    "en": "• Żabko → Żółć (Żółty 🟡)"
+  },
+  {
+    "context": "acrostic lesson[1].theory[7]",
+    "pl": "• Zielona → Zieleń (Zielony 🟢)",
+    "en": "• Zielona → Zieleń (Zielony 🟢)"
+  },
+  {
+    "context": "acrostic lesson[1].theory[9]",
+    "pl": "• Fiołki → Fiolet (Fioletowy 🟣)",
+    "en": "• Fiołki → Fiolet (Fioletowy 🟣)"
+  },
+  {
+    "context": "acrostic lesson[1].theory[10]",
+    "pl": "Wystarczy, że wyobrazisz sobie małą zieloną żabkę wąchającą fiołki, a kolory tęczy ułożą się same!",
+    "en": "Wystarczy, że wyobrazisz sobie małą zieloną żabkę wąchającą fiołki, a kolory tęczy ułożą się same!"
+  },
+  {
+    "context": "acrostic lesson[2].theory[0]",
+    "pl": "Po co nam ten trop? Pytanie o kolejność planet pojawia się w szkole, w teleturniejach i w quizach wiedzy ogólnej. Próba wkuwania ich na pamięć kończy się myleniem Merkurego z Marsem.",
+    "en": "Po co nam ten trop? Pytanie o kolejność planet pojawia się w szkole, w teleturniejach i w quizach wiedzy ogólnej. Próba wkuwania ich na pamięć kończy się myleniem Merkurego z Marsem."
+  },
+  {
+    "context": "acrostic lesson[2].theory[1]",
+    "pl": "Oto najsłynniejsze i najskuteczniejsze zdanie w polskiej edukacji:",
+    "en": "Oto najsłynniejsze i najskuteczniejsze zdanie w polskiej edukacji:"
+  },
+  {
+    "context": "acrostic lesson[2].theory[2]",
+    "pl": "„Moja Wiecznie Zapracowana Mama Zawsze Smaży Nam Placki”",
+    "en": "„Moja Wiecznie Zapracowana Mama Zawsze Smaży Nam Placki”"
+  },
+  {
+    "context": "acrostic lesson[2].theory[3]",
+    "pl": "Zobacz, jak każda planeta wskakuje na swoje miejsce od Słońca:",
+    "en": "Zobacz, jak każda planeta wskakuje na swoje miejsce od Słońca:"
+  },
+  {
+    "context": "acrostic lesson[2].theory[4]",
+    "pl": "1. Moja → Merkury ☀️ (najbliżej Słońca)",
+    "en": "1. Moja → Merkury ☀️ (najbliżej Słońca)"
+  },
+  {
+    "context": "acrostic lesson[2].theory[5]",
+    "pl": "2. Wiecznie → Wenus 🌟 (najgorętsza)",
+    "en": "2. Wiecznie → Wenus 🌟 (najgorętsza)"
+  },
+  {
+    "context": "acrostic lesson[2].theory[8]",
+    "pl": "5. Zawsze → Jowisz 🪐 (największy gazowy gigant)",
+    "en": "5. Zawsze → Jowisz 🪐 (największy gazowy gigant)"
+  },
+  {
+    "context": "acrostic lesson[2].theory[9]",
+    "pl": "6. Smaży → Saturn 💫 (planeta z wielkimi pierścieniami)",
+    "en": "6. Smaży → Saturn 💫 (planeta z wielkimi pierścieniami)"
+  },
+  {
+    "context": "acrostic lesson[2].theory[10]",
+    "pl": "7. Nam → Uran ❄️ (błękitny lodowy olbrzym)",
+    "en": "7. Nam → Uran ❄️ (błękitny lodowy olbrzym)"
+  },
+  {
+    "context": "acrostic lesson[2].theory[11]",
+    "pl": "8. Placki → Neptun 🌊 (najdalszy wietrzny błękit)",
+    "en": "8. Placki → Neptun 🌊 (najdalszy wietrzny błękit)"
+  },
+  {
+    "context": "acrostic lesson[2].theory[12]",
+    "pl": "Wyobraź sobie mamę w skafandrze kosmicznym z wielką patelnią pośród gwiazd – obraz jest tak żywy, że zostanie z Tobą na zawsze!",
+    "en": "Wyobraź sobie mamę w skafandrze kosmicznym z wielką patelnią pośród gwiazd – obraz jest tak żywy, że zostanie z Tobą na zawsze!"
+  },
+  {
+    "context": "acrostic lesson[3].subtitle",
+    "pl": "Lech Chce Dobrze Mieszkać: 50, 100, 500, 1000",
+    "en": "Lech Chce Dobrze Mieszkać (50, 100, 500, 1000)"
+  },
+  {
+    "context": "acrostic lesson[3].theory[0]",
+    "pl": "Po co nam ten trop? Rzymskie cyfry I (1), V (5) i X (10) zna każdy. Problem zaczyna się przy wyższych wartościach: L, C, D, M. Na zegarach, pomnikach, datach w filmach i na fasadach budynków ludzie często zastanawiają się: „Ile to było C, a ile D?”.",
+    "en": "Po co nam ten trop? Rzymskie cyfry I (1), V (5) i X (10) zna każdy. Problem zaczyna się przy wyższych wartościach: L, C, D, M. Na zegarach, pomnikach, datach w filmach i na fasadach budynków ludzie często zastanawiają się: „Ile to było C, a ile D?”."
+  },
+  {
+    "context": "acrostic lesson[3].theory[1]",
+    "pl": "Wystarczy zapamiętać jedno proste zdanie o legendarnym królu Lechu:",
+    "en": "Wystarczy zapamiętać jedno proste zdanie o legendarnym królu Lechu:"
+  },
+  {
+    "context": "acrostic lesson[3].theory[2]",
+    "pl": "„Lech Chce Dobrze Mieszkać”",
+    "en": "„Lech Chce Dobrze Mieszkać”"
+  },
+  {
+    "context": "acrostic lesson[3].theory[3]",
+    "pl": "Litery rosną w nim dokładnie tak, jak wartości rzymskie:",
+    "en": "Litery rosną w nim dokładnie tak, jak wartości rzymskie:"
+  },
+  {
+    "context": "acrostic lesson[3].theory[5]",
+    "pl": "• C = 100 (Chce – od łacińskiego Centum)",
+    "en": "• C = 100 (Chce – od łacińskiego Centum)"
+  },
+  {
+    "context": "acrostic lesson[3].theory[7]",
+    "pl": "• M = 1000 (Mieszkać – od łacińskiego Mille, czyli tysiąc)",
+    "en": "• M = 1000 (Mieszkać – od łacińskiego Mille, czyli tysiąc)"
+  },
+  {
+    "context": "acrostic lesson[4].theory[0]",
+    "pl": "Po co nam ten trop? Podczas czytania mapy, w nawigacji GPS lub w grach komputerowych kierunki podawane są w standardzie międzynarodowym: N, E, S, W. Wiele osób myli wschód (East) z zachodem (West).",
+    "en": "Po co nam ten trop? Podczas czytania mapy, w nawigacji GPS lub w grach komputerowych kierunki podawane są w standardzie międzynarodowym: N, E, S, W. Wiele osób myli wschód (East) z zachodem (West)."
+  },
+  {
+    "context": "acrostic lesson[4].theory[1]",
+    "pl": "Spójrz na tarczę kompasu zgodnie z ruchem wskazówek zegara, zaczynając od góry:",
+    "en": "Spójrz na tarczę kompasu zgodnie z ruchem wskazówek zegara, zaczynając od góry:"
+  },
+  {
+    "context": "acrostic lesson[4].theory[3]",
+    "pl": "• Na (Góra) → North (Północ ⬆️)",
+    "en": "• Na (Góra) → North (Północ ⬆️)"
+  },
+  {
+    "context": "acrostic lesson[4].theory[4]",
+    "pl": "• Ekranie (Prawo) → East (Wschód ➡️)",
+    "en": "• Ekranie (Prawo) → East (Wschód ➡️)"
+  },
+  {
+    "context": "acrostic lesson[4].theory[5]",
+    "pl": "• Siedzi (Dół) → South (Południe ⬇️)",
+    "en": "• Siedzi (Dół) → South (Południe ⬇️)"
+  },
+  {
+    "context": "acrostic lesson[4].theory[6]",
+    "pl": "• Wrona (Lewo) → West (Zachód ⬅️)",
+    "en": "• Wrona (Lewo) → West (Zachód ⬅️)"
+  },
+  {
+    "context": "acrostic lesson[4].theory[7]",
+    "pl": "Gdy spojrzysz na mapę, od razu widzisz czarną wronę siedzącą po lewej stronie ekranu i bez wahania wiesz, gdzie jest East, a gdzie West!",
+    "en": "Gdy spojrzysz na mapę, od razu widzisz czarną wronę siedzącą po lewej stronie ekranu i bez wahania wiesz, gdzie jest East, a gdzie West!"
+  },
+  {
+    "context": "acrostic lesson[5].subtitle",
+    "pl": "Mama Dała Córce Bułkę Nasmarowaną Masłem Wiejskim",
+    "en": "\"Mama Dała Córce Bułkę...\" (7 Grammar Cases)"
+  },
+  {
+    "context": "acrostic lesson[5].theory[0]",
+    "pl": "Po co nam ten trop? W języku polskim mamy 7 przypadków gramatycznych. Uczniowie godzinami próbują zapamiętać ich kolejność, myląc celownik z biernikiem lub narzędnik z miejscownikiem.",
+    "en": "Po co nam ten trop? W języku polskim mamy 7 przypadków gramatycznych. Uczniowie godzinami próbują zapamiętać ich kolejność, myląc celownik z biernikiem lub narzędnik z miejscownikiem."
+  },
+  {
+    "context": "acrostic lesson[5].theory[1]",
+    "pl": "Oto pyszne zdanie-klucz, które rozwiązuje ten problem raz na zawsze:",
+    "en": "Oto pyszne zdanie-klucz, które rozwiązuje ten problem raz na zawsze:"
+  },
+  {
+    "context": "acrostic lesson[5].theory[2]",
+    "pl": "„Mama Dała Córce Bułkę Nasmarowaną Masłem Wiejskim”",
+    "en": "„Mama Dała Córce Bułkę Nasmarowaną Masłem Wiejskim”"
+  },
+  {
+    "context": "acrostic lesson[5].theory[3]",
+    "pl": "Każde słowo to pierwszy człon kolejnego przypadku z pytaniami:",
+    "en": "Każde słowo to pierwszy człon kolejnego przypadku z pytaniami:"
+  },
+  {
+    "context": "acrostic lesson[5].theory[5]",
+    "pl": "2. Dała → Dopełniacz (kogo? czego? – nie ma)",
+    "en": "2. Dała → Dopełniacz (kogo? czego? – nie ma)"
+  },
+  {
+    "context": "acrostic lesson[5].theory[6]",
+    "pl": "3. Córce → Celownik (komu? czemu? – się przyglądam)",
+    "en": "3. Córce → Celownik (komu? czemu? – się przyglądam)"
+  },
+  {
+    "context": "acrostic lesson[5].theory[7]",
+    "pl": "4. Bułkę → Biernik (kogo? co? – widzę)",
+    "en": "4. Bułkę → Biernik (kogo? co? – widzę)"
+  },
+  {
+    "context": "acrostic lesson[5].theory[8]",
+    "pl": "5. Nasmarowaną → Narzędnik (z kim? z czym? – idę)",
+    "en": "5. Nasmarowaną → Narzędnik (z kim? z czym? – idę)"
+  },
+  {
+    "context": "acrostic lesson[5].theory[9]",
+    "pl": "6. Masłem → Miejscownik (o kim? o czym? – rozmawiam)",
+    "en": "6. Masłem → Miejscownik (o kim? o czym? – rozmawiam)"
+  },
+  {
+    "context": "acrostic lesson[5].theory[10]",
+    "pl": "7. Wiejskim → Wołacz (o! – witaj!)",
+    "en": "7. Wiejskim → Wołacz (o! – witaj!)"
+  },
+  {
+    "context": "acrostic lesson[5].theory[11]",
+    "pl": "Z taką bułką żaden sprawdzian z języka polskiego Cię nie zaskoczy!",
+    "en": "Z taką bułką żaden sprawdzian z języka polskiego Cię nie zaskoczy!"
+  },
+  {
+    "context": "acrostic lesson[6].theory[0]",
+    "pl": "Po co nam rymowanki? Nasz słuch kocha rym i rytm. Suche regułki gramatyczne ulatują z głowy, ale wierszyk o prostej melodyjce zapamiętujemy natychmiast.",
+    "en": "Po co nam rymowanki? Nasz słuch kocha rym i rytm. Suche regułki gramatyczne ulatują z głowy, ale wierszyk o prostej melodyjce zapamiętujemy natychmiast."
+  },
+  {
+    "context": "acrostic lesson[6].theory[1]",
+    "pl": "Oto 3 złote zasady, które uratowały miliony uczniów przed dwójami:",
+    "en": "Oto 3 złote zasady, które uratowały miliony uczniów przed dwójami:"
+  },
+  {
+    "context": "acrostic lesson[6].theory[2]",
+    "pl": "1. Końcówka „-uje”: „Kto kreskuje -uje, ten dwóje otrzymuje!” (maluje, rysuje, gotuje – ZAWSZE przez u zwykłe!).",
+    "en": "1. Końcówka „-uje”: „Kto kreskuje -uje, ten dwóje otrzymuje!” (maluje, rysuje, gotuje – ZAWSZE przez u zwykłe!)."
+  },
+  {
+    "context": "acrostic lesson[6].theory[3]",
+    "pl": "2. Cząstka „-by”: Z czasownikami w formie osobowej PISZEMY ZAWSZE RAZEM: zrobiłby, poszedłby, zaśpiewałaby.",
+    "en": "2. Cząstka „-by”: Z czasownikami w formie osobowej PISZEMY ZAWSZE RAZEM: zrobiłby, poszedłby, zaśpiewałaby."
+  },
+  {
+    "context": "acrostic lesson[6].theory[4]",
+    "pl": "3. Rz po spółgłoskach (p, b, t, d, k, g, ch, j, w): Zdanie-trop brzmi: „Prosił Bohaterski Tygrys Dobrego Konia, Gdy Chciał Jeść Warzywa”. Po literach P, B, T, D, K, G, CH, J, W piszemy RZ (np. przyjaciel, brzeg, trzeba, drzewo, krzak)!",
+    "en": "3. Rz po spółgłoskach (p, b, t, d, k, g, ch, j, w): Zdanie-trop brzmi: „Prosił Bohaterski Tygrys Dobrego Konia, Gdy Chciał Jeść Warzywa”. Po literach P, B, T, D, K, G, CH, J, W piszemy RZ (np. przyjaciel, brzeg, trzeba, drzewo, krzak)!"
+  },
+  {
+    "context": "acrostic lesson[6].theory[5]",
+    "pl": "Wystarczy zanucić wierszyk i wiesz, jaką literę postawić na kartce!",
+    "en": "Wystarczy zanucić wierszyk i wiesz, jaką literę postawić na kartce!"
+  },
+  {
+    "context": "acrostic lesson[7].theory[0]",
+    "pl": "Po co nam ten trop? Chemia i biologia pełne są trudnych nazw. Na szczęście naukowcy stworzyli genialne akronimy, które streszczają całe rozdziały podręcznika.",
+    "en": "Po co nam ten trop? Chemia i biologia pełne są trudnych nazw. Na szczęście naukowcy stworzyli genialne akronimy, które streszczają całe rozdziały podręcznika."
+  },
+  {
+    "context": "acrostic lesson[7].theory[1]",
+    "pl": "1. Pierwiastki biogenne CHNOPS: Aż 96% masy ciała człowieka składa się z zaledwie 6 pierwiastków:",
+    "en": "1. Pierwiastki biogenne CHNOPS: Aż 96% masy ciała człowieka składa się z zaledwie 6 pierwiastków:"
+  },
+  {
+    "context": "acrostic lesson[7].theory[2]",
+    "pl": "• C → Węgiel (Carbon 🧬)",
+    "en": "• C → Węgiel (Carbon 🧬)"
+  },
+  {
+    "context": "acrostic lesson[7].theory[3]",
+    "pl": "• H → Wodór (Hydrogen 💧)",
+    "en": "• H → Wodór (Hydrogen 💧)"
+  },
+  {
+    "context": "acrostic lesson[7].theory[6]",
+    "pl": "• P → Fosfor (Phosphorus 🦴 - mocne kości)",
+    "en": "• P → Fosfor (Phosphorus 🦴 - mocne kości)"
+  },
+  {
+    "context": "acrostic lesson[7].theory[7]",
+    "pl": "• S → Siarka (Sulfur 💅 - włosy i paznokcie)",
+    "en": "• S → Siarka (Sulfur 💅 - włosy i paznokcie)"
+  },
+  {
+    "context": "acrostic lesson[7].theory[8]",
+    "pl": "2. Witaminy rozpuszczalne w tłuszczach: Witaminy dzielą się na rozpuszczalne w wodzie i tłuszczach. Te drugie tworzą imię chłopca: ADEK (witaminy A, D, E, K)!",
+    "en": "2. Witaminy rozpuszczalne w tłuszczach: Witaminy dzielą się na rozpuszczalne w wodzie i tłuszczach. Te drugie tworzą imię chłopca: ADEK (witaminy A, D, E, K)!"
+  },
+  {
+    "context": "acrostic lesson[7].theory[9]",
+    "pl": "Wyobraź sobie chłopca ADEK pijącego mleko z masłem (tłuszcz!), a zapamiętasz to na całe życie!",
+    "en": "Wyobraź sobie chłopca ADEK pijącego mleko z masłem (tłuszcz!), a zapamiętasz to na całe życie!"
+  },
+  {
+    "context": "acrostic lesson[8].subtitle",
+    "pl": "Edek Hoduje Gołębie Dla Agaty Ewy",
+    "en": "\"Edek Hoduje Gołębie...\" (Guitar Strings E B G D A E)"
+  },
+  {
+    "context": "acrostic lesson[8].theory[0]",
+    "pl": "Po co nam ten trop? Każdy, kto zaczyna naukę gry na gitarze klasycznej, akustycznej lub elektrycznej, musi znać dźwięki pustych strun. Początkujący bez przerwy mylą kolejność strun basowych i wiolinowych.",
+    "en": "Po co nam ten trop? Każdy, kto zaczyna naukę gry na gitarze klasycznej, akustycznej lub elektrycznej, musi znać dźwięki pustych strun. Początkujący bez przerwy mylą kolejność strun basowych i wiolinowych."
+  },
+  {
+    "context": "acrostic lesson[8].theory[1]",
+    "pl": "Struny gitary liczymy od najcieńszej (na dole, e1) do najgrubszej (na górze, E6):",
+    "en": "Struny gitary liczymy od najcieńszej (na dole, e1) do najgrubszej (na górze, E6):"
+  },
+  {
+    "context": "acrostic lesson[8].theory[2]",
+    "pl": "Zdanie-klucz brzmi: „Edek Hoduje Gołębie Dla Agaty Ewy”",
+    "en": "Zdanie-klucz brzmi: „Edek Hoduje Gołębie Dla Agaty Ewy”"
+  },
+  {
+    "context": "acrostic lesson[8].theory[3]",
+    "pl": "Zobacz dźwięki kolejnych strun:",
+    "en": "Zobacz dźwięki kolejnych strun:"
+  },
+  {
+    "context": "acrostic lesson[8].theory[4]",
+    "pl": "• Edek → e (struna 1, wiolinowa – najwyższy dźwięk 🎶)",
+    "en": "• Edek → e (struna 1, wiolinowa – najwyższy dźwięk 🎶)"
+  },
+  {
+    "context": "acrostic lesson[8].theory[6]",
+    "pl": "• Gołębie → g (struna 3)",
+    "en": "• Gołębie → g (struna 3)"
+  },
+  {
+    "context": "acrostic lesson[8].theory[10]",
+    "pl": "Dzięki Edkowi i jego gołębiom nastrojenie instrumentu staje się dziecinnie proste!",
+    "en": "Dzięki Edkowi i jego gołębiom nastrojenie instrumentu staje się dziecinnie proste!"
+  },
+  {
+    "context": "acrostic lesson[9].subtitle",
+    "pl": "Król Tybetański Gryzł Rybę Rodzinną Rano Gotowaną",
+    "en": "\"Król Tybetański Gryzł...\" (Biological Classification)"
+  },
+  {
+    "context": "acrostic lesson[9].theory[0]",
+    "pl": "Po co nam ten trop? Systematyka biologiczna stworzona przez Karola Linneusza to fundament nauk o przyrodzie. Uczniowie nagminnie mylą, czy rząd jest przed rodziną, czy gromada przed typem.",
+    "en": "Po co nam ten trop? Systematyka biologiczna stworzona przez Karola Linneusza to fundament nauk o przyrodzie. Uczniowie nagminnie mylą, czy rząd jest przed rodziną, czy gromada przed typem."
+  },
+  {
+    "context": "acrostic lesson[9].theory[2]",
+    "pl": "„Król Tybetański Gryzł Rybę Rodzinną Rano Gotowaną”",
+    "en": "„Król Tybetański Gryzł Rybę Rodzinną Rano Gotowaną”"
+  },
+  {
+    "context": "acrostic lesson[9].theory[3]",
+    "pl": "Każde słowo to szczebel taksonomiczny od najszerszego do najwęższego:",
+    "en": "Każde słowo to szczebel taksonomiczny od najszerszego do najwęższego:"
+  },
+  {
+    "context": "acrostic lesson[9].theory[4]",
+    "pl": "1. Król → Królestwo (np. zwierzęta 🦁)",
+    "en": "1. Król → Królestwo (np. zwierzęta 🦁)"
+  },
+  {
+    "context": "acrostic lesson[9].theory[5]",
+    "pl": "2. Tybetański → Typ (np. strunowce)",
+    "en": "2. Tybetański → Typ (np. strunowce)"
+  },
+  {
+    "context": "acrostic lesson[9].theory[6]",
+    "pl": "3. Gryzł → Gromada (np. ssaki 🐾)",
+    "en": "3. Gryzł → Gromada (np. ssaki 🐾)"
+  },
+  {
+    "context": "acrostic lesson[9].theory[7]",
+    "pl": "4. Rybę → Rząd (np. drapieżne)",
+    "en": "4. Rybę → Rząd (np. drapieżne)"
+  },
+  {
+    "context": "acrostic lesson[9].theory[8]",
+    "pl": "5. Rodzinną → Rodzina (np. psowate 🐶)",
+    "en": "5. Rodzinną → Rodzina (np. psowate 🐶)"
+  },
+  {
+    "context": "acrostic lesson[9].theory[10]",
+    "pl": "7. Gotowaną → Gatunek (np. pies domowy / Canis familiaris)",
+    "en": "7. Gotowaną → Gatunek (np. pies domowy / Canis familiaris)"
+  },
+  {
+    "context": "acrostic lesson[9].theory[11]",
+    "pl": "Widzisz tybetańskiego króla gryzącego gotowaną rybę i cała drabina biologiczna stoi przed Tobą otworem!",
+    "en": "Widzisz tybetańskiego króla gryzącego gotowaną rybę i cała drabina biologiczna stoi przed Tobą otworem!"
+  },
+  {
+    "context": "acrostic lesson[10].theory[0]",
+    "pl": "Gratulacje! Znasz już potęgę akrostychów w szkole, nauce i życiu. Czas na mistrzostwo: jak ułożyć własne zdanie-klucz w 3 prostych krokach?",
+    "en": "Gratulacje! Znasz już potęgę akrostychów w szkole, nauce i życiu. Czas na mistrzostwo: jak ułożyć własne zdanie-klucz w 3 prostych krokach?"
+  },
+  {
+    "context": "acrostic lesson[10].theory[1]",
+    "pl": "Oto algorytm Pieska Łatka:",
+    "en": "Oto algorytm Pieska Łatka:"
+  },
+  {
+    "context": "acrostic lesson[10].theory[2]",
+    "pl": "1. 📝 Wypisz pierwsze litery: Zapisz słowa, które musisz zapamiętać i podkreśl ich pierwsze litery (np. zakupy: Chleb, Masło, Pomidory, Ser → C, M, P, S).",
+    "en": "1. 📝 Wypisz pierwsze litery: Zapisz słowa, które musisz zapamiętać i podkreśl ich pierwsze litery (np. zakupy: Chleb, Masło, Pomidory, Ser → C, M, P, S)."
+  },
+  {
+    "context": "acrostic lesson[10].theory[3]",
+    "pl": "2. 🤪 Znajdź śmieszne, żywe słowa: Nie twórz nudnych zdań! Twój mózg ignoruje przeciętność. Ułóż coś zaskakującego, np. „Czarny Małpiszon Pożarł Śrubokręt!” (C, M, P, S).",
+    "en": "2. 🤪 Znajdź śmieszne, żywe słowa: Nie twórz nudnych zdań! Twój mózg ignoruje przeciętność. Ułóż coś zaskakującego, np. „Czarny Małpiszon Pożarł Śrubokręt!” (C, M, P, S)."
+  },
+  {
+    "context": "acrostic lesson[10].theory[4]",
+    "pl": "3. 🎨 Zobacz to w wyobraźni: Zamknij oczy na 3 sekundy i zobacz wielką czarną małpę z wielkim uśmiechem i śrubokrętem. Poczuj emocje, śmiech i absurd!",
+    "en": "3. 🎨 Zobacz to w wyobraźni: Zamknij oczy na 3 sekundy i zobacz wielką czarną małpę z wielkim uśmiechem i śrubokrętem. Poczuj emocje, śmiech i absurd!"
+  },
+  {
+    "context": "acrostic lesson[10].theory[5]",
+    "pl": "Gotowe! Z tym 3-krokowym algorytmem zapamiętasz przemówienie na 10 punktów, procedurę w pracy, etapy projektu czy listę rzeczy na wakacje!",
+    "en": "Gotowe! Z tym 3-krokowym algorytmem zapamiętasz przemówienie na 10 punktów, procedurę w pracy, etapy projektu czy listę rzeczy na wakacje!"
+  }
+]

@@ -31,6 +31,8 @@ body[data-game="words"]{--theme-c1:#00b09b;--theme-c2:#96c93d;--theme-c3:#10ac84
 body[data-game="cards"]{--theme-c1:#e11d48;--theme-c2:#fb7185;--theme-c3:#881337;--theme-glow:#3c081b;}
 body[data-game="link"]{--theme-c1:#d35400;--theme-c2:#f39c12;--theme-c3:#e67e22;--theme-glow:#3b1c08;}
 body[data-game="calendar"]{--theme-c1:#16a34a;--theme-c2:#22c55e;--theme-c3:#059669;--theme-glow:#0b2e1a;}
+body[data-game="acrostic"]{--theme-c1:#f59e0b;--theme-c2:#d97706;--theme-c3:#b45309;--theme-glow:#3d200a;}
+body[data-game="mindmap"]{--theme-c1:#d946ef;--theme-c2:#8b5cf6;--theme-c3:#06b6d4;--theme-glow:#2e0854;}
 
 /* ── Tło, luksusowy ambient i cząsteczki ── */
 .bg{position:fixed;inset:0;z-index:-1;overflow:hidden;background:radial-gradient(130% 90% at 50% -10%,var(--theme-glow) 0%,var(--bg) 65%),radial-gradient(80% 60% at 50% 100%,color-mix(in srgb,var(--theme-c1) 18%,transparent) 0%,transparent 70%);transition:background .8s cubic-bezier(.2,.8,.2,1);pointer-events:none}
@@ -120,6 +122,20 @@ body[data-game="calendar"] .p-4::after{content:"🕰️"}
 body[data-game="calendar"] .p-5::after{content:"⏱️"}
 body[data-game="calendar"] .p-6::after{content:"⭐"}
 
+body[data-game="acrostic"] .p-1::after{content:"🐶"}
+body[data-game="acrostic"] .p-2::after{content:"🦴"}
+body[data-game="acrostic"] .p-3::after{content:"✨"}
+body[data-game="acrostic"] .p-4::after{content:"🐾"}
+body[data-game="acrostic"] .p-5::after{content:"🔤"}
+body[data-game="acrostic"] .p-6::after{content:"⭐"}
+
+body[data-game="mindmap"] .p-1::after{content:"🐙"}
+body[data-game="mindmap"] .p-2::after{content:"💡"}
+body[data-game="mindmap"] .p-3::after{content:"✨"}
+body[data-game="mindmap"] .p-4::after{content:"🌊"}
+body[data-game="mindmap"] .p-5::after{content:"🧠"}
+body[data-game="mindmap"] .p-6::after{content:"🎨"}
+
 @media (prefers-reduced-motion: reduce){
   .bg i, .m-p{animation:none!important}
 }
@@ -133,6 +149,7 @@ body[data-game="calendar"] .p-6::after{content:"⭐"}
 .brand:hover{transform:scale(1.02)}
 .brand svg{border-radius:14px;box-shadow:0 6px 20px rgba(124,92,255,.45);transition:box-shadow .3s}
 .brand:hover svg{box-shadow:0 8px 26px rgba(255,107,214,.55)}
+.v-tag{font-size:.68rem;font-weight:800;letter-spacing:.04em;padding:2px 7px;border-radius:999px;background:linear-gradient(135deg,rgba(124,92,255,.25),rgba(255,107,214,.25));border:1px solid rgba(255,255,255,.18);color:#ffc857;text-transform:uppercase;margin-left:2px;line-height:1.2;vertical-align:middle;box-shadow:0 2px 8px rgba(0,0,0,.2)}
 .top-actions{display:flex;align-items:center;gap:10px}
 .icon-btn,.avatar-btn,.pill{border:1px solid rgba(255,255,255,.14);background:linear-gradient(135deg,rgba(255,255,255,.1),rgba(255,255,255,.04));border-radius:999px;transition:all .25s cubic-bezier(.34,1.56,.64,1);box-shadow:0 4px 14px rgba(0,0,0,.2),inset 0 1px 1px rgba(255,255,255,.2)}
 .icon-btn{width:44px;height:44px;font-size:1.2rem;display:grid;place-items:center}
@@ -335,58 +352,63 @@ a.lesson:hover{transform:translateX(6px);background:rgba(255,255,255,.14);border
 .go-score span{color:var(--muted);font-weight:800;font-size:1.1rem}.go-best{font-weight:900;color:var(--amber);margin-bottom:14px;font-size:1.1rem}
 
 /* ── Urocze zwierzątka i ich aury ── */
-.cat-wrap, .tiger-wrap, .fox-wrap, .owl-wrap, .parrot-wrap, .raccoon-wrap, .squirrel-wrap, .turtle-wrap{display:flex;align-items:flex-end;gap:12px;--cs:134px;margin:10px 0}
-.cat-sm, .tiger-sm, .fox-sm, .owl-sm, .parrot-sm, .raccoon-sm, .squirrel-sm, .turtle-sm{--cs:98px}
-.cat-lg, .tiger-lg, .fox-lg, .owl-lg, .parrot-lg, .raccoon-lg, .squirrel-lg, .turtle-lg{--cs:194px;flex-direction:column;align-items:center;gap:8px}
-.cat-figure, .tiger-figure, .fox-figure, .owl-figure, .parrot-figure, .raccoon-figure, .squirrel-figure, .turtle-figure{flex:none;width:var(--cs);padding:0;border:0;background:none;cursor:pointer;display:block}
-.cat, .tiger, .fox, .owl, .parrot, .raccoon, .squirrel, .turtle{width:100%;display:block;overflow:visible;--px:0;--py:0}
-.cat *, .tiger *, .fox *, .owl *, .parrot *, .raccoon *, .squirrel *, .turtle *{transform-box:fill-box}
-.cat .all, .tiger .all, .fox .all, .owl .all, .parrot .all, .raccoon .all, .squirrel .all, .turtle .all{transform-origin:50% 100%;animation:breathe 3.4s ease-in-out infinite}
+.cat-wrap, .tiger-wrap, .fox-wrap, .owl-wrap, .parrot-wrap, .raccoon-wrap, .squirrel-wrap, .turtle-wrap, .dog-wrap, .octopus-wrap{display:flex;align-items:flex-end;gap:12px;--cs:134px;margin:10px 0}
+.cat-sm, .tiger-sm, .fox-sm, .owl-sm, .parrot-sm, .raccoon-sm, .squirrel-sm, .turtle-sm, .dog-sm, .octopus-sm{--cs:98px}
+.cat-lg, .tiger-lg, .fox-lg, .owl-lg, .parrot-lg, .raccoon-lg, .squirrel-lg, .turtle-lg, .dog-lg, .octopus-lg{--cs:194px;flex-direction:column;align-items:center;gap:8px}
+.cat-figure, .tiger-figure, .fox-figure, .owl-figure, .parrot-figure, .raccoon-figure, .squirrel-figure, .turtle-figure, .dog-figure, .octopus-figure{flex:none;width:var(--cs);padding:0;border:0;background:none;cursor:pointer;display:block}
+.cat, .tiger, .fox, .owl, .parrot, .raccoon, .squirrel, .turtle, .dog, .octopus{width:100%;display:block;overflow:visible;--px:0;--py:0}
+.cat *, .tiger *, .fox *, .owl *, .parrot *, .raccoon *, .squirrel *, .turtle *, .dog *, .octopus *{transform-box:fill-box}
+.cat .all, .tiger .all, .fox .all, .owl .all, .parrot .all, .raccoon .all, .squirrel .all, .turtle .all, .dog .all, .octopus .all{transform-origin:50% 100%;animation:breathe 3.4s ease-in-out infinite}
 @keyframes breathe{50%{transform:scale(1.02,.98)}}
-.cat .tail, .tiger .tail, .fox .tail, .raccoon .tail, .squirrel .tail, .parrot .wing-l{transform-origin:0% 100%;animation:tail 2.8s ease-in-out infinite}
+.cat .tail, .tiger .tail, .fox .tail, .raccoon .tail, .squirrel .tail, .parrot .wing-l, .dog .tail{transform-origin:0% 100%;animation:tail 2.8s ease-in-out infinite}
 @keyframes tail{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(14deg)}}
-.cat.tail-fast .tail, .tiger.tail-fast .tail, .fox.tail-fast .tail, .raccoon.tail-fast .tail, .squirrel.tail-fast .tail{animation:tail .35s ease-in-out 3}
-.cat .head, .tiger .head, .fox .head, .owl .head, .parrot .head, .raccoon .head, .squirrel .head, .turtle .head{transform-origin:50% 95%;transition:transform .4s}
-.cat .ear, .tiger .ear, .fox .ear, .raccoon .ear, .squirrel .ear, .owl .tuft{transform-origin:50% 100%;transition:transform .3s}
-.cat.ear-twitch .ear-l, .tiger.ear-twitch .ear-l, .fox.ear-twitch .ear-l, .raccoon.ear-twitch .ear-l{animation:twitch .3s 2}
+.cat.tail-fast .tail, .tiger.tail-fast .tail, .fox.tail-fast .tail, .raccoon.tail-fast .tail, .squirrel.tail-fast .tail, .dog.tail-fast .tail{animation:tail .35s ease-in-out 3}
+.cat .head, .tiger .head, .fox .head, .owl .head, .parrot .head, .raccoon .head, .squirrel .head, .turtle .head, .dog .head, .octopus .head{transform-origin:50% 95%;transition:transform .4s}
+.cat .ear, .tiger .ear, .fox .ear, .raccoon .ear, .squirrel .ear, .owl .tuft, .dog .ear{transform-origin:50% 100%;transition:transform .3s}
+.cat.ear-twitch .ear-l, .tiger.ear-twitch .ear-l, .fox.ear-twitch .ear-l, .raccoon.ear-twitch .ear-l, .dog.ear-twitch .ear-l{animation:twitch .3s 2}
 @keyframes twitch{50%{transform:rotate(-18deg)}}
-.cat .eye, .tiger .eye, .fox .eye, .owl .eye, .parrot .eye, .raccoon .eye, .squirrel .eye, .turtle .eye{transform-origin:0 0;animation:blink 5.2s infinite}
-.cat .eye:nth-child(2), .tiger .eye:nth-child(2), .fox .eye:nth-child(2), .owl .eye:nth-child(2), .parrot .eye:nth-child(2), .raccoon .eye:nth-child(2), .squirrel .eye:nth-child(2), .turtle .eye:nth-child(2){animation-delay:.02s}
+.cat .eye, .tiger .eye, .fox .eye, .owl .eye, .parrot .eye, .raccoon .eye, .squirrel .eye, .turtle .eye, .dog .eye, .octopus .eye{transform-origin:0 0;animation:blink 5.2s infinite}
+.cat .eye:nth-child(2), .tiger .eye:nth-child(2), .fox .eye:nth-child(2), .owl .eye:nth-child(2), .parrot .eye:nth-child(2), .raccoon .eye:nth-child(2), .squirrel .eye:nth-child(2), .turtle .eye:nth-child(2), .dog .eye:nth-child(2), .octopus .eye:nth-child(2){animation-delay:.02s}
 @keyframes blink{0%,93%,100%{transform:scaleY(1)}96%{transform:scaleY(.08)}}
-.cat .pupil, .tiger .pupil, .fox .pupil, .owl .pupil, .parrot .pupil, .raccoon .pupil, .squirrel .pupil, .turtle .pupil{transform:translate(calc(var(--px)*1px + var(--ox,0px)),calc(var(--py)*1px + var(--oy,0px)))}
-.cat .eyes-closed, .tiger .eyes-closed, .fox .eyes-closed, .owl .eyes-closed, .parrot .eyes-closed, .raccoon .eyes-closed, .squirrel .eyes-closed, .turtle .eyes-closed,
-.cat .m-open, .tiger .m-open, .fox .m-open, .owl .m-open, .parrot .m-open, .raccoon .m-open, .squirrel .m-open, .turtle .m-open,
-.cat .m-sad, .tiger .m-sad, .fox .m-sad, .owl .m-sad, .parrot .m-sad, .raccoon .m-sad, .squirrel .m-sad, .turtle .m-sad,
-.cat .tear, .tiger .tear, .fox .tear, .owl .tear, .parrot .tear, .raccoon .tear, .squirrel .tear, .turtle .tear{display:none}
-.cat .arm, .tiger .arm, .fox .arm, .owl .arm, .parrot .arm, .raccoon .arm, .squirrel .arm, .turtle .arm{transition:transform .35s cubic-bezier(.3,1.6,.5,1)}
-.cat .arm-l, .tiger .arm-l, .fox .arm-l, .owl .arm-l, .parrot .arm-l, .raccoon .arm-l, .squirrel .arm-l, .turtle .arm-l{transform-origin:100% 0}
-.cat .arm-r, .tiger .arm-r, .fox .arm-r, .owl .arm-r, .parrot .arm-r, .raccoon .arm-r, .squirrel .arm-r, .turtle .arm-r{transform-origin:0 0}
-.cat.wave .arm-r, .tiger.wave .arm-r, .fox.wave .arm-r, .owl.wave .arm-r, .parrot.wave .arm-r, .raccoon.wave .arm-r, .squirrel.wave .arm-r, .turtle.wave .arm-r{animation:wave .5s ease-in-out 3}
+.cat .pupil, .tiger .pupil, .fox .pupil, .owl .pupil, .parrot .pupil, .raccoon .pupil, .squirrel .pupil, .turtle .pupil, .dog .pupil, .octopus .pupil{transform:translate(calc(var(--px)*1px + var(--ox,0px)),calc(var(--py)*1px + var(--oy,0px)))}
+.cat .eyes-closed, .tiger .eyes-closed, .fox .eyes-closed, .owl .eyes-closed, .parrot .eyes-closed, .raccoon .eyes-closed, .squirrel .eyes-closed, .turtle .eyes-closed, .dog .eyes-closed, .octopus .eyes-closed,
+.cat .m-open, .tiger .m-open, .fox .m-open, .owl .m-open, .parrot .m-open, .raccoon .m-open, .squirrel .m-open, .turtle .m-open, .dog .m-open, .octopus .m-open,
+.cat .m-sad, .tiger .m-sad, .fox .m-sad, .owl .m-sad, .parrot .m-sad, .raccoon .m-sad, .squirrel .m-sad, .turtle .m-sad, .dog .m-sad, .octopus .m-sad,
+.cat .tear, .tiger .tear, .fox .tear, .owl .tear, .parrot .tear, .raccoon .tear, .squirrel .tear, .turtle .tear, .dog .tear, .octopus .tear{display:none}
+.cat .arm, .tiger .arm, .fox .arm, .owl .arm, .parrot .arm, .raccoon .arm, .squirrel .arm, .turtle .arm, .dog .arm{transition:transform .35s cubic-bezier(.3,1.6,.5,1)}
+.cat .arm-l, .tiger .arm-l, .fox .arm-l, .owl .arm-l, .parrot .arm-l, .raccoon .arm-l, .squirrel .arm-l, .turtle .arm-l, .dog .arm-l{transform-origin:100% 0}
+.cat .arm-r, .tiger .arm-r, .fox .arm-r, .owl .arm-r, .parrot .arm-r, .raccoon .arm-r, .squirrel .arm-r, .turtle .arm-r, .dog .arm-r{transform-origin:0 0}
+.cat.wave .arm-r, .tiger.wave .arm-r, .fox.wave .arm-r, .owl.wave .arm-r, .parrot.wave .arm-r, .raccoon.wave .arm-r, .squirrel.wave .arm-r, .turtle.wave .arm-r, .dog.wave .arm-r{animation:wave .5s ease-in-out 3}
 @keyframes wave{0%,100%{transform:rotate(-125deg)}50%{transform:rotate(-150deg)}}
-.cat.hop, .tiger.hop, .fox.hop, .owl.hop, .parrot.hop, .raccoon.hop, .squirrel.hop, .turtle.hop{animation:hop .6s}
+.cat.hop, .tiger.hop, .fox.hop, .owl.hop, .parrot.hop, .raccoon.hop, .squirrel.hop, .turtle.hop, .dog.hop, .octopus.hop{animation:hop .6s}
 @keyframes hop{40%{transform:translateY(-18px)}}
 
+/* Macki ośmiornicy */
+.octopus .tentacle-front-1, .octopus .tentacle-back-1{transform-origin:70px 135px;animation:tentacleWave 3s ease-in-out infinite}
+.octopus .tentacle-front-2, .octopus .tentacle-back-2{transform-origin:130px 135px;animation:tentacleWave 3s ease-in-out infinite reverse;animation-delay:-1.2s}
+@keyframes tentacleWave{0%,100%{transform:rotate(0deg)}50%{transform:rotate(5deg)}}
+
 /* Nastroje */
-.cat[data-mood=think] .head, .tiger[data-mood=think] .head, .fox[data-mood=think] .head, .owl[data-mood=think] .head, .parrot[data-mood=think] .head, .raccoon[data-mood=think] .head, .squirrel[data-mood=think] .head, .turtle[data-mood=think] .head{transform:rotate(-8deg)}
-.cat[data-mood=think], .tiger[data-mood=think], .fox[data-mood=think], .owl[data-mood=think], .parrot[data-mood=think], .raccoon[data-mood=think], .squirrel[data-mood=think], .turtle[data-mood=think]{--ox:3px;--oy:-4px}
-.cat[data-mood=think] .m-smile, .tiger[data-mood=think] .m-smile, .fox[data-mood=think] .m-smile, .owl[data-mood=think] .m-smile, .parrot[data-mood=think] .m-smile, .raccoon[data-mood=think] .m-smile, .squirrel[data-mood=think] .m-smile, .turtle[data-mood=think] .m-smile{display:none}
-.cat[data-mood=think] .m-open, .tiger[data-mood=think] .m-open, .fox[data-mood=think] .m-open, .owl[data-mood=think] .m-open, .parrot[data-mood=think] .m-open, .raccoon[data-mood=think] .m-open, .squirrel[data-mood=think] .m-open, .turtle[data-mood=think] .m-open{display:none}
-.cat[data-mood=cheer], .tiger[data-mood=cheer], .tiger[data-mood=roar], .fox[data-mood=cheer], .owl[data-mood=cheer], .parrot[data-mood=cheer], .raccoon[data-mood=cheer], .squirrel[data-mood=cheer], .turtle[data-mood=cheer]{animation:jump .6s ease-in-out infinite}
+.cat[data-mood=think] .head, .tiger[data-mood=think] .head, .fox[data-mood=think] .head, .owl[data-mood=think] .head, .parrot[data-mood=think] .head, .raccoon[data-mood=think] .head, .squirrel[data-mood=think] .head, .turtle[data-mood=think] .head, .dog[data-mood=think] .head, .octopus[data-mood=think] .head{transform:rotate(-8deg)}
+.cat[data-mood=think], .tiger[data-mood=think], .fox[data-mood=think], .owl[data-mood=think], .parrot[data-mood=think], .raccoon[data-mood=think], .squirrel[data-mood=think], .turtle[data-mood=think], .dog[data-mood=think], .octopus[data-mood=think]{--ox:3px;--oy:-4px}
+.cat[data-mood=think] .m-smile, .tiger[data-mood=think] .m-smile, .fox[data-mood=think] .m-smile, .owl[data-mood=think] .m-smile, .parrot[data-mood=think] .m-smile, .raccoon[data-mood=think] .m-smile, .squirrel[data-mood=think] .m-smile, .turtle[data-mood=think] .m-smile, .dog[data-mood=think] .m-smile, .octopus[data-mood=think] .m-smile{display:none}
+.cat[data-mood=think] .m-open, .tiger[data-mood=think] .m-open, .fox[data-mood=think] .m-open, .owl[data-mood=think] .m-open, .parrot[data-mood=think] .m-open, .raccoon[data-mood=think] .m-open, .squirrel[data-mood=think] .m-open, .turtle[data-mood=think] .m-open, .dog[data-mood=think] .m-open, .octopus[data-mood=think] .m-open{display:none}
+.cat[data-mood=cheer], .tiger[data-mood=cheer], .tiger[data-mood=roar], .fox[data-mood=cheer], .owl[data-mood=cheer], .parrot[data-mood=cheer], .raccoon[data-mood=cheer], .squirrel[data-mood=cheer], .turtle[data-mood=cheer], .dog[data-mood=cheer], .octopus[data-mood=cheer]{animation:jump .6s ease-in-out infinite}
 @keyframes jump{50%{transform:translateY(-16px)}}
-.cat[data-mood=cheer] .eyes, .tiger[data-mood=cheer] .eyes, .tiger[data-mood=roar] .eyes, .fox[data-mood=cheer] .eyes, .owl[data-mood=cheer] .eyes, .parrot[data-mood=cheer] .eyes, .raccoon[data-mood=cheer] .eyes, .squirrel[data-mood=cheer] .eyes, .turtle[data-mood=cheer] .eyes{display:none}
-.cat[data-mood=cheer] .eyes-closed, .tiger[data-mood=cheer] .eyes-closed, .tiger[data-mood=roar] .eyes-closed, .fox[data-mood=cheer] .eyes-closed, .owl[data-mood=cheer] .eyes-closed, .parrot[data-mood=cheer] .eyes-closed, .raccoon[data-mood=cheer] .eyes-closed, .squirrel[data-mood=cheer] .eyes-closed, .turtle[data-mood=cheer] .eyes-closed{display:block}
-.cat[data-mood=cheer] .m-smile, .tiger[data-mood=cheer] .m-smile, .tiger[data-mood=roar] .m-smile, .fox[data-mood=cheer] .m-smile, .owl[data-mood=cheer] .m-smile, .parrot[data-mood=cheer] .m-smile, .raccoon[data-mood=cheer] .m-smile, .squirrel[data-mood=cheer] .m-smile, .turtle[data-mood=cheer] .m-smile{display:none}
-.cat[data-mood=cheer] .m-open, .tiger[data-mood=cheer] .m-open, .tiger[data-mood=roar] .m-open, .fox[data-mood=cheer] .m-open, .owl[data-mood=cheer] .m-open, .parrot[data-mood=cheer] .m-open, .raccoon[data-mood=cheer] .m-open, .squirrel[data-mood=cheer] .m-open, .turtle[data-mood=cheer] .m-open{display:block}
-.cat[data-mood=cheer] .arm-l, .tiger[data-mood=cheer] .arm-l, .tiger[data-mood=roar] .arm-l, .fox[data-mood=cheer] .arm-l, .owl[data-mood=cheer] .arm-l, .parrot[data-mood=cheer] .arm-l, .raccoon[data-mood=cheer] .arm-l, .squirrel[data-mood=cheer] .arm-l, .turtle[data-mood=cheer] .arm-l{transform:rotate(140deg)}
-.cat[data-mood=cheer] .arm-r, .tiger[data-mood=cheer] .arm-r, .tiger[data-mood=roar] .arm-r, .fox[data-mood=cheer] .arm-r, .owl[data-mood=cheer] .arm-r, .parrot[data-mood=cheer] .arm-r, .raccoon[data-mood=cheer] .arm-r, .squirrel[data-mood=cheer] .arm-r, .turtle[data-mood=cheer] .arm-r{transform:rotate(-140deg)}
-.cat[data-mood=sad] .m-smile, .tiger[data-mood=sad] .m-smile, .fox[data-mood=sad] .m-smile, .owl[data-mood=sad] .m-smile, .parrot[data-mood=sad] .m-smile, .raccoon[data-mood=sad] .m-smile, .squirrel[data-mood=sad] .m-smile, .turtle[data-mood=sad] .m-smile{display:none}
-.cat[data-mood=sad] .m-sad, .tiger[data-mood=sad] .m-sad, .fox[data-mood=sad] .m-sad, .owl[data-mood=sad] .m-sad, .parrot[data-mood=sad] .m-sad, .raccoon[data-mood=sad] .m-sad, .squirrel[data-mood=sad] .m-sad, .turtle[data-mood=sad] .m-sad,
-.cat[data-mood=sad] .tear, .tiger[data-mood=sad] .tear, .fox[data-mood=sad] .tear, .owl[data-mood=sad] .tear, .parrot[data-mood=sad] .tear, .raccoon[data-mood=sad] .tear, .squirrel[data-mood=sad] .tear, .turtle[data-mood=sad] .tear{display:block}
-.cat[data-mood=sad] .ear-l, .tiger[data-mood=sad] .ear-l, .fox[data-mood=sad] .ear-l, .raccoon[data-mood=sad] .ear-l, .squirrel[data-mood=sad] .ear-l{transform:rotate(-18deg)}
-.cat[data-mood=sad] .ear-r, .tiger[data-mood=sad] .ear-r, .fox[data-mood=sad] .ear-r, .raccoon[data-mood=sad] .ear-r, .squirrel[data-mood=sad] .ear-r{transform:rotate(18deg)}
-.cat[data-mood=sad] .head, .tiger[data-mood=sad] .head, .fox[data-mood=sad] .head, .owl[data-mood=sad] .head, .parrot[data-mood=sad] .head, .raccoon[data-mood=sad] .head, .squirrel[data-mood=sad] .head, .turtle[data-mood=sad] .head{transform:translateY(6px)}
-.cat[data-mood=sad], .tiger[data-mood=sad], .fox[data-mood=sad], .owl[data-mood=sad], .parrot[data-mood=sad], .raccoon[data-mood=sad], .squirrel[data-mood=sad], .turtle[data-mood=sad]{--oy:3px}
-.cat-figure.spin, .tiger-figure.spin, .fox-figure.spin, .owl-figure.spin, .parrot-figure.spin, .raccoon-figure.spin, .squirrel-figure.spin, .turtle-figure.spin{animation:spin .9s cubic-bezier(.3,1.3,.4,1)}
+.cat[data-mood=cheer] .eyes, .tiger[data-mood=cheer] .eyes, .tiger[data-mood=roar] .eyes, .fox[data-mood=cheer] .eyes, .owl[data-mood=cheer] .eyes, .parrot[data-mood=cheer] .eyes, .raccoon[data-mood=cheer] .eyes, .squirrel[data-mood=cheer] .eyes, .turtle[data-mood=cheer] .eyes, .dog[data-mood=cheer] .eyes, .octopus[data-mood=cheer] .eyes{display:none}
+.cat[data-mood=cheer] .eyes-closed, .tiger[data-mood=cheer] .eyes-closed, .tiger[data-mood=roar] .eyes-closed, .fox[data-mood=cheer] .eyes-closed, .owl[data-mood=cheer] .eyes-closed, .parrot[data-mood=cheer] .eyes-closed, .raccoon[data-mood=cheer] .eyes-closed, .squirrel[data-mood=cheer] .eyes-closed, .turtle[data-mood=cheer] .eyes-closed, .dog[data-mood=cheer] .eyes-closed, .octopus[data-mood=cheer] .eyes-closed{display:block}
+.cat[data-mood=cheer] .m-smile, .tiger[data-mood=cheer] .m-smile, .tiger[data-mood=roar] .m-smile, .fox[data-mood=cheer] .m-smile, .owl[data-mood=cheer] .m-smile, .parrot[data-mood=cheer] .m-smile, .raccoon[data-mood=cheer] .m-smile, .squirrel[data-mood=cheer] .m-smile, .turtle[data-mood=cheer] .m-smile, .dog[data-mood=cheer] .m-smile, .octopus[data-mood=cheer] .m-smile{display:none}
+.cat[data-mood=cheer] .m-open, .tiger[data-mood=cheer] .m-open, .tiger[data-mood=roar] .m-open, .fox[data-mood=cheer] .m-open, .owl[data-mood=cheer] .m-open, .parrot[data-mood=cheer] .m-open, .raccoon[data-mood=cheer] .m-open, .squirrel[data-mood=cheer] .m-open, .turtle[data-mood=cheer] .m-open, .dog[data-mood=cheer] .m-open, .octopus[data-mood=cheer] .m-open{display:block}
+.cat[data-mood=cheer] .arm-l, .tiger[data-mood=cheer] .arm-l, .tiger[data-mood=roar] .arm-l, .fox[data-mood=cheer] .arm-l, .owl[data-mood=cheer] .arm-l, .parrot[data-mood=cheer] .arm-l, .raccoon[data-mood=cheer] .arm-l, .squirrel[data-mood=cheer] .arm-l, .turtle[data-mood=cheer] .arm-l, .dog[data-mood=cheer] .arm-l{transform:rotate(140deg)}
+.cat[data-mood=cheer] .arm-r, .tiger[data-mood=cheer] .arm-r, .tiger[data-mood=roar] .arm-r, .fox[data-mood=cheer] .arm-r, .owl[data-mood=cheer] .arm-r, .parrot[data-mood=cheer] .arm-r, .raccoon[data-mood=cheer] .arm-r, .squirrel[data-mood=cheer] .arm-r, .turtle[data-mood=cheer] .arm-r, .dog[data-mood=cheer] .arm-r{transform:rotate(-140deg)}
+.cat[data-mood=sad] .m-smile, .tiger[data-mood=sad] .m-smile, .fox[data-mood=sad] .m-smile, .owl[data-mood=sad] .m-smile, .parrot[data-mood=sad] .m-smile, .raccoon[data-mood=sad] .m-smile, .squirrel[data-mood=sad] .m-smile, .turtle[data-mood=sad] .m-smile, .dog[data-mood=sad] .m-smile, .octopus[data-mood=sad] .m-smile{display:none}
+.cat[data-mood=sad] .m-sad, .tiger[data-mood=sad] .m-sad, .fox[data-mood=sad] .m-sad, .owl[data-mood=sad] .m-sad, .parrot[data-mood=sad] .m-sad, .raccoon[data-mood=sad] .m-sad, .squirrel[data-mood=sad] .m-sad, .turtle[data-mood=sad] .m-sad, .dog[data-mood=sad] .m-sad, .octopus[data-mood=sad] .m-sad,
+.cat[data-mood=sad] .tear, .tiger[data-mood=sad] .tear, .fox[data-mood=sad] .tear, .owl[data-mood=sad] .tear, .parrot[data-mood=sad] .tear, .raccoon[data-mood=sad] .tear, .squirrel[data-mood=sad] .tear, .turtle[data-mood=sad] .tear, .dog[data-mood=sad] .tear, .octopus[data-mood=sad] .tear{display:block}
+.cat[data-mood=sad] .ear-l, .tiger[data-mood=sad] .ear-l, .fox[data-mood=sad] .ear-l, .raccoon[data-mood=sad] .ear-l, .squirrel[data-mood=sad] .ear-l, .dog[data-mood=sad] .ear-l{transform:rotate(-18deg)}
+.cat[data-mood=sad] .ear-r, .tiger[data-mood=sad] .ear-r, .fox[data-mood=sad] .ear-r, .raccoon[data-mood=sad] .ear-r, .squirrel[data-mood=sad] .ear-r, .dog[data-mood=sad] .ear-r{transform:rotate(18deg)}
+.cat[data-mood=sad] .head, .tiger[data-mood=sad] .head, .fox[data-mood=sad] .head, .owl[data-mood=sad] .head, .parrot[data-mood=sad] .head, .raccoon[data-mood=sad] .head, .squirrel[data-mood=sad] .head, .turtle[data-mood=sad] .head, .dog[data-mood=sad] .head, .octopus[data-mood=sad] .head{transform:translateY(6px)}
+.cat[data-mood=sad], .tiger[data-mood=sad], .fox[data-mood=sad], .owl[data-mood=sad], .parrot[data-mood=sad], .raccoon[data-mood=sad], .squirrel[data-mood=sad], .turtle[data-mood=sad], .dog[data-mood=sad], .octopus[data-mood=sad]{--oy:3px}
+.cat-figure.spin, .tiger-figure.spin, .fox-figure.spin, .owl-figure.spin, .parrot-figure.spin, .raccoon-figure.spin, .squirrel-figure.spin, .turtle-figure.spin, .dog-figure.spin, .octopus-figure.spin{animation:spin .9s cubic-bezier(.3,1.3,.4,1)}
 @keyframes spin{0%{transform:rotate(0) scale(1)}50%{transform:rotate(200deg) scale(1.22)}100%{transform:rotate(360deg) scale(1)}}
 
 /* Deluxe aury i animacje hover maskotek */
@@ -398,8 +420,10 @@ a.lesson:hover{transform:translateX(6px);background:rgba(255,255,255,.14);border
 .raccoon-figure svg{filter:drop-shadow(0 16px 30px rgba(225,29,72,.4)) drop-shadow(0 4px 10px rgba(0,0,0,.3));transition:filter .3s,transform .3s}
 .squirrel-figure svg{filter:drop-shadow(0 16px 30px rgba(211,84,0,.4)) drop-shadow(0 4px 10px rgba(0,0,0,.3));transition:filter .3s,transform .3s}
 .turtle-figure svg{filter:drop-shadow(0 16px 30px rgba(22,163,74,.4)) drop-shadow(0 4px 10px rgba(0,0,0,.3));transition:filter .3s,transform .3s}
+.dog-figure svg{filter:drop-shadow(0 16px 30px rgba(245,158,11,.45)) drop-shadow(0 4px 10px rgba(0,0,0,.3));transition:filter .3s,transform .3s}
+.octopus-figure svg{filter:drop-shadow(0 16px 30px rgba(217,70,239,.45)) drop-shadow(0 4px 10px rgba(0,0,0,.3));transition:filter .3s,transform .3s}
 
-.cat-figure:hover, .tiger-figure:hover, .fox-figure:hover, .owl-figure:hover, .parrot-figure:hover, .raccoon-figure:hover, .squirrel-figure:hover, .turtle-figure:hover{
+.cat-figure:hover, .tiger-figure:hover, .fox-figure:hover, .owl-figure:hover, .parrot-figure:hover, .raccoon-figure:hover, .squirrel-figure:hover, .turtle-figure:hover, .dog-figure:hover, .octopus-figure:hover{
   transform:translateY(-6px) scale(1.045);
   transition:transform .25s cubic-bezier(.34,1.56,.64,1);
 }
@@ -416,9 +440,9 @@ a.lesson:hover{transform:translateX(6px);background:rgba(255,255,255,.14);border
   border:2px solid rgba(255,255,255,.9);opacity:0;transform:scale(.9);transform-origin:bottom left;
   transition:.25s cubic-bezier(.34,1.56,.64,1);align-self:center;min-height:50px;box-shadow:0 16px 36px rgba(0,0,0,.4),0 2px 6px rgba(0,0,0,.15)}
 .bubble.show{opacity:1;transform:none}
-.cat-lg .bubble, .tiger-lg .bubble, .fox-lg .bubble, .owl-lg .bubble, .parrot-lg .bubble, .raccoon-lg .bubble, .squirrel-lg .bubble, .turtle-lg .bubble{flex:none;border-radius:22px;text-align:center;max-width:480px;font-size:1.08rem}
-.cat-lg .bubble::before, .tiger-lg .bubble::before, .fox-lg .bubble::before, .owl-lg .bubble::before, .parrot-lg .bubble::before, .raccoon-lg .bubble::before, .squirrel-lg .bubble::before, .turtle-lg .bubble::before{content:"";position:absolute;top:-10px;left:50%;margin-left:-9px;border:9px solid transparent;border-top:0;border-bottom-color:#fff}
-.cat-sm .bubble::before, .cat-md .bubble::before, .tiger-sm .bubble::before, .tiger-md .bubble::before, .fox-sm .bubble::before, .fox-md .bubble::before, .owl-sm .bubble::before, .owl-md .bubble::before, .parrot-sm .bubble::before, .parrot-md .bubble::before, .raccoon-sm .bubble::before, .raccoon-md .bubble::before, .squirrel-sm .bubble::before, .squirrel-md .bubble::before, .turtle-sm .bubble::before, .turtle-md .bubble::before{content:"";position:absolute;left:-9px;bottom:16px;border:9px solid transparent;border-left:0;border-right-color:#fff}
+.cat-lg .bubble, .tiger-lg .bubble, .fox-lg .bubble, .owl-lg .bubble, .parrot-lg .bubble, .raccoon-lg .bubble, .squirrel-lg .bubble, .turtle-lg .bubble, .dog-lg .bubble, .octopus-lg .bubble{flex:none;border-radius:22px;text-align:center;max-width:480px;font-size:1.08rem}
+.cat-lg .bubble::before, .tiger-lg .bubble::before, .fox-lg .bubble::before, .owl-lg .bubble::before, .parrot-lg .bubble::before, .raccoon-lg .bubble::before, .squirrel-lg .bubble::before, .turtle-lg .bubble::before, .dog-lg .bubble::before, .octopus-lg .bubble::before{content:"";position:absolute;top:-10px;left:50%;margin-left:-9px;border:9px solid transparent;border-top:0;border-bottom-color:#fff}
+.cat-sm .bubble::before, .cat-md .bubble::before, .tiger-sm .bubble::before, .tiger-md .bubble::before, .fox-sm .bubble::before, .fox-md .bubble::before, .owl-sm .bubble::before, .owl-md .bubble::before, .parrot-sm .bubble::before, .parrot-md .bubble::before, .raccoon-sm .bubble::before, .raccoon-md .bubble::before, .squirrel-sm .bubble::before, .squirrel-md .bubble::before, .turtle-sm .bubble::before, .turtle-md .bubble::before, .dog-sm .bubble::before, .dog-md .bubble::before, .octopus-sm .bubble::before, .octopus-md .bubble::before{content:"";position:absolute;left:-9px;bottom:16px;border:9px solid transparent;border-left:0;border-right-color:#fff}
 
 /* ── Okna dialogowe / modalne (Glassmorphic Deluxe) ── */
 dialog{border:1px solid rgba(255,255,255,.18);border-radius:30px;padding:30px 24px;max-width:min(92vw,520px);max-height:86vh;color:var(--text);text-align:center;
@@ -622,11 +646,54 @@ dialog form{display:contents}
 .calendar-card{background:linear-gradient(160deg,rgba(255,255,255,.09),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.14);border-radius:22px;padding:24px;text-align:center;width:100%;max-width:520px;margin:14px 0;box-shadow:0 12px 34px rgba(0,0,0,.3),inset 0 1px 1px rgba(255,255,255,.2)}
 .cal-date-badge{font-size:1.9rem;font-weight:900;color:var(--amber);background:linear-gradient(135deg,rgba(255,200,87,.2),rgba(255,146,51,.15));border:1px solid rgba(255,200,87,.4);padding:12px 24px;border-radius:18px;display:inline-block;margin-bottom:12px;box-shadow:0 8px 24px rgba(255,200,87,.25)}
 
+/* Mapy Myśli (Ośmiornica Inka) */
+.mindmap-card{background:linear-gradient(160deg,rgba(255,255,255,.08),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.14);border-radius:24px;padding:22px;margin:12px 0 16px;text-align:center;box-shadow:0 12px 32px rgba(0,0,0,.3)}
+.mm-center-badge{display:inline-block;font-size:1.4rem;font-weight:900;color:#fff;background:linear-gradient(135deg,#d946ef,#8b5cf6);padding:8px 22px;border-radius:99px;margin-bottom:14px;box-shadow:0 6px 20px rgba(217,70,239,.4)}
+.mm-branches-preview{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:14px}
+.mm-branch-pill{padding:6px 14px;border-radius:12px;background:rgba(255,255,255,.08);border:1px solid var(--stroke);font-size:.9rem;font-weight:800}
+.mm-branch-pill.target{border:2px dashed #f59e0b;background:rgba(245,158,11,.15);color:#fde047;animation:pulse 1.8s infinite}
+.mm-item-showcase{font-size:1.8rem;font-weight:900;color:var(--mint);padding:14px;background:rgba(0,0,0,.3);border-radius:18px;margin:10px 0 14px;border:1px solid rgba(62,240,192,.3)}
+.mm-branch-focus{font-size:1.2rem;font-weight:900;color:var(--amber);margin-bottom:10px}
+
+/* ── Akrostychy i Rymy (Piesek Łatek) ── */
+.acrostic-board{background:rgba(0,0,0,.35);border:1px solid rgba(245,158,11,.3);border-radius:18px;padding:14px;margin:12px 0 16px;box-shadow:inset 0 1px 1px rgba(255,255,255,.1)}
+.acrostic-phrase-banner{font-size:1.05rem;font-weight:900;color:#fde047;background:linear-gradient(135deg,rgba(245,158,11,.25),rgba(217,119,6,.15));border:1px solid rgba(245,158,11,.45);border-radius:14px;padding:10px 14px;margin-bottom:12px;text-align:center;box-shadow:0 4px 14px rgba(245,158,11,.2)}
+.acrostic-rows-list{display:flex;flex-direction:column;gap:6px}
+.acrostic-item-row{display:flex;align-items:center;gap:10px;padding:7px 10px;border-radius:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);font-size:.92rem}
+.acrostic-letter-box{flex:none;width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#f59e0b,#ea580c);color:#fff;font-weight:900;font-size:1.15rem;display:grid;place-items:center;box-shadow:0 2px 8px rgba(245,158,11,.4)}
+.acrostic-word-col{flex:1;min-width:0;font-weight:800;color:#fff}
+.acrostic-arrow{color:var(--muted);font-weight:700}
+.acrostic-target-col{flex:1.2;font-weight:800;color:var(--mint);display:flex;align-items:center;gap:6px}
+
+/* ── Diagramy i Porównania Map Myśli (Ośmiornica Inka) ── */
+.mm-lesson-diagram{background:rgba(0,0,0,.35);border:1px solid rgba(217,70,239,.3);border-radius:20px;padding:16px;margin:12px 0 16px;text-align:center;box-shadow:inset 0 1px 1px rgba(255,255,255,.1)}
+.mm-diag-center{display:inline-flex;align-items:center;gap:8px;font-size:1.15rem;font-weight:900;color:#fff;background:linear-gradient(135deg,#d946ef,#8b5cf6);padding:8px 20px;border-radius:99px;margin-bottom:14px;box-shadow:0 6px 20px rgba(217,70,239,.4)}
+.mm-diag-branches-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;text-align:left}
+.mm-diag-branch-card{padding:10px 12px;border-radius:14px;background:rgba(255,255,255,.06);border-left:4px solid var(--bcolor,#d946ef);font-size:.85rem}
+.mm-diag-branch-card b{display:block;color:#fff;font-size:.92rem;margin-bottom:3px}
+.mm-diag-branch-card span{display:block;color:var(--muted);font-size:.78rem}
+.mm-compare-box{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0;text-align:left;font-size:.84rem}
+.mm-compare-bad{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);border-radius:14px;padding:12px}
+.mm-compare-bad b{color:#fca5a5;display:block;margin-bottom:4px}
+.mm-compare-good{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.3);border-radius:14px;padding:12px}
+.mm-compare-good b{color:#86efac;display:block;margin-bottom:4px}
+
+/* ── Przełącznik języka (PL / USA) ── */
+.lang-switcher{display:inline-flex;align-items:center;background:rgba(255,255,255,.08);border:1px solid var(--stroke);border-radius:999px;padding:3px;gap:2px}
+.lang-btn{display:inline-flex;align-items:center;gap:4px;border:none;background:transparent;color:var(--muted);font-size:.82rem;font-weight:800;padding:5px 9px;border-radius:999px;cursor:pointer;transition:all .2s ease;line-height:1}
+.lang-btn:hover{color:#fff;background:rgba(255,255,255,.08)}
+.lang-btn.active{color:#fff;background:linear-gradient(135deg,#7c5cff,#ff6bd6);box-shadow:0 2px 8px rgba(124,92,255,.4)}
+.lang-flag{font-size:.95rem;line-height:1}
+.lang-txt{font-size:.78rem;letter-spacing:.5px}
+
 /* ── Responsywność mobilna ── */
 @media (max-width:520px){
-  .cat-wrap, .tiger-wrap, .fox-wrap, .owl-wrap, .parrot-wrap, .raccoon-wrap, .squirrel-wrap, .turtle-wrap{--cs:108px}
-  .cat-sm, .tiger-sm, .fox-sm, .owl-sm, .parrot-sm, .raccoon-sm, .squirrel-sm, .turtle-sm{--cs:86px}
-  .cat-lg, .tiger-lg, .fox-lg, .owl-lg, .parrot-lg, .raccoon-lg, .squirrel-lg, .turtle-lg{--cs:164px}
+  .top-actions{gap:6px}
+  .lang-txt{display:none}
+  .lang-btn{padding:5px 7px}
+  .cat-wrap, .tiger-wrap, .fox-wrap, .owl-wrap, .parrot-wrap, .raccoon-wrap, .squirrel-wrap, .turtle-wrap, .dog-wrap, .octopus-wrap{--cs:108px}
+  .cat-sm, .tiger-sm, .fox-sm, .owl-sm, .parrot-sm, .raccoon-sm, .squirrel-sm, .turtle-sm, .dog-sm, .octopus-sm{--cs:86px}
+  .cat-lg, .tiger-lg, .fox-lg, .owl-lg, .parrot-lg, .raccoon-lg, .squirrel-lg, .turtle-lg, .dog-lg, .octopus-lg{--cs:164px}
   .btn-text{display:none}.pill span{display:none}.pill{padding:9px 13px}
   .stage, .palace-stage{min-height:210px;padding:14px 0}
   .bubble{font-size:.92rem;padding:11px 14px}
@@ -638,9 +705,13 @@ dialog form{display:contents}
   .playing-card{width:70px;height:104px;padding:5px 7px}
   .pc-rank{font-size:1.05rem}
   .pc-big-symbol{font-size:2rem}
+  .mm-compare-box{grid-template-columns:1fr}
+  .acrostic-item-row{font-size:.82rem;gap:6px;padding:6px 8px}
+  .acrostic-letter-box{width:28px;height:28px;font-size:1rem}
+  .acrostic-phrase-banner{font-size:.92rem;padding:8px 10px}
 }
 @media (max-height:700px) and (orientation:landscape){
-  .cat-lg, .tiger-lg, .fox-lg, .owl-lg, .parrot-lg, .raccoon-lg, .squirrel-lg, .turtle-lg{--cs:115px}
+  .cat-lg, .tiger-lg, .fox-lg, .owl-lg, .parrot-lg, .raccoon-lg, .squirrel-lg, .turtle-lg, .dog-lg, .octopus-lg{--cs:115px}
   .stage, .palace-stage{min-height:150px}
 }
 @media (prefers-reduced-motion:reduce){

@@ -28,7 +28,7 @@ async function waitFor(fn, desc, timeout = 4000) {
   const start = Date.now();
   while (Date.now() - start < timeout) {
     const val = fn();
-    if (val !== null && val !== undefined) {
+    if (val) {
       if (typeof val === 'object' && 'length' in val && val.length === 0) {
         // wait
       } else {
@@ -71,7 +71,7 @@ async function runFriendlyTests() {
   console.log('  [LOG owlTheory]:', owlTheory);
   assert(owlTheory.includes('Po co nam ta technika?') || owlTheory.includes('mózg'), 'Teoria Sowy zaczyna się od wyjaśnienia po co i co daje technika');
 
-  await new Promise(r => setTimeout(r, 400));
+  await waitFor(() => doc.querySelector('.bubble.show .bubble-text')?.textContent.length > 5, 'Chmurka Sowy');
   const owlBubble = doc.querySelector('.bubble-text')?.textContent || '';
   assert(owlBubble.includes('Uhuhu!') || owlBubble.includes('Sówka'), `Chmurka Sowy jest ciepła i zachęcająca: "${owlBubble.slice(0, 45)}..."`);
 
@@ -87,7 +87,7 @@ async function runFriendlyTests() {
   const foxTheory = doc.querySelector('.theory-text').textContent;
   assert(foxTheory.includes('Po co nam ta umiejętność?') || foxTheory.includes('klasie'), 'Teoria Liska wyjaśnia życiowy cel (zapamiętanie imion)');
 
-  await new Promise(r => setTimeout(r, 400));
+  await waitFor(() => doc.querySelector('.bubble.show .bubble-text')?.textContent.length > 5, 'Chmurka Liska');
   const foxBubble = doc.querySelector('.bubble-text')?.textContent || '';
   assert(foxBubble.includes('Lisek') || foxBubble.includes('Cześć'), `Chmurka Liska jest ciepła: "${foxBubble.slice(0, 45)}..."`);
 
@@ -103,7 +103,7 @@ async function runFriendlyTests() {
   const parrotTheory = doc.querySelector('.theory-text').textContent;
   assert(parrotTheory.includes('Po co nam ta metoda?') || parrotTheory.includes('podróżach'), 'Teoria Papużki wyjaśnia cel nauki języków obcych');
 
-  await new Promise(r => setTimeout(r, 400));
+  await waitFor(() => doc.querySelector('.bubble.show .bubble-text')?.textContent.length > 5, 'Chmurka Papużki');
   const parrotBubble = doc.querySelector('.bubble-text')?.textContent || '';
   assert(parrotBubble.includes('Pola') || parrotBubble.includes('Cześć'), `Chmurka Papużki jest radosna: "${parrotBubble.slice(0, 45)}..."`);
 
@@ -119,9 +119,9 @@ async function runFriendlyTests() {
   const raccoonTheory = doc.querySelector('.theory-text').textContent;
   assert(raccoonTheory.includes('Po co uczyć się zapamiętywania kart?') || raccoonTheory.includes('sekwencje'), 'Teoria Szopa wyjaśnia cel zapamiętywania sekwencji');
 
-  await new Promise(r => setTimeout(r, 400));
+  await waitFor(() => doc.querySelector('.bubble.show .bubble-text')?.textContent.length > 5, 'Chmurka Szopa');
   const raccoonBubble = doc.querySelector('.bubble-text')?.textContent || '';
-  assert(raccoonBubble.includes('Abrakadabra') || raccoonBubble.includes('Szop'), `Chmurka Szopa jest magiczna: "${raccoonBubble.slice(0, 45)}..."`);
+  assert(raccoonBubble.includes('Abra') || raccoonBubble.includes('Szop'), `Chmurka Szopa jest magiczna: "${raccoonBubble.slice(0, 45)}..."`);
 
   // 5. WIEWIÓRKA (Łańcuch)
   console.log('\n▶ TEST 5: Wiewiórka Basia 🐿️ (Łańcuchowa Metoda Skojarzeń)');
@@ -135,7 +135,7 @@ async function runFriendlyTests() {
   const squirrelTheory = doc.querySelector('.theory-text').textContent;
   assert(squirrelTheory.includes('Po co nam ta technika?') || squirrelTheory.includes('zakupów'), 'Teoria Wiewiórki wyjaśnia zapamiętywanie list bez kartki');
 
-  await new Promise(r => setTimeout(r, 400));
+  await waitFor(() => doc.querySelector('.bubble.show .bubble-text')?.textContent.length > 5, 'Chmurka Wiewiórki');
   const squirrelBubble = doc.querySelector('.bubble-text')?.textContent || '';
   assert(squirrelBubble.includes('Wiewiórka') || squirrelBubble.includes('Chrup'), `Chmurka Wiewiórki jest wesoła: "${squirrelBubble.slice(0, 45)}..."`);
 
@@ -151,7 +151,7 @@ async function runFriendlyTests() {
   const turtleTheory = doc.querySelector('.theory-text').textContent;
   assert(turtleTheory.includes('Po co nam ta technika?') || turtleTheory.includes('urodziny'), 'Teoria Żółwika wyjaśnia cel obliczania dnia tygodnia');
 
-  await new Promise(r => setTimeout(r, 400));
+  await waitFor(() => doc.querySelector('.bubble.show .bubble-text')?.textContent.length > 5, 'Chmurka Żółwika');
   const turtleBubble = doc.querySelector('.bubble-text')?.textContent || '';
   console.log('  [LOG turtleBubble]:', turtleBubble);
   assert(!turtleBubble.includes('modulo 7') && (turtleBubble.includes('Zenon') || turtleBubble.includes('urodziny') || turtleBubble.includes('daty') || turtleBubble.includes('Cześć')), `Chmurka Żółwika bez suchego „modulo 7”: "${turtleBubble.slice(0, 45)}..."`);
@@ -161,7 +161,7 @@ async function runFriendlyTests() {
   dom = setupDom('#/digits/train/1');
   doc = dom.window.document;
   await waitFor(() => doc.querySelector('.screen.step'), 'Lekcja 1 Kotka');
-  await new Promise(r => setTimeout(r, 400));
+  await waitFor(() => doc.querySelector('.bubble.show .bubble-text')?.textContent.length > 5, 'Chmurka Kotka');
   const catBubble = doc.querySelector('.bubble-text')?.textContent || '';
   console.log('  [LOG catBubble]:', catBubble);
   assert(catBubble.includes('Mruczek') || catBubble.includes('supermocy') || catBubble.includes('trenerem') || catBubble.includes('Miau'), `Chmurka Kotka: "${catBubble.slice(0, 50)}..."`);

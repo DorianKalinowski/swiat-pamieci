@@ -1,4 +1,5 @@
 import { h } from '../../dom.js';
+import { t } from '../../i18n.js';
 import { sfx } from '../../sound.js';
 import { splitGroups } from './util.js';
 
@@ -47,7 +48,7 @@ export function present(host, { digits, mode = 'all', group = 0, time = 4000, in
         const d = digits[step];
         big.textContent = d;
         if (showShapes && SHAPE_PEGS[d]) {
-          shapeHint.textContent = `${SHAPE_PEGS[d].emoji} ${SHAPE_PEGS[d].name}`;
+          shapeHint.textContent = `${SHAPE_PEGS[d].emoji} ${t(SHAPE_PEGS[d].name)}`;
         }
         pop();
         dots.children[step].classList.add('on');
@@ -77,7 +78,7 @@ export function present(host, { digits, mode = 'all', group = 0, time = 4000, in
           h('div', { class: 'mcard', style: `--i:${i}` },
             h('div', { class: 'mcard-num' }, c.d),
             h('div', { class: 'mcard-emoji' }, c.emoji),
-            h('div', { class: 'mcard-word' }, [...c.word].map(ch => h('span', { class: VOWELS.includes(ch) ? 'v' : 'c' }, ch))))))
+            h('div', { class: 'mcard-word' }, [...t(c.word)].map(ch => h('span', { class: VOWELS.includes(ch) ? 'v' : 'c' }, ch))))))
       : h('div', { class: `digit-groups${showShapes ? ' with-shapes' : ''}`, 'aria-label': [...digits].join(' ') },
           splitGroups(digits, group).map(g =>
             h('div', { class: 'digit-group' }, [...g].map(d => {

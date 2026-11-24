@@ -1,16 +1,20 @@
+import { t } from './i18n.js';
+
 export function h(tag, attrs = {}, ...kids) {
   const el = document.createElement(tag);
   for (const [k, v] of Object.entries(attrs || {})) {
     if (v == null || v === false) continue;
     if (k === 'class') el.className = v;
-    else if (k === 'html') el.innerHTML = v;
+    else if (k === 'html') el.innerHTML = (typeof v === 'string' && !v.trim().startsWith('<svg') ? t(v) : v);
     else if (k.startsWith('on')) el.addEventListener(k.slice(2), v);
     else if (v === true) el.setAttribute(k, '');
+    else if (k === 'title' || k === 'aria-label' || k === 'placeholder') el.setAttribute(k, t(v));
     else el.setAttribute(k, v);
   }
   for (const kid of kids.flat(Infinity)) {
     if (kid == null || kid === false) continue;
-    el.append(kid.nodeType ? kid : document.createTextNode(kid));
+    const val = typeof kid === 'string' ? t(kid) : kid;
+    el.append(val.nodeType ? val : document.createTextNode(val));
   }
   return el;
 }

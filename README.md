@@ -1,10 +1,11 @@
-# 🧠 Świat Pamięci
+# 🧠 Świat Pamięci (Wersja 1.1)
 
-> **Nowoczesna, interaktywna aplikacja webowa (PWA) do praktycznej nauki najskuteczniejszych technik pamięciowych poprzez wciągające mini-gry z uroczymi zwierzęcymi mentorami.**
+> **Nowoczesna, interaktywna aplikacja webowa (PWA) do praktycznej nauki najskuteczniejszych technik pamięciowych poprzez wciągające mini-gry z 10 uroczymi zwierzęcymi mentorami.**
 
+[![Version](https://img.shields.io/badge/Wersja-1.1.0-brightgreen.svg)](#-o-projekcie-i-autorze)
 [![PWA Ready](https://img.shields.io/badge/PWA-Ready-success.svg)](#-funkcje-pwa-i-offline)
 [![Zero Runtime Dependencies](https://img.shields.io/badge/Dependencies-Zero%20(Pure%20JS)-blue.svg)](#-architektura-i-technologie)
-[![Tests Passing](https://img.shields.io/badge/Tests-208%2B%20Passed-brightgreen.svg)](#-testy-automatyczne)
+[![Tests Passing](https://img.shields.io/badge/Tests-300%2B%20Passed-brightgreen.svg)](#-testy-automatyczne)
 [![Author](https://img.shields.io/badge/Autor-Dorian%20Kalinowski-orange.svg)](#-o-projekcie-i-autorze)
 [![Copyright](https://img.shields.io/badge/Copyright-%C2%A9%202026%20Wszelkie%20prawa%20zastrze%C5%BCone-blueviolet.svg)](#-licencja)
 
@@ -13,13 +14,14 @@
 ## 🌟 O projekcie i autorze
 
 **Autor:** Dorian Kalinowski  
-**Misja projektu:** Umożliwić każdemu opanowanie i praktyczne wykorzystanie najpotężniejszych technik pamięciowych świata w formie lekkich, wciągających gier i ustrukturyzowanych lekcji.
+**Wersja:** 1.1.0  
+**Misja projektu:** Umożliwić każdemu opanowanie i praktyczne wykorzystanie najpotężniejszych technik pamięciowych świata w formie lekkich, wciągających gier oraz ustrukturyzowanych lekcji z sympatycznymi mentorami.
 
 Aplikacja została zaprojektowana z myślą o maksymalnej przystępności, pięknej minimalistycznej estetyce oraz pełnym komforcie gry na urządzeniach mobilnych (zarówno w przeglądarce, jak i w formie zainstalowanej aplikacji PWA).
 
 ---
 
-## 🐾 8 Systemów Pamięciowych i Nasi Nauczyciele
+## 🐾 10 Systemów Pamięciowych i Nasi Nauczyciele
 
 Każda technika pamięciowa ma dedykowanego nauczyciela – urocze, animowane zwierzątko z własną paletą barw, minimalistycznym tłem ambientowym oraz unikalną osobowością:
 
@@ -33,6 +35,8 @@ Każda technika pamięciowa ma dedykowanego nauczyciela – urocze, animowane zw
 | **6. Karty i PAO** | 🦝 **Szop Magik** | *System PAO (Osoba - Akcja - Obiekt)* | Zaawansowana technika mistrzów pamięci do kodowania kart do gry w dynamiczne scenki. |
 | **7. Metoda Łańcuchowa** | 🐿️ **Wiewiórka Basia** | *Łańcuch Skojarzeń i Żywe Opowieści* | Dynamiczne, barwne łączenie 20 wyrazów w jeden spójny, niezapomniany łańcuch przyczynowo-skutkowy. |
 | **8. Kalendarz w Głowie** | 🐢 **Żółwik Zenon** | *Algorytm Dnia Tygodnia (Doomsday)* | Obliczanie w pamięci dnia tygodnia dla dowolnej daty (2026 oraz podróże w czasie do innych lat). |
+| **9. Akrostychy i Rymy** | 🐶 **Piesek Łatek** *(Nowość V1.1)* | *Metoda Pierwszych Liter i Rymowanki* | Bezbłędne zapamiętywanie całych list i kolejności (planety, kolory tęczy, przypadki, rzymskie cyfry, kierunki świata) za pomocą wpadających w ucho zdań. |
+| **10. Mapy Myśli** | 🐙 **Ośmiornica Inka** *(Nowość V1.1)* | *Myślenie Promieniste i Mapowanie Myśli (Mind Mapping)* | Wizualne notowanie, burza mózgów, słowa-klucze, kolory i rozgałęzianie wiedzy na 8 ramionach bez nudnych linijek tekstu. |
 
 ---
 
@@ -127,13 +131,14 @@ Następnie wejdź w przeglądarce pod adres: `http://localhost:8000`.
 
 ## 🧪 Testy Automatyczne
 
-Aplikacja posiada rygorystyczny zestaw ponad **208 zautomatyzowanych testów** (jednostkowych, UI i integracyjnych), weryfikujący:
-1. Prawidłowość struktury SVG, detali graficznych i animacji oczu wszystkich 8 maskotek.
-2. Płynność i progresję rund we wszystkich grach swobodnych (brak dead-locków, brak modyfikacji timerów).
-3. Wszystkie lekcje szkoleniowe i ich walidację dla każdego z 8 systemów pamięciowych (przyjazny język dla dzieci i dorosłych).
+Aplikacja posiada rygorystyczny zestaw ponad **300 zautomatyzowanych testów** (jednostkowych, UI i integracyjnych), weryfikujący:
+1. Prawidłowość struktury SVG, detali graficznych i animacji oczu wszystkich 10 maskotek (w tym Pieska Łatka i Ośmiornicy Inki).
+2. Płynność i progresję rund we wszystkich grach swobodnych (brak martwych punktów, brak modyfikacji timerów).
+3. Wszystkie lekcje szkoleniowe i ich walidację dla każdego z 10 systemów pamięciowych (przyjazny język dla dzieci i dorosłych).
 4. Pełną bazę 105 angielskich słówek z mostami fonetycznymi oraz 20-elementowy łańcuch skojarzeń.
 5. Poprawność algorytmu Doomsday w kalendarzu (obliczanie dni dla 2026 i podróży w czasie).
-6. Czystość i integralność PWA oraz manifestu (tryb offline).
+6. Mapy myśli (Mind Mapping) z bazą 8 bogatych map, 4 trybami gry i promieniście rozłożonymi mackami Inki.
+7. Czystość i integralność PWA oraz manifestu (tryb offline).
 
 Aby uruchomić pełny zestaw testów:
 ```bash
@@ -143,9 +148,9 @@ npm test
 Wynik:
 ```text
 ====================================================
-🏁 WYNIKI TESTÓW: 208+ ZDANYCH, 0 NIEZDANYCH
+🏁 WYNIKI TESTÓW: 300+ ZDANYCH, 0 NIEZDANYCH
 ====================================================
-Status: WSZYSTKIE 8 SYSTEMÓW DZIAŁA PERFEKCYJNIE!
+Status: WSZYSTKIE 10 SYSTEMÓW DZIAŁAJĄ PERFEKCYJNIE!
 ```
 
 ---

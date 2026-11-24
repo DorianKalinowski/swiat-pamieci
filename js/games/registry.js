@@ -82,5 +82,25 @@ export const GAMES = [
     accent: ['#16a34a', '#22c55e'],
     tags: ['Żółwik Zegarowy 🐢', '6 lekcji', '4 warianty', 'Algorytm Doomsday'],
     load: () => import('./calendar/index.js')
+  },
+  {
+    id: 'acrostic',
+    title: 'Akrostychy i rymy',
+    emoji: '🐶',
+    status: 'ready',
+    tagline: 'Złap trop pierwszych liter! Planety, tęcza, rzymskie cyfry i reguły szkolne z Pieskiem Łatkiem.',
+    accent: ['#f59e0b', '#d97706'],
+    tags: ['Piesek Łatek 🐶', '10 lekcji', '4 warianty', 'Haczyki liter'],
+    load: () => import('./acrostic/index.js')
+  },
+  {
+    id: 'mindmap',
+    title: 'Mapy myśli',
+    emoji: '🐙',
+    status: 'ready',
+    tagline: 'Rozwiń 8 macek swojej wyobraźni! Twórz nielinearne notatki wizualne i zapamiętuj całe działy z Ośmiornicą Inką.',
+    accent: ['#d946ef', '#8b5cf6'],
+    tags: ['Ośmiornica Inka 🐙', '10 lekcji', '4 warianty', 'Mapy myśli'],
+    load: () => import('./mindmap/index.js')
   }
 ];

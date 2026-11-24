@@ -50,7 +50,7 @@ async function waitFor(fn, desc, timeout = 4000) {
 
 async function runMasterTest() {
   console.log('====================================================');
-  console.log('👑 TEST MISTRZOWSKI: 8 SYSTEMÓW PAMIĘCIOWYCH & MASKOTEK');
+  console.log('👑 TEST MISTRZOWSKI: 10 SYSTEMÓW PAMIĘCIOWYCH & MASKOTEK');
   console.log('====================================================\n');
 
   let passed = 0;
@@ -66,19 +66,19 @@ async function runMasterTest() {
     }
   }
 
-  // 1. HUB & WSZYSTKIE 8 GIER
-  console.log('▶ TEST 1: Weryfikacja Hubu głównego (8 gotowych gier)');
+  // 1. HUB & WSZYSTKIE GIER
+  console.log('▶ TEST 1: Weryfikacja Hubu głównego (10 gotowych gier)');
   const dom = setupDom('#/');
   const doc = dom.window.document;
 
   await waitFor(() => doc.querySelector('.game-grid .game-card'), 'Karty gier na hubie');
   const cards = doc.querySelectorAll('.game-grid .game-card');
-  assert(cards.length === 8, `Dokładnie 8 kart gier w siatce (znaleziono: ${cards.length})`);
+  assert(cards.length === 10, `Dokładnie 10 kart gier w siatce (znaleziono: ${cards.length})`);
 
   const readyCards = doc.querySelectorAll('.game-grid .game-card:not(.soon)');
-  assert(readyCards.length === 8, `Wszystkie 8 gier ma status 'ready' (znaleziono: ${readyCards.length})`);
+  assert(readyCards.length === 10, `Wszystkie 10 gier ma status 'ready' (znaleziono: ${readyCards.length})`);
 
-  const expectedIds = ['digits', 'palace', 'names', 'major', 'words', 'cards', 'link', 'calendar'];
+  const expectedIds = ['digits', 'palace', 'names', 'major', 'words', 'cards', 'link', 'calendar', 'acrostic', 'mindmap'];
   expectedIds.forEach(id => {
     const card = doc.querySelector(`.game-card[href="#/${id}"]`);
     assert(card !== null, `Gra #${id} posiada aktywny link na hubie`);
@@ -94,7 +94,9 @@ async function runMasterTest() {
     { selector: '.parrot', name: 'Papużka Pola 🦜' },
     { selector: '.raccoon', name: 'Szop Magik 🦝' },
     { selector: '.squirrel', name: 'Wiewiórka Basia 🐿️' },
-    { selector: '.turtle', name: 'Żółwik Zegarowy 🐢' }
+    { selector: '.turtle', name: 'Żółwik Zegarowy 🐢' },
+    { selector: '.dog', name: 'Piesek Łatek 🐶' },
+    { selector: '.octopus', name: 'Ośmiornica Inka 🐙' }
   ];
 
   // Render home cat
@@ -105,8 +107,8 @@ async function runMasterTest() {
   assert(catEyeSlots[0]?.getAttribute('transform') === 'translate(76 90)', 'Lewe oko kotka translate(76 90)');
   assert(catEyeSlots[1]?.getAttribute('transform') === 'translate(124 90)', 'Prawe oko kotka translate(124 90)');
 
-  // 3. WERYFIKACJA MENU I MASKOTKI KAŻDEJ Z 8 GIER
-  console.log('\n▶ TEST 3: Weryfikacja menu i maskotek dla każdej z 8 gier');
+  // 3. WERYFIKACJA MENU I MASKOTKI KAŻDEJ Z 10 GIER
+  console.log('\n▶ TEST 3: Weryfikacja menu i maskotek dla każdej z 10 gier');
   for (const item of [
     { id: 'digits', mascotClass: 'cat', name: 'Kotek (Cyfry)', modes: 6, title: 'Cyfry' },
     { id: 'palace', mascotClass: 'tiger', name: 'Tygrysek (Pałac)', modes: 5, title: 'Pałac' },
@@ -115,7 +117,9 @@ async function runMasterTest() {
     { id: 'words', mascotClass: 'parrot', name: 'Papużka (Słówka)', modes: 4, title: 'Słówka' },
     { id: 'cards', mascotClass: 'raccoon', name: 'Szop (Karty)', modes: 4, title: 'Karty' },
     { id: 'link', mascotClass: 'squirrel', name: 'Wiewiórka (Łańcuch)', modes: 4, title: 'Łańcuch' },
-    { id: 'calendar', mascotClass: 'turtle', name: 'Żółwik (Kalendarz)', modes: 4, title: 'Kalendarz' }
+    { id: 'calendar', mascotClass: 'turtle', name: 'Żółwik (Kalendarz)', modes: 4, title: 'Kalendarz' },
+    { id: 'acrostic', mascotClass: 'dog', name: 'Piesek (Akrostychy)', modes: 4, title: 'Akrostychy' },
+    { id: 'mindmap', mascotClass: 'octopus', name: 'Ośmiornica (Mapy Myśli)', modes: 4, title: 'Mapy' }
   ]) {
     dom.window.location.hash = `#/${item.id}`;
     const svg = await waitFor(() => {
@@ -195,6 +199,15 @@ async function runMasterTest() {
   await waitFor(() => doc.querySelector('.btn-opt.correct'), 'Poprawna odpowiedź Calendar');
   assert(doc.querySelector('.btn-opt.correct') !== null, 'Zaznaczono poprawny dzień dla 5 (Piątek)');
 
+  // 4g. MINDMAP (Ośmiornica Inka)
+  dom.window.location.hash = '#/mindmap/train/1';
+  await waitFor(() => doc.querySelector('.step-head h2')?.textContent.includes('Czym jest mapa myśli'), 'Lekcja 1 w Mindmap');
+  assert(true, 'Lekcja 1 w Mindmap załadowana');
+  btns = doc.querySelectorAll('.task-box .btn-opt');
+  btns[0].click();
+  await waitFor(() => doc.querySelector('.btn-opt.correct'), 'Poprawna odpowiedź Mindmap');
+  assert(doc.querySelector('.btn-opt.correct') !== null, 'Zaznaczono poprawną definicję mapy myśli');
+
   // 5. TESTY GRY SWOBODNEJ & BRAKU PRZYCISKU UDOSTĘPNIJ
   console.log('\n▶ TEST 5: Gry swobodne i weryfikacja braku przycisku „Udostępnij”');
   const freeRoutes = [
@@ -205,7 +218,9 @@ async function runMasterTest() {
     '#/words/free/translate',
     '#/cards/free/pao',
     '#/link/free/forward',
-    '#/calendar/free/weekday'
+    '#/calendar/free/weekday',
+    '#/acrostic/free/decode',
+    '#/mindmap/free/missing_branch'
   ];
 
   for (const fRoute of freeRoutes) {
@@ -226,12 +241,12 @@ async function runMasterTest() {
   assert(!installText.toLowerCase().includes('komputer') && !installText.toLowerCase().includes('pulpit') && !installText.toLowerCase().includes('windows'),
     'Brak wzmianki o pobieraniu na komputer');
 
-  // 7. ŚCIĄGAWKA TECHNIK (8 SYSTEMÓW)
-  console.log('\n▶ TEST 7: Modal ściągawki technik (pełne 8 systemów)');
+  // 7. ŚCIĄGAWKA TECHNIK (10 SYSTEMÓW)
+  console.log('\n▶ TEST 7: Modal ściągawki technik (pełne 10 systemów)');
   const guide = doc.querySelector('#guide');
   assert(guide !== null, 'Modal ściągawki istnieje');
   const guideCards = guide.querySelectorAll('.guide-card');
-  assert(guideCards.length === 8, `Dokładnie 8 kart technik w ściągawce (znaleziono: ${guideCards.length})`);
+  assert(guideCards.length === 10, `Dokładnie 10 kart technik w ściągawce (znaleziono: ${guideCards.length})`);
 
   console.log('\n====================================================');
   console.log(`🏁 WYNIKI KOŃCOWE: ${passed} ZDANYCH, ${failed} NIEZDANYCH`);
